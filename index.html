@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paralelo 17 — Imóveis Únicos | Casa Harmonia</title>
+    <title>Paralelo 17 — Portfólio de Imóveis Únicos</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0B1612;
+            background-color: #08120D;
             color: var(--text-light);
             min-height: 100vh;
             display: flex;
@@ -33,31 +33,24 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 30px 20px;
+            padding: 40px 20px;
             overflow-x: hidden;
         }
 
-        .bg-cover {
+        .bg-ambient {
             position: fixed;
             inset: 0;
-            background-image: 
-                linear-gradient(180deg, rgba(10, 20, 16, 0.45) 0%, rgba(10, 20, 16, 0.75) 100%),
-                url('Album-de-fotos-harmonia/001%20%E2%80%93%20%C2%A9%20Bruno%20Pinheiro%20%E2%80%93%20DJI_20250122182550_0758_D.jpg');
-            background-size: cover;
-            background-position: center center;
+            background: 
+                radial-gradient(circle at 50% 20%, rgba(255, 115, 0, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(20, 40, 33, 0.6) 0%, transparent 50%),
+                #08120D;
             z-index: 1;
-            transform: scale(1.02);
-            transition: transform 10s ease;
-        }
-
-        body:hover .bg-cover {
-            transform: scale(1.05);
         }
 
         .container {
             position: relative;
             z-index: 2;
-            max-width: 820px;
+            max-width: 960px;
             width: 100%;
             text-align: center;
             animation: fadeIn 0.9s ease-out;
@@ -69,7 +62,7 @@
         }
 
         .logo-img {
-            max-height: 90px;
+            max-height: 100px;
             width: auto;
             margin-bottom: 24px;
             filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
@@ -86,9 +79,9 @@
 
         .main-title {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
             font-weight: 700;
-            line-height: 1.05;
+            line-height: 1.1;
             margin-bottom: 16px;
             text-shadow: 0 4px 25px rgba(0,0,0,0.8);
         }
@@ -99,79 +92,126 @@
             line-height: 1.75;
             font-weight: 300;
             max-width: 640px;
-            margin: 0 auto 40px auto;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+            margin: 0 auto 48px auto;
         }
 
-        .projects-grid {
+        /* Grid de Casas do Portfólio */
+        .houses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 720px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            max-width: 860px;
             margin: 0 auto;
         }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.10);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            border-radius: 20px;
-            padding: 32px 24px;
+        .house-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #121F19;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             text-decoration: none;
             color: #FFFFFF;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .project-card:hover {
-            background: rgba(255, 255, 255, 0.18);
+        .house-card:hover {
+            transform: translateY(-8px) scale(1.02);
             border-color: var(--p17-orange);
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 25px rgba(255, 115, 0, 0.3);
+            box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255, 115, 0, 0.25);
         }
 
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 4px;
+        .house-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
         }
 
-        .card-title {
-            font-size: 1.25rem;
+        .house-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .house-card:hover .house-img {
+            transform: scale(1.06);
+        }
+
+        .house-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(14, 26, 20, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--p17-orange);
+            font-size: 0.78rem;
             font-weight: 700;
-            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .card-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+        .house-info {
+            padding: 24px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .card-btn {
-            margin-top: 8px;
-            background: var(--p17-orange);
+        .house-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
             color: #FFFFFF;
+        }
+
+        .house-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+
+        .house-links-row {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .link-text {
             font-size: 0.92rem;
             font-weight: 700;
-            padding: 10px 22px;
-            border-radius: 30px;
-            transition: all 0.2s ease;
+            color: var(--p17-orange);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
         }
 
-        .project-card:hover .card-btn {
-            background: #e06500;
-            transform: scale(1.05);
+        .house-card:hover .link-text {
+            gap: 10px;
+        }
+
+        .photo-count {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         footer {
             position: relative;
             z-index: 2;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 0.82rem;
             color: rgba(255, 255, 255, 0.5);
             letter-spacing: 1px;
@@ -181,32 +221,32 @@
 </head>
 <body>
 
-    <div class="bg-cover"></div>
+    <div class="bg-ambient"></div>
 
     <main class="container">
-        <img src="Album-de-fotos-harmonia/logo-paralelo17.png" alt="Paralelo 17" class="logo-img" onerror="this.style.display='none'">
+        <img src="Casa-Harmonia/Album-de-fotos-harmonia/logo-paralelo17.png" alt="Paralelo 17 Imóveis Únicos" class="logo-img" onerror="this.style.display='none'">
         
-        <div class="kicker">Trancoso • Bahia</div>
-        <h1 class="main-title">Casa Harmonia</h1>
+        <div class="kicker">Catálogo Digital de Propriedades</div>
+        <h1 class="main-title">Paralelo 17 — Imóveis Únicos</h1>
         <p class="description">
-            Acesse as apresentações oficiais da propriedade: a tabela completa de valores e temporadas ou o acervo fotográfico de 496 fotos em alta resolução.
+            Selecione uma propriedade abaixo para acessar as apresentações exclusivas, álbuns de alta resolução e tabelas de valores.
         </p>
 
-        <div class="projects-grid">
-            <!-- Card Tabela de Preços -->
-            <a href="Tabela-de-preços-harmonia/index.html" class="project-card">
-                <div class="card-icon">📊</div>
-                <div class="card-title">Tabela de Preços</div>
-                <div class="card-desc">Valores por temporada, réveillon, diárias e contato direto via WhatsApp.</div>
-                <span class="card-btn">Ver Valores →</span>
-            </a>
-
-            <!-- Card Álbum de Fotos -->
-            <a href="Album-de-fotos-harmonia/index.html" class="project-card">
-                <div class="card-icon">📸</div>
-                <div class="card-title">Álbum de Fotos</div>
-                <div class="card-desc">496 fotografias exclusivas (aéreas, interiores, lazer e detalhes).</div>
-                <span class="card-btn">Acessar Álbum →</span>
+        <div class="houses-grid">
+            <!-- Card Casa Harmonia -->
+            <a href="Casa-Harmonia/index.html" class="house-card">
+                <div class="house-img-box">
+                    <img src="Casa-Harmonia/Album-de-fotos-harmonia/thumbs/001%20%E2%80%93%20%C2%A9%20Bruno%20Pinheiro%20%E2%80%93%20DJI_20250122182550_0758_D.jpg" alt="Casa Harmonia" class="house-img">
+                    <span class="house-badge">Trancoso • Bahia</span>
+                </div>
+                <div class="house-info">
+                    <h2 class="house-title">Casa Harmonia</h2>
+                    <p class="house-desc">Refúgio exclusivo de altíssimo padrão com 9 suítes, piscina com bar molhado, adega e cinema privativo.</p>
+                    <div class="house-links-row">
+                        <span class="photo-count">496 fotografias</span>
+                        <span class="link-text">Acessar Casa →</span>
+                    </div>
+                </div>
             </a>
         </div>
 

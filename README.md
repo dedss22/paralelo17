@@ -4,28 +4,32 @@ Repositório oficial dos projetos digitais e apresentações exclusivas da **Par
 
 ---
 
-## 🏡 Casa Harmonia — Trancoso, Bahia
+## 📂 Estrutura do Repositório por Casa
 
-Este repositório reúne os dois projetos dedicados à **Casa Harmonia**:
+O repositório é organizado de forma modular, permitindo a adição de novas casas facilmente:
 
-### 1. 📊 [Tabela de Preços — Casa Harmonia](./Tabela-de-preços-harmonia/index.html)
-* **Pasta:** `Tabela-de-preços-harmonia/` *(e `Tabela-de-precos-harmonia/`)*
-* **Conteúdo:** Apresentação de valores por temporada (Baixa, Média, Alta, Réveillon, Carnaval), resumo dos diferenciais da propriedade e botão de agendamento/contato direto via WhatsApp.
-
-### 2. 📸 [Álbum de Fotos — Casa Harmonia](./Album-de-fotos-harmonia/index.html)
-* **Pasta:** `Album-de-fotos-harmonia/`
-* **Conteúdo:** 
-  * **Capa (`index.html`):** Capa cinematográfica com fotografia panorâmica, gradiente de alta definição e logomarca da Paralelo 17.
-  * **Álbum (`album.html`):** Visualizador de 496 fotos de alta resolução, com carregamento rápido (*thumbnails* inteligentes) e modo de tela cheia (*lightbox* imersivo).
+```text
+paralelo17/
+├── index.html                      # Portal Geral do Portfólio Paralelo 17
+│
+└── Casa-Harmonia/                  # 🏡 Pasta Exclusiva da Casa Harmonia
+    ├── index.html                  # Central de Apresentação da Casa Harmonia
+    │
+    ├── Tabela-de-preços-harmonia/  # 📊 Tabela de Valores & Disponibilidade
+    │   └── index.html
+    │
+    └── Album-de-fotos-harmonia/    # 📸 Álbum de Fotografias
+        ├── index.html              # Capa Cinematográfica
+        ├── album.html              # Álbum com 496 fotos e lightbox
+        ├── photos-data.js
+        └── thumbs/                 # Miniaturas otimizadas
+```
 
 ---
 
-## 🌐 Publicação no GitHub Pages
-Para visualizar o portal e os dois projetos ao vivo:
-1. Acesse as **Settings** do repositório no GitHub;
-2. Vá em **Pages** (no menu lateral);
-3. Em **Branch**, selecione `main` e a pasta `/ (root)`, depois clique em **Save**;
-4. Seu site estará disponível em:
-   * **Portal Geral:** `https://dedss22.github.io/paralelo17/`
-   * **Tabela de Preços:** `https://dedss22.github.io/paralelo17/Tabela-de-preços-harmonia/`
-   * **Álbum de Fotos:** `https://dedss22.github.io/paralelo17/Album-de-fotos-harmonia/`
+## 🌐 Links Públicos no Ar (GitHub Pages)
+
+* 🏛️ **Portfólio Geral:** [https://dedss22.github.io/paralelo17/](https://dedss22.github.io/paralelo17/)
+* 🏡 **Central da Casa Harmonia:** [https://dedss22.github.io/paralelo17/Casa-Harmonia/](https://dedss22.github.io/paralelo17/Casa-Harmonia/)
+  * 📊 **Tabela de Preços:** [https://dedss22.github.io/paralelo17/Casa-Harmonia/Tabela-de-preços-harmonia/](https://dedss22.github.io/paralelo17/Casa-Harmonia/Tabela-de-preços-harmonia/)
+  * 📸 **Álbum de Fotos:** [https://dedss22.github.io/paralelo17/Casa-Harmonia/Album-de-fotos-harmonia/](https://dedss22.github.io/paralelo17/Casa-Harmonia/Album-de-fotos-harmonia/)
