@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Álbum de Fotos — Casa Harmonia | Paralelo 17</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F6F8F7;
+            --card-bg: #FFFFFF;
+            --accent: #FF7300;
+            --accent-hover: #e06500;
+            --brand-green: #172E27;
+            --text-main: #172E27;
+            --text-muted: #5F716A;
+            --border-color: rgba(23, 46, 39, 0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* Header Claro Minimalista com Logomarca */
+        .album-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 14px 28px;
+            box-shadow: 0 2px 12px rgba(23, 46, 39, 0.03);
+        }
+
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--brand-green);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            background: #EEF2F0;
+            border: 1px solid var(--border-color);
+            padding: 9px 20px;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: #E2E8E5;
+            color: var(--accent);
+            transform: translateX(-3px);
+        }
+
+        .album-title-group {
+            text-align: center;
+        }
+
+        .album-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--brand-green);
+            letter-spacing: 0.3px;
+        }
+
+        .album-counter {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .header-logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .header-logo {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.2s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.04);
+        }
+
+        /* Grid de Fotos Otimizado (Tamanho Equilibrado, Reduzido do Gigante) */
+        .photos-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 36px 28px 90px 28px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--card-bg);
+            aspect-ratio: 3 / 2;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(23, 46, 39, 0.06);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .photo-item.is-drone {
+            aspect-ratio: 16 / 9;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(23, 46, 39, 0.12);
+            border-color: rgba(255, 115, 0, 0.45);
+        }
+
+        .photo-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .photo-item:hover .photo-thumb {
+            transform: scale(1.04);
+        }
+
+        .photo-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(23, 46, 39, 0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #FFFFFF;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+
+        .photo-hover-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: var(--accent);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #FFFFFF;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 4px 11px;
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+        }
+
+        .photo-item:hover .photo-hover-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Botão Carregar Mais */
+        .load-more-box {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-load-more {
+            background: var(--accent);
+            color: #FFFFFF;
+            border: none;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 16px 42px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(255, 115, 0, 0.32);
+        }
+
+        .btn-load-more:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 115, 0, 0.45);
+        }
+
+        /* Lightbox em Tela Cheia */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 10, 8, 0.98);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lb-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+
+        .lb-info {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        .lb-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.3rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .lb-close:hover {
+            background: #FF3B30;
+        }
+
+        .lb-viewport {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            user-select: none;
+        }
+
+        .lb-img {
+            max-width: 95vw;
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.85);
+        }
+
+        .lb-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #FFFFFF;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .lb-arrow:hover {
+            background: rgba(255, 255, 255, 0.32);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .lb-arrow-prev { left: 20px; }
+        .lb-arrow-next { right: 20px; }
+
+        .lb-arrow svg {
+            width: 26px;
+            height: 26px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 768px) {
+            .album-header { padding: 12px 16px; }
+            .album-title { font-size: 1.4rem; }
+            .header-logo { height: 34px; }
+            .photos-container {
+                padding: 20px 14px 70px 14px;
+            }
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .photo-item {
+                border-radius: 12px;
+            }
+            .lb-arrow { width: 44px; height: 44px; }
+            .lb-arrow-prev { left: 8px; }
+            .lb-arrow-next { right: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Claro com Navegação e Logomarca -->
+    <header class="album-header">
+        <div class="header-inner">
+            <a href="index.html" class="btn-back" title="Voltar para a Capa">
+                ← Início
+            </a>
+
+            <div class="album-title-group">
+                <div class="album-title">Casa Harmonia</div>
+                <div id="counter-display" class="album-counter">496 fotografias em alta resolução</div>
+            </div>
+
+            <div class="header-logo-box">
+                <a href="index.html" title="Paralelo 17">
+                    <img src="logo-paralelo17.png" alt="Paralelo 17" class="header-logo" onerror="this.style.display='none'">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Grid de Fotos com Proporção Otimizada -->
+    <main class="photos-container">
+        <div id="photo-grid" class="photo-grid"></div>
+
+        <div id="load-more-box" class="load-more-box">
+            <button id="btn-load-more" class="btn-load-more" onclick="loadMore()">
+                Carregar mais fotos (+30)
+            </button>
+        </div>
+    </main>
+
+    <!-- Visualizador em Tela Cheia (Lightbox) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lb-topbar">
+            <div id="lb-title" class="lb-info">Foto #001 — Casa Harmonia</div>
+            <button class="lb-close" onclick="closeLightbox(event, true)" title="Fechar (Esc)">✕</button>
+        </div>
+
+        <div class="lb-viewport">
+            <button class="lb-arrow lb-arrow-prev" onclick="prevPhoto(event)" title="Foto anterior">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+
+            <img id="lb-img" class="lb-img" src="" alt="Casa Harmonia">
+
+            <button class="lb-arrow lb-arrow-next" onclick="nextPhoto(event)" title="Próxima foto">
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Dados e Lógica Dinâmica -->
+    <script src="photos-data.js"></script>
+    <script>
+        const BATCH = 30;
+        let limit = BATCH;
+        let currentIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+
+            document.addEventListener('keydown', (e) => {
+                const lb = document.getElementById('lightbox');
+                if (!lb.classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') prevPhoto();
+                else if (e.key === 'ArrowRight') nextPhoto();
+                else if (e.key === 'Escape') closeLightbox(null, true);
+            });
+
+            // Swipe touch para smartphone
+            let startX = 0;
+            const lb = document.getElementById('lightbox');
+            lb.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
+            lb.addEventListener('touchend', (e) => {
+                const diff = startX - e.changedTouches[0].screenX;
+                if (diff > 50) nextPhoto();
+                if (diff < -50) prevPhoto();
+            }, { passive: true });
+        });
+
+        function render() {
+            if (typeof PHOTOS_DATA === 'undefined') return;
+
+            const grid = document.getElementById('photo-grid');
+            const loadMoreBtn = document.getElementById('load-more-box');
+            grid.innerHTML = '';
+
+            const toShow = PHOTOS_DATA.slice(0, limit);
+            document.getElementById('counter-display').textContent = `${PHOTOS_DATA.length} fotografias em alta resolução`;
+
+            const fragment = document.createDocumentFragment();
+            toShow.forEach((p, idx) => {
+                const item = document.createElement('div');
+                item.className = `photo-item ${p.isDrone ? 'is-drone' : ''}`;
+                item.onclick = () => openLightbox(idx);
+
+                const thumb = `thumbs/${encodeURIComponent(p.filename)}`;
+                const full = encodeURIComponent(p.filename);
+
+                item.innerHTML = `
+                    <img src="${thumb}" alt="#${p.number}" class="photo-thumb" loading="lazy" onerror="this.onerror=null; this.src='${full}'">
+                    <span class="photo-badge">#${p.number}</span>
+                    <span class="photo-hover-hint">Ampliar 🔍</span>
+                `;
+                fragment.appendChild(item);
+            });
+
+            grid.appendChild(fragment);
+
+            loadMoreBtn.style.display = limit >= PHOTOS_DATA.length ? 'none' : 'block';
+        }
+
+        function loadMore() {
+            limit += BATCH;
+            render();
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const p = PHOTOS_DATA[currentIndex];
+            if (!p) return;
+
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lb-img');
+            const title = document.getElementById('lb-title');
+
+            title.textContent = `Foto #${p.number} — Casa Harmonia (${currentIndex + 1} de ${PHOTOS_DATA.length})`;
+            img.src = encodeURIComponent(p.filename);
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e, force = false) {
+            if (force || (e && (e.target.id === 'lightbox' || e.target.classList.contains('lb-viewport')))) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function prevPhoto(e) {
+            if (e) e.stopPropagation();
+            if (PHOTOS_DATA.length === 0) return;
+            currentIndex = (currentIndex - 1 + PHOTOS_DATA.length) % PHOTOS_DATA.length;
+            openLightbox(currentIndex);
+        }
+
+        function nextPhoto(e) {
+            if (e) e.stopPropagation();
+            if (PHOTOS_DATA.length === 0) return;
+            currentIndex = (currentIndex + 1) % PHOTOS_DATA.length;
+            openLightbox(currentIndex);
+        }
+    </script>
+</body>
+</html>
