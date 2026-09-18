@@ -19,10 +19,14 @@
   <meta property="og:description" content="9 suítes, até 22 hóspedes, staff completo de 5 profissionais incluso, quadra de beach tennis privativa e acesso à praia no Condomínio Pedro Grande." />
   <meta property="og:image" content="assets/hero_branded.png" />
 
-  <!-- Google Fonts: Inter, Playfair Display, Alex Brush -->
+  <!-- Preload Hero LCP Image -->
+  <link rel="preload" as="image" href="assets/hero_bg.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Google Fonts: Inter, Playfair Display, Alex Brush (Asynchronous / Non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"></noscript>
 
   <style>
     :root {
@@ -31,12 +35,13 @@
       --primary-light: #164235;
       --gold: #e58b24;
       --gold-hover: #cf7714;
+      --gold-text: #9A5200;
       --gold-light: #fbeedb;
       --sand: #fbf8f2;
       --sand-dark: #f0e9dc;
       --paper: #ffffff;
       --ink: #111a16;
-      --muted: #5e6b66;
+      --muted: #47554E;
       --line: rgba(13, 43, 34, 0.12);
       --line-light: rgba(255, 255, 255, 0.18);
       --shadow: 0 20px 50px rgba(7, 27, 21, 0.12);
@@ -77,7 +82,7 @@
       font-weight: 600;
       border-bottom: 1px solid rgba(229, 139, 36, 0.3);
     }
-    .top-bar span { color: var(--gold); }
+    .top-bar span { color: #FFC062; }
 
     /* HEADER & NAVIGATION */
     .nav {
@@ -358,6 +363,7 @@
       object-position: center 60%;
       z-index: 1;
       filter: brightness(0.92);
+      aspect-ratio: 1024 / 682;
     }
     .hero-overlay {
       position: absolute;
@@ -432,6 +438,7 @@
       max-width: 440px;
       margin-left: auto;
     }
+    .quick-booking-card h2,
     .quick-booking-card h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -576,7 +583,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--gold-text);
       margin-bottom: 12px;
       display: block;
     }
@@ -612,13 +619,14 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      min-height: 520px;
+      aspect-ratio: 3 / 2;
       background: #ccc;
     }
     .media-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      aspect-ratio: 3 / 2;
       position: absolute;
       inset: 0;
       transition: transform 0.6s ease;
@@ -724,6 +732,7 @@
     }
     .suite-thumb {
       height: 240px;
+      aspect-ratio: 3 / 2;
       position: relative;
       background: #ddd;
       overflow: hidden;
@@ -731,6 +740,7 @@
     .suite-thumb img {
       width: 100%;
       height: 100%;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
@@ -764,7 +774,7 @@
     }
     .suite-bed {
       font-size: 0.95rem;
-      color: var(--gold-hover);
+      color: var(--gold-text);
       font-weight: 600;
       margin-bottom: 14px;
       display: flex;
@@ -832,6 +842,7 @@
     .gallery-item img {
       width: 100%;
       height: 100%;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
@@ -878,6 +889,9 @@
       position: absolute;
       top: 24px;
       right: 28px;
+      background: none;
+      border: none;
+      font-family: inherit;
       color: #fff;
       font-size: 2.4rem;
       cursor: pointer;
@@ -890,6 +904,9 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-family: inherit;
       color: #fff;
       font-size: 3rem;
       cursor: pointer;
@@ -930,7 +947,7 @@
     .distance-card strong {
       display: block;
       font-size: 1.5rem;
-      color: var(--gold-hover);
+      color: var(--gold-text);
       margin-bottom: 4px;
       font-family: 'Playfair Display', serif;
     }
@@ -1148,6 +1165,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      aspect-ratio: 1800 / 1201;
       filter: brightness(0.4);
       z-index: 1;
     }
@@ -1188,6 +1206,7 @@
       gap: 50px;
       margin-bottom: 50px;
     }
+    .footer-col h3,
     .footer-col h4 {
       color: #fff;
       font-size: 1rem;
@@ -1333,6 +1352,22 @@
       .quick-booking-card { padding: 22px; }
       .lead-form-box { padding: 24px; }
     }
+
+    /* CORE WEB VITALS OPTIMIZATION (FCP / INP / CLS) */
+    #a-casa,
+    #staff,
+    #suites,
+    #lazer,
+    #galeria,
+    #localizacao,
+    #tarifario,
+    #regras,
+    #faq,
+    .final-cta {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 650px;
+    }
+
   </style>
 </head>
 
@@ -1354,7 +1389,7 @@
           
         </div>
         <div class="brand-divider"></div>
-        <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" class="paralelo-logo-img" />
+        <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" class="paralelo-logo-img" width="120" height="48" decoding="async" />
       </a>
 
       <ul class="nav-links">
@@ -1374,7 +1409,7 @@
           <span>Concierge VIP</span>
         </a>
 
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir Menu de Navegação" onclick="toggleMobileNav()">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu de navegação" onclick="toggleMobileNav()">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -1392,10 +1427,10 @@
           <span class="main-name">Janagü</span>
           
         </div>
-        <button class="mobile-drawer-close" onclick="toggleMobileNav()">&times;</button>
+        <button class="mobile-drawer-close" aria-label="Fechar menu de navegação" onclick="toggleMobileNav()">&times;</button>
       </div>
       <div class="mobile-drawer-logo">
-        <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" />
+        <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" width="120" height="48" style="height: 40px; width: auto;" decoding="async" />
       </div>
       <ul class="mobile-nav-list">
         <li><a href="#a-casa" onclick="toggleMobileNav()">A Casa & Arquitetura</a></li>
@@ -1420,7 +1455,7 @@
 
   <!-- HERO SECTION -->
   <header id="hero" class="hero">
-    <img src="assets/hero_bg.jpg" alt="Casa Janagü ao entardecer" class="hero-bg" />
+    <img src="assets/hero_bg.webp" alt="Casa Janagü ao entardecer" class="hero-bg" width="1024" height="682" fetchpriority="high" decoding="async" />
     <div class="hero-overlay"></div>
     
     <div class="wrap hero-content">
@@ -1442,24 +1477,24 @@
 
         <!-- QUICK BOOKING BAR -->
         <div class="quick-booking-card" id="quickFormCard">
-          <h3>Consultar Disponibilidade</h3>
+          <h2>Consultar Disponibilidade</h2>
           <p>Selecione as datas para consultar a disponibilidade e cotação com o concierge:</p>
 
           <form id="heroQuickForm" onsubmit="handleQuickBooking(event)">
             <div class="dates-row">
               <div class="form-group">
-                <label>Check-in</label>
-                <input type="date" id="heroCheckIn" required />
+                <label for="heroCheckIn">Check-in</label>
+                <input type="date" id="heroCheckIn" aria-label="Data de Check-in" required />
               </div>
               <div class="form-group">
-                <label>Check-out</label>
-                <input type="date" id="heroCheckOut" required />
+                <label for="heroCheckOut">Check-out</label>
+                <input type="date" id="heroCheckOut" aria-label="Data de Check-out" required />
               </div>
             </div>
 
             <div class="form-group">
-              <label>Hóspedes (Máx. 22)</label>
-              <select id="heroGuests" required>
+              <label for="heroGuests">Hóspedes (Máx. 22)</label>
+              <select id="heroGuests" aria-label="Quantidade de hóspedes" required>
                 <option value="Até 10 pessoas">Até 10 pessoas</option>
                 <option value="11 a 15 pessoas">11 a 15 pessoas</option>
                 <option value="16 a 22 pessoas" selected>16 a 22 pessoas (Capacidade Máxima)</option>
@@ -1547,7 +1582,7 @@
         </div>
 
         <div class="media-card">
-          <img src="assets/sala_de_jantar_bastos.jpg?v=2" alt="Sala de Jantar e Banquete David Bastos" />
+          <img src="assets/sala_de_jantar_bastos.webp" alt="Sala de Jantar e Banquete David Bastos" width="1024" height="682" loading="lazy" decoding="async" />
           <div class="media-caption">
             <strong>Sala de Jantar & Banquete</strong> — Mobiliário assinado, pendentes em fibra natural e vista para a piscina.
           </div>
@@ -1627,7 +1662,7 @@
         <!-- Suite Master -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suite_master.jpg?v=2" alt="Suíte Master Casa Janagü" />
+            <img src="assets/suite_master.webp" alt="Suíte Master Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suíte Master</div>
           </div>
           <div class="suite-body">
@@ -1645,7 +1680,7 @@
         <!-- Suite 02 -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suite_02_jardim.jpg?v=2" alt="Suíte 02 Casa Janagü" />
+            <img src="assets/suite_02_jardim.webp" alt="Suíte 02 Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suíte 02</div>
           </div>
           <div class="suite-body">
@@ -1663,7 +1698,7 @@
         <!-- Suite 03 -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suite_03_familia.jpg?v=2" alt="Suíte 03 Casa Janagü" />
+            <img src="assets/suite_03_familia.webp" alt="Suíte 03 Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suíte 03</div>
           </div>
           <div class="suite-body">
@@ -1681,7 +1716,7 @@
         <!-- Suite 04 -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suite_04.jpg?v=2" alt="Suíte 04 Casa Janagü" />
+            <img src="assets/suite_04.webp" alt="Suíte 04 Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suíte 04</div>
           </div>
           <div class="suite-body">
@@ -1699,7 +1734,7 @@
         <!-- Suite 05 -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suite_05_palmeiras.jpg?v=2" alt="Suíte 05 Casa Janagü" />
+            <img src="assets/suite_05_palmeiras.webp" alt="Suíte 05 Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suíte 05</div>
           </div>
           <div class="suite-body">
@@ -1717,7 +1752,7 @@
         <!-- Suites 06 a 09 -->
         <div class="suite-card">
           <div class="suite-thumb">
-            <img src="assets/suites_06_09.jpg?v=2" alt="Suítes 06, 07, 08 e 09 Casa Janagü" />
+            <img src="assets/suites_06_09.webp" alt="Suítes 06, 07, 08 e 09 Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
             <div class="suite-tag">Suítes 06 a 09</div>
           </div>
           <div class="suite-body">
@@ -1770,7 +1805,7 @@
         </div>
 
         <div class="media-card">
-          <img src="assets/quadra_beach_tennis.jpg?v=2" alt="Quadra de Beach Tennis privativa da Casa Janagü" />
+          <img src="assets/quadra_beach_tennis.webp" alt="Quadra de Beach Tennis privativa da Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
           <div class="media-caption">
             <strong>Quadra de Beach Tennis</strong> — Em torno de várias espreguiçadeiras para descansar.
           </div>
@@ -1789,48 +1824,48 @@
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item span-2" onclick="openLightbox('assets/galeria_01.jpg?v=2')">
-          <img src="assets/galeria_01.jpg?v=2" alt="Piscina e deck da Casa Janagü iluminados ao entardecer" loading="lazy" />
+        <div class="gallery-item span-2" onclick="openLightbox('assets/galeria_01.webp')">
+          <img src="assets/galeria_01.webp" alt="Piscina e deck da Casa Janagü iluminados ao entardecer" width="2000" height="1334" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Piscina & Pavilhão ao Entardecer</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_02.jpg?v=2')">
-          <img src="assets/galeria_02.jpg?v=2" alt="Piscina de 25 metros sob o sol de Trancoso" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_02.webp')">
+          <img src="assets/galeria_02.webp" alt="Piscina de 25 metros sob o sol de Trancoso" width="2000" height="1334" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Piscina Diurna & Deck Solarium</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_03.jpg?v=2')">
-          <img src="assets/galeria_03.jpg?v=2" alt="Grand Living social integrado com marcenaria e sofás brancos" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_03.webp')">
+          <img src="assets/galeria_03.webp" alt="Grand Living social integrado com marcenaria e sofás brancos" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Living Integrado David Bastos</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_04.jpg?v=2')">
-          <img src="assets/galeria_04.jpg?v=2" alt="Mesa posta de banquete com pendentes artesanais de fibra" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_04.webp')">
+          <img src="assets/galeria_04.webp" alt="Mesa posta de banquete com pendentes artesanais de fibra" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Sala de Jantar & Mesa Posta</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_05.jpg?v=2')">
-          <img src="assets/galeria_05.jpg?v=2" alt="Quadra oficial de Beach Tennis privativa com areia clara" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_05.webp')">
+          <img src="assets/galeria_05.webp" alt="Quadra oficial de Beach Tennis privativa com areia clara" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Quadra de Beach Tennis Privativa</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_06.jpg?v=2')">
-          <img src="assets/galeria_06.jpg?v=2" alt="Cozinha gourmet de alta gastronomia com ilha em madeira nobre" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_06.webp')">
+          <img src="assets/galeria_06.webp" alt="Cozinha gourmet de alta gastronomia com ilha em madeira nobre" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Cozinha de Chef & Ilha Gourmet</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_07.jpg?v=2')">
-          <img src="assets/galeria_07.jpg?v=2" alt="Lounge de convivência ao ar livre sob varanda tropical" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_07.webp')">
+          <img src="assets/galeria_07.webp" alt="Lounge de convivência ao ar livre sob varanda tropical" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Lounge Social Externo</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_08.jpg?v=2')">
-          <img src="assets/galeria_08.jpg?v=2" alt="Suíte Master com dossel nobre e deck voltado para os coqueiros" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_08.webp')">
+          <img src="assets/galeria_08.webp" alt="Suíte Master com dossel nobre e deck voltado para os coqueiros" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Suíte Master com Cama Dossel</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_09.jpg?v=2')">
-          <img src="assets/galeria_09.jpg?v=2" alt="Sala de banho de luxo com bancada dupla e jardim privativo" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_09.webp')">
+          <img src="assets/galeria_09.webp" alt="Sala de banho de luxo com bancada dupla e jardim privativo" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Sala de Banho Master com Vista Tropical</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_10.jpg?v=2')">
-          <img src="assets/galeria_10.jpg?v=2" alt="Varanda privativa em deck de madeira imersa na natureza nativa" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_10.webp')">
+          <img src="assets/galeria_10.webp" alt="Varanda privativa em deck de madeira imersa na natureza nativa" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Varanda Privativa & Natureza</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox('assets/galeria_11.jpg?v=2')">
-          <img src="assets/galeria_11.jpg?v=2" alt="Suíte de hóspedes com arquitetura vernacular e vista panorâmica" loading="lazy" />
+        <div class="gallery-item" onclick="openLightbox('assets/galeria_11.webp')">
+          <img src="assets/galeria_11.webp" alt="Suíte de hóspedes com arquitetura vernacular e vista panorâmica" width="2000" height="1333" loading="lazy" decoding="async" />
           <div class="gallery-overlay">Suíte de Hóspedes com Sacada</div>
         </div>
       </div>
@@ -1839,10 +1874,10 @@
 
   <!-- LIGHTBOX CONTAINER -->
   <div id="lightboxModal" class="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightboxDirect()">&times;</span>
-    <span class="lightbox-nav lightbox-prev" onclick="prevLightbox(event)">&#10094;</span>
-    <img id="lightboxImg" class="lightbox-img" src="" alt="Ampliação foto Casa Janagü" />
-    <span class="lightbox-nav lightbox-next" onclick="nextLightbox(event)">&#10095;</span>
+    <button type="button" class="lightbox-close" aria-label="Fechar visualização de imagem" onclick="closeLightboxDirect()">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" aria-label="Foto anterior" onclick="prevLightbox(event)">&#10094;</button>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="Ampliação foto Casa Janagü" decoding="async" />
+    <button type="button" class="lightbox-nav lightbox-next" aria-label="Próxima foto" onclick="nextLightbox(event)">&#10095;</button>
   </div>
 
   <!-- SECTION: LOCALIZAÇÃO EM TRANCOSO -->
@@ -1894,7 +1929,7 @@
         </div>
 
         <div class="media-card">
-          <img src="assets/condominio_pedro_grande.jpg?v=2" alt="Alamedas exclusivas do Condomínio Pedro Grande e Casa Janagü" />
+          <img src="assets/condominio_pedro_grande.webp" alt="Alamedas exclusivas do Condomínio Pedro Grande e Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
           <div class="media-caption">
             <strong>Condomínio Pedro Grande</strong> — Alamedas exclusivas cercadas por mata nativa preservada.
           </div>
@@ -2060,35 +2095,35 @@
 
           <form id="reservationForm" onsubmit="handleFullReservation(event)">
             <div class="form-group">
-              <label>Nome Completo</label>
+              <label for="resName">Nome Completo</label>
               <input type="text" id="resName" placeholder="Ex: Rodrigo Albuquerque" required />
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label>WhatsApp com DDD</label>
+                <label for="resPhone">WhatsApp com DDD</label>
                 <input type="tel" id="resPhone" placeholder="(11) 99999-9999" required />
               </div>
               <div class="form-group">
-                <label>E-mail</label>
+                <label for="resEmail">E-mail</label>
                 <input type="email" id="resEmail" placeholder="seuemail@exemplo.com" required />
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label>Data de Check-in</label>
+                <label for="resCheckIn">Data de Check-in</label>
                 <input type="date" id="resCheckIn" required />
               </div>
               <div class="form-group">
-                <label>Data de Check-out</label>
+                <label for="resCheckOut">Data de Check-out</label>
                 <input type="date" id="resCheckOut" required />
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label>Quantidade de Hóspedes</label>
+                <label for="resGuests">Quantidade de Hóspedes</label>
                 <select id="resGuests">
                   <option value="1 a 6 pessoas">1 a 6 pessoas</option>
                   <option value="7 a 12 pessoas">7 a 12 pessoas</option>
@@ -2098,7 +2133,7 @@
               </div>
 
               <div class="form-group">
-                <label>Finalidade da Estadia</label>
+                <label for="resPurpose">Finalidade da Estadia</label>
                 <select id="resPurpose">
                   <option value="Férias com Família">Férias com Família</option>
                   <option value="Grupo de Amigos">Grupo de Amigos</option>
@@ -2110,7 +2145,7 @@
             </div>
 
             <div class="form-group">
-              <label>Observações ou Pedidos Especiais (Opcional)</label>
+              <label for="resNotes">Observações ou Pedidos Especiais (Opcional)</label>
               <textarea id="resNotes" rows="3" style="width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font-family: inherit; font-size: 0.9rem;" placeholder="Ex: Necessidade de transfer do aeroporto, berço para bebê, restrições alimentares..."></textarea>
             </div>
 
@@ -2218,7 +2253,7 @@
 
   <!-- FINAL CTA -->
   <section class="final-cta">
-    <img src="assets/photo_1.jpg" alt="Noite na Casa Janagü" class="final-cta-bg" />
+    <img src="assets/photo_1.webp" alt="Noite na Casa Janagü" class="final-cta-bg" width="1800" height="1201" loading="lazy" decoding="async" />
     <div class="wrap final-cta-content">
       <span class="eyebrow" style="color: var(--gold);">Trancoso Espera por Você</span>
       <h2 class="serif">Crie memórias inesquecíveis na Casa Janagü.</h2>
@@ -2247,7 +2282,7 @@
               
             </div>
             <div class="brand-divider"></div>
-            <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" style="height: 44px; width: auto;" />
+            <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" width="110" height="44" style="height: 44px; width: auto;" loading="lazy" decoding="async" />
           </div>
           <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.65); max-width: 380px;">
             Imóvel de altíssimo padrão comercializado com exclusividade pela <strong>Paralelo 17 Negócios</strong>. Aluguel de temporada premium e aquisição patrimonial em Trancoso - Bahia.
@@ -2255,7 +2290,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Navegação Rápida</h4>
+          <h3>Navegação Rápida</h3>
           <ul>
             <li><a href="#a-casa">A Arquitetura David Bastos</a></li>
             <li><a href="#staff">Staff Incluso na Diária</a></li>
@@ -2267,7 +2302,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Atendimento & Concierge</h4>
+          <h3>Atendimento & Concierge</h3>
           <ul>
             <li>📍 Condomínio Pedro Grande, Trancoso - BA</li>
             <li>📱 WhatsApp: <a href="https://wa.me/5573998331717?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20o%20atendimento%20da%20Casa%20Janag%C3%BC%20em%20Trancoso%20para%20informa%C3%A7%C3%B5es%20e%20reservas." target="_blank" style="color: #fff; text-decoration: underline;">+55 73 99833-1717</a></li>
@@ -2290,7 +2325,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/5573998331717?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20a%20Casa%20Janag%C3%BC%20e%20os%20servi%C3%A7os%20em%20Trancoso." target="_blank" class="floating-whatsapp" title="Falar com o Concierge">
+  <a href="https://wa.me/5573998331717?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20a%20Casa%20Janag%C3%BC%20e%20os%20servi%C3%A7os%20em%20Trancoso." target="_blank" class="floating-whatsapp" aria-label="Falar com Concierge pelo WhatsApp" title="Falar com o Concierge">
     <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
   </a>
 
@@ -2320,17 +2355,17 @@
 
     // LIGHTBOX SCRIPT
     const galleryImages = [
-      'assets/galeria_01.jpg?v=2',
-      'assets/galeria_02.jpg?v=2',
-      'assets/galeria_03.jpg?v=2',
-      'assets/galeria_04.jpg?v=2',
-      'assets/galeria_05.jpg?v=2',
-      'assets/galeria_06.jpg?v=2',
-      'assets/galeria_07.jpg?v=2',
-      'assets/galeria_08.jpg?v=2',
-      'assets/galeria_09.jpg?v=2',
-      'assets/galeria_10.jpg?v=2',
-      'assets/galeria_11.jpg?v=2'
+      'assets/galeria_01.webp',
+      'assets/galeria_02.webp',
+      'assets/galeria_03.webp',
+      'assets/galeria_04.webp',
+      'assets/galeria_05.webp',
+      'assets/galeria_06.webp',
+      'assets/galeria_07.webp',
+      'assets/galeria_08.webp',
+      'assets/galeria_09.webp',
+      'assets/galeria_10.webp',
+      'assets/galeria_11.webp'
     ];
     let currentImageIndex = 0;
 
