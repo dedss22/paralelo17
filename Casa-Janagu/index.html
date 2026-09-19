@@ -675,10 +675,13 @@
       align-items: center;
     }
     .split-reverse {
-      direction: rtl;
-    }
-    .split-reverse — * {
       direction: ltr;
+    }
+    .split-reverse > div:first-child {
+      order: 2;
+    }
+    .split-reverse > div:last-child {
+      order: 1;
     }
 
     .media-card {
@@ -1400,6 +1403,7 @@
     /* RESPONSIVENESS */
     @media (max-width: 1024px) {
       .hero-grid, .split, .lead-grid { grid-template-columns: 1fr; gap: 40px; }
+      .split-reverse > div:first-child, .split-reverse > div:last-child { order: unset; }
       .trust-strip { grid-template-columns: repeat(3, 1fr); }
       .trust-item:nth-child(3) { border-right: none; }
       .suites-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2076,7 +2080,7 @@
           <div class="badges-grid">
             <div class="feature-badge">
               <b>Quadra de Beach Tennis</b>
-              <span>Com rede oficial, raquetes, bolas e refletores noturnos.</span>
+              <span>Rede oficial, areia clara, raquetes, bolas e refletores para jogos noturnos.</span>
             </div>
             <div class="feature-badge">
               <b>Pavilhão Gourmet</b>
@@ -2096,7 +2100,7 @@
         <div class="media-card">
           <img src="assets/quadra_beach_tennis.webp" alt="Quadra de Beach Tennis privativa da Casa Janagü" width="1024" height="682" loading="lazy" decoding="async" />
           <div class="media-caption">
-            <strong>Quadra de Beach Tennis</strong> — Em torno de várias espreguiçadeiras para descansar.
+            <strong>Quadra de Beach Tennis</strong> — Areia clara, iluminação noturna e espreguiçadeiras à sombra dos coqueiros
           </div>
         </div>
       </div>
