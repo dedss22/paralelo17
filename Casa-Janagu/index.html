@@ -1529,9 +1529,48 @@
       .hero-badges-strip::-webkit-scrollbar { display: none; }
       .hero-pill-expanded { flex-shrink: 0; padding: 8px 14px; font-size: 0.76rem; }
       .hero p { font-size: 0.92rem; line-height: 1.5; margin-bottom: 6px; }
-      .hero-content { width: min(1240px, calc(100% - 32px)); }
-      .quick-booking-card { padding: 20px; }
-      .lead-form-box { padding: 24px; }
+      .wrap { width: min(1200px, calc(100% - 32px)); margin-inline: auto; }
+      .hero-content { width: min(1240px, calc(100% - 32px)); margin-inline: auto; }
+      .quick-booking-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-inline: auto;
+        padding: 22px 18px;
+        box-sizing: border-box;
+      }
+      .dates-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 8px;
+        width: 100%;
+      }
+      .dates-row .form-group {
+        min-width: 0;
+      }
+      .dates-row input[type="date"] {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+      .lead-form-box {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-inline: auto;
+        padding: 24px 18px;
+        box-sizing: border-box;
+      }
+      .lead-form-box .btn,
+      .quick-booking-card .btn {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
 
       /* MEDIA CARDS RESPONSIVE COMPOSITION */
       .media-card {
@@ -1649,6 +1688,13 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+      }
+      .quick-booking-card { padding: 20px 16px; }
+      .lead-form-box { padding: 22px 16px; }
+      .dates-row { gap: 6px; }
+      .dates-row input[type="date"] {
+        padding: 10px 6px;
+        font-size: 13px;
       }
       .suite-body { padding: 18px 16px; }
       .pricing-card { padding: 26px 20px; }
