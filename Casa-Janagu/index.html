@@ -407,19 +407,19 @@
     .hero h1,
     .hero-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.5rem, 3.4vw, 3.55rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
+      font-size: clamp(2.55rem, 3.7vw, 3.85rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
       font-weight: 500;
       text-shadow: 0 3px 20px rgba(0,0,0,0.7);
-      max-width: 720px;
-      letter-spacing: -0.015em;
+      max-width: 680px;
+      letter-spacing: -0.02em;
       text-wrap: balance;
     }
-    .hero-title .hero-line {
+    .br-desktop {
       display: block;
     }
-    .hero h1 span.script-accent,
+        .hero h1 span.script-accent,
     .hero-title .script-accent {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
@@ -603,8 +603,8 @@
       margin-inline: auto;
     }
     .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       font-weight: 700;
       color: var(--gold-text);
@@ -612,16 +612,25 @@
       display: block;
     }
     .section-head h2 {
-      font-size: clamp(2.3rem, 4.2vw, 4.2rem);
-      line-height: 1.05;
-      margin-bottom: 18px;
+      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
     }
     .section-head p {
-      font-size: 1.15rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+      line-height: 1.65;
       color: var(--muted);
+      max-width: 680px;
     }
     .section-dark .section-head p {
-      color: rgba(255, 255, 255, 0.78);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 680px;
     }
 
     /* 2 COLUMNS SPLIT */
@@ -1385,24 +1394,66 @@
       .hero-grid { gap: 20px; }
       .hero-tag { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 14px; }
       .hero h1,
-    .hero-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.5rem, 3.4vw, 3.55rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 500;
-      text-shadow: 0 3px 20px rgba(0,0,0,0.7);
-      max-width: 720px;
-      letter-spacing: -0.015em;
-      text-wrap: balance;
-    }
+      .hero-title {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(1.95rem, 5.2vw, 2.45rem);
+        line-height: 1.14;
+        margin-bottom: 12px;
+        font-weight: 500;
+        text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+        max-width: 100%;
+        letter-spacing: -0.012em;
+        text-wrap: balance;
+      }
       .hero-title .hero-line {
-        display: inline;
+        display: block;
+        margin-bottom: 2px;
       }
       .hero-title .hero-line-accent {
         display: block;
-        margin-top: 4px;
+        margin-top: 3px;
       }
+
+      /* SECTION HEADINGS RESPONSIVE CADENCE */
+      .section-head {
+        margin-bottom: 30px;
+        max-width: 100%;
+      }
+      .eyebrow {
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold-text);
+      margin-bottom: 12px;
+      display: block;
+    }
+      .section-head h2,
+      .split h2,
+      .final-cta h2 {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(1.85rem, 5vw, 2.35rem);
+        line-height: 1.15;
+        margin-bottom: 10px;
+        letter-spacing: -0.012em;
+        text-wrap: balance;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      .section-head p,
+      .split p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--muted);
+        text-wrap: balance;
+      }
+      .section-dark .section-head p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 680px;
+    }
       .hero-badges-strip {
         justify-content: flex-start;
         overflow-x: auto;
@@ -1484,22 +1535,55 @@
       .hero { padding: 18px 0 24px; }
       .hero-tag { margin-bottom: 10px; font-size: 0.68rem; padding: 4px 12px; letter-spacing: 0.08em; }
       .hero h1,
-    .hero-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.5rem, 3.4vw, 3.55rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 500;
-      text-shadow: 0 3px 20px rgba(0,0,0,0.7);
-      max-width: 720px;
-      letter-spacing: -0.015em;
-      text-wrap: balance;
-    }
-      .hero-title .script-accent {
-        font-size: 1.2em;
-        margin-right: 0.18em;
+      .hero-title {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(1.62rem, 6.2vw, 1.95rem);
+        line-height: 1.16;
+        margin-bottom: 10px;
+        text-wrap: balance;
+        letter-spacing: -0.015em;
+        max-width: 100%;
       }
-      .hero p { font-size: 0.86rem; line-height: 1.45; }
+      .hero-title .hero-line {
+        display: block;
+        margin-bottom: 2px;
+      }
+      .hero-title .hero-line-accent {
+        display: block;
+        margin-top: 2px;
+      }
+      .hero-title .script-accent {
+        font-size: 1.18em;
+        margin-right: 0.12em;
+      }
+      .hero p { font-size: 0.88rem; line-height: 1.48; margin-bottom: 6px; }
+
+      /* SECTION HEADINGS ULTRA-MOBILE CADENCE */
+      .section-head {
+        margin-bottom: 24px;
+      }
+      .eyebrow {
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold-text);
+      margin-bottom: 12px;
+      display: block;
+    }
+      .section-head h2,
+      .split h2,
+      .final-cta h2 {
+        font-size: clamp(1.52rem, 5.8vw, 1.85rem);
+        line-height: 1.18;
+        margin-bottom: 8px;
+        text-wrap: balance;
+      }
+      .section-head p,
+      .split p {
+        font-size: 0.88rem;
+        line-height: 1.46;
+      }
       .suite-body { padding: 18px 16px; }
       .pricing-card { padding: 26px 20px; }
       .price-value { font-size: clamp(1.75rem, 6.5vw, 2.1rem); }
@@ -1624,14 +1708,12 @@
           </div>
 
           <h1 class="serif hero-title">
-            <span class="hero-line hero-line-1">Trancoso no seu ritmo:</span>
-            <span class="hero-line hero-line-2">a casa de praia de David Bastos,</span>
-            <span class="hero-line hero-line-3">9 suítes entre o verde e o mar,</span>
-            <span class="hero-line hero-line-accent">com <span class="script-accent">equipe completa</span> cuidando de tudo</span>
+            Sua villa privativa em Trancoso<br class="br-desktop" />
+            com <em class="serif-italic-accent">serviço completo de resort</em>
           </h1>
 
           <p>
-            No Condomínio Pedro Grande, a poucos passos da praia. Espaço de sobra para até 22 pessoas viverem dias leves — com piscina de 25 metros, quadra própria de beach tennis e cinco profissionais preparando os sabores da Bahia e acolhendo sua família todos os dias.
+            No Condomínio Pedro Grande, a 3 minutos a pé da praia. Projeto David Bastos com 9 amplas suítes para até 22 pessoas, piscina de 25m, quadra privativa de beach tennis e equipe de 5 profissionais inclusa na diária.
           </p>
         </div>
 
@@ -1712,13 +1794,13 @@
     <div class="wrap">
       <div class="split">
         <div>
-          <span class="eyebrow">O Traço de David Bastos</span>
-          <h2 class="serif">Madeira, luz natural e a brisa do mar correndo solta pela casa</h2>
+          <span class="eyebrow">Arquitetura & Design</span>
+          <h2 class="serif">O traço de David Bastos</h2>
           <p style="font-size: 1.12rem; color: var(--muted); margin-bottom: 18px;">
-            A <strong>Casa Janagü</strong> nasceu do olhar de David Bastos para o jeito baiano de viver bem: varandas generosas sob telhados de taubilha tradicional, tesouras em madeira maciça e amplas portas de correr que dissolvem os limites entre a sala e a mata nativa.
+            Varandas generosas, taubilha tradicional e total integração com a mata atlântica nativa. Portas de correr e estruturas em madeira maciça que convidam a brisa do mar a circular livremente.
           </p>
           <p style="font-size: 1.05rem; color: var(--muted); margin-bottom: 24px;">
-            O pé-direito duplo acolhe mesas fartas e conversas sem pressa, conectando o living social, o home cinema e os decks sombreados que abraçam a piscina de 25 metros.
+            O pé-direito duplo acolhe mesas de banquete e conversas sem pressa, conectando naturalmente o living social, o home cinema e os decks sombreados voltados para a piscina.
           </p>
 
           <div class="badges-grid">
@@ -1755,10 +1837,10 @@
   <section id="staff" class="section-dark">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">Nossa Equipe na Casa</span>
-        <h2 class="serif">Acordar com mesa posta, tapioca fresca e a tranquilidade de não ter horários</h2>
+        <span class="eyebrow">Hospitalidade & Serviço</span>
+        <h2 class="serif">Equipe completa inclusa</h2>
         <p>
-          Cinco profissionais dedicados cuidam de tudo com aquela discrição e afeto que só a Bahia tem. Da moqueca de peixe fresco no almoço às caipirinhas de frutas locais servidas no deck, cada dia é pensado para o seu grupo apenas viver Trancoso.
+          Cozinheira, copeiro, barman e camareiras dedicados ao conforto do seu grupo. Da mesa posta com tapioca quente ao café da manhã aos drinks frescos no deck, cuidamos de tudo com o acolhimento e a discrição da Bahia.
         </p>
       </div>
 
@@ -1811,10 +1893,10 @@
   <section id="suites">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Espaço & Silêncio</span>
-        <h2 class="serif">Nove suítes com varanda, privacidade e o frescor da mata nativa</h2>
+        <span class="eyebrow">Acomodações</span>
+        <h2 class="serif">9 suítes com vista para a mata</h2>
         <p>
-          Acomodação pensada para até <strong>22 pessoas</strong> com total independência. Camas generosas, mosquiteiros artesanais tramados à mão, enxoval de puro algodão e banheiros arejados que acolhem cada casal ou família com calma e recolhimento.
+          Capacidade para até <strong>22 pessoas</strong> com total privacidade, varandas e conforto térmico. Enxovais nobres, mosquiteiros artesanais e banheiros privativos arejados para cada casal ou família relaxar com independência.
         </p>
       </div>
 
@@ -1935,13 +2017,13 @@
     <div class="wrap">
       <div class="split split-reverse">
         <div>
-          <span class="eyebrow">Dias ao Ar Livre</span>
-          <h2 class="serif">Partidas na quadra própria, mergulhos na piscina de 25m e tardes inteiras sem relógio</h2>
+          <span class="eyebrow">Lazer & Esporte</span>
+          <h2 class="serif">Piscina, beach tennis e espaço gourmet</h2>
           <p style="font-size: 1.12rem; color: var(--muted); margin-bottom: 18px;">
-            A areia tratada e os refletores garantem o jogo a qualquer hora do dia ou da noite. Ao lado, o pavilhão gourmet com churrasqueira e chopeira mantém a conversa viva enquanto o sol desce.
+            Quadra oficial com iluminação noturna, piscina semiolímpica de 25 metros e deck solarium. A estrutura ideal para reunir amigos e família ao ar livre.
           </p>
           <p style="font-size: 1.05rem; color: var(--muted); margin-bottom: 24px;">
-            Entre uma partida de beach tennis e uma pausa nas espreguiçadeiras do deck, a piscina semiolímpica de 25 metros e a prainha infantil viram o centro natural de encontro da casa.
+            O pavilhão gourmet com churrasqueira a carvão e chopeira conecta-se diretamente ao solarium, criando o ambiente perfeito para tardes ensolaradas que se estendem até o anoitecer.
           </p>
 
           <div class="badges-grid">
@@ -1978,9 +2060,9 @@
   <section id="galeria">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">Tour Fotográfico</span>
-        <h2 class="serif">Conheça cada detalhe da Casa Janagü</h2>
-        <p>Explore as áreas sociais, a piscina, o pavilhão gourmet e as suítes da propriedade.</p>
+        <span class="eyebrow">Galeria</span>
+        <h2 class="serif">Ambientes da Casa Janagü</h2>
+        <p>Explore os espaços sociais, suítes e áreas externas integradas à natureza.</p>
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
@@ -2045,10 +2127,10 @@
     <div class="wrap">
       <div class="split">
         <div>
-          <span class="eyebrow">Localização Ímpar</span>
-          <h2 class="serif">Condomínio Pedro Grande: a 3 minutos a pé da praia</h2>
+          <span class="eyebrow">Localização Privilegiada</span>
+          <h2 class="serif">Condomínio Pedro Grande</h2>
           <p style="font-size: 1.12rem; color: var(--muted); margin-bottom: 20px;">
-            Situada no mais reservado condomínio fechado de Trancoso, a Casa Janagü oferece a raríssima combinação de segurança 24 horas, silêncio absoluto em meio à mata atlântica preservada e trilha direta privativa para a areia dourada da <strong>Praia de Pedro Grande</strong>.
+            Segurança 24 horas e acesso privativo a 3 minutos a pé da praia. Situada em meio à mata atlântica preservada, com mar de águas mansas e fácil acesso ao charmoso Quadrado de Trancoso.
           </p>
           <p style="font-size: 1.05rem; color: var(--muted); margin-bottom: 30px;">
             Em poucos minutos de carro, você tem à disposição a alta gastronomia e o charme lendário do Quadrado de Trancoso, além das praias de Itapororoca e Coqueiros.
@@ -2102,9 +2184,9 @@
   <section id="tarifario">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">Temporadas & Valores</span>
-        <h2 class="serif">Sem entrelinhas: tarifas claras com toda a equipe da casa já inclusa</h2>
-        <p>Todas as diárias incluem a dedicação integral dos 5 profissionais, apoio de praia privativo e a exclusividade completa da propriedade para o seu grupo.</p>
+        <span class="eyebrow">Tarifas & Temporadas</span>
+        <h2 class="serif">Valores por temporada</h2>
+        <p>Diárias e pacotes especiais com equipe completa de 5 profissionais inclusa. Exclusividade total da propriedade e apoio de praia para o seu grupo.</p>
       </div>
 
       <div class="pricing-grid">
@@ -2224,12 +2306,12 @@
     <div class="wrap">
       <div class="lead-grid">
         <div>
-          <span class="eyebrow" style="color: var(--gold);">Atendimento Direto & Concierge</span>
+          <span class="eyebrow" style="color: var(--gold);">Atendimento Personalizado</span>
           <h2 class="serif" style="color: #fff; font-size: clamp(2.4rem, 4vw, 4rem); line-height: 1.08; margin-bottom: 20px;">
-            Venha viver dias especiais na Casa Janagü
+            Consulte a disponibilidade
           </h2>
           <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.12rem; margin-bottom: 30px;">
-            Compartilhe as datas de sua preferência e o perfil do seu grupo. Cuidaremos de todos os detalhes da sua estadia com a atenção e a discrição da <strong>Paralelo 17 Casas na Praia</strong>.
+            Fale diretamente com nosso concierge e reserve sua temporada em Trancoso. Cuidamos de cada detalhe da sua estadia com a atenção e a discrição da <strong>Paralelo 17 Casas na Praia</strong>.
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -2323,9 +2405,9 @@
   <section id="concierge">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">Serviços Sob Medida</span>
-        <h2 class="serif">Concierge Paralelo 17 Casas na Praia: Sua viagem pensada em cada detalhe</h2>
-        <p>Além da equipe dedicada da casa, organizamos traslados, navegações privativas e vivências gastronômicas para que você só aproveite o melhor de Trancoso.</p>
+        <span class="eyebrow">Serviços Exclusivos</span>
+        <h2 class="serif">Concierge Paralelo 17</h2>
+        <p>Transfers executivos, passeios náuticos, massoterapia e abastecimento da casa. Nossa equipe organiza todas as experiências adicionais para uma estadia impecável.</p>
       </div>
 
       <div class="concierge-grid">
@@ -2372,9 +2454,9 @@
   <section id="faq" style="background: var(--sand-dark);">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">Dúvidas Frequentes</span>
-        <h2 class="serif">Perguntas comuns sobre a locação de temporada</h2>
-        <p>Tudo o que você precisa saber antes de fechar a sua reserva.</p>
+        <span class="eyebrow">Informações Úteis</span>
+        <h2 class="serif">Dúvidas frequentes</h2>
+        <p>Regras de locação, horários e detalhes para a sua estadia.</p>
       </div>
 
       <div class="faq-grid">
@@ -2415,9 +2497,9 @@
   <section class="final-cta">
     <img src="assets/photo_1.webp" alt="Noite na Casa Janagü" class="final-cta-bg" width="1800" height="1201" loading="lazy" decoding="async" />
     <div class="wrap final-cta-content">
-      <span class="eyebrow" style="color: var(--gold);">Seu Refúgio em Pedro Grande</span>
-      <h2 class="serif">O mar da Bahia, a brisa nos coqueiros e a casa pronta para receber você</h2>
-      <p>Reunir a família, comemorar datas especiais ou simplesmente desacelerar o ritmo. Nosso concierge está a uma mensagem de distância no WhatsApp para desenhar a sua estadia em Trancoso.</p>
+      <span class="eyebrow" style="color: var(--gold);">Trancoso • Bahia</span>
+      <h2 class="serif">Viva a experiência da Casa Janagü</h2>
+      <p>Datas exclusivas para as melhores temporadas do ano. Fale com nosso concierge no WhatsApp e planeje dias inesquecíveis em Pedro Grande.</p>
 
       <div class="final-cta-buttons">
         <a href="https://wa.me/5573998331717?text=Ol%C3%A1%21%20Estou%20planejando%20minha%20estadia%20em%20Trancoso%20e%20gostaria%20de%20cotar%20os%20pre%C3%A7os%20e%20verificar%20a%20disponibilidade%20da%20Casa%20Janag%C3%BC." target="_blank" class="btn" style="padding: 16px 36px; font-size: 1.05rem;">
