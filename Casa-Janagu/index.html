@@ -600,7 +600,31 @@
     }
     .section-head.center {
       text-align: center;
-      margin-inline: auto;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .section-head.center .eyebrow {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-head.center h2 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    .section-head.center p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 680px;
+      width: 100%;
+      text-wrap: balance;
     }
     .eyebrow {
       font-size: 0.76rem;
@@ -625,12 +649,22 @@
       color: var(--muted);
       max-width: 680px;
     }
+    .section-dark .eyebrow {
+      color: #FFC062;
+    }
+    .section-dark .section-head h2 {
+      color: #ffffff;
+    }
     .section-dark .section-head p {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(1.02rem, 1.15vw, 1.15rem);
       line-height: 1.65;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.9) !important;
       max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      text-wrap: balance;
     }
 
     /* 2 COLUMNS SPLIT */
@@ -1447,13 +1481,21 @@
         color: var(--muted);
         text-wrap: balance;
       }
+      .section-head.center p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
       .section-dark .section-head p {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1.02rem, 1.15vw, 1.15rem);
-      line-height: 1.65;
-      color: var(--muted);
-      max-width: 680px;
-    }
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.9) !important;
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
       .hero-badges-strip {
         justify-content: flex-start;
         overflow-x: auto;
@@ -1583,6 +1625,11 @@
       .split p {
         font-size: 0.88rem;
         line-height: 1.46;
+      }
+      .section-head.center p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
       .suite-body { padding: 18px 16px; }
       .pricing-card { padding: 26px 20px; }
