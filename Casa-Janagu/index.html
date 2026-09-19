@@ -1242,18 +1242,33 @@
     .final-cta-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      max-width: 860px;
       margin-inline: auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .final-cta h2 {
-      font-size: clamp(2.6rem, 5vw, 4.8rem);
-      line-height: 1.05;
-      margin-bottom: 22px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .final-cta-line {
+      display: block;
     }
     .final-cta p {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 1.15vw, 1.15rem);
       color: rgba(255, 255, 255, 0.88);
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      max-width: 660px;
+      margin-inline: auto;
+      line-height: 1.6;
+      text-wrap: balance;
     }
     .final-cta-buttons {
       display: flex;
@@ -2549,7 +2564,10 @@
     <img src="assets/photo_1.webp" alt="Noite na Casa Janagü" class="final-cta-bg" width="1800" height="1201" loading="lazy" decoding="async" />
     <div class="wrap final-cta-content">
       <span class="eyebrow" style="color: var(--gold);">Trancoso • Bahia</span>
-      <h2 class="serif">Viva a experiência da Casa Janagü</h2>
+      <h2 class="serif">
+        <span class="final-cta-line">Viva a experiência</span>
+        <span class="final-cta-line">da Casa Janagü</span>
+      </h2>
       <p>Datas exclusivas para as melhores temporadas do ano. Fale com nosso concierge no WhatsApp e planeje dias inesquecíveis em Pedro Grande.</p>
 
       <div class="final-cta-buttons">
