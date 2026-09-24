@@ -2084,39 +2084,53 @@
        ======================================================== */
 
     /* ========================================================
-       LIGHT MODE OVERRIDES
-       Princípio: O HERO (vídeo) é 100% idêntico em ambos os modos.
-       O modo claro só afeta: header quando scrollado + seções de conteúdo abaixo do hero.
+       LIGHT MODE: LOGOMARCA COM TIPOGRAFIA ESCURA
        ======================================================== */
+    .logo-light-theme {
+      display: none !important;
+    }
+    .logo-dark-theme {
+      display: block !important;
+    }
 
-    /* --- HEADER SCROLLADO: fica CLARO apenas ao rolar a página --- */
-    body.light-mode .site-header.is-scrolled {
-      background: rgba(250, 248, 245, 0.98);
+    body.light-mode .logo-dark-theme,
+    :root.light-mode .logo-dark-theme {
+      display: none !important;
+    }
+    body.light-mode .logo-light-theme,
+    :root.light-mode .logo-light-theme {
+      display: block !important;
+    }
+
+    /* --- HEADER NO MODO CLARO --- */
+    body.light-mode .site-header {
+      background: rgba(250, 248, 245, 0.90) !important;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(26, 22, 18, 0.10);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(26, 22, 18, 0.10) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
     }
 
-    body.light-mode .site-header.is-scrolled .brand-logo {
-      filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+    body.light-mode .site-header.is-scrolled {
+      background: rgba(250, 248, 245, 0.98) !important;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
     }
 
-    body.light-mode .site-header.is-scrolled .nav-link {
-      color: #1a1612;
-      text-shadow: none;
+    body.light-mode .site-header .nav-link {
+      color: #1a1612 !important;
+      text-shadow: none !important;
     }
 
-    body.light-mode .site-header.is-scrolled .nav-link:hover {
-      color: var(--color-gold);
+    body.light-mode .site-header .nav-link:hover {
+      color: var(--color-gold) !important;
     }
 
-    body.light-mode .site-header.is-scrolled .menu-toggle {
-      border-color: rgba(26, 22, 18, 0.2);
+    body.light-mode .site-header .menu-toggle {
+      border-color: rgba(26, 22, 18, 0.2) !important;
     }
 
-    body.light-mode .site-header.is-scrolled .hamburger-bar {
-      background-color: #1a1612;
+    body.light-mode .site-header .hamburger-bar {
+      background-color: #1a1612 !important;
     }
 
     /* Mobile drawer: gaveta lateral clara */
@@ -2334,31 +2348,18 @@
       background: rgba(20, 17, 15, 0.75);
     }
 
-    /* No modo claro sobre o vídeo hero */
+    /* No modo claro, toggle fica escuro e elegante */
     body.light-mode .theme-toggle-header {
-      background: rgba(20, 17, 15, 0.55);
-      border-color: rgba(244, 239, 230, 0.45);
-      color: #FFFFFF;
+      background: rgba(26, 22, 18, 0.06) !important;
+      border-color: rgba(26, 22, 18, 0.20) !important;
+      color: #1a1612 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
     }
 
     body.light-mode .theme-toggle-header:hover {
-      background: rgba(20, 17, 15, 0.75);
-      border-color: rgba(244, 239, 230, 0.75);
-      color: #ffffff;
-    }
-
-    /* Quando scrollado no modo claro, toggle fica escuro */
-    body.light-mode .site-header.is-scrolled .theme-toggle-header {
-      background: rgba(26, 22, 18, 0.06);
-      border-color: rgba(26, 22, 18, 0.20);
-      color: #1a1612;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    body.light-mode .site-header.is-scrolled .theme-toggle-header:hover {
-      color: var(--color-gold);
-      border-color: var(--color-gold);
-      background: rgba(26, 22, 18, 0.10);
+      color: var(--color-gold) !important;
+      border-color: var(--color-gold) !important;
+      background: rgba(26, 22, 18, 0.12) !important;
     }
 
     .theme-toggle-header svg {
@@ -2384,6 +2385,15 @@
       display: block;
     }
   </style>
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('nobre-theme') === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -2393,7 +2403,8 @@
       
       <!-- Logo à esquerda (~44px de altura, limpo) -->
       <a href="#" class="brand-link" aria-label="Nobre Transfers - Início">
-        <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="brand-logo" width="160" height="44">
+        <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="brand-logo logo-dark-theme" width="160" height="44">
+        <img src="assets/images/Logomarca-NOBRETRANSFERS-dark.png" alt="Nobre Transfers" class="brand-logo logo-light-theme" width="160" height="44">
       </a>
 
       <!-- Menu de Navegação + Ação -->
@@ -3078,7 +3089,8 @@
        ======================================================== -->
   <footer class="luxury-footer" id="contato">
     <div class="footer-inner">
-      <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" style="height: 44px; width: auto; margin-bottom: 6px;">
+      <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="footer-logo logo-dark-theme" style="height: 44px; width: auto; margin-bottom: 6px;">
+      <img src="assets/images/Logomarca-NOBRETRANSFERS-dark.png" alt="Nobre Transfers" class="footer-logo logo-light-theme" style="height: 44px; width: auto; margin-bottom: 6px;">
       <h3 class="footer-brand-title">NOBRE TRANSFERS</h3>
       <p class="footer-info-text">
         Traslados Executivos & Passeios Privativos • <span class="footer-highlight">Seu Destino, Nossa Prioridade</span><br>
