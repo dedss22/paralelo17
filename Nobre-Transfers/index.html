@@ -9,7 +9,7 @@
   <meta property="og:title" content="Nobre Transfers - Traslados Executivos & Roteiros Privativos">
   <meta property="og:description" content="Seu destino, nossa prioridade. Frota executiva 4x4, motoristas em traje social e atendimento Nobre Transfers 24/7.">
   <meta property="og:image" content="assets/images/Logomarca-NOBRETRANSFERS.png">
-  <meta name="theme-color" content="#070e17">
+  <meta name="theme-color" content="#F4EFE6">
 
   <!-- GOOGLE FONTS: EDITORIAL DESIGN (NEWSREADER + HANKEN GROTESK) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
   <style>
     /* ========================================================
-       DESIGN SYSTEM: EDITORIAL, SÓBRIO & HUMANO
+       DESIGN SYSTEM: EDITORIAL, SÓBRIO & HUMANO (TEMA CLARO EXCLUSIVO)
        ======================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -45,29 +45,28 @@
       /* Escala tipográfica */
       --text-hero: clamp(40px, 6vw, 84px);
       --text-lg: 20px;
-      --text-base: 16px;
+      --text-base: 15px;
       --text-sm: 14px;
-      --text-xs: 12px;
+      --text-xs: 11px;
 
-      /* 2. CORES E SUPERFÍCIES (SEM GRADIENTES / SEM VIDRO) */
-      --color-text: #F4EFE6;
-      --color-text-muted: rgba(244, 239, 230, 0.65);
+      /* 2. TOKENS DO TEMA CLARO EXCLUSIVO */
+      --ink: #14110F;
+      --on-video: #F4EFE6;
+      --color-surface: #F4EFE6;
+      --color-surface-subtle: #ECE6DA;
 
-      --color-surface: #14110F;
-      --color-surface-subtle: #1C1815;
+      --color-border: rgba(20, 17, 15, 0.12);
+      --color-border-hover: rgba(20, 17, 15, 0.25);
 
-      --color-border: rgba(244, 239, 230, 0.15);
-      --color-border-hover: rgba(244, 239, 230, 0.35);
+      --color-text: var(--ink);
+      --color-text-muted: rgba(20, 17, 15, 0.60);
 
       /* Dourado restrito: USADO APENAS no botão principal */
       --color-gold: #C9A45C;
       --color-gold-hover: #b8934b;
       --color-gold-text: #14110F;
 
-      /* Camada sobre o vídeo para garantir contraste do texto */
-      --overlay: rgba(20, 17, 15, 0.40);
-
-      /* 3. GEOMETRIA & RAIO DE BORDA (6px base; WhatsApp circular como única exceção) */
+      /* 3. GEOMETRIA & RAIO DE BORDA (6px base) */
       --radius-base: 6px;
 
       /* 4. ESCALA RIGOROSA DE ESPAÇAMENTO */
@@ -84,39 +83,16 @@
       --touch-target: 44px;
 
       /* Sombras sóbrias */
-      --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 4px 16px rgba(20, 17, 15, 0.06);
 
-      /* Variáveis de compatibilidade para seções ainda não refatoradas */
-      --bg-dark: #14110F;
-      --bg-surface: #14110F;
-      --text-main: #F4EFE6;
-      --text-muted: rgba(244, 239, 230, 0.65);
+      /* Variáveis de compatibilidade para seções do site */
+      --bg-dark: var(--color-surface);
+      --bg-surface: var(--color-surface);
+      --text-main: var(--ink);
+      --text-muted: rgba(20, 17, 15, 0.60);
       --gold-primary: #C9A45C;
-      --gold-light: #F4EFE6;
-      --border-gold: rgba(244, 239, 230, 0.15);
-    }
-
-    /* MODO CLARO */
-    :root.light-mode,
-    body.light-mode {
-      --color-text: #1a1612;
-      --color-text-muted: rgba(26, 22, 18, 0.6);
-      --color-surface: #FAF8F5;
-      --color-surface-subtle: #F0ECE6;
-      --color-border: rgba(26, 22, 18, 0.12);
-      --color-border-hover: rgba(26, 22, 18, 0.3);
-      --color-gold: #C9A45C;
-      --color-gold-hover: #b8934b;
-      --color-gold-text: #14110F;
-      --overlay: rgba(20, 17, 15, 0.40);
-      --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.45);
-      --bg-dark: #FAF8F5;
-      --bg-surface: #FAF8F5;
-      --text-main: #1a1612;
-      --text-muted: rgba(26, 22, 18, 0.55);
-      --gold-primary: #C9A45C;
-      --gold-light: #F4EFE6;
-      --border-gold: rgba(26, 22, 18, 0.12);
+      --gold-light: var(--ink);
+      --border-gold: rgba(20, 17, 15, 0.12);
     }
 
     /* Acessibilidade & foco no padrão da marca */
@@ -133,14 +109,14 @@
 
     body {
       background-color: var(--color-surface);
-      color: var(--color-text);
+      color: var(--ink);
       font-family: var(--font-sans);
       line-height: var(--body-line-height);
       overflow-x: hidden;
     }
 
     /* ========================================================
-       HEADER EDITORIAL & SÓBRIO (SEM VIDRO, SEM DEGRADÊS)
+       HEADER EDITORIAL & SÓBRIO (TEMA CLARO EXCLUSIVO)
        ======================================================== */
     .site-header {
       position: fixed;
@@ -148,24 +124,24 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(14, 18, 26, 0.25);
+      background: rgba(244, 239, 230, 0.90);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(20, 17, 15, 0.08);
       transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease, padding 250ms ease;
-      padding: 9px 0;
-      min-height: 58px;
+      padding: 10px 0;
+      min-height: 60px;
       box-sizing: border-box;
     }
 
     .site-header.is-scrolled {
-      background: rgba(14, 18, 26, 0.92);
+      background: rgba(244, 239, 230, 0.98);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(244, 239, 230, 0.10);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      padding: 9px 0;
-      min-height: 58px;
+      border-bottom: 1px solid rgba(20, 17, 15, 0.10);
+      box-shadow: 0 4px 20px rgba(20, 17, 15, 0.06);
+      padding: 10px 0;
+      min-height: 60px;
     }
 
     .header-container {
@@ -179,7 +155,10 @@
       gap: var(--space-24);
     }
 
-    /* Logo à esquerda: maior (~44px), sem textos minúsculos ilegíveis */
+    /* Logo em texto (substitui a imagem):
+       "Nobre" em Newsreader 28px, peso 500, cor var(--ink);
+       abaixo, "TRANSFERS" em Hanken Grotesk 11px, letter-spacing 0.2em, cor var(--ink);
+       sem ícone de carro. */
     .brand-link {
       display: inline-flex;
       align-items: center;
@@ -187,18 +166,38 @@
       min-height: var(--touch-target);
     }
 
-    .brand-logo {
-      height: 40px;
-      width: auto;
-      display: block;
-      object-fit: contain;
+    .brand-logo-text {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1;
     }
 
-    /* Menu à direita */
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-top: 3px;
+      line-height: 1;
+    }
+
+    /* Menu alinhado à direita, junto do botão WhatsApp */
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: var(--space-40);
+      gap: 32px;
+      margin-left: auto;
     }
 
     .nav-list {
@@ -214,11 +213,10 @@
       font-family: var(--font-sans);
       font-size: 15px;
       font-weight: 400;
-      color: #F4EFE6;
+      color: var(--ink);
       text-decoration: none;
       text-transform: none;
-      letter-spacing: 0;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: normal;
       display: inline-flex;
       align-items: center;
       min-height: var(--touch-target);
@@ -227,16 +225,17 @@
     }
 
     .nav-link:hover {
-      color: #ffffff;
+      color: var(--color-gold);
     }
 
-    /* Botão sólido WhatsApp na extrema direita (Dourado sólido #C9A45C) */
+    /* Botão transparente WhatsApp à extrema direita (Item 4) */
     .btn-primary-wa {
       font-family: var(--font-sans);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      color: var(--color-gold-text);
-      background: var(--color-gold);
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--color-border);
       text-decoration: none;
       text-transform: none;
       letter-spacing: 0;
@@ -244,126 +243,81 @@
       align-items: center;
       justify-content: center;
       min-height: var(--touch-target);
-      padding: 0 var(--space-24);
+      padding: 0 18px;
       border-radius: var(--radius-base);
-      border: none;
       cursor: pointer;
-      transition: background 200ms ease, transform 200ms ease;
+      transition: background 200ms ease, border-color 200ms ease;
       white-space: nowrap;
     }
 
     .btn-primary-wa:hover {
-      background: var(--color-gold-hover);
+      background: rgba(20, 17, 15, 0.06);
+      border-color: var(--color-border-hover);
     }
 
-    /* Ações do Header (Tema e Menu Hamburguer) */
+    /* Ações do Header (Menu Hamburguer Mobile) */
     .header-actions {
-      display: flex;
+      display: none;
       align-items: center;
-      gap: 10px;
       flex-shrink: 0;
       z-index: 1001;
     }
 
-    /* Botão Hambúrguer Mobile (Alvo mínimo 44x44px) */
+    /* Botão Hambúrguer Mobile: ícone limpo de 3 traços, sem caixa, sem borda, sem fundo, área 44x44px, traços na cor var(--ink) */
     .menu-toggle {
       display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 5px;
-      width: 42px;
-      height: 42px;
-      background: rgba(20, 17, 15, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(244, 239, 230, 0.45);
-      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       cursor: pointer;
       padding: 0;
       position: relative;
       z-index: 1001;
-      transition: all 200ms ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .menu-toggle:hover {
-      border-color: var(--color-gold);
-      background: rgba(20, 17, 15, 0.75);
+      transition: opacity 200ms ease;
     }
 
     .hamburger-bar {
       width: 22px;
-      height: 2.5px;
-      background-color: #FFFFFF !important;
-      border-radius: 2px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-      transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease;
+      height: 2px;
+      background-color: var(--ink) !important;
+      border-radius: 1px;
+      transition: transform 200ms ease, opacity 200ms ease;
     }
 
     .menu-toggle.is-open .hamburger-bar:nth-child(1) {
-      transform: translateY(7.5px) rotate(45deg);
+      transform: translateY(7px) rotate(45deg);
     }
     .menu-toggle.is-open .hamburger-bar:nth-child(2) {
       opacity: 0;
     }
     .menu-toggle.is-open .hamburger-bar:nth-child(3) {
-      transform: translateY(-7.5px) rotate(-45deg);
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     .nav-backdrop {
       display: none;
     }
 
-    /* Trava de tamanho e espaçamento perfeita para desktop/notebook */
     @media (min-width: 861px) {
       .site-header,
-      .site-header.is-scrolled,
-      body.light-mode .site-header,
-      body.light-mode .site-header.is-scrolled {
-        padding: 9px 0 !important;
-        min-height: 58px !important;
+      .site-header.is-scrolled {
+        padding: 10px 0 !important;
+        min-height: 60px !important;
         box-sizing: border-box;
-      }
-      .site-header .brand-logo {
-        height: 40px;
       }
     }
 
     @media (max-width: 860px) {
-      /* Header com transparência elegante de vidro sobre o vídeo */
-      .site-header {
-        background: rgba(14, 18, 26, 0.25) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: none !important;
-        padding: 12px 0;
-        min-height: auto !important;
-      }
-
-      .site-header.is-scrolled {
-        background: rgba(20, 17, 15, 0.92) !important;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(244, 239, 230, 0.10) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-        padding: 10px 0;
-        min-height: auto !important;
-      }
-
-      body.light-mode .site-header {
-        background: transparent !important;
-        border-bottom: none !important;
-        box-shadow: none !important;
-        min-height: auto !important;
-      }
-
-      body.light-mode .site-header.is-scrolled {
-        background: rgba(250, 248, 245, 0.98) !important;
-        border-bottom: 1px solid rgba(26, 22, 18, 0.10) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
-        min-height: auto !important;
+      .header-actions {
+        display: flex;
       }
 
       .menu-toggle {
@@ -374,7 +328,7 @@
         display: block;
         position: fixed;
         inset: 0;
-        background: rgba(20, 17, 15, 0.70);
+        background: rgba(20, 17, 15, 0.40);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -409,7 +363,7 @@
         pointer-events: none;
         transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 250ms;
         z-index: 999;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: -10px 0 30px rgba(20, 17, 15, 0.15);
       }
 
       .nav-menu.is-active {
@@ -428,9 +382,9 @@
 
       .nav-link {
         width: 100%;
-        font-size: var(--text-lg);
+        font-size: 16px;
         padding: var(--space-8) 0;
-        border-bottom: 1px solid rgba(244, 239, 230, 0.08);
+        border-bottom: 1px solid rgba(20, 17, 15, 0.08);
       }
 
       .btn-primary-wa {
@@ -518,7 +472,9 @@
       inset: 0;
       z-index: 2;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(20, 17, 15, 0.15) 0%, rgba(20, 17, 15, 0.35) 40%, rgba(20, 17, 15, 0.65) 100%);
+      background:
+        linear-gradient(90deg, rgba(20,17,15,0.65) 0%, rgba(20,17,15,0.30) 50%, rgba(20,17,15,0) 75%),
+        linear-gradient(0deg, rgba(20,17,15,0.45) 0%, rgba(20,17,15,0) 40%);
     }
 
     .hero-content-layer {
@@ -533,16 +489,15 @@
       align-items: flex-start;
     }
 
-    /* Título editorial: Newsreader, 400, letter-spacing -0.02em, #F4EFE6 */
-    /* Título editorial: Newsreader, 400, letter-spacing -0.02em, #F4EFE6 */
+    /* Título editorial: Newsreader, 400, letter-spacing -0.02em, var(--on-video) */
     .hero-title {
       font-family: var(--font-serif);
       font-size: var(--text-hero); /* clamp(40px, 6vw, 84px) */
       font-weight: var(--title-weight); /* 400 */
       line-height: var(--title-line-height); /* 1.10 */
       letter-spacing: var(--title-letter-spacing); /* -0.02em */
-      color: #F4EFE6;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7), 0 4px 30px rgba(0, 0, 0, 0.4);
+      color: var(--on-video);
+      text-shadow: 0 1px 24px rgba(20, 17, 15, 0.35);
       text-align: left;
       max-width: 960px;
       margin: 0 0 var(--space-16);
@@ -555,15 +510,15 @@
       font-weight: 400;
       line-height: 1.5;
       letter-spacing: 0;
-      color: rgba(244, 239, 230, 0.85);
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      color: var(--on-video);
+      text-shadow: 0 1px 24px rgba(20, 17, 15, 0.35);
       text-align: left;
       max-width: 760px;
       margin: 0 0 var(--space-40);
     }
 
     /* ========================================================
-       BARRA DE RESERVA EDITORIAL (FUNDO SÓLIDO #14110F, SEM BLUR)
+       BARRA DE RESERVA EDITORIAL (100% SÓLIDA #F4EFE6, SEM BLUR)
        ======================================================== */
     .booking-bar-wrapper {
       width: 100%;
@@ -571,16 +526,13 @@
 
     .booking-bar {
       width: 100%;
-      background: rgba(20, 17, 15, 0.50);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(244, 239, 230, 0.16);
+      background: var(--color-surface);
+      border: 1px solid rgba(20, 17, 15, 0.12);
       border-radius: var(--radius-base); /* 6px */
       display: grid;
-      grid-template-columns: 1.3fr 1.3fr 1fr 1.2fr auto;
+      grid-template-columns: 1.35fr 1.35fr 1fr 1.3fr auto;
       align-items: stretch;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 30px rgba(20, 17, 15, 0.20);
     }
 
     .booking-field {
@@ -589,14 +541,14 @@
       flex-direction: column;
       justify-content: center;
       padding: 12px 18px;
-      border-right: 1px solid rgba(244, 239, 230, 0.14);
+      border-right: 1px solid rgba(20, 17, 15, 0.12);
       min-height: 64px;
       transition: background 150ms ease;
     }
 
     .booking-field:hover,
     .booking-field:focus-within {
-      background: rgba(244, 239, 230, 0.03);
+      background: rgba(20, 17, 15, 0.02);
     }
 
     .booking-field-label {
@@ -604,9 +556,9 @@
       align-items: center;
       gap: 6px;
       font-family: var(--font-sans);
-      font-size: var(--text-xs); /* 12px */
-      font-weight: 500;
-      color: rgba(244, 239, 230, 0.70);
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(20, 17, 15, 0.60);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 4px;
@@ -614,69 +566,217 @@
     }
 
     .booking-field-label svg {
-      width: 14px;
-      height: 14px;
-      stroke: rgba(244, 239, 230, 0.70);
+      width: 13px;
+      height: 13px;
+      stroke: rgba(20, 17, 15, 0.55);
       flex-shrink: 0;
     }
 
-    .booking-field-control {
-      position: relative;
+    /* Custom Trigger Button (replaces native select) */
+    .booking-trigger {
       display: flex;
       align-items: center;
-      width: 100%;
-    }
-
-    .booking-select,
-    .booking-input {
+      justify-content: space-between;
       width: 100%;
       background: transparent;
       border: none;
-      font-family: var(--font-sans);
-      font-size: var(--text-base); /* 16px */
-      font-weight: 400;
-      color: #F4EFE6;
-      outline: none;
       padding: 0;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: left;
       cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
+      outline: none;
       line-height: 1.3;
     }
 
-    .booking-select {
-      padding-right: 22px;
+    .booking-value {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+      flex: 1;
     }
 
-    .booking-select option {
-      background-color: #14110F;
-      color: #F4EFE6;
-      padding: 10px;
-    }
-
-    .booking-select option:disabled {
-      color: rgba(244, 239, 230, 0.40);
+    .booking-value.is-placeholder {
+      color: rgba(20, 17, 15, 0.45);
+      font-weight: 400;
     }
 
     .booking-chevron {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 200ms ease;
     }
 
     .booking-chevron svg {
       width: 14px;
       height: 14px;
-      stroke: rgba(244, 239, 230, 0.70);
+      stroke: rgba(20, 17, 15, 0.55);
     }
 
-    .booking-input[type="date"] {
-      color-scheme: dark;
+    .booking-field.is-open .booking-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Custom Dropdown Popover Menu */
+    .custom-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      min-width: 100%;
+      width: max-content;
+      max-width: 320px;
+      background: var(--color-surface);
+      border: 1px solid rgba(20, 17, 15, 0.12);
+      border-radius: var(--radius-base);
+      box-shadow: 0 10px 30px rgba(20, 17, 15, 0.18);
+      list-style: none;
+      padding: 6px 0;
+      margin: 0;
+      z-index: 100;
+      max-height: 280px;
+      overflow-y: auto;
+      animation: fadeInMenu 150ms ease;
+    }
+
+    @keyframes fadeInMenu {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .custom-dropdown-menu li {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink);
+      padding: 10px 16px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 120ms ease;
+    }
+
+    .custom-dropdown-menu li:hover {
+      background: rgba(20, 17, 15, 0.05);
+    }
+
+    .custom-dropdown-menu li.is-selected {
+      background: rgba(201, 164, 92, 0.14);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* Custom Calendar Popover */
+    .custom-calendar-popover {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      width: 280px;
+      background: var(--color-surface);
+      border: 1px solid rgba(20, 17, 15, 0.12);
+      border-radius: var(--radius-base);
+      box-shadow: 0 10px 30px rgba(20, 17, 15, 0.18);
+      padding: 14px;
+      z-index: 100;
+      animation: fadeInMenu 150ms ease;
+    }
+
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .cal-title {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      text-transform: capitalize;
+    }
+
+    .cal-nav-btn {
+      background: transparent;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink);
+      transition: background 150ms ease;
+    }
+
+    .cal-nav-btn:hover {
+      background: rgba(20, 17, 15, 0.08);
+    }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(20, 17, 15, 0.50);
+      margin-bottom: 6px;
+    }
+
+    .cal-days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .cal-day {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 auto;
+      transition: all 120ms ease;
+    }
+
+    .cal-day-empty {
+      width: 32px;
+      height: 32px;
+    }
+
+    .cal-day:hover:not(:disabled) {
+      background: rgba(20, 17, 15, 0.08);
+    }
+
+    .cal-day.is-selected {
+      background: var(--color-gold);
+      color: #14110F;
+      font-weight: 600;
+    }
+
+    .cal-day.is-today:not(.is-selected) {
+      outline: 1.5px solid var(--color-gold);
+      outline-offset: -1px;
+    }
+
+    .cal-day:disabled {
+      color: rgba(20, 17, 15, 0.25);
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     /* Botão sólido dourado sem degradê (#C9A45C) */
@@ -689,7 +789,7 @@
       font-family: var(--font-sans);
       font-size: 15px;
       font-weight: 600;
-      color: #14110F;
+      color: var(--ink);
       background: #C9A45C;
       border: none;
       padding: 0 var(--space-24);
@@ -701,57 +801,46 @@
       transition: background 150ms ease;
       min-height: var(--touch-target);
       height: 100%;
+      border-radius: 0 var(--radius-base) var(--radius-base) 0;
     }
 
     .btn-booking-submit:hover {
       background: #b8934b;
     }
 
-    .btn-booking-submit svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    /* Linha auxiliar: link discreto para expandir detalhes */
+    /* Linha auxiliar: link de texto discreto abaixo da barra (sem pílula, sem fundo, sem borda) */
     .booking-auxiliary-row {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      margin-top: var(--space-8);
+      margin-top: 10px;
     }
 
     .btn-toggle-details {
       background: transparent;
       border: none;
-      color: rgba(244, 239, 230, 0.70);
+      padding: 0;
+      color: rgba(20, 17, 15, 0.70);
+      color: var(--on-video, rgba(20, 17, 15, 0.70));
       font-family: var(--font-sans);
-      font-size: var(--text-xs);
+      font-size: 12px;
       font-weight: 400;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       cursor: pointer;
-      padding: 4px 0;
-      transition: color 150ms ease;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(244, 239, 230, 0.40);
+      transition: opacity 150ms ease;
+      text-shadow: 0 1px 4px rgba(20, 17, 15, 0.45);
     }
 
     .btn-toggle-details:hover {
-      color: #ffffff;
-    }
-
-    .btn-toggle-details svg {
-      stroke: currentColor;
-      transition: transform 200ms ease;
-    }
-
-    .btn-toggle-details.is-active svg {
-      transform: rotate(45deg);
+      opacity: 0.8;
     }
 
     .booking-details-collapse {
-      margin-top: var(--space-8);
+      margin-top: 8px;
       width: 100%;
       animation: fadeInDetails 200ms ease;
     }
@@ -762,83 +851,74 @@
     }
 
     .booking-details-inner {
-      background: rgba(20, 17, 15, 0.50);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(244, 239, 230, 0.14);
+      background: var(--color-surface);
+      border: 1px solid rgba(20, 17, 15, 0.12);
       border-radius: var(--radius-base);
       padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .booking-details-label {
-      font-size: var(--text-xs);
-      color: rgba(244, 239, 230, 0.70);
-      white-space: nowrap;
-      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(20, 17, 15, 0.12);
     }
 
     .booking-details-input {
       width: 100%;
       background: transparent;
       border: none;
-      color: #F4EFE6;
+      color: var(--ink);
       font-family: var(--font-sans);
-      font-size: var(--text-sm);
+      font-size: 14px;
       outline: none;
     }
 
     .booking-details-input::placeholder {
-      color: rgba(244, 239, 230, 0.40);
+      color: rgba(20, 17, 15, 0.50);
     }
 
-    /* Linha de rotas frequentes discretas */
+    /* Linha de atalhos de rota discretos (apenas texto com link discreto, sem estilo de botão/pílula/badge) */
     .hero-frequent-routes {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 6px var(--space-8);
-      margin-top: var(--space-16);
+      gap: 6px 12px;
+      margin-top: 14px;
       font-family: var(--font-sans);
-      font-size: var(--text-xs);
-      color: rgba(244, 239, 230, 0.70);
+      font-size: 13px;
+      color: var(--on-video);
+      text-shadow: 0 1px 4px rgba(20, 17, 15, 0.45);
     }
 
     .frequent-label {
       font-weight: 500;
-      color: rgba(244, 239, 230, 0.55);
+      color: var(--on-video);
+      opacity: 0.70;
     }
 
     .frequent-list {
       display: inline-flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 6px 8px;
+      gap: 6px 10px;
     }
 
     .frequent-route-btn {
       background: transparent;
       border: none;
-      color: #F4EFE6;
+      color: var(--on-video);
       font-family: var(--font-sans);
-      font-size: var(--text-xs);
+      font-size: 13px;
       padding: 0;
       cursor: pointer;
       text-decoration: underline;
       text-underline-offset: 3px;
-      text-decoration-color: rgba(244, 239, 230, 0.30);
-      transition: color 150ms ease, text-decoration-color 150ms ease;
+      text-decoration-color: rgba(244, 239, 230, 0.35);
+      transition: opacity 150ms ease;
     }
 
     .frequent-route-btn:hover {
-      color: #ffffff;
-      text-decoration-color: var(--color-gold);
+      opacity: 0.8;
     }
 
     .route-separator {
-      color: rgba(244, 239, 230, 0.30);
+      color: var(--on-video);
+      opacity: 0.40;
     }
 
     /* ========================================================
@@ -1590,172 +1670,175 @@
     }
 
     /* ========================================================
-       SCROLL INDICATOR ANIMADO (DESKTOP)
+       SCROLL INDICATOR DISCRETO (DESKTOP)
        ======================================================== */
     .scroll-indicator {
       position: absolute;
-      bottom: 18px;
+      bottom: 20px;
       left: 0;
       right: 0;
       margin: 0 auto;
       width: fit-content;
       z-index: 10;
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
       animation: heroFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
       cursor: pointer;
       text-decoration: none;
-      transition: opacity 200ms ease, transform 200ms ease;
+      transition: opacity 200ms ease;
     }
 
     .scroll-indicator:hover {
-      opacity: 1;
-      transform: translateY(2px);
+      opacity: 0.8;
     }
 
     .scroll-indicator-text {
       font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(244, 239, 230, 0.70);
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-    }
-
-    .scroll-indicator-chevron {
-      width: 18px;
-      height: 18px;
-      stroke: rgba(244, 239, 230, 0.75);
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
-      animation: bounceDown 2s ease-in-out infinite;
-    }
-
-    @keyframes bounceDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: normal;
+      color: var(--on-video);
+      text-shadow: 0 1px 12px rgba(20, 17, 15, 0.50);
     }
 
     /* ========================================================
        SMARTPHONE RESPONSIVO: MOBILE FIRST & COMPACTO
        ======================================================== */
     @media (max-width: 600px) {
-      /* Header mobile com transparência translúcida sobre o vídeo */
+      /* Header mobile */
       .site-header {
-        padding: 10px 0;
+        padding: 8px 0;
         min-height: auto !important;
-        background: rgba(14, 18, 26, 0.25) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(244, 239, 230, 0.95) !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.08) !important;
         box-shadow: none !important;
       }
 
       .site-header.is-scrolled {
-        background: rgba(20, 17, 15, 0.92) !important;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(244, 239, 230, 0.10) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+        background: rgba(244, 239, 230, 0.98) !important;
+        box-shadow: 0 4px 16px rgba(20, 17, 15, 0.08) !important;
         padding: 8px 0;
         min-height: auto !important;
       }
 
       .header-container {
-        padding: 0 14px;
+        padding: 0 16px;
       }
 
-      .brand-logo {
-        height: 36px;
+      .brand-name {
+        font-size: 24px;
       }
 
+      .brand-sub {
+        font-size: 9.5px;
+      }
+
+      /* Item 14: Menu mobile - botão hambúrguer limpo (apenas 3 traços, sem caixa, sem borda, sem fundo, min 44x44px, traços na cor var(--ink)) */
       .menu-toggle {
-        width: 40px;
-        height: 40px;
+        display: flex !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        min-width: 44px;
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
       }
 
-      .theme-toggle-header {
-        width: 40px;
-        height: 40px;
+      .hamburger-bar {
+        background-color: var(--ink) !important;
+        width: 22px;
+        height: 2px;
+        box-shadow: none;
       }
 
-      /* Hero mobile: ENQUADRADO NO CENTRO EXATO */
+      /* Item 17: Vídeo mobile (object-position: center 30%) */
+      .hero-video-element {
+        object-position: center 30%;
+      }
+
+      /* Item 13: Hero mobile - título clamp(36px, 10vw, 84px), subtítulo 17px com line-height 1.5. Hero com min-height: 100svh, conteúdo alinhado à base (justify-content: flex-end) com padding-bottom de 24px */
       .hero-cinematic-wrapper {
-        padding: 56px 16px 44px;
+        padding: 70px 16px 24px;
         min-height: 100svh;
-        justify-content: center;
+        justify-content: flex-end;
         display: flex;
         flex-direction: column;
         align-items: stretch;
       }
 
       .hero-title {
-        font-size: clamp(20px, 5.8vw, 25px);
-        line-height: 1.18;
+        font-size: clamp(36px, 10vw, 84px);
+        line-height: 1.10;
         letter-spacing: -0.02em;
         text-wrap: balance;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
       .hero-subtitle {
-        font-size: 12px;
-        line-height: 1.35;
-        margin-bottom: 16px;
-        color: rgba(244, 239, 230, 0.85);
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: var(--on-video);
         text-wrap: pretty;
       }
 
-      /* Barra de Reservas Mobile: GRID COMPACTO 2x2 */
+      /* Item 15: Formulário em mobile - layout em grid:
+         linha 1 com Origem (100%),
+         linha 2 com Destino (100%),
+         linha 3 dividida igualmente entre Data (50%) e Passageiros (50%),
+         linha 4 com o botão "Pedir cotação" em 100% da largura. */
       .booking-bar {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        border-radius: 10px;
-        background: rgba(20, 17, 15, 0.55);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(244, 239, 230, 0.14);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        border-radius: var(--radius-base);
+        background: var(--color-surface);
+        box-shadow: 0 8px 24px rgba(20, 17, 15, 0.20);
+        overflow: visible;
       }
 
-      /* 1. Origem: 50% largura */
+      /* Linha 1: Origem 100% */
       .booking-field:nth-child(1) {
-        grid-column: span 1;
-        border-right: 1px solid rgba(244, 239, 230, 0.12);
-        border-bottom: 1px solid rgba(244, 239, 230, 0.12);
-        padding: 4px 10px;
-        min-height: 42px;
-      }
-
-      /* 2. Destino: 50% largura */
-      .booking-field:nth-child(2) {
-        grid-column: span 1;
+        grid-column: span 2;
         border-right: none;
-        border-bottom: 1px solid rgba(244, 239, 230, 0.12);
-        padding: 4px 10px;
-        min-height: 42px;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
+        padding: 10px 14px;
+        min-height: 52px;
       }
 
-      /* 3. Data: 50% largura */
+      /* Linha 2: Destino 100% */
+      .booking-field:nth-child(2) {
+        grid-column: span 2;
+        border-right: none;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
+        padding: 10px 14px;
+        min-height: 52px;
+      }
+
+      /* Linha 3: Data 50% */
       .booking-field:nth-child(3) {
         grid-column: span 1;
-        border-right: 1px solid rgba(244, 239, 230, 0.12);
-        border-bottom: 1px solid rgba(244, 239, 230, 0.12);
-        padding: 4px 10px;
-        min-height: 42px;
+        border-right: 1px solid rgba(20, 17, 15, 0.12);
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
+        padding: 10px 14px;
+        min-height: 52px;
       }
 
-      /* 4. Passageiros: 50% largura */
+      /* Linha 3: Passageiros 50% */
       .booking-field:nth-child(4) {
         grid-column: span 1;
         border-right: none;
-        border-bottom: 1px solid rgba(244, 239, 230, 0.12);
-        padding: 4px 10px;
-        min-height: 42px;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
+        padding: 10px 14px;
+        min-height: 52px;
       }
 
-      /* 5. Botão Pedir Cotação: linha inteira */
+      /* Linha 4: Botão Pedir Cotação 100% */
       .booking-submit-cell {
         grid-column: span 2;
         border-top: none;
@@ -1763,137 +1846,100 @@
 
       .btn-booking-submit {
         width: 100%;
-        height: 38px;
-        font-size: 13px;
+        height: 46px;
+        font-size: 15px;
         font-weight: 600;
-        letter-spacing: 0.02em;
+        border-radius: 0 0 var(--radius-base) var(--radius-base);
       }
 
       .booking-field-label {
-        font-size: 9px;
-        letter-spacing: 0.08em;
-        margin-bottom: 1px;
+        font-size: 10px;
+        letter-spacing: 0.05em;
+        margin-bottom: 2px;
       }
 
-      .booking-field-label svg {
-        width: 11px;
-        height: 11px;
+      .booking-trigger {
+        font-size: 14px;
       }
 
-      .booking-select,
-      .booking-input {
-        font-size: 12px;
-        height: 24px;
-        line-height: 24px;
-        width: 100%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+      .custom-dropdown-menu {
+        position: absolute;
+        left: 0;
+        min-width: 100%;
+        max-width: 100%;
+        z-index: 100;
       }
 
-      .booking-chevron {
-        right: 6px;
+      .custom-calendar-popover {
+        position: absolute;
+        left: 0;
+        width: 280px;
+        min-width: 280px;
+        max-width: calc(100vw - 32px);
+        z-index: 100;
       }
 
-      .booking-chevron svg {
-        width: 12px;
-        height: 12px;
+      #fieldPassengers .custom-dropdown-menu {
+        left: auto;
+        right: 0;
+        min-width: 220px;
+        width: max-content;
+        max-width: calc(100vw - 32px);
       }
 
-      /* Ações auxiliares compactas (+ adicionar detalhes) */
+      /* Ação auxiliar (+ adicionar detalhes) */
       .booking-auxiliary-row {
         margin: 10px 0 8px 0;
-        display: flex;
-        align-items: center;
       }
 
       .btn-toggle-details {
-        font-size: 10.5px;
-        padding: 3px 9px;
-        background: rgba(20, 17, 15, 0.40);
-        border: 1px solid rgba(244, 239, 230, 0.18);
-        border-radius: 20px;
-        color: rgba(244, 239, 230, 0.80);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        font-size: 12px;
       }
 
-      /* Rotas Frequentes como chips compactos */
+      /* Item 16: Atalhos de rota em mobile - exibidos em linha única com scroll horizontal suave (sem quebrar em múltiplas linhas, sem barra de rolagem visível) */
       .hero-frequent-routes {
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 4px 6px;
-        margin-top: 8px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        margin-top: 10px;
+        padding-bottom: 4px;
         width: 100%;
       }
 
+      .hero-frequent-routes::-webkit-scrollbar {
+        display: none;
+      }
+
       .frequent-label {
-        font-size: 9.5px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(244, 239, 230, 0.55);
-        margin-right: 3px;
+        font-size: 11px;
+        flex-shrink: 0;
       }
 
       .frequent-list {
         display: inline-flex;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 4px 6px;
+        flex-wrap: nowrap;
+        gap: 12px;
+      }
+
+      .frequent-route-btn {
+        font-size: 12px;
+        flex-shrink: 0;
+        white-space: nowrap;
       }
 
       .route-separator {
         display: none;
       }
 
-      .frequent-route-btn {
-        display: inline-flex;
-        align-items: center;
-        font-size: 10px;
-        padding: 3px 8px;
-        background: rgba(20, 17, 15, 0.50);
-        border: 1px solid rgba(244, 239, 230, 0.18);
-        border-radius: 12px;
-        color: rgba(244, 239, 230, 0.88);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        text-decoration: none;
-        transition: all 200ms ease;
-      }
-
-      /* Scroll Indicator no Mobile: 100% centralizado horizontalmente na base */
+      /* Item 12: Ocultar indicador de scroll em mobile */
       .scroll-indicator {
-        position: absolute;
-        bottom: 12px;
-        left: 0 !important;
-        right: 0 !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: fit-content !important;
-        transform: none !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-        z-index: 10;
-        padding: 0;
-      }
-
-      .scroll-indicator:hover {
-        transform: translateY(2px) !important;
-      }
-
-      .scroll-indicator-text {
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: rgba(244, 239, 230, 0.65);
-      }
-
-      .scroll-indicator-chevron {
-        width: 15px;
-        height: 15px;
-        stroke: rgba(244, 239, 230, 0.65);
+        display: none !important;
       }
 
       /* Seção Planejamento: cabe perfeitamente na tela mobile em grid 2x2 */
@@ -2114,203 +2160,122 @@
     }
 
     /* ========================================================
-       LIGHT MODE OVERRIDES
-       Princípio: O HERO (vídeo) mantém estética escura em ambos os modos.
-       O modo claro só afeta: header scrollado + seções de conteúdo abaixo do hero.
+       ESTILOS DAS SEÇÕES DE CONTEÚDO (TEMA CLARO EXCLUSIVO)
        ======================================================== */
-
-    /* ========================================================
-       LIGHT MODE: LOGOMARCA COM TIPOGRAFIA ESCURA
-       ======================================================== */
-    .logo-light-theme {
-      display: none !important;
-    }
-    .logo-dark-theme {
-      display: block !important;
-    }
-
-    body.light-mode .logo-dark-theme,
-    :root.light-mode .logo-dark-theme {
-      display: none !important;
-    }
-    body.light-mode .logo-light-theme,
-    :root.light-mode .logo-light-theme {
-      display: block !important;
-    }
-
-    /* --- HEADER NO MODO CLARO --- */
-    body.light-mode .site-header {
-      background: rgba(250, 248, 245, 0.90) !important;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(26, 22, 18, 0.10) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
-      padding: 9px 0;
-      min-height: 58px;
-    }
-
-    body.light-mode .site-header.is-scrolled {
-      background: rgba(250, 248, 245, 0.98) !important;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
-      padding: 9px 0;
-      min-height: 58px;
-    }
-
-    body.light-mode .site-header .nav-link {
-      color: #1a1612 !important;
-      text-shadow: none !important;
-    }
-
-    body.light-mode .site-header .nav-link:hover {
-      color: var(--color-gold) !important;
-    }
-
-    body.light-mode .site-header .menu-toggle {
-      border-color: rgba(26, 22, 18, 0.2) !important;
-    }
-
-    body.light-mode .site-header .hamburger-bar {
-      background-color: #1a1612 !important;
-    }
-
-    /* Mobile drawer: gaveta lateral clara */
-    @media (max-width: 860px) {
-      body.light-mode .nav-menu {
-        background: #FAF8F5;
-        border-left: 1px solid rgba(26, 22, 18, 0.12);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
-      }
-
-      body.light-mode .nav-menu .nav-link {
-        color: #1a1612;
-        text-shadow: none;
-        border-bottom: 1px solid rgba(26, 22, 18, 0.08);
-      }
-
-      body.light-mode .nav-menu .nav-link:hover {
-        color: var(--color-gold);
-      }
-
-      body.light-mode .nav-backdrop {
-        background: rgba(20, 17, 15, 0.50);
-      }
-    }
-
-    /* --- SEÇÕES DE CONTEÚDO: aqui SIM fica claro --- */
 
     /* Seção Planejamento & Frota */
-    body.light-mode .section-planejamento-slim,
-    body.light-mode .section-frota-slim {
-      background: #FAF8F5;
+    .section-planejamento-slim,
+    .section-frota-slim {
+      background: var(--color-surface);
     }
 
-    body.light-mode .sec-kicker {
+    .sec-kicker {
       color: var(--color-gold);
     }
 
-    body.light-mode .sec-title {
-      color: #1a1612;
+    .sec-title {
+      color: var(--ink);
     }
 
-    body.light-mode .sec-sub {
-      color: rgba(26, 22, 18, 0.6);
+    .sec-sub {
+      color: var(--color-text-muted);
     }
 
     /* Timeline cards */
-    body.light-mode .timeline-card-minimal {
+    .timeline-card-minimal {
       background: #ffffff;
-      border: 1px solid rgba(26, 22, 18, 0.08);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(20, 17, 15, 0.08);
+      box-shadow: 0 2px 8px rgba(20, 17, 15, 0.04);
     }
 
-    body.light-mode .timeline-card-minimal:hover {
+    .timeline-card-minimal:hover {
       border-color: rgba(168, 135, 46, 0.4);
       background: #ffffff;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 24px rgba(20, 17, 15, 0.08);
     }
 
-    body.light-mode .timeline-card-minimal .step-title {
-      color: #1a1612;
+    .timeline-card-minimal .step-title {
+      color: var(--ink);
     }
 
-    body.light-mode .timeline-card-minimal .step-desc {
-      color: rgba(26, 22, 18, 0.6);
+    .timeline-card-minimal .step-desc {
+      color: var(--color-text-muted);
     }
 
-    body.light-mode .timeline-num {
+    .timeline-num {
       color: var(--color-gold);
       background: rgba(168, 135, 46, 0.08);
       border-color: rgba(168, 135, 46, 0.2);
     }
 
     /* Destinos intro strip */
-    body.light-mode .destinations-intro-strip {
-      background: #F0ECE6;
-      border-color: rgba(26, 22, 18, 0.06);
+    .destinations-intro-strip {
+      background: #ECE6DA;
+      border-color: rgba(20, 17, 15, 0.06);
     }
 
-    body.light-mode .dest-preview-pill {
-      color: #1a1612 !important;
-      background: rgba(26, 22, 18, 0.05) !important;
-      border-color: rgba(26, 22, 18, 0.20) !important;
+    .dest-preview-pill {
+      color: var(--ink) !important;
+      background: rgba(20, 17, 15, 0.05) !important;
+      border-color: rgba(20, 17, 15, 0.20) !important;
       font-weight: 600 !important;
     }
 
-    body.light-mode .dest-preview-pill:hover {
+    .dest-preview-pill:hover {
       background: var(--color-gold) !important;
       color: #ffffff !important;
       border-color: transparent !important;
       box-shadow: 0 4px 14px rgba(168, 135, 46, 0.25) !important;
     }
 
-    body.light-mode .page-scroll-text {
-      color: rgba(26, 22, 18, 0.65) !important;
+    .page-scroll-text {
+      color: rgba(20, 17, 15, 0.65) !important;
     }
 
-    body.light-mode .page-scroll-chevron {
-      stroke: rgba(26, 22, 18, 0.65) !important;
+    .page-scroll-chevron {
+      stroke: rgba(20, 17, 15, 0.65) !important;
     }
 
     /* Destination spreads */
-    body.light-mode .destination-page-spread {
-      background: #FAF8F5;
-      border-color: rgba(26, 22, 18, 0.06);
+    .destination-page-spread {
+      background: var(--color-surface);
+      border-color: rgba(20, 17, 15, 0.06);
     }
 
-    body.light-mode .spread-content-col {
-      background: linear-gradient(135deg, rgba(250, 248, 245, 0.92) 0%, rgba(240, 236, 230, 0.96) 100%) !important;
+    .spread-content-col {
+      background: linear-gradient(135deg, rgba(244, 239, 230, 0.95) 0%, rgba(236, 230, 218, 0.98) 100%) !important;
     }
 
-    body.light-mode .spread-content-col .dest-kicker {
+    .spread-content-col .dest-kicker {
       color: var(--color-gold);
     }
 
-    body.light-mode .spread-content-col .dest-heading {
-      color: #1a1612;
+    .spread-content-col .dest-heading {
+      color: var(--ink);
     }
 
-    body.light-mode .spread-content-col .dest-summary {
-      color: rgba(26, 22, 18, 0.7);
+    .spread-content-col .dest-summary {
+      color: rgba(20, 17, 15, 0.70);
     }
 
-    body.light-mode .dest-perk-pill {
-      color: #1a1612;
-      background: rgba(26, 22, 18, 0.04);
-      border-color: rgba(26, 22, 18, 0.10);
+    .dest-perk-pill {
+      color: var(--ink);
+      background: rgba(20, 17, 15, 0.04);
+      border-color: rgba(20, 17, 15, 0.10);
     }
 
-    body.light-mode .btn-agendar-slim,
-    body.light-mode .btn-planejar-whatsapp,
-    body.light-mode .spread-content-col .btn-agendar-slim {
+    .btn-agendar-slim,
+    .btn-planejar-whatsapp,
+    .spread-content-col .btn-agendar-slim {
       border-color: rgba(168, 135, 46, 0.35) !important;
       background: rgba(168, 135, 46, 0.08) !important;
       color: var(--color-gold) !important;
       text-decoration: none !important;
     }
 
-    body.light-mode .btn-agendar-slim:hover,
-    body.light-mode .btn-planejar-whatsapp:hover,
-    body.light-mode .spread-content-col .btn-agendar-slim:hover {
+    .btn-agendar-slim:hover,
+    .btn-planejar-whatsapp:hover,
+    .spread-content-col .btn-agendar-slim:hover {
       background: var(--color-gold) !important;
       color: #ffffff !important;
       border-color: transparent !important;
@@ -2318,151 +2283,79 @@
       transform: translateY(-2px) !important;
     }
 
-    body.light-mode .spread-badge-tag {
+    .spread-badge-tag {
       background: rgba(255, 255, 255, 0.90);
       color: var(--color-gold);
-      border-color: rgba(26, 22, 18, 0.08);
+      border-color: rgba(20, 17, 15, 0.08);
     }
 
     /* Frota cards */
-    body.light-mode .frota-card-minimal {
+    .frota-card-minimal {
       background: #ffffff;
-      border: 1px solid rgba(26, 22, 18, 0.08);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(20, 17, 15, 0.08);
+      box-shadow: 0 2px 8px rgba(20, 17, 15, 0.04);
     }
 
-    body.light-mode .frota-card-minimal:hover {
+    .frota-card-minimal:hover {
       border-color: rgba(168, 135, 46, 0.3);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 30px rgba(20, 17, 15, 0.08);
     }
 
-    body.light-mode .frota-title {
-      color: #1a1612;
+    .frota-title {
+      color: var(--ink);
     }
 
-    body.light-mode .frota-specs {
-      color: rgba(26, 22, 18, 0.6);
+    .frota-specs {
+      color: var(--color-text-muted);
     }
 
     /* FAQ */
-    body.light-mode .section-faq {
-      background: #FAF8F5;
+    .section-faq {
+      background: var(--color-surface);
     }
 
-    body.light-mode .faq-item {
-      border-color: rgba(26, 22, 18, 0.10);
+    .faq-item {
+      border-color: rgba(20, 17, 15, 0.10);
     }
 
-    body.light-mode .faq-question {
-      color: #1a1612;
+    .faq-question {
+      color: var(--ink);
     }
 
-    body.light-mode .faq-question:hover {
+    .faq-question:hover {
       color: var(--color-gold);
     }
 
-    body.light-mode .faq-question-icon {
-      stroke: rgba(26, 22, 18, 0.4);
+    .faq-question-icon {
+      stroke: rgba(20, 17, 15, 0.4);
     }
 
-    body.light-mode .faq-item.is-open .faq-question-icon {
+    .faq-item.is-open .faq-question-icon {
       stroke: var(--color-gold);
     }
 
-    body.light-mode .faq-answer-text {
-      color: rgba(26, 22, 18, 0.65);
+    .faq-answer-text {
+      color: rgba(20, 17, 15, 0.65);
     }
 
     /* Footer */
-    body.light-mode footer.luxury-footer {
-      background: #F0ECE6;
-      border-color: rgba(26, 22, 18, 0.08);
+    footer.luxury-footer {
+      background: #ECE6DA;
+      border-color: rgba(20, 17, 15, 0.08);
     }
 
-    body.light-mode .footer-brand-title {
-      color: #1a1612;
+    .footer-brand-title {
+      color: var(--ink);
     }
 
-    body.light-mode .footer-info-text {
-      color: rgba(26, 22, 18, 0.6);
+    .footer-info-text {
+      color: var(--color-text-muted);
     }
 
-    body.light-mode .footer-highlight {
+    .footer-highlight {
       color: var(--color-gold);
     }
-
-    /* Theme toggle button */
-    .theme-toggle-header {
-      background: rgba(20, 17, 15, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(244, 239, 230, 0.45);
-      color: #FFFFFF;
-      border-radius: 8px;
-      padding: 0;
-      width: 42px;
-      height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .theme-toggle-header:hover {
-      color: #ffffff;
-      border-color: rgba(244, 239, 230, 0.75);
-      background: rgba(20, 17, 15, 0.75);
-    }
-
-    /* No modo claro, toggle fica escuro e elegante */
-    body.light-mode .theme-toggle-header {
-      background: rgba(26, 22, 18, 0.06) !important;
-      border-color: rgba(26, 22, 18, 0.20) !important;
-      color: #1a1612 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
-    }
-
-    body.light-mode .theme-toggle-header:hover {
-      color: var(--color-gold) !important;
-      border-color: var(--color-gold) !important;
-      background: rgba(26, 22, 18, 0.12) !important;
-    }
-
-    .theme-toggle-header svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .theme-icon-moon,
-    .theme-icon-sun {
-      display: none;
-    }
-
-    /* Dark mode (default): show moon icon */
-    .theme-icon-moon {
-      display: block;
-    }
-
-    body.light-mode .theme-icon-moon {
-      display: none;
-    }
-
-    body.light-mode .theme-icon-sun {
-      display: block;
-    }
   </style>
-  <script>
-    (function() {
-      try {
-        if (localStorage.getItem('nobre-theme') === 'light') {
-          document.documentElement.classList.add('light-mode');
-        }
-      } catch(e) {}
-    })();
-  </script>
 </head>
 <body>
 
@@ -2470,13 +2363,15 @@
   <header class="site-header" id="siteHeader">
     <div class="header-container">
       
-      <!-- Logo à esquerda (~44px de altura, limpo) -->
+      <!-- Logo em texto (substitui a imagem): "Nobre" em Newsreader 28px + "TRANSFERS" em Hanken Grotesk 11px -->
       <a href="#" class="brand-link" aria-label="Nobre Transfers - Início">
-        <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="brand-logo logo-dark-theme" width="160" height="44">
-        <img src="assets/images/Logomarca-NOBRETRANSFERS-dark.png" alt="Nobre Transfers" class="brand-logo logo-light-theme" width="160" height="44">
+        <span class="brand-logo-text">
+          <span class="brand-name">Nobre</span>
+          <span class="brand-sub">TRANSFERS</span>
+        </span>
       </a>
 
-      <!-- Menu de Navegação + Ação -->
+      <!-- Menu de Navegação alinhado à direita, junto do botão WhatsApp -->
       <nav class="nav-menu" id="navMenu" aria-label="Navegação Principal">
         <ul class="nav-list">
           <li><a href="#frota" class="nav-link">Frota</a></li>
@@ -2492,14 +2387,8 @@
         </a>
       </nav>
 
-      <!-- Ações do Header (Tema e Menu Hamburguer no mobile) -->
+      <!-- Ações do Header (Apenas Menu Hamburguer no mobile) -->
       <div class="header-actions">
-        <!-- Toggle Dia/Noite -->
-        <button type="button" class="theme-toggle-header" id="themeToggle" aria-label="Alternar tema claro/escuro">
-          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-
         <!-- Botão Hambúrguer Mobile (Alvo mínimo 44x44px) -->
         <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
           <span class="hamburger-bar"></span>
@@ -2516,7 +2405,7 @@
 
   <!-- ========================================================
        HERO CINEMÁTICO COM VÍDEO EXCLUSIVO (FALÉSIAS -> PRAIA -> LOGO ESTÁTICA)
-       ======================================================== -->
+       ======================================================== */ -->
   <section class="hero-cinematic-wrapper" id="reservas">
     
     <!-- Container de Mídia -->
@@ -2534,139 +2423,159 @@
         <source src="assets/video/nobre_transfers_30s_cinematico_transicoes.mp4" type="video/mp4">
       </video>
 
-      <!-- Scrim de Gradiente Suave para Legibilidade com Máxima Visibilidade do Vídeo -->
+      <!-- Scrim de Gradiente Direcional e Inferior para Legibilidade Máxima -->
       <div class="hero-gradient-overlay" aria-hidden="true"></div>
     </div>
 
     <!-- Conteúdo Flutuante do Hero: Terço Inferior, Alinhado à Esquerda -->
     <div class="hero-content-layer">
 
-      <!-- Título: Terço inferior, alinhado à esquerda, sem itálico/dourado -->
+      <!-- Título: Terço inferior, alinhado à esquerda -->
       <h1 class="hero-title">Do aeroporto ao seu destino, sem espera.</h1>
 
-      <!-- Subtítulo em frase curta -->
-      <p class="hero-subtitle">Motorista no desembarque, acompanhamento de voo e preço fechado antes de sair.</p>
+      <!-- Subtítulo atualizado conforme item 11 -->
+      <p class="hero-subtitle">Transfers do aeroporto de Porto Seguro para Trancoso, Arraial d'Ajuda, Caraíva e Santo André. Motorista no desembarque, preço fechado.</p>
 
-      <!-- Barra de Reserva: Ancorada na base, largura total do container, fundo sólido #14110F sem blur -->
+      <!-- Barra de Reserva: 100% sólida em var(--color-surface), sem transparência, sem blur -->
       <div class="booking-bar-wrapper">
         <form id="nobreBookingForm" class="booking-bar" onsubmit="handleBookingSubmit(event)">
           
-          <!-- 1. ORIGEM -->
-          <div class="booking-field">
-            <label for="bookingOrigin" class="booking-field-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <!-- 1. ORIGEM (Dropdown Customizado) -->
+          <div class="booking-field custom-dropdown" id="fieldOrigin">
+            <span class="booking-field-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Origem</span>
-            </label>
-            <div class="booking-field-control">
-              <select id="bookingOrigin" class="booking-select" required aria-label="Local de Origem">
-                <option value="" disabled selected>De onde você sai?</option>
-                <option value="Porto Seguro (Aeroporto BPS / Centro)">Porto Seguro (Aeroporto BPS / Centro)</option>
-                <option value="Arraial d'Ajuda">Arraial d'Ajuda</option>
-                <option value="Trancoso">Trancoso</option>
-                <option value="Caraíva">Caraíva</option>
-                <option value="Santo André">Santo André</option>
-                <option value="Pista Privada Terravista / Fly Club">Pista Terravista / Fly Club</option>
-              </select>
+            </span>
+            <button type="button" class="booking-trigger" id="originTrigger" aria-haspopup="listbox" aria-expanded="false">
+              <span class="booking-value" id="originValue">Aeroporto de Porto Seguro</span>
               <span class="booking-chevron" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
-            </div>
-          </div>
-
-          <!-- 2. DESTINO -->
-          <div class="booking-field">
-            <label for="bookingDestination" class="booking-field-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              <span>Destino</span>
-            </label>
-            <div class="booking-field-control">
-              <select id="bookingDestination" class="booking-select" required aria-label="Local de Destino">
-                <option value="" disabled selected>Para onde você vai?</option>
-                <option value="Trancoso">Trancoso</option>
-                <option value="Arraial d'Ajuda">Arraial d'Ajuda</option>
-                <option value="Caraíva">Caraíva</option>
-                <option value="Santo André">Santo André</option>
-                <option value="Praia do Espelho">Praia do Espelho</option>
-                <option value="Taípe">Taípe</option>
-                <option value="Rio da Barra">Rio da Barra</option>
-                <option value="Porto Seguro (Aeroporto BPS / Centro)">Porto Seguro (Aeroporto BPS / Centro)</option>
-              </select>
-              <span class="booking-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </div>
-          </div>
-
-          <!-- 3. DATA -->
-          <div class="booking-field">
-            <label for="bookingDate" class="booking-field-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-              <span>Data</span>
-            </label>
-            <div class="booking-field-control">
-              <input type="date" id="bookingDate" class="booking-input" required aria-label="Data da Viagem">
-            </div>
-          </div>
-
-          <!-- 4. PASSAGEIROS -->
-          <div class="booking-field">
-            <label for="bookingPassengers" class="booking-field-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <span>Passageiros</span>
-            </label>
-            <div class="booking-field-control">
-              <select id="bookingPassengers" class="booking-select" aria-label="Número de Passageiros">
-                <option value="1 a 4 passageiros" selected>1 a 4 passageiros</option>
-                <option value="5 a 6 passageiros">5 a 6 passageiros</option>
-                <option value="7 ou mais passageiros">7 ou mais passageiros</option>
-              </select>
-              <span class="booking-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </div>
-          </div>
-
-          <!-- 5. BOTÃO "PEDIR COTAÇÃO" -->
-          <div class="booking-submit-cell">
-            <button type="submit" class="btn-booking-submit">
-              <span>Pedir cotação</span>
             </button>
+            <input type="hidden" id="bookingOrigin" name="origin" value="Aeroporto de Porto Seguro">
+            <ul class="custom-dropdown-menu" id="originMenu" role="listbox" aria-label="Selecione a Origem" hidden>
+              <li role="option" aria-selected="true" class="is-selected" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
+              <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
+              <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
+              <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
+              <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
+              <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
+              <li role="option" aria-selected="false" data-value="Terravista / Fly Club">Terravista / Fly Club</li>
+            </ul>
+          </div>
+
+          <!-- 2. DESTINO (Dropdown Customizado) -->
+          <div class="booking-field custom-dropdown" id="fieldDestination">
+            <span class="booking-field-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              <span>Destino</span>
+            </span>
+            <button type="button" class="booking-trigger" id="destinationTrigger" aria-haspopup="listbox" aria-expanded="false">
+              <span class="booking-value is-placeholder" id="destinationValue">Para onde você vai?</span>
+              <span class="booking-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+            <input type="hidden" id="bookingDestination" name="destination" value="">
+            <ul class="custom-dropdown-menu" id="destinationMenu" role="listbox" aria-label="Selecione o Destino" hidden>
+              <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
+              <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
+              <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
+              <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
+              <li role="option" aria-selected="false" data-value="Praia do Espelho">Praia do Espelho</li>
+              <li role="option" aria-selected="false" data-value="Taípe">Taípe</li>
+              <li role="option" aria-selected="false" data-value="Rio da Barra">Rio da Barra</li>
+              <li role="option" aria-selected="false" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
+              <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
+            </ul>
+          </div>
+
+          <!-- 3. DATA (Calendário Customizado Integrado) -->
+          <div class="booking-field custom-calendar-field" id="fieldDate">
+            <span class="booking-field-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              <span>Data</span>
+            </span>
+            <button type="button" class="booking-trigger" id="dateTrigger" aria-haspopup="dialog" aria-expanded="false">
+              <span class="booking-value" id="dateValue">Hoje</span>
+              <span class="booking-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+            <input type="hidden" id="bookingDate" name="date" value="">
+            
+            <!-- Popover de Calendário Acessível -->
+            <div class="custom-calendar-popover" id="calendarPopover" role="dialog" aria-label="Selecione a data da viagem" hidden>
+              <div class="cal-header">
+                <button type="button" class="cal-nav-btn" id="calPrevBtn" aria-label="Mês anterior">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="cal-title" id="calTitle">Setembro 2026</span>
+                <button type="button" class="cal-nav-btn" id="calNextBtn" aria-label="Próximo mês">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+              <div class="cal-weekdays">
+                <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+              </div>
+              <div class="cal-days-grid" id="calDaysGrid"></div>
+            </div>
+          </div>
+
+          <!-- 4. PASSAGEIROS (Dropdown Customizado com Categorias Exatas) -->
+          <div class="booking-field custom-dropdown" id="fieldPassengers">
+            <span class="booking-field-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Passageiros</span>
+            </span>
+            <button type="button" class="booking-trigger" id="passengersTrigger" aria-haspopup="listbox" aria-expanded="false">
+              <span class="booking-value" id="passengersValue">1 a 4 passageiros (SUV)</span>
+              <span class="booking-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+            <input type="hidden" id="bookingPassengers" name="passengers" value="1 a 4 passageiros (SUV)">
+            <ul class="custom-dropdown-menu" id="passengersMenu" role="listbox" aria-label="Selecione os Passageiros" hidden>
+              <li role="option" aria-selected="true" class="is-selected" data-value="1 a 4 passageiros (SUV)">1 a 4 passageiros (SUV)</li>
+              <li role="option" aria-selected="false" data-value="5 a 6 passageiros (Spin)">5 a 6 passageiros (Spin)</li>
+              <li role="option" aria-selected="false" data-value="7 ou mais (van)">7 ou mais (van)</li>
+            </ul>
+          </div>
+
+          <!-- 5. BOTÃO "PEDIR COTAÇÃO" (Dourado sólido, sem ícone WhatsApp) -->
+          <div class="booking-submit-cell">
+            <button type="submit" class="btn-booking-submit">Pedir cotação</button>
           </div>
 
         </form>
 
-        <!-- Ação auxiliar: link expansível para detalhes -->
+        <!-- Ação auxiliar: link de texto discreto abaixo da barra -->
         <div class="booking-auxiliary-row">
           <button type="button" class="btn-toggle-details" id="btnToggleDetails" aria-expanded="false" aria-controls="bookingDetailsCollapse">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-            <span>adicionar detalhes (voo, cadeirinha)</span>
+            + adicionar detalhes
           </button>
         </div>
 
         <!-- Campo expansível de detalhes -->
         <div class="booking-details-collapse" id="bookingDetailsCollapse" hidden>
           <div class="booking-details-inner">
-            <label for="bookingNotes" class="booking-details-label">Observações:</label>
-            <input type="text" id="bookingNotes" class="booking-details-input" placeholder='Ex: Voo Latam 3241 às 14h20, 2 passageiros, 1 cadeirinha de bebê e 4 malas'>
+            <input type="text" id="bookingNotes" class="booking-details-input" placeholder="Ex.: Saindo do Hotel Kuára às 18h, 2 malas grandes, cadeirinha infantil">
           </div>
         </div>
 
-        <!-- Chips de rotas viram linha de texto discreta abaixo da barra -->
+        <!-- Atalhos de rota discretos (apenas texto com link discreto, sem estilo de botão/pílula/badge) -->
         <div class="hero-frequent-routes">
           <span class="frequent-label">Rotas frequentes:</span>
           <span class="frequent-list">
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Porto Seguro (Aeroporto BPS / Centro)', 'Trancoso')">Aeroporto BPS → Trancoso</button>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Trancoso')">Aeroporto de Porto Seguro → Trancoso</button>
             <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Porto Seguro (Aeroporto BPS / Centro)', 'Arraial d\'Ajuda')">Arraial d'Ajuda</button>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Arraial d\'Ajuda')">Aeroporto de Porto Seguro → Arraial d'Ajuda</button>
             <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Porto Seguro (Aeroporto BPS / Centro)', 'Caraíva')">Caraíva</button>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Caraíva')">Aeroporto de Porto Seguro → Caraíva</button>
             <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Porto Seguro (Aeroporto BPS / Centro)', 'Santo André')">Santo André</button>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Santo André')">Aeroporto de Porto Seguro → Santo André</button>
             <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Pista Privada Terravista / Fly Club', 'Trancoso')">Terravista → Trancoso</button>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Terravista / Fly Club', 'Trancoso')">Terravista → Trancoso</button>
           </span>
         </div>
 
@@ -2674,12 +2583,9 @@
 
     </div>
 
-    <!-- Scroll Indicator -->
-    <a href="#planejamento" class="scroll-indicator" aria-label="Rolar para baixo">
-      <span class="scroll-indicator-text">Explorar</span>
-      <svg class="scroll-indicator-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
+    <!-- Indicador de Scroll Discreto: "Como funciona ↓" -->
+    <a href="#planejamento" class="scroll-indicator" aria-label="Como funciona">
+      <span class="scroll-indicator-text">Como funciona ↓</span>
     </a>
   </section>
 
@@ -3285,18 +3191,211 @@
       });
     });
 
-    // 2. INICIALIZAÇÃO DA DATA MÍNIMA (HOJE)
-    const dateInput = document.getElementById('bookingDate');
-    if (dateInput) {
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, '0');
-      const dd = String(today.getDate()).padStart(2, '0');
-      dateInput.min = `${yyyy}-${mm}-${dd}`;
-      dateInput.value = `${yyyy}-${mm}-${dd}`;
+    // 2. CONTROLE DE DROPDOWNS CUSTOMIZADOS & CALENDÁRIO ACESSÍVEL
+    function closeAllBookingPopovers() {
+      document.querySelectorAll('.booking-field.is-open').forEach(field => {
+        field.classList.remove('is-open');
+        const trigger = field.querySelector('.booking-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        const popover = field.querySelector('.custom-dropdown-menu, .custom-calendar-popover');
+        if (popover) popover.setAttribute('hidden', '');
+      });
     }
 
-    // 3. EXPANSÃO DO CAMPO DE DETALHES (+ adicionar detalhes)
+    // Inicialização dos Dropdowns Customizados (Origem, Destino, Passageiros)
+    (function initCustomDropdowns() {
+      const dropdownConfigs = [
+        { fieldId: 'fieldOrigin', triggerId: 'originTrigger', menuId: 'originMenu', inputId: 'bookingOrigin', valueId: 'originValue' },
+        { fieldId: 'fieldDestination', triggerId: 'destinationTrigger', menuId: 'destinationMenu', inputId: 'bookingDestination', valueId: 'destinationValue' },
+        { fieldId: 'fieldPassengers', triggerId: 'passengersTrigger', menuId: 'passengersMenu', inputId: 'bookingPassengers', valueId: 'passengersValue' }
+      ];
+
+      dropdownConfigs.forEach(cfg => {
+        const field = document.getElementById(cfg.fieldId);
+        const trigger = document.getElementById(cfg.triggerId);
+        const menu = document.getElementById(cfg.menuId);
+        const hiddenInput = document.getElementById(cfg.inputId);
+        const valueEl = document.getElementById(cfg.valueId);
+
+        if (!field || !trigger || !menu || !hiddenInput || !valueEl) return;
+
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = field.classList.contains('is-open');
+          closeAllBookingPopovers();
+          if (!isOpen) {
+            field.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            menu.removeAttribute('hidden');
+          }
+        });
+
+        menu.querySelectorAll('li[role="option"]').forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const val = item.getAttribute('data-value');
+            hiddenInput.value = val;
+            valueEl.textContent = val;
+            valueEl.classList.remove('is-placeholder');
+
+            menu.querySelectorAll('li[role="option"]').forEach(opt => {
+              opt.classList.remove('is-selected');
+              opt.setAttribute('aria-selected', 'false');
+            });
+            item.classList.add('is-selected');
+            item.setAttribute('aria-selected', 'true');
+
+            closeAllBookingPopovers();
+          });
+        });
+      });
+
+      // Fechar ao clicar fora ou pressionar ESC
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.booking-field')) {
+          closeAllBookingPopovers();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllBookingPopovers();
+        }
+      });
+    })();
+
+    // 3. CALENDÁRIO POPOVER ACESSÍVEL (SEM DEPENDER DO NATIVO)
+    (function initCustomCalendar() {
+      const fieldDate = document.getElementById('fieldDate');
+      const dateTrigger = document.getElementById('dateTrigger');
+      const calendarPopover = document.getElementById('calendarPopover');
+      const bookingDateInput = document.getElementById('bookingDate');
+      const dateValueEl = document.getElementById('dateValue');
+      const calPrevBtn = document.getElementById('calPrevBtn');
+      const calNextBtn = document.getElementById('calNextBtn');
+      const calTitle = document.getElementById('calTitle');
+      const calDaysGrid = document.getElementById('calDaysGrid');
+
+      if (!fieldDate || !dateTrigger || !calendarPopover || !bookingDateInput || !dateValueEl || !calDaysGrid) return;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      let selectedDate = new Date(today);
+      let viewDate = new Date(today.getFullYear(), today.getMonth(), 1);
+
+      const monthNames = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ];
+
+      function formatDisplayDate(d) {
+        const isToday = d.getTime() === today.getTime();
+        const day = String(d.getDate()).padStart(2, '0');
+        const monthShort = monthNames[d.getMonth()].slice(0, 3);
+        if (isToday) {
+          return `Hoje (${day}/${String(d.getMonth() + 1).padStart(2, '0')})`;
+        }
+        return `${day} de ${monthShort}, ${d.getFullYear()}`;
+      }
+
+      function toISODate(d) {
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+      }
+
+      // Inicializa inputs com a data de hoje
+      bookingDateInput.value = toISODate(selectedDate);
+      dateValueEl.textContent = formatDisplayDate(selectedDate);
+
+      function renderCalendar() {
+        const year = viewDate.getFullYear();
+        const month = viewDate.getMonth();
+
+        if (calTitle) {
+          calTitle.textContent = `${monthNames[month]} ${year}`;
+        }
+
+        calDaysGrid.innerHTML = '';
+
+        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Domingo
+        const totalDays = new Date(year, month + 1, 0).getDate();
+
+        // Células em branco para alinhar os dias da semana
+        for (let i = 0; i < firstDayIndex; i++) {
+          const emptyCell = document.createElement('div');
+          emptyCell.className = 'cal-day-empty';
+          calDaysGrid.appendChild(emptyCell);
+        }
+
+        // Dias do mês
+        for (let day = 1; day <= totalDays; day++) {
+          const currentDayDate = new Date(year, month, day);
+          currentDayDate.setHours(0, 0, 0, 0);
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'cal-day';
+          btn.textContent = day;
+
+          const isPast = currentDayDate.getTime() < today.getTime();
+          const isSelected = selectedDate && currentDayDate.getTime() === selectedDate.getTime();
+          const isTodayDate = currentDayDate.getTime() === today.getTime();
+
+          if (isPast) {
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+          } else {
+            if (isSelected) btn.classList.add('is-selected');
+            if (isTodayDate) btn.classList.add('is-today');
+
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              selectedDate = new Date(currentDayDate);
+              bookingDateInput.value = toISODate(selectedDate);
+              dateValueEl.textContent = formatDisplayDate(selectedDate);
+              closeAllBookingPopovers();
+            });
+          }
+
+          calDaysGrid.appendChild(btn);
+        }
+      }
+
+      dateTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = fieldDate.classList.contains('is-open');
+        closeAllBookingPopovers();
+        if (!isOpen) {
+          fieldDate.classList.add('is-open');
+          dateTrigger.setAttribute('aria-expanded', 'true');
+          calendarPopover.removeAttribute('hidden');
+          renderCalendar();
+        }
+      });
+
+      if (calPrevBtn) {
+        calPrevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          viewDate.setMonth(viewDate.getMonth() - 1);
+          renderCalendar();
+        });
+      }
+
+      if (calNextBtn) {
+        calNextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          viewDate.setMonth(viewDate.getMonth() + 1);
+          renderCalendar();
+        });
+      }
+
+      renderCalendar();
+    })();
+
+    // 4. EXPANSÃO DO CAMPO DE DETALHES (+ adicionar detalhes)
     const btnToggleDetails = document.getElementById('btnToggleDetails');
     const bookingDetailsCollapse = document.getElementById('bookingDetailsCollapse');
     if (btnToggleDetails && bookingDetailsCollapse) {
@@ -3316,16 +3415,39 @@
       });
     }
 
-    // 4. ATALHOS DE ROTAS FREQUENTES
+    // 5. ATALHOS DE ROTAS FREQUENTES (INTEGRADOS AOS DROPDOWNS CUSTOMIZADOS)
     function setQuickRoute(origem, destino) {
-      const originSelect = document.getElementById('bookingOrigin');
-      const destSelect = document.getElementById('bookingDestination');
-      if (originSelect) originSelect.value = origem;
-      if (destSelect) destSelect.value = destino;
+      const originInput = document.getElementById('bookingOrigin');
+      const originValue = document.getElementById('originValue');
+      const destInput = document.getElementById('bookingDestination');
+      const destValue = document.getElementById('destinationValue');
+
+      if (originInput) originInput.value = origem;
+      if (originValue) originValue.textContent = origem;
+
+      if (destInput) destInput.value = destino;
+      if (destValue) {
+        destValue.textContent = destino;
+        destValue.classList.remove('is-placeholder');
+      }
+
+      // Atualiza os estados nos dropdowns
+      document.querySelectorAll('#originMenu li[role="option"]').forEach(li => {
+        const isMatch = li.getAttribute('data-value') === origem;
+        li.classList.toggle('is-selected', isMatch);
+        li.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      document.querySelectorAll('#destinationMenu li[role="option"]').forEach(li => {
+        const isMatch = li.getAttribute('data-value') === destino;
+        li.classList.toggle('is-selected', isMatch);
+        li.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
       if (navigator.vibrate) navigator.vibrate(25);
     }
 
-    // 5. FORMATAÇÃO AMIGÁVEL DA DATA EM PORTUGUÊS
+    // 6. FORMATAÇÃO AMIGÁVEL DA DATA EM PORTUGUÊS
     function formatFriendlyDate(isoDateStr) {
       if (!isoDateStr) return 'A definir com a Nobre Transfers';
       try {
@@ -3343,18 +3465,20 @@
       }
     }
 
-    // 6. SUBMISSÃO DA COTAÇÃO PARA O WHATSAPP OFICIAL (73) 99817-1117
+    // 7. SUBMISSÃO DA COTAÇÃO PARA O WHATSAPP OFICIAL (73) 99817-1117
     function handleBookingSubmit(e) {
       e.preventDefault();
 
       const origin = document.getElementById('bookingOrigin').value;
       const destination = document.getElementById('bookingDestination').value;
       const dateVal = document.getElementById('bookingDate').value;
-      const passengers = document.getElementById('bookingPassengers')?.value || '1 a 4 passageiros';
+      const passengers = document.getElementById('bookingPassengers')?.value || '1 a 4 passageiros (SUV)';
       const notes = document.getElementById('bookingNotes')?.value.trim();
 
       if (!origin || !destination) {
-        alert('Por favor, selecione o ponto de origem e o destino da viagem.');
+        alert('Por favor, selecione o destino da sua viagem para continuar.');
+        const destTrigger = document.getElementById('destinationTrigger');
+        if (destTrigger) destTrigger.focus();
         return;
       }
 
@@ -3435,31 +3559,6 @@
           item.classList.toggle('is-open', !isOpen);
           btn.setAttribute('aria-expanded', String(!isOpen));
         });
-      });
-    })();
-
-    // THEME TOGGLE: MODO CLARO / ESCURO
-    (function initThemeToggle() {
-      const toggle = document.getElementById('themeToggle');
-      if (!toggle) return;
-
-      // Check saved preference
-      const savedTheme = localStorage.getItem('nobre-theme');
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        document.documentElement.classList.add('light-mode');
-      }
-
-      toggle.addEventListener('click', () => {
-        const isLight = document.body.classList.toggle('light-mode');
-        document.documentElement.classList.toggle('light-mode', isLight);
-        localStorage.setItem('nobre-theme', isLight ? 'light' : 'dark');
-        
-        // Update meta theme-color
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if (metaTheme) {
-          metaTheme.setAttribute('content', isLight ? '#FAF8F5' : '#070e17');
-        }
       });
     })();
   </script>
