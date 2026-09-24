@@ -1022,7 +1022,7 @@
     .destinations-intro-strip {
       min-height: 100vh;
       min-height: 100svh;
-      padding: 72px 24px 60px;
+      padding: 48px 24px 84px;
       text-align: center;
       background: var(--bg-dark);
       border-top: 1px solid rgba(197, 160, 89, 0.2);
@@ -1035,13 +1035,20 @@
       box-sizing: border-box;
     }
 
+    .destinations-intro-strip .sec-kicker,
+    .destinations-intro-strip .sec-title,
+    .destinations-intro-strip .sec-sub,
+    .destinations-intro-strip .destinos-pills-row {
+      transform: translateY(-22px);
+    }
+
     .destinos-pills-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
       max-width: 820px;
-      margin: 28px auto 0;
+      margin: 24px auto 0;
     }
 
     .dest-preview-pill {
@@ -1194,31 +1201,33 @@
     }
 
     .btn-agendar-slim,
+    .btn-planejar-whatsapp,
     .spread-content-col .btn-agendar-slim {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 26px;
-      border: 1px solid var(--border-gold);
-      border-radius: 6px;
-      background: rgba(197, 160, 89, 0.09);
-      color: var(--gold-light);
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 13px 26px !important;
+      border: 1px solid var(--border-gold) !important;
+      border-radius: 6px !important;
+      background: rgba(197, 160, 89, 0.09) !important;
+      color: var(--color-gold) !important;
+      font-family: var(--font-sans) !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.16em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     .btn-agendar-slim:hover,
+    .btn-planejar-whatsapp:hover,
     .spread-content-col .btn-agendar-slim:hover {
-      background: var(--gold-gradient);
-      color: #070e17;
-      border-color: transparent;
-      box-shadow: 0 8px 24px rgba(197, 160, 89, 0.45);
-      transform: translateY(-2px);
+      background: var(--gold-gradient) !important;
+      color: #070e17 !important;
+      border-color: transparent !important;
+      box-shadow: 0 8px 24px rgba(197, 160, 89, 0.45) !important;
+      transform: translateY(-2px) !important;
     }
 
     /* ========================================================
@@ -2240,6 +2249,28 @@
       border-color: rgba(26, 22, 18, 0.06);
     }
 
+    body.light-mode .dest-preview-pill {
+      color: #1a1612 !important;
+      background: rgba(26, 22, 18, 0.05) !important;
+      border-color: rgba(26, 22, 18, 0.20) !important;
+      font-weight: 600 !important;
+    }
+
+    body.light-mode .dest-preview-pill:hover {
+      background: var(--color-gold) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 14px rgba(168, 135, 46, 0.25) !important;
+    }
+
+    body.light-mode .page-scroll-text {
+      color: rgba(26, 22, 18, 0.65) !important;
+    }
+
+    body.light-mode .page-scroll-chevron {
+      stroke: rgba(26, 22, 18, 0.65) !important;
+    }
+
     /* Destination spreads */
     body.light-mode .destination-page-spread {
       background: #FAF8F5;
@@ -2269,19 +2300,22 @@
     }
 
     body.light-mode .btn-agendar-slim,
+    body.light-mode .btn-planejar-whatsapp,
     body.light-mode .spread-content-col .btn-agendar-slim {
-      border-color: rgba(168, 135, 46, 0.3);
-      background: rgba(168, 135, 46, 0.06);
-      color: var(--color-gold);
+      border-color: rgba(168, 135, 46, 0.35) !important;
+      background: rgba(168, 135, 46, 0.08) !important;
+      color: var(--color-gold) !important;
+      text-decoration: none !important;
     }
 
     body.light-mode .btn-agendar-slim:hover,
+    body.light-mode .btn-planejar-whatsapp:hover,
     body.light-mode .spread-content-col .btn-agendar-slim:hover {
-      background: var(--color-gold);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 8px 24px rgba(168, 135, 46, 0.25);
-      transform: translateY(-2px);
+      background: var(--color-gold) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 8px 24px rgba(168, 135, 46, 0.25) !important;
+      transform: translateY(-2px) !important;
     }
 
     body.light-mode .spread-badge-tag {
@@ -2706,8 +2740,8 @@
     </div>
 
     <div style="margin-top: 32px; display: flex; justify-content: center; width: 100%;">
-      <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20planejar%20minha%20viagem%20e%20solicitar%20o%20transfer%20executivo." target="_blank" class="btn-agendar-slim">
-        <span>Clique aqui para planejar a sua viagem no WhatsApp</span>
+      <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20planejar%20minha%20viagem%20e%20solicitar%20o%20transfer%20executivo." target="_blank" class="btn-agendar-slim btn-planejar-whatsapp" style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border: 1px solid #C9A45C; border-radius: 6px; background: rgba(197, 160, 89, 0.09); color: #C9A45C; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;">
+        <span>CLIQUE AQUI PARA PLANEJAR A SUA VIAGEM NO WHATSAPP</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
