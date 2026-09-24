@@ -123,15 +123,18 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: 80px;
+      min-height: 80px;
       z-index: 1000;
       background: rgba(244, 239, 230, 0.90);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(20, 17, 15, 0.08);
-      transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease, padding 250ms ease;
-      padding: 10px 0;
-      min-height: 60px;
+      transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease, height 250ms ease;
+      padding: 0;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
     }
 
     .site-header.is-scrolled {
@@ -140,13 +143,15 @@
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(20, 17, 15, 0.10);
       box-shadow: 0 4px 20px rgba(20, 17, 15, 0.06);
-      padding: 10px 0;
-      min-height: 60px;
+      height: 80px;
+      min-height: 80px;
+      padding: 0;
     }
 
     .header-container {
       max-width: var(--container);
       width: 100%;
+      height: 100%;
       margin: 0 auto;
       padding: 0 var(--space-24);
       display: flex;
@@ -155,41 +160,26 @@
       gap: var(--space-24);
     }
 
-    /* Logo em texto (substitui a imagem):
-       "Nobre" em Newsreader 28px, peso 500, cor var(--ink);
-       abaixo, "TRANSFERS" em Hanken Grotesk 11px, letter-spacing 0.2em, cor var(--ink);
-       sem ícone de carro. */
+    /* Logo em imagem original (Item 1): height 56px no desktop, object-fit contain, sem filtros e sem recorte */
     .brand-link {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       min-height: var(--touch-target);
-    }
-
-    .brand-logo-text {
-      display: inline-flex;
-      flex-direction: column;
+      padding: 0;
       line-height: 1;
     }
 
-    .brand-name {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 500;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      line-height: 1;
+    .brand-logo {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: opacity 200ms ease;
     }
 
-    .brand-sub {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--ink);
-      text-transform: uppercase;
-      margin-top: 3px;
-      line-height: 1;
+    .brand-logo:hover {
+      opacity: 0.9;
     }
 
     /* Menu alinhado à direita, junto do botão WhatsApp */
@@ -309,9 +299,14 @@
     @media (min-width: 861px) {
       .site-header,
       .site-header.is-scrolled {
-        padding: 10px 0 !important;
-        min-height: 60px !important;
+        height: 80px !important;
+        min-height: 80px !important;
+        padding: 0 !important;
         box-sizing: border-box;
+      }
+      .brand-logo {
+        height: 56px !important;
+        width: auto !important;
       }
     }
 
@@ -434,9 +429,13 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: stretch;
-      padding: calc(var(--space-64) + 60px) var(--space-24) 95px;
+      padding-top: 80px;
+      padding-bottom: 56px;
+      padding-left: 0;
+      padding-right: 0;
       overflow: hidden;
       background: var(--color-surface);
+      box-sizing: border-box;
     }
 
     .hero-video-box {
@@ -483,38 +482,40 @@
       max-width: var(--container);
       width: 100%;
       margin: 0 auto;
+      padding: 0 var(--space-24);
       text-align: left;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      box-sizing: border-box;
     }
 
-    /* Título editorial: Newsreader, 400, letter-spacing -0.02em, var(--on-video) */
+    /* Título editorial (Item 4): clamp(36px, min(6vw, 10vh), 84px) */
     .hero-title {
       font-family: var(--font-serif);
-      font-size: var(--text-hero); /* clamp(40px, 6vw, 84px) */
-      font-weight: var(--title-weight); /* 400 */
-      line-height: var(--title-line-height); /* 1.10 */
-      letter-spacing: var(--title-letter-spacing); /* -0.02em */
+      font-size: clamp(36px, min(6vw, 10vh), 84px);
+      font-weight: var(--title-weight);
+      line-height: var(--title-line-height);
+      letter-spacing: var(--title-letter-spacing);
       color: var(--on-video);
       text-shadow: 0 1px 24px rgba(20, 17, 15, 0.35);
       text-align: left;
       max-width: 960px;
-      margin: 0 0 var(--space-16);
+      margin: 0 0 clamp(8px, 1.8vh, 16px);
     }
 
     /* Subtítulo: Hanken Grotesk, frase curta, sem itálico */
     .hero-subtitle {
       font-family: var(--font-sans);
-      font-size: var(--text-lg); /* 20px */
+      font-size: clamp(14.5px, 1.6vw, 18px);
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.45;
       letter-spacing: 0;
       color: var(--on-video);
       text-shadow: 0 1px 24px rgba(20, 17, 15, 0.35);
       text-align: left;
       max-width: 760px;
-      margin: 0 0 var(--space-40);
+      margin: 0 0 clamp(16px, 2.6vh, 28px);
     }
 
     /* ========================================================
@@ -622,22 +623,35 @@
       transform: rotate(180deg);
     }
 
-    /* Custom Dropdown Popover Menu */
-    .custom-dropdown-menu {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      min-width: 100%;
-      width: max-content;
+    /* ========================================================
+       POPOVERS E BOTTOM SHEETS FORA DO HERO (Item 11 & 12)
+       ======================================================== */
+    .sheet-drag-indicator,
+    .sheet-header {
+      display: none;
+    }
+
+    .booking-sheet-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 17, 15, 0.5);
+      z-index: 1999;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    /* Custom Dropdown Popover (Item 11: fixed fora do hero) */
+    .custom-dropdown-popover {
+      position: fixed;
+      z-index: 2000;
+      min-width: 220px;
       max-width: 320px;
       background: var(--color-surface);
       border: 1px solid rgba(20, 17, 15, 0.12);
       border-radius: var(--radius-base);
       box-shadow: 0 10px 30px rgba(20, 17, 15, 0.18);
-      list-style: none;
       padding: 6px 0;
       margin: 0;
-      z-index: 100;
       max-height: 280px;
       overflow-y: auto;
       animation: fadeInMenu 150ms ease;
@@ -646,6 +660,12 @@
     @keyframes fadeInMenu {
       from { opacity: 0; transform: translateY(-4px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    .custom-dropdown-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .custom-dropdown-menu li {
@@ -670,19 +690,30 @@
       color: var(--ink);
     }
 
-    /* Custom Calendar Popover */
+    /* Custom Calendar Popover (Item 11: fixed fora do hero) */
     .custom-calendar-popover {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
+      position: fixed;
+      z-index: 2000;
       width: 280px;
       background: var(--color-surface);
       border: 1px solid rgba(20, 17, 15, 0.12);
       border-radius: var(--radius-base);
       box-shadow: 0 10px 30px rgba(20, 17, 15, 0.18);
       padding: 14px;
-      z-index: 100;
       animation: fadeInMenu 150ms ease;
+    }
+
+    /* Helper classes para BPS (Item 5) */
+    .origin-short {
+      display: none;
+    }
+    .origin-full {
+      display: inline;
+    }
+
+    .sheet-drag-indicator,
+    .sheet-header {
+      display: none;
     }
 
     .cal-header {
@@ -872,30 +903,34 @@
       color: rgba(20, 17, 15, 0.50);
     }
 
-    /* Linha de atalhos de rota discretos (apenas texto com link discreto, sem estilo de botão/pílula/badge) */
+    /* Linha de atalhos de rota (Item 2) */
     .hero-frequent-routes {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 6px 12px;
+      gap: 6px 8px;
       margin-top: 14px;
+      margin-right: 88px;
       font-family: var(--font-sans);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--on-video);
       text-shadow: 0 1px 4px rgba(20, 17, 15, 0.45);
+      line-height: 1.4;
     }
 
     .frequent-label {
+      font-size: 14px;
       font-weight: 500;
       color: var(--on-video);
-      opacity: 0.70;
+      opacity: 0.85;
+      margin-right: 2px;
     }
 
     .frequent-list {
       display: inline-flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 6px 10px;
+      gap: 6px 8px;
     }
 
     .frequent-route-btn {
@@ -903,22 +938,37 @@
       border: none;
       color: var(--on-video);
       font-family: var(--font-sans);
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 400;
       padding: 0;
       cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(244, 239, 230, 0.35);
-      transition: opacity 150ms ease;
+      text-decoration: none; /* sublinhado SÓ no hover */
+      transition: opacity 150ms ease, color 150ms ease;
+      line-height: 1.4;
     }
 
     .frequent-route-btn:hover {
-      opacity: 0.8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--on-video);
+      opacity: 0.95;
     }
 
-    .route-separator {
+    .route-dot {
       color: var(--on-video);
-      opacity: 0.40;
+      opacity: 0.50;
+      font-size: 14px;
+      user-select: none;
+      margin: 0 1px;
+    }
+
+    .route-pipe {
+      color: var(--on-video);
+      opacity: 0.35;
+      font-weight: 300;
+      font-size: 13px;
+      margin: 0 6px;
+      user-select: none;
     }
 
     /* ========================================================
@@ -1673,11 +1723,8 @@
        SCROLL INDICATOR DISCRETO (DESKTOP)
        ======================================================== */
     .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      position: relative; /* sem position: absolute (Item 3) */
+      margin: clamp(14px, 2.5vh, 24px) auto 0 auto;
       width: fit-content;
       z-index: 10;
       display: inline-flex;
@@ -1703,39 +1750,40 @@
       text-shadow: 0 1px 12px rgba(20, 17, 15, 0.50);
     }
 
+    /* Esconde em telas com altura menor que 720px (Item 3) */
+    @media (max-height: 720px) {
+      .scroll-indicator {
+        display: none !important;
+      }
+    }
+
     /* ========================================================
        SMARTPHONE RESPONSIVO: MOBILE FIRST & COMPACTO
        ======================================================== */
     @media (max-width: 600px) {
-      /* Header mobile */
-      .site-header {
-        padding: 8px 0;
-        min-height: auto !important;
-        background: rgba(244, 239, 230, 0.95) !important;
+      /* Header mobile (Item 1): altura 64px, logo 44px */
+      .site-header,
+      .site-header.is-scrolled {
+        height: 64px !important;
+        min-height: 64px !important;
+        padding: 0 !important;
+        background: rgba(244, 239, 230, 0.98) !important;
         border-bottom: 1px solid rgba(20, 17, 15, 0.08) !important;
         box-shadow: none !important;
       }
 
-      .site-header.is-scrolled {
-        background: rgba(244, 239, 230, 0.98) !important;
-        box-shadow: 0 4px 16px rgba(20, 17, 15, 0.08) !important;
-        padding: 8px 0;
-        min-height: auto !important;
-      }
-
       .header-container {
-        padding: 0 16px;
+        padding: 0 16px !important;
+        height: 100% !important;
       }
 
-      .brand-name {
-        font-size: 24px;
+      .brand-logo {
+        height: 44px !important;
+        width: auto !important;
+        object-fit: contain !important;
       }
 
-      .brand-sub {
-        font-size: 9.5px;
-      }
-
-      /* Item 14: Menu mobile - botão hambúrguer limpo (apenas 3 traços, sem caixa, sem borda, sem fundo, min 44x44px, traços na cor var(--ink)) */
+      /* Botão hambúrguer limpo: 3 traços em var(--ink), 44x44px */
       .menu-toggle {
         display: flex !important;
         background: transparent !important;
@@ -1757,189 +1805,292 @@
         box-shadow: none;
       }
 
-      /* Item 17: Vídeo mobile (object-position: center 30%) */
+      /* Vídeo mobile */
       .hero-video-element {
         object-position: center 30%;
       }
 
-      /* Item 13: Hero mobile - título clamp(36px, 10vw, 84px), subtítulo 17px com line-height 1.5. Hero com min-height: 100svh, conteúdo alinhado à base (justify-content: flex-end) com padding-bottom de 24px */
+      /* Hero mobile: min-height 100svh, padding-top 64px, padding-bottom 80px (Item 8 e 9) */
       .hero-cinematic-wrapper {
-        padding: 70px 16px 24px;
-        min-height: 100svh;
-        justify-content: flex-end;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
+        padding-top: 64px !important;
+        padding-bottom: 80px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        min-height: 100svh !important;
+        justify-content: flex-end !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        box-sizing: border-box !important;
+      }
+
+      .hero-content-layer {
+        padding: 0 !important;
+        width: 100% !important;
       }
 
       .hero-title {
-        font-size: clamp(36px, 10vw, 84px);
-        line-height: 1.10;
-        letter-spacing: -0.02em;
-        text-wrap: balance;
-        margin-bottom: 10px;
+        font-size: clamp(24px, 6.8vw, 30px) !important;
+        line-height: 1.12 !important;
+        letter-spacing: -0.02em !important;
+        text-wrap: balance !important;
+        margin-bottom: 6px !important;
       }
 
       .hero-subtitle {
-        font-size: 17px;
-        line-height: 1.5;
-        margin-bottom: 20px;
-        color: var(--on-video);
-        text-wrap: pretty;
+        font-size: 13.5px !important;
+        line-height: 1.35 !important;
+        margin-bottom: 12px !important;
+        color: var(--on-video) !important;
+        text-wrap: pretty !important;
       }
 
-      /* Item 15: Formulário em mobile - layout em grid:
-         linha 1 com Origem (100%),
-         linha 2 com Destino (100%),
-         linha 3 dividida igualmente entre Data (50%) e Passageiros (50%),
-         linha 4 com o botão "Pedir cotação" em 100% da largura. */
+      /* Item 6: Subtítulo no mobile: só "Motorista no desembarque e preço fechado antes de sair." */
+      .sub-cities {
+        display: none !important;
+      }
+
+      /* Item 5: Grade 2x2 compacta */
       .booking-bar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        border-radius: var(--radius-base);
-        background: var(--color-surface);
-        box-shadow: 0 8px 24px rgba(20, 17, 15, 0.20);
-        overflow: visible;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        border-radius: var(--radius-base) !important;
+        background: var(--color-surface) !important;
+        box-shadow: 0 8px 24px rgba(20, 17, 15, 0.20) !important;
+        overflow: hidden !important;
+        width: 100% !important;
       }
 
-      /* Linha 1: Origem 100% */
+      /* Linha 1: Origem (50%) */
       .booking-field:nth-child(1) {
-        grid-column: span 2;
-        border-right: none;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
-        padding: 10px 14px;
-        min-height: 52px;
+        grid-column: 1 / 2 !important;
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 10px 12px !important;
+        border-right: 1px solid rgba(20, 17, 15, 0.12) !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
       }
 
-      /* Linha 2: Destino 100% */
+      /* Linha 1: Destino (50%) */
       .booking-field:nth-child(2) {
-        grid-column: span 2;
-        border-right: none;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
-        padding: 10px 14px;
-        min-height: 52px;
+        grid-column: 2 / 3 !important;
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 10px 12px !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
       }
 
-      /* Linha 3: Data 50% */
+      /* Linha 2: Data (50%) */
       .booking-field:nth-child(3) {
-        grid-column: span 1;
-        border-right: 1px solid rgba(20, 17, 15, 0.12);
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
-        padding: 10px 14px;
-        min-height: 52px;
+        grid-column: 1 / 2 !important;
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 10px 12px !important;
+        border-right: 1px solid rgba(20, 17, 15, 0.12) !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
       }
 
-      /* Linha 3: Passageiros 50% */
+      /* Linha 2: Passageiros (50%) */
       .booking-field:nth-child(4) {
-        grid-column: span 1;
-        border-right: none;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12);
-        padding: 10px 14px;
-        min-height: 52px;
+        grid-column: 2 / 3 !important;
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 10px 12px !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
       }
 
-      /* Linha 4: Botão Pedir Cotação 100% */
+      /* Linha 3: Botão Pedir Cotação 100% */
       .booking-submit-cell {
-        grid-column: span 2;
-        border-top: none;
+        grid-column: 1 / 3 !important;
+        border-top: none !important;
       }
 
       .btn-booking-submit {
-        width: 100%;
-        height: 46px;
-        font-size: 15px;
-        font-weight: 600;
-        border-radius: 0 0 var(--radius-base) var(--radius-base);
+        width: 100% !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        border-radius: 0 0 var(--radius-base) var(--radius-base) !important;
       }
 
       .booking-field-label {
-        font-size: 10px;
-        letter-spacing: 0.05em;
-        margin-bottom: 2px;
+        font-size: 11px !important;
+        letter-spacing: 0.05em !important;
+        margin-bottom: 2px !important;
       }
 
       .booking-trigger {
-        font-size: 14px;
+        font-size: 15px !important;
       }
 
-      .custom-dropdown-menu {
-        position: absolute;
-        left: 0;
-        min-width: 100%;
-        max-width: 100%;
-        z-index: 100;
+      .booking-value {
+        font-size: 15px !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
       }
 
-      .custom-calendar-popover {
-        position: absolute;
-        left: 0;
-        width: 280px;
-        min-width: 280px;
-        max-width: calc(100vw - 32px);
-        z-index: 100;
+      /* Item 5: Campo Origem fechado mostra Aeroporto (BPS) */
+      .origin-short {
+        display: inline !important;
       }
 
-      #fieldPassengers .custom-dropdown-menu {
-        left: auto;
-        right: 0;
-        min-width: 220px;
-        width: max-content;
-        max-width: calc(100vw - 32px);
+      .origin-full {
+        display: none !important;
       }
 
       /* Ação auxiliar (+ adicionar detalhes) */
       .booking-auxiliary-row {
-        margin: 10px 0 8px 0;
+        margin: 8px 0 0 0 !important;
       }
 
       .btn-toggle-details {
-        font-size: 12px;
+        font-size: 11.5px !important;
       }
 
-      /* Item 16: Atalhos de rota em mobile - exibidos em linha única com scroll horizontal suave (sem quebrar em múltiplas linhas, sem barra de rolagem visível) */
+      /* Item 7: Esconder atalhos de rota e scroll indicator no mobile */
       .hero-frequent-routes {
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 12px;
-        margin-top: 10px;
-        padding-bottom: 4px;
-        width: 100%;
+        display: none !important;
       }
 
-      .hero-frequent-routes::-webkit-scrollbar {
-        display: none;
-      }
-
-      .frequent-label {
-        font-size: 11px;
-        flex-shrink: 0;
-      }
-
-      .frequent-list {
-        display: inline-flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        gap: 12px;
-      }
-
-      .frequent-route-btn {
-        font-size: 12px;
-        flex-shrink: 0;
-        white-space: nowrap;
-      }
-
-      .route-separator {
-        display: none;
-      }
-
-      /* Item 12: Ocultar indicador de scroll em mobile */
       .scroll-indicator {
         display: none !important;
+      }
+
+      /* Item 8: Botão flutuante do WhatsApp no mobile */
+      .whatsapp-float-btn {
+        width: 48px !important;
+        height: 48px !important;
+        bottom: 16px !important;
+        right: 16px !important;
+      }
+
+      /* Item 12: Bottom Sheet para Dropdowns e Calendário */
+      .booking-sheet-backdrop {
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(20, 17, 15, 0.5) !important;
+        z-index: 1999 !important;
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+      }
+
+      .custom-dropdown-popover,
+      .custom-calendar-popover {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: #F4EFE6 !important;
+        border: none !important;
+        border-top: 1px solid rgba(20, 17, 15, 0.12) !important;
+        border-radius: 16px 16px 0 0 !important;
+        box-shadow: 0 -8px 32px rgba(20, 17, 15, 0.25) !important;
+        z-index: 2000 !important;
+        padding: 16px 16px max(24px, env(safe-area-inset-bottom)) !important;
+        box-sizing: border-box !important;
+        max-height: 82vh !important;
+        overflow-y: auto !important;
+        animation: slideUpSheet 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      @keyframes slideUpSheet {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+      }
+
+      .sheet-drag-indicator {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 12px !important;
+      }
+
+      .sheet-handle {
+        display: block !important;
+        width: 38px !important;
+        height: 4px !important;
+        border-radius: 2px !important;
+        background: rgba(20, 17, 15, 0.22) !important;
+      }
+
+      .sheet-header {
+        display: block !important;
+        text-align: center !important;
+        margin-bottom: 12px !important;
+      }
+
+      .sheet-title {
+        display: inline-block !important;
+        font-family: var(--font-sans) !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        color: rgba(20, 17, 15, 0.60) !important;
+      }
+
+      .custom-dropdown-menu li {
+        padding: 14px 16px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+        border-radius: 8px !important;
+        margin-bottom: 4px !important;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.06) !important;
+      }
+
+      /* Células do calendário com 44px de altura exata (Item 12) */
+      .cal-header {
+        max-width: 318px !important;
+        margin: 0 auto 12px auto !important;
+        padding: 0 4px !important;
+      }
+      .cal-weekdays {
+        display: grid !important;
+        grid-template-columns: repeat(7, 42px) !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        max-width: 320px !important;
+        margin: 0 auto 6px auto !important;
+        text-align: center !important;
+      }
+      .cal-days-grid {
+        display: grid !important;
+        grid-template-columns: repeat(7, 42px) !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+      }
+      .cal-day,
+      .cal-day-empty {
+        width: 42px !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        font-size: 15px !important;
+        border-radius: 6px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+      }
+
+      .cal-weekdays {
+        margin-bottom: 8px !important;
+      }
+
+      .cal-weekdays span {
+        height: 28px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
       }
 
       /* Seção Planejamento: cabe perfeitamente na tela mobile em grid 2x2 */
@@ -2363,12 +2514,9 @@
   <header class="site-header" id="siteHeader">
     <div class="header-container">
       
-      <!-- Logo em texto (substitui a imagem): "Nobre" em Newsreader 28px + "TRANSFERS" em Hanken Grotesk 11px -->
+      <!-- Logo em imagem original (Item 1): assets/images/Logomarca-NOBRETRANSFERS.png -->
       <a href="#" class="brand-link" aria-label="Nobre Transfers - Início">
-        <span class="brand-logo-text">
-          <span class="brand-name">Nobre</span>
-          <span class="brand-sub">TRANSFERS</span>
-        </span>
+        <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="brand-logo" width="auto" height="56">
       </a>
 
       <!-- Menu de Navegação alinhado à direita, junto do botão WhatsApp -->
@@ -2433,8 +2581,8 @@
       <!-- Título: Terço inferior, alinhado à esquerda -->
       <h1 class="hero-title">Do aeroporto ao seu destino, sem espera.</h1>
 
-      <!-- Subtítulo atualizado conforme item 11 -->
-      <p class="hero-subtitle">Transfers do aeroporto de Porto Seguro para Trancoso, Arraial d'Ajuda, Caraíva e Santo André. Motorista no desembarque, preço fechado.</p>
+      <!-- Subtítulo (Item 6): no mobile esconde cidades e mantém lead curto -->
+      <p class="hero-subtitle"><span class="sub-cities">Transfers do aeroporto de Porto Seguro para Trancoso, Arraial d'Ajuda, Caraíva e Santo André. </span><span class="sub-lead">Motorista no desembarque e preço fechado antes de sair.</span></p>
 
       <!-- Barra de Reserva: 100% sólida em var(--color-surface), sem transparência, sem blur -->
       <div class="booking-bar-wrapper">
@@ -2446,22 +2594,13 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Origem</span>
             </span>
-            <button type="button" class="booking-trigger" id="originTrigger" aria-haspopup="listbox" aria-expanded="false">
-              <span class="booking-value" id="originValue">Aeroporto de Porto Seguro</span>
+            <button type="button" class="booking-trigger" id="originTrigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="originMenuPopover">
+              <span class="booking-value" id="originValue"><span class="origin-full">Aeroporto de Porto Seguro</span><span class="origin-short">Aeroporto (BPS)</span></span>
               <span class="booking-chevron" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <input type="hidden" id="bookingOrigin" name="origin" value="Aeroporto de Porto Seguro">
-            <ul class="custom-dropdown-menu" id="originMenu" role="listbox" aria-label="Selecione a Origem" hidden>
-              <li role="option" aria-selected="true" class="is-selected" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
-              <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
-              <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
-              <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
-              <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
-              <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
-              <li role="option" aria-selected="false" data-value="Terravista / Fly Club">Terravista / Fly Club</li>
-            </ul>
           </div>
 
           <!-- 2. DESTINO (Dropdown Customizado) -->
@@ -2470,24 +2609,13 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
               <span>Destino</span>
             </span>
-            <button type="button" class="booking-trigger" id="destinationTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <button type="button" class="booking-trigger" id="destinationTrigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="destinationMenuPopover">
               <span class="booking-value is-placeholder" id="destinationValue">Para onde você vai?</span>
               <span class="booking-chevron" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <input type="hidden" id="bookingDestination" name="destination" value="">
-            <ul class="custom-dropdown-menu" id="destinationMenu" role="listbox" aria-label="Selecione o Destino" hidden>
-              <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
-              <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
-              <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
-              <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
-              <li role="option" aria-selected="false" data-value="Praia do Espelho">Praia do Espelho</li>
-              <li role="option" aria-selected="false" data-value="Taípe">Taípe</li>
-              <li role="option" aria-selected="false" data-value="Rio da Barra">Rio da Barra</li>
-              <li role="option" aria-selected="false" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
-              <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
-            </ul>
           </div>
 
           <!-- 3. DATA (Calendário Customizado Integrado) -->
@@ -2496,30 +2624,13 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
               <span>Data</span>
             </span>
-            <button type="button" class="booking-trigger" id="dateTrigger" aria-haspopup="dialog" aria-expanded="false">
+            <button type="button" class="booking-trigger" id="dateTrigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="calendarPopover">
               <span class="booking-value" id="dateValue">Hoje</span>
               <span class="booking-chevron" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <input type="hidden" id="bookingDate" name="date" value="">
-            
-            <!-- Popover de Calendário Acessível -->
-            <div class="custom-calendar-popover" id="calendarPopover" role="dialog" aria-label="Selecione a data da viagem" hidden>
-              <div class="cal-header">
-                <button type="button" class="cal-nav-btn" id="calPrevBtn" aria-label="Mês anterior">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <span class="cal-title" id="calTitle">Setembro 2026</span>
-                <button type="button" class="cal-nav-btn" id="calNextBtn" aria-label="Próximo mês">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-              <div class="cal-weekdays">
-                <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
-              </div>
-              <div class="cal-days-grid" id="calDaysGrid"></div>
-            </div>
           </div>
 
           <!-- 4. PASSAGEIROS (Dropdown Customizado com Categorias Exatas) -->
@@ -2528,18 +2639,13 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <span>Passageiros</span>
             </span>
-            <button type="button" class="booking-trigger" id="passengersTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <button type="button" class="booking-trigger" id="passengersTrigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="passengersMenuPopover">
               <span class="booking-value" id="passengersValue">1 a 4 passageiros (SUV)</span>
               <span class="booking-chevron" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <input type="hidden" id="bookingPassengers" name="passengers" value="1 a 4 passageiros (SUV)">
-            <ul class="custom-dropdown-menu" id="passengersMenu" role="listbox" aria-label="Selecione os Passageiros" hidden>
-              <li role="option" aria-selected="true" class="is-selected" data-value="1 a 4 passageiros (SUV)">1 a 4 passageiros (SUV)</li>
-              <li role="option" aria-selected="false" data-value="5 a 6 passageiros (Spin)">5 a 6 passageiros (Spin)</li>
-              <li role="option" aria-selected="false" data-value="7 ou mais (van)">7 ou mais (van)</li>
-            </ul>
           </div>
 
           <!-- 5. BOTÃO "PEDIR COTAÇÃO" (Dourado sólido, sem ícone WhatsApp) -->
@@ -2563,18 +2669,18 @@
           </div>
         </div>
 
-        <!-- Atalhos de rota discretos (apenas texto com link discreto, sem estilo de botão/pílula/badge) -->
+        <!-- Atalhos de rota discretos (Item 2) -->
         <div class="hero-frequent-routes">
-          <span class="frequent-label">Rotas frequentes:</span>
+          <span class="frequent-label">Do aeroporto para:</span>
           <span class="frequent-list">
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Trancoso')">Aeroporto de Porto Seguro → Trancoso</button>
-            <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Arraial d\'Ajuda')">Aeroporto de Porto Seguro → Arraial d'Ajuda</button>
-            <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Caraíva')">Aeroporto de Porto Seguro → Caraíva</button>
-            <span class="route-separator" aria-hidden="true">•</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Santo André')">Aeroporto de Porto Seguro → Santo André</button>
-            <span class="route-separator" aria-hidden="true">•</span>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Trancoso')">Trancoso</button>
+            <span class="route-dot" aria-hidden="true">·</span>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Arraial d\'Ajuda')">Arraial d'Ajuda</button>
+            <span class="route-dot" aria-hidden="true">·</span>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Caraíva')">Caraíva</button>
+            <span class="route-dot" aria-hidden="true">·</span>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Santo André')">Santo André</button>
+            <span class="route-pipe" aria-hidden="true">|</span>
             <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Terravista / Fly Club', 'Trancoso')">Terravista → Trancoso</button>
           </span>
         </div>
@@ -2588,6 +2694,76 @@
       <span class="scroll-indicator-text">Como funciona ↓</span>
     </a>
   </section>
+
+  <!-- ========================================================
+       POPOVERS E BOTTOM SHEETS FORA DO HERO (Item 11 & 12)
+       ======================================================== -->
+  <div id="bookingPopoversContainer">
+    <!-- Backdrop para Mobile Bottom Sheet e Outside Click -->
+    <div class="booking-sheet-backdrop" id="bookingSheetBackdrop" hidden></div>
+
+    <!-- 1. Popover Origem -->
+    <div class="custom-dropdown-popover" id="originMenuPopover" role="dialog" aria-label="Selecione a Origem" hidden>
+      <div class="sheet-drag-indicator"><span class="sheet-handle"></span></div>
+      <div class="sheet-header"><span class="sheet-title">Selecione a Origem</span></div>
+      <ul class="custom-dropdown-menu" id="originMenu" role="listbox">
+        <li role="option" aria-selected="true" class="is-selected" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
+        <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
+        <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
+        <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
+        <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
+        <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
+        <li role="option" aria-selected="false" data-value="Terravista / Fly Club">Terravista / Fly Club</li>
+      </ul>
+    </div>
+
+    <!-- 2. Popover Destino -->
+    <div class="custom-dropdown-popover" id="destinationMenuPopover" role="dialog" aria-label="Selecione o Destino" hidden>
+      <div class="sheet-drag-indicator"><span class="sheet-handle"></span></div>
+      <div class="sheet-header"><span class="sheet-title">Selecione o Destino</span></div>
+      <ul class="custom-dropdown-menu" id="destinationMenu" role="listbox">
+        <li role="option" aria-selected="false" data-value="Trancoso">Trancoso</li>
+        <li role="option" aria-selected="false" data-value="Arraial d'Ajuda">Arraial d'Ajuda</li>
+        <li role="option" aria-selected="false" data-value="Caraíva">Caraíva</li>
+        <li role="option" aria-selected="false" data-value="Santo André">Santo André</li>
+        <li role="option" aria-selected="false" data-value="Praia do Espelho">Praia do Espelho</li>
+        <li role="option" aria-selected="false" data-value="Taípe">Taípe</li>
+        <li role="option" aria-selected="false" data-value="Rio da Barra">Rio da Barra</li>
+        <li role="option" aria-selected="false" data-value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</li>
+        <li role="option" aria-selected="false" data-value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</li>
+      </ul>
+    </div>
+
+    <!-- 3. Popover Calendário -->
+    <div class="custom-calendar-popover" id="calendarPopover" role="dialog" aria-label="Selecione a data da viagem" hidden>
+      <div class="sheet-drag-indicator"><span class="sheet-handle"></span></div>
+      <div class="sheet-header"><span class="sheet-title">Selecione a Data</span></div>
+      <div class="cal-header">
+        <button type="button" class="cal-nav-btn" id="calPrevBtn" aria-label="Mês anterior">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="cal-title" id="calTitle">Setembro 2026</span>
+        <button type="button" class="cal-nav-btn" id="calNextBtn" aria-label="Próximo mês">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-weekdays">
+        <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+      </div>
+      <div class="cal-days-grid" id="calDaysGrid"></div>
+    </div>
+
+    <!-- 4. Popover Passageiros -->
+    <div class="custom-dropdown-popover" id="passengersMenuPopover" role="dialog" aria-label="Selecione os Passageiros" hidden>
+      <div class="sheet-drag-indicator"><span class="sheet-handle"></span></div>
+      <div class="sheet-header"><span class="sheet-title">Passageiros e Veículo</span></div>
+      <ul class="custom-dropdown-menu" id="passengersMenu" role="listbox">
+        <li role="option" aria-selected="true" class="is-selected" data-value="1 a 4 passageiros (SUV)">1 a 4 passageiros (SUV)</li>
+        <li role="option" aria-selected="false" data-value="5 a 6 passageiros (Spin)">5 a 6 passageiros (Spin)</li>
+        <li role="option" aria-selected="false" data-value="7 ou mais (van)">7 ou mais (van)</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ========================================================
        1. "JÁ PLANEJOU A SUA VIAGEM?" (TIMELINE MINIMALISTA)
@@ -3191,43 +3367,100 @@
       });
     });
 
-    // 2. CONTROLE DE DROPDOWNS CUSTOMIZADOS & CALENDÁRIO ACESSÍVEL
+    // 2. CONTROLE DE DROPDOWNS CUSTOMIZADOS & CALENDÁRIO ACESSÍVEL (ITEM 10, 11 & 12)
+    function positionPopover(triggerEl, popoverEl) {
+      if (window.innerWidth <= 600) {
+        popoverEl.style.top = '';
+        popoverEl.style.left = '';
+        popoverEl.style.right = '';
+        popoverEl.style.bottom = '';
+        popoverEl.style.width = '';
+        return;
+      }
+
+      // Desktop: Posicionamento fixo baseado em getBoundingClientRect()
+      const rect = triggerEl.getBoundingClientRect();
+      const popoverWidth = popoverEl.offsetWidth || (popoverEl.id === 'calendarPopover' ? 280 : 260);
+      const popoverHeight = popoverEl.offsetHeight || 260;
+
+      let left = rect.left;
+      if (left + popoverWidth > window.innerWidth - 16) {
+        left = Math.max(16, window.innerWidth - popoverWidth - 16);
+      }
+      if (left < 16) left = 16;
+
+      let top = rect.bottom + 6;
+      if (top + popoverHeight > window.innerHeight - 16 && rect.top > popoverHeight + 16) {
+        top = rect.top - popoverHeight - 6;
+      }
+
+      popoverEl.style.position = 'fixed';
+      popoverEl.style.top = `${top}px`;
+      popoverEl.style.left = `${left}px`;
+      popoverEl.style.right = 'auto';
+      popoverEl.style.bottom = 'auto';
+      popoverEl.style.zIndex = '2000';
+    }
+
     function closeAllBookingPopovers() {
       document.querySelectorAll('.booking-field.is-open').forEach(field => {
         field.classList.remove('is-open');
         const trigger = field.querySelector('.booking-trigger');
         if (trigger) trigger.setAttribute('aria-expanded', 'false');
-        const popover = field.querySelector('.custom-dropdown-menu, .custom-calendar-popover');
-        if (popover) popover.setAttribute('hidden', '');
       });
+
+      const backdrop = document.getElementById('bookingSheetBackdrop');
+      if (backdrop) backdrop.setAttribute('hidden', '');
+
+      document.querySelectorAll('.custom-dropdown-popover, .custom-calendar-popover').forEach(pop => {
+        pop.setAttribute('hidden', '');
+        pop.style.top = '';
+        pop.style.left = '';
+      });
+
+      document.body.style.overflow = '';
+    }
+
+    function openBookingPopover(fieldEl, triggerEl, popoverEl) {
+      const isAlreadyOpen = fieldEl.classList.contains('is-open');
+      closeAllBookingPopovers();
+
+      if (!isAlreadyOpen) {
+        fieldEl.classList.add('is-open');
+        triggerEl.setAttribute('aria-expanded', 'true');
+        popoverEl.removeAttribute('hidden');
+
+        if (window.innerWidth <= 600) {
+          const backdrop = document.getElementById('bookingSheetBackdrop');
+          if (backdrop) backdrop.removeAttribute('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          positionPopover(triggerEl, popoverEl);
+        }
+      }
     }
 
     // Inicialização dos Dropdowns Customizados (Origem, Destino, Passageiros)
     (function initCustomDropdowns() {
       const dropdownConfigs = [
-        { fieldId: 'fieldOrigin', triggerId: 'originTrigger', menuId: 'originMenu', inputId: 'bookingOrigin', valueId: 'originValue' },
-        { fieldId: 'fieldDestination', triggerId: 'destinationTrigger', menuId: 'destinationMenu', inputId: 'bookingDestination', valueId: 'destinationValue' },
-        { fieldId: 'fieldPassengers', triggerId: 'passengersTrigger', menuId: 'passengersMenu', inputId: 'bookingPassengers', valueId: 'passengersValue' }
+        { fieldId: 'fieldOrigin', triggerId: 'originTrigger', popoverId: 'originMenuPopover', menuId: 'originMenu', inputId: 'bookingOrigin', valueId: 'originValue', isOrigin: true },
+        { fieldId: 'fieldDestination', triggerId: 'destinationTrigger', popoverId: 'destinationMenuPopover', menuId: 'destinationMenu', inputId: 'bookingDestination', valueId: 'destinationValue', isOrigin: false },
+        { fieldId: 'fieldPassengers', triggerId: 'passengersTrigger', popoverId: 'passengersMenuPopover', menuId: 'passengersMenu', inputId: 'bookingPassengers', valueId: 'passengersValue', isOrigin: false }
       ];
 
       dropdownConfigs.forEach(cfg => {
         const field = document.getElementById(cfg.fieldId);
         const trigger = document.getElementById(cfg.triggerId);
+        const popover = document.getElementById(cfg.popoverId);
         const menu = document.getElementById(cfg.menuId);
         const hiddenInput = document.getElementById(cfg.inputId);
         const valueEl = document.getElementById(cfg.valueId);
 
-        if (!field || !trigger || !menu || !hiddenInput || !valueEl) return;
+        if (!field || !trigger || !popover || !menu || !hiddenInput || !valueEl) return;
 
         trigger.addEventListener('click', (e) => {
           e.stopPropagation();
-          const isOpen = field.classList.contains('is-open');
-          closeAllBookingPopovers();
-          if (!isOpen) {
-            field.classList.add('is-open');
-            trigger.setAttribute('aria-expanded', 'true');
-            menu.removeAttribute('hidden');
-          }
+          openBookingPopover(field, trigger, popover);
         });
 
         menu.querySelectorAll('li[role="option"]').forEach(item => {
@@ -3235,8 +3468,17 @@
             e.stopPropagation();
             const val = item.getAttribute('data-value');
             hiddenInput.value = val;
-            valueEl.textContent = val;
-            valueEl.classList.remove('is-placeholder');
+
+            if (cfg.isOrigin) {
+              if (val === 'Aeroporto de Porto Seguro') {
+                valueEl.innerHTML = '<span class="origin-full">Aeroporto de Porto Seguro</span><span class="origin-short">Aeroporto (BPS)</span>';
+              } else {
+                valueEl.textContent = val;
+              }
+            } else {
+              valueEl.textContent = val;
+              valueEl.classList.remove('is-placeholder');
+            }
 
             menu.querySelectorAll('li[role="option"]').forEach(opt => {
               opt.classList.remove('is-selected');
@@ -3250,9 +3492,14 @@
         });
       });
 
-      // Fechar ao clicar fora ou pressionar ESC
+      // Fechar no clique fora, no backdrop ou tecla ESC
+      const backdrop = document.getElementById('bookingSheetBackdrop');
+      if (backdrop) {
+        backdrop.addEventListener('click', closeAllBookingPopovers);
+      }
+
       document.addEventListener('click', (e) => {
-        if (!e.target.closest('.booking-field')) {
+        if (!e.target.closest('.booking-field') && !e.target.closest('.custom-dropdown-popover') && !e.target.closest('.custom-calendar-popover')) {
           closeAllBookingPopovers();
         }
       });
@@ -3262,9 +3509,32 @@
           closeAllBookingPopovers();
         }
       });
+
+      // Reposicionar popover ativo no resize/scroll do desktop
+      window.addEventListener('resize', () => {
+        const openPopover = document.querySelector('.custom-dropdown-popover:not([hidden]), .custom-calendar-popover:not([hidden])');
+        if (openPopover) {
+          const activeField = document.querySelector('.booking-field.is-open');
+          if (activeField) {
+            const trigger = activeField.querySelector('.booking-trigger');
+            if (trigger) positionPopover(trigger, openPopover);
+          }
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        const openPopover = document.querySelector('.custom-dropdown-popover:not([hidden]), .custom-calendar-popover:not([hidden])');
+        if (openPopover && window.innerWidth > 600) {
+          const activeField = document.querySelector('.booking-field.is-open');
+          if (activeField) {
+            const trigger = activeField.querySelector('.booking-trigger');
+            if (trigger) positionPopover(trigger, openPopover);
+          }
+        }
+      }, { passive: true });
     })();
 
-    // 3. CALENDÁRIO POPOVER ACESSÍVEL (SEM DEPENDER DO NATIVO)
+    // 3. CALENDÁRIO POPOVER ACESSÍVEL (ITEM 10, 11 & 12)
     (function initCustomCalendar() {
       const fieldDate = document.getElementById('fieldDate');
       const dateTrigger = document.getElementById('dateTrigger');
@@ -3320,10 +3590,10 @@
 
         calDaysGrid.innerHTML = '';
 
-        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Domingo
+        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Domingo, 1 = Seg, 2 = Ter
         const totalDays = new Date(year, month + 1, 0).getDate();
 
-        // Células em branco para alinhar os dias da semana
+        // Células em branco para alinhar os dias da semana (Offset exato)
         for (let i = 0; i < firstDayIndex; i++) {
           const emptyCell = document.createElement('div');
           emptyCell.className = 'cal-day-empty';
@@ -3366,13 +3636,16 @@
 
       dateTrigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = fieldDate.classList.contains('is-open');
-        closeAllBookingPopovers();
-        if (!isOpen) {
-          fieldDate.classList.add('is-open');
-          dateTrigger.setAttribute('aria-expanded', 'true');
-          calendarPopover.removeAttribute('hidden');
-          renderCalendar();
+        openBookingPopover(fieldDate, dateTrigger, calendarPopover);
+        if (bookingDateInput.value) {
+          const parts = bookingDateInput.value.split('-');
+          if (parts.length === 3) {
+            viewDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, 1);
+          }
+        }
+        renderCalendar();
+        if (window.innerWidth > 600) {
+          positionPopover(dateTrigger, calendarPopover);
         }
       });
 
@@ -3381,6 +3654,9 @@
           e.stopPropagation();
           viewDate.setMonth(viewDate.getMonth() - 1);
           renderCalendar();
+          if (window.innerWidth > 600) {
+            positionPopover(dateTrigger, calendarPopover);
+          }
         });
       }
 
@@ -3389,10 +3665,21 @@
           e.stopPropagation();
           viewDate.setMonth(viewDate.getMonth() + 1);
           renderCalendar();
+          if (window.innerWidth > 600) {
+            positionPopover(dateTrigger, calendarPopover);
+          }
         });
       }
 
       renderCalendar();
+
+      // Suporte para auto-abrir via URL (?openCalendar=true) para verificação e screenshots
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('openCalendar') === 'true') {
+        setTimeout(() => {
+          dateTrigger.click();
+        }, 350);
+      }
     })();
 
     // 4. EXPANSÃO DO CAMPO DE DETALHES (+ adicionar detalhes)
@@ -3423,7 +3710,13 @@
       const destValue = document.getElementById('destinationValue');
 
       if (originInput) originInput.value = origem;
-      if (originValue) originValue.textContent = origem;
+      if (originValue) {
+        if (origem === 'Aeroporto de Porto Seguro') {
+          originValue.innerHTML = '<span class="origin-full">Aeroporto de Porto Seguro</span><span class="origin-short">Aeroporto (BPS)</span>';
+        } else {
+          originValue.textContent = origem;
+        }
+      }
 
       if (destInput) destInput.value = destino;
       if (destValue) {
