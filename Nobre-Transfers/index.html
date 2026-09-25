@@ -10,17 +10,19 @@
   <meta property="og:description" content="Seu destino, nossa prioridade. Frota executiva 4x4, motoristas em traje social e atendimento Nobre Transfers 24/7.">
   <meta property="og:image" content="assets/images/Logomarca-NOBRETRANSFERS.png">
   <meta name="theme-color" content="#F4EFE6">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
 
-  <!-- GOOGLE FONTS: EDITORIAL DESIGN (NEWSREADER + HANKEN GROTESK) -->
+
+  <!-- GOOGLE FONTS: ASSÍNCRONO / NÃO BLOQUEIA RENDERIZAÇÃO -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+  </noscript>
 
   <!-- PRELOAD DO FRAME INICIAL -->
-  <link rel="preload" as="image" href="assets/images/hero_first_frame.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero_first_frame.webp" type="image/webp" fetchpriority="high">
 
   <style>
     /* ========================================================
@@ -406,14 +408,17 @@
 
     .hero-title {
       animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      will-change: transform, opacity;
     }
 
     .hero-subtitle {
       animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+      will-change: transform, opacity;
     }
 
     .booking-bar-wrapper {
       animation: heroFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+      will-change: transform, opacity;
     }
 
     .hero-frequent-routes {
@@ -1250,22 +1255,25 @@
     }
 
     /* Badge elegante sobre a foto */
-    .spread-media-col .spread-badge-tag {
+    .spread-media-col .spread-badge-tag,
+    .spread-badge-tag {
       position: absolute;
       top: 36px;
       left: 44px;
-      background: rgba(7, 14, 23, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-gold);
-      border-radius: 50px;
-      padding: 6px 18px;
-      font-size: 10px;
-      letter-spacing: 0.18em;
+      background: rgba(20, 17, 15, 0.82) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(244, 239, 230, 0.25) !important;
+      border-radius: var(--radius-base);
+      padding: 6px 14px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: #F4EFE6 !important;
       font-weight: 600;
       z-index: 2;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.50);
     }
 
     /* LADO DIREITO: DESCRIÇÃO VERTICAL AO LADO (50% DA TELA) */
@@ -1645,11 +1653,13 @@
         object-fit: cover;
       }
 
-      .spread-media-col .spread-badge-tag {
+      .spread-media-col .spread-badge-tag,
+      .spread-badge-tag {
         top: 14px;
         left: 16px;
-        font-size: 9px;
-        padding: 4px 12px;
+        font-size: 10px;
+        padding: 4px 11px;
+        letter-spacing: 0.06em;
       }
 
       .destination-page-spread .spread-content-col {
@@ -1838,6 +1848,21 @@
         line-height: 1.1 !important;
         letter-spacing: -0.02em !important;
         margin-bottom: 8px !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero-subtitle {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .booking-bar-wrapper {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
       }
 
       .hero-subtitle {
@@ -2404,11 +2429,7 @@
       transform: translateY(-2px) !important;
     }
 
-    .spread-badge-tag {
-      background: rgba(255, 255, 255, 0.90);
-      color: var(--color-gold);
-      border-color: rgba(20, 17, 15, 0.08);
-    }
+    /* spread-badge-tag unificado no seletor principal */
 
     /* Frota cards */
     .frota-card-minimal {
@@ -2486,7 +2507,7 @@
       
       <!-- Logo para fundo claro (Item 1 & Upload Recente): assets/images/Logomarca-NOBRETRANSFERS-dark.png -->
       <a href="#" class="brand-link" aria-label="Nobre Transfers - Início">
-        <img src="assets/images/Logomarca-NOBRETRANSFERS-dark.png?v=3" alt="Nobre Transfers" class="brand-logo" width="auto" height="56">
+        <img src="assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="brand-logo" width="107" height="56" decoding="async">
       </a>
 
       <!-- Menu de Navegação alinhado à direita, junto do botão WhatsApp -->
@@ -2535,8 +2556,8 @@
         autoplay 
         muted 
         playsinline 
-        preload="auto"
-        poster="assets/images/hero_first_frame.jpg"
+        preload="metadata"
+        poster="assets/images/hero_first_frame.webp"
         aria-label="Vídeo oficial Nobre Transfers">
         <source src="assets/video/nobre_transfers_30s_cinematico_transicoes.mp4" type="video/mp4">
       </video>
@@ -2851,7 +2872,10 @@
     <!-- 2. CONHEÇA ARRAIAL D'AJUDA -->
     <article class="destination-page-spread" id="arraial">
       <div class="spread-media-col">
-        <img src="assets/images/car_duster.jpg" alt="Conheça Arraial d'Ajuda" loading="lazy">
+        <picture>
+          <source srcset="assets/images/car_duster.webp" type="image/webp">
+          <img src="assets/images/car_duster.jpg" alt="Conheça Arraial d'Ajuda" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Mirante & Falésias</span>
       </div>
       <div class="spread-content-col">
@@ -2883,7 +2907,10 @@
     <!-- 3. CONHEÇA TRANCOSO -->
     <article class="destination-page-spread" id="trancoso">
       <div class="spread-media-col">
-        <img src="assets/images/trancoso_2.jpg" alt="Conheça Trancoso" loading="lazy">
+        <picture>
+          <source srcset="assets/images/trancoso_2.webp" type="image/webp">
+          <img src="assets/images/trancoso_2.jpg" alt="Conheça Trancoso" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">História Colonial & Luxo</span>
       </div>
       <div class="spread-content-col">
@@ -2915,7 +2942,10 @@
     <!-- 4. CONHEÇA CARAÍVA -->
     <article class="destination-page-spread" id="caraiva">
       <div class="spread-media-col">
-        <img src="assets/images/caraiva_1.jpg" alt="Conheça Caraíva" loading="lazy">
+        <picture>
+          <source srcset="assets/images/caraiva_1.webp" type="image/webp">
+          <img src="assets/images/caraiva_1.jpg" alt="Conheça Caraíva" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Vila Rústica Sem Carros</span>
       </div>
       <div class="spread-content-col">
@@ -2947,7 +2977,10 @@
     <!-- 5. CONHEÇA RIO DA BARRA -->
     <article class="destination-page-spread" id="riodabarra">
       <div class="spread-media-col">
-        <img src="assets/images/riodabarra_1.jpg" alt="Conheça Rio da Barra" loading="lazy">
+        <picture>
+          <source srcset="assets/images/riodabarra_1.webp" type="image/webp">
+          <img src="assets/images/riodabarra_1.jpg" alt="Conheça Rio da Barra" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Santuário Ecológico</span>
       </div>
       <div class="spread-content-col">
@@ -2979,7 +3012,10 @@
     <!-- 6. CONHEÇA PRAIA DO ESPELHO -->
     <article class="destination-page-spread" id="espelho">
       <div class="spread-media-col">
-        <img src="assets/images/espelho_1.jpg" alt="Conheça Praia do Espelho" loading="lazy">
+        <picture>
+          <source srcset="assets/images/espelho_1.webp" type="image/webp">
+          <img src="assets/images/espelho_1.jpg" alt="Conheça Praia do Espelho" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Top 10 Praias do Brasil</span>
       </div>
       <div class="spread-content-col">
@@ -3011,7 +3047,10 @@
     <!-- 7. CONHEÇA TAÍPE -->
     <article class="destination-page-spread" id="taipe">
       <div class="spread-media-col">
-        <img src="assets/images/espelho_2.jpg" alt="Conheça Taípe" loading="lazy">
+        <picture>
+          <source srcset="assets/images/espelho_2.webp" type="image/webp">
+          <img src="assets/images/espelho_2.jpg" alt="Conheça Taípe" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Falésias de 45 Metros</span>
       </div>
       <div class="spread-content-col">
@@ -3043,7 +3082,10 @@
     <!-- 8. CONHEÇA SANTO ANDRÉ -->
     <article class="destination-page-spread" id="santoandre">
       <div class="spread-media-col">
-        <img src="assets/images/car_compass.jpg" alt="Conheça Santo André" loading="lazy">
+        <picture>
+          <source srcset="assets/images/car_compass.webp" type="image/webp">
+          <img src="assets/images/car_compass.jpg" alt="Conheça Santo André" width="1280" height="714" loading="lazy" decoding="async">
+        </picture>
         <span class="spread-badge-tag">Oásis ao Norte</span>
       </div>
       <div class="spread-content-col">
@@ -3088,7 +3130,10 @@
       <!-- VEÍCULO 1 -->
       <div class="frota-card-minimal">
         <div class="frota-media">
-          <img src="assets/images/car_compass.jpg" alt="Jeep Compass 4x4" loading="lazy">
+          <picture>
+              <source srcset="assets/images/car_compass.webp" type="image/webp">
+              <img src="assets/images/car_compass.jpg" alt="Jeep Compass 4x4" width="1280" height="714" loading="lazy" decoding="async">
+            </picture>
         </div>
         <div class="frota-info">
           <h3 class="frota-title">Jeep Compass 4x4</h3>
@@ -3099,7 +3144,10 @@
       <!-- VEÍCULO 2 -->
       <div class="frota-card-minimal">
         <div class="frota-media">
-          <img src="assets/images/car_renegade.jpg" alt="Jeep Renegade 4x4" loading="lazy">
+          <picture>
+              <source srcset="assets/images/car_renegade.webp" type="image/webp">
+              <img src="assets/images/car_renegade.jpg" alt="Jeep Renegade 4x4" width="1280" height="714" loading="lazy" decoding="async">
+            </picture>
         </div>
         <div class="frota-info">
           <h3 class="frota-title">Jeep Renegade 4x4</h3>
@@ -3110,7 +3158,10 @@
       <!-- VEÍCULO 3 -->
       <div class="frota-card-minimal">
         <div class="frota-media">
-          <img src="assets/images/frota_banner.jpg" alt="Vans VIP & Utilitários" loading="lazy">
+          <picture>
+              <source srcset="assets/images/frota_banner.webp" type="image/webp">
+              <img src="assets/images/frota_banner.jpg" alt="Vans VIP & Utilitários" width="1280" height="714" loading="lazy" decoding="async">
+            </picture>
         </div>
         <div class="frota-info">
           <h3 class="frota-title">Vans VIP & Grupos</h3>
@@ -3217,7 +3268,7 @@
   <footer class="luxury-footer" id="contato">
     <div class="footer-inner">
       <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="footer-logo logo-dark-theme" style="height: 44px; width: auto; margin-bottom: 6px;">
-      <img src="assets/images/Logomarca-NOBRETRANSFERS-dark.png" alt="Nobre Transfers" class="footer-logo logo-light-theme" style="height: 44px; width: auto; margin-bottom: 6px;">
+      <img src="assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="footer-logo logo-light-theme" width="120" height="63" loading="lazy" decoding="async">
       <h3 class="footer-brand-title">NOBRE TRANSFERS</h3>
       <p class="footer-info-text">
         Traslados Executivos & Passeios Privativos • <span class="footer-highlight">Seu Destino, Nossa Prioridade</span><br>
@@ -3239,7 +3290,7 @@
   </footer>
 
   <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
-  <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20transfers%20e%20passeios%20da%20Nobre%20Transfers." target="_blank" class="whatsapp-float-btn" title="Falar no WhatsApp">
+  <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20transfers%20e%20passeios%20da%20Nobre%20Transfers." target="_blank" class="whatsapp-float-btn" title="Falar no WhatsApp" aria-label="Falar no WhatsApp com a Nobre Transfers">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.183 8.183 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.06-1.07l-.29-.16-3.12.82.83-3.04-.19-.3a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
     </svg>
