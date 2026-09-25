@@ -1761,17 +1761,21 @@
     }
 
     /* ========================================================
-       SMARTPHONE RESPONSIVO: MOBILE FIRST & COMPACTO
+       SMARTPHONE RESPONSIVO: MOBILE-ONLY (≤ 600px)
+       Desktop inalterado.
        ======================================================== */
     @media (max-width: 600px) {
-      /* Header mobile (Item 1): altura 64px, logo 44px */
+
+      /* ── 1. HEADER SÓLIDO ── */
       .site-header,
       .site-header.is-scrolled {
         height: 64px !important;
         min-height: 64px !important;
         padding: 0 !important;
-        background: rgba(244, 239, 230, 0.98) !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.08) !important;
+        background: #F4EFE6 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(20,17,15,0.08) !important;
         box-shadow: none !important;
       }
 
@@ -1786,7 +1790,6 @@
         object-fit: contain !important;
       }
 
-      /* Botão hambúrguer limpo: 3 traços em var(--ink), 44x44px */
       .menu-toggle {
         display: flex !important;
         background: transparent !important;
@@ -1794,29 +1797,25 @@
         box-shadow: none !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        min-width: 44px;
-        min-height: 44px;
-        width: 44px;
-        height: 44px;
+        min-width: 44px; min-height: 44px;
+        width: 44px; height: 44px;
         padding: 0;
       }
 
       .hamburger-bar {
         background-color: var(--ink) !important;
-        width: 22px;
-        height: 2px;
+        width: 22px; height: 2px;
         box-shadow: none;
       }
 
-      /* Vídeo mobile */
+      /* ── 2. HERO ── */
       .hero-video-element {
         object-position: center 30%;
       }
 
-      /* Hero mobile: min-height 100svh, padding-top 64px, padding-bottom 80px (Item 8 e 9) */
       .hero-cinematic-wrapper {
         padding-top: 64px !important;
-        padding-bottom: 80px !important;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
         padding-left: 16px !important;
         padding-right: 16px !important;
         min-height: 100svh !important;
@@ -1832,138 +1831,217 @@
         width: 100% !important;
       }
 
+      /* ── 3. TÍTULO & SUBTÍTULO ── */
       .hero-title {
-        font-size: clamp(24px, 6.8vw, 30px) !important;
-        line-height: 1.12 !important;
+        font-size: clamp(34px, 9vw, 84px) !important;
+        font-weight: 400 !important;
+        line-height: 1.1 !important;
         letter-spacing: -0.02em !important;
-        text-wrap: balance !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 8px !important;
       }
 
       .hero-subtitle {
-        font-size: 13.5px !important;
-        line-height: 1.35 !important;
-        margin-bottom: 12px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 1.4 !important;
+        margin-bottom: 16px !important;
         color: var(--on-video) !important;
-        text-wrap: pretty !important;
       }
 
-      /* Item 6: Subtítulo no mobile: só "Motorista no desembarque e preço fechado antes de sair." */
       .sub-cities {
         display: none !important;
       }
 
-      /* Item 5: Grade 2x2 compacta */
+      /* ── 4. ESCURECIMENTO MOBILE ── */
+      .hero-gradient-overlay {
+        background:
+          linear-gradient(0deg,
+            rgba(20,17,15,0.62) 0%,
+            rgba(20,17,15,0.50) 45%,
+            rgba(20,17,15,0)    80%) !important;
+      }
+
+      .hero-title,
+      .hero-subtitle {
+        text-shadow: 0 1px 24px rgba(20,17,15,0.35) !important;
+      }
+
+      /* ── 5. BARRA DE RESERVA COMPACTA (≤ 140px) ── */
       .booking-bar {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto !important;
         border-radius: var(--radius-base) !important;
-        background: var(--color-surface) !important;
-        box-shadow: 0 8px 24px rgba(20, 17, 15, 0.20) !important;
-        overflow: hidden !important;
+        background: rgba(244,239,230,0.80) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255,255,255,0.4) !important;
+        box-shadow: 0 8px 24px rgba(20,17,15,0.18) !important;
+        overflow: visible !important;
         width: 100% !important;
+        padding: 0 !important;
+        gap: 0 !important;
       }
 
-      /* Linha 1: Origem (50%) */
-      .booking-field:nth-child(1) {
-        grid-column: 1 / 2 !important;
-        height: 56px !important;
-        min-height: 56px !important;
-        padding: 10px 12px !important;
-        border-right: 1px solid rgba(20, 17, 15, 0.12) !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
-      }
-
-      /* Linha 1: Destino (50%) */
+      /* Linha 1: Destino | Data */
       .booking-field:nth-child(2) {
-        grid-column: 2 / 3 !important;
-        height: 56px !important;
-        min-height: 56px !important;
-        padding: 10px 12px !important;
-        border-right: none !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
-      }
-
-      /* Linha 2: Data (50%) */
-      .booking-field:nth-child(3) {
         grid-column: 1 / 2 !important;
-        height: 56px !important;
-        min-height: 56px !important;
-        padding: 10px 12px !important;
-        border-right: 1px solid rgba(20, 17, 15, 0.12) !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
+        grid-row: 1 !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 6px 10px !important;
+        border-right: 1px solid rgba(20,17,15,0.12) !important;
+        border-bottom: none !important;
       }
 
-      /* Linha 2: Passageiros (50%) */
-      .booking-field:nth-child(4) {
+      .booking-field:nth-child(3) {
         grid-column: 2 / 3 !important;
-        height: 56px !important;
-        min-height: 56px !important;
-        padding: 10px 12px !important;
+        grid-row: 1 !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 6px 10px !important;
         border-right: none !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.12) !important;
+        border-bottom: none !important;
       }
 
-      /* Linha 3: Botão Pedir Cotação 100% */
+      /* Origem e Passageiros: ESCONDIDOS por padrão */
+      .booking-field:nth-child(1),
+      .booking-field:nth-child(4) {
+        display: none !important;
+      }
+
+      /* Quando .booking-bar tem .is-expanded, mostra Origem e Passageiros */
+      .booking-bar.is-expanded .booking-field:nth-child(1) {
+        display: flex !important;
+        grid-column: 1 / 2 !important;
+        grid-row: 2 !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 6px 10px !important;
+        border-right: 1px solid rgba(20,17,15,0.12) !important;
+        border-bottom: none !important;
+        border-top: 1px solid rgba(20,17,15,0.12) !important;
+      }
+
+      .booking-bar.is-expanded .booking-field:nth-child(4) {
+        display: flex !important;
+        grid-column: 2 / 3 !important;
+        grid-row: 2 !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 6px 10px !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        border-top: 1px solid rgba(20,17,15,0.12) !important;
+      }
+
+      /* Resumo e Botão */
+      .mobile-booking-summary {
+        display: flex !important;
+        grid-column: 1 / 3 !important;
+        grid-row: auto !important;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 10px 0;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(20,17,15,0.70);
+        line-height: 28px;
+        min-height: 28px;
+      }
+
+      .mobile-summary-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
+      }
+
+      .mobile-summary-edit {
+        background: transparent;
+        border: none;
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 500;
+        padding: 0 4px;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(20,17,15,0.30);
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
       .booking-submit-cell {
         grid-column: 1 / 3 !important;
         border-top: none !important;
+        padding: 6px 0 0 !important;
       }
 
       .btn-booking-submit {
         width: 100% !important;
-        height: 48px !important;
-        min-height: 48px !important;
+        height: 44px !important;
+        min-height: 44px !important;
         font-size: 15px !important;
         font-weight: 600 !important;
-        border-radius: 0 0 var(--radius-base) var(--radius-base) !important;
+        border-radius: var(--radius-base) !important;
       }
 
       .booking-field-label {
         font-size: 11px !important;
         letter-spacing: 0.05em !important;
-        margin-bottom: 2px !important;
+        margin-bottom: 1px !important;
+        color: rgba(20,17,15,0.60) !important;
       }
 
-      .booking-trigger {
-        font-size: 15px !important;
-      }
+      .booking-trigger { font-size: 15px !important; }
 
       .booking-value {
         font-size: 15px !important;
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
         overflow: hidden !important;
+        color: var(--ink) !important;
       }
 
-      /* Item 5: Campo Origem fechado mostra Aeroporto (BPS) */
-      .origin-short {
-        display: inline !important;
+      .booking-value.is-placeholder {
+        color: rgba(20,17,15,0.45) !important;
       }
 
-      .origin-full {
+      .origin-short { display: inline !important; }
+      .origin-full  { display: none !important; }
+
+      /* Ação auxiliar (+ adicionar detalhes) — escondida; aparece quando expandido */
+      .booking-auxiliary-row {
         display: none !important;
       }
 
-      /* Ação auxiliar (+ adicionar detalhes) */
-      .booking-auxiliary-row {
-        margin: 8px 0 0 0 !important;
+      .booking-bar.is-expanded ~ .booking-auxiliary-row {
+        display: flex !important;
+        margin: 6px 0 0 0 !important;
       }
 
       .btn-toggle-details {
-        font-size: 11.5px !important;
+        font-size: 12px !important;
+        color: var(--on-video) !important;
       }
 
-      /* Item 7: Esconder atalhos de rota e scroll indicator no mobile */
-      .hero-frequent-routes {
-        display: none !important;
+      .booking-details-inner {
+        background: rgba(244,239,230,0.80) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
       }
 
-      .scroll-indicator {
-        display: none !important;
-      }
+      /* ── 6. ESCONDER atalhos de rota e scroll indicator ── */
+      .hero-frequent-routes { display: none !important; }
+      .scroll-indicator { display: none !important; }
 
-      /* Item 8: Botão flutuante do WhatsApp no mobile */
+      /* ── 7. BOTÃO FLUTUANTE WHATSAPP ── */
       .whatsapp-float-btn {
         width: 48px !important;
         height: 48px !important;
@@ -1971,11 +2049,11 @@
         right: 16px !important;
       }
 
-      /* Item 12: Bottom Sheet para Dropdowns e Calendário */
+      /* ── 8. BOTTOM SHEETS ── */
       .booking-sheet-backdrop {
         position: fixed !important;
         inset: 0 !important;
-        background: rgba(20, 17, 15, 0.5) !important;
+        background: rgba(20,17,15,0.5) !important;
         z-index: 1999 !important;
         backdrop-filter: blur(4px) !important;
         -webkit-backdrop-filter: blur(4px) !important;
@@ -1992,20 +2070,20 @@
         max-width: 100% !important;
         background: #F4EFE6 !important;
         border: none !important;
-        border-top: 1px solid rgba(20, 17, 15, 0.12) !important;
+        border-top: 1px solid rgba(20,17,15,0.12) !important;
         border-radius: 16px 16px 0 0 !important;
-        box-shadow: 0 -8px 32px rgba(20, 17, 15, 0.25) !important;
+        box-shadow: 0 -8px 32px rgba(20,17,15,0.25) !important;
         z-index: 2000 !important;
         padding: 16px 16px max(24px, env(safe-area-inset-bottom)) !important;
         box-sizing: border-box !important;
         max-height: 82vh !important;
         overflow-y: auto !important;
-        animation: slideUpSheet 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+        animation: slideUpSheet 250ms cubic-bezier(0.16,1,0.3,1) !important;
       }
 
       @keyframes slideUpSheet {
         from { transform: translateY(100%); }
-        to { transform: translateY(0); }
+        to   { transform: translateY(0); }
       }
 
       .sheet-drag-indicator {
@@ -2019,7 +2097,7 @@
         width: 38px !important;
         height: 4px !important;
         border-radius: 2px !important;
-        background: rgba(20, 17, 15, 0.22) !important;
+        background: rgba(20,17,15,0.22) !important;
       }
 
       .sheet-header {
@@ -2035,7 +2113,7 @@
         font-weight: 600 !important;
         letter-spacing: 0.08em !important;
         text-transform: uppercase !important;
-        color: rgba(20, 17, 15, 0.60) !important;
+        color: rgba(20,17,15,0.60) !important;
       }
 
       .custom-dropdown-menu li {
@@ -2044,24 +2122,26 @@
         min-height: 48px !important;
         border-radius: 8px !important;
         margin-bottom: 4px !important;
-        border-bottom: 1px solid rgba(20, 17, 15, 0.06) !important;
+        border-bottom: 1px solid rgba(20,17,15,0.06) !important;
       }
 
-      /* Células do calendário com 44px de altura exata (Item 12) */
+      /* Calendário: células 44px */
       .cal-header {
         max-width: 318px !important;
         margin: 0 auto 12px auto !important;
         padding: 0 4px !important;
       }
+
       .cal-weekdays {
         display: grid !important;
         grid-template-columns: repeat(7, 42px) !important;
         justify-content: center !important;
         gap: 4px !important;
         max-width: 320px !important;
-        margin: 0 auto 6px auto !important;
+        margin: 0 auto 8px auto !important;
         text-align: center !important;
       }
+
       .cal-days-grid {
         display: grid !important;
         grid-template-columns: repeat(7, 42px) !important;
@@ -2070,6 +2150,7 @@
         max-width: 320px !important;
         margin: 0 auto !important;
       }
+
       .cal-day,
       .cal-day-empty {
         width: 42px !important;
@@ -2083,10 +2164,6 @@
         box-sizing: border-box !important;
       }
 
-      .cal-weekdays {
-        margin-bottom: 8px !important;
-      }
-
       .cal-weekdays span {
         height: 28px !important;
         display: flex !important;
@@ -2096,147 +2173,37 @@
         font-weight: 600 !important;
       }
 
-      /* Seção Planejamento: cabe perfeitamente na tela mobile em grid 2x2 */
-      .section-planejamento-slim {
-        padding: 56px 14px 44px;
-        justify-content: center;
-      }
-
-      .planejamento-header {
-        margin: 0 auto 12px;
-      }
-
-      .planejamento-timeline-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100%;
-      }
-
-      .timeline-card-minimal {
-        padding: 10px 10px;
-        border-radius: 10px;
-      }
-
-      .timeline-step-badge {
-        margin-bottom: 6px;
-      }
-
-      .timeline-num {
-        font-size: 8px;
-        padding: 1px 5px;
-      }
-
-      .timeline-icon {
-        font-size: 14px;
-      }
-
-      .timeline-card-minimal .step-title {
-        font-size: 13px;
-        margin-bottom: 2px;
-        line-height: 1.2;
-      }
-
-      .timeline-card-minimal .step-desc {
-        font-size: 10px;
-        line-height: 1.3;
-      }
-
-      /* Capa de Destinos Mobile */
-      .destinations-intro-strip {
-        padding: 56px 16px 44px;
-        justify-content: center;
-      }
-
-      .dest-preview-pill {
-        font-size: 10px;
-        padding: 4px 10px;
-      }
-
-      /* Frota Mobile: 3 cards compactos horizontais para caber tudo na tela */
-      .section-frota-slim {
-        padding: 56px 14px 44px;
-        justify-content: center;
-      }
-
-      .frota-grid-slim {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-top: 10px;
-        width: 100%;
-      }
-
-      .frota-card-minimal {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        border-radius: 10px;
-      }
-
-      .frota-media {
-        width: 110px;
-        height: 75px;
-        flex-shrink: 0;
-      }
-
-      .frota-info {
-        padding: 8px 10px;
-      }
-
-      .frota-title {
-        font-size: 13.5px;
-        margin-bottom: 2px;
-      }
-
-      .frota-specs {
-        font-size: 9.5px;
-        line-height: 1.25;
-      }
-
-      /* FAQ Mobile */
-      .section-faq {
-        padding: 56px 16px 44px;
-        justify-content: center;
-      }
-
-      .faq-header {
-        margin-bottom: 14px;
-      }
-
-      .faq-question {
-        font-size: 13px;
-        padding: 10px 0;
-      }
-
-      .faq-answer-text {
-        font-size: 11.5px;
-      }
-
-      /* Setinha universal em mobile */
-      .page-scroll-indicator {
-        bottom: 8px;
-      }
-
-      .page-scroll-text {
-        font-size: 8.5px;
-      }
-
-      .page-scroll-chevron {
-        width: 14px;
-        height: 14px;
-      }
-
-      .btn-agendar-slim {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .whatsapp-float-btn {
-        bottom: 14px;
-        right: 14px;
-        width: 44px;
-        height: 44px;
-      }
+      /* ── 9. SEÇÕES MOBILE ── */
+      .section-planejamento-slim { padding: 56px 14px 44px; justify-content: center; }
+      .planejamento-header { margin: 0 auto 12px; }
+      .planejamento-timeline-grid { grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+      .timeline-card-minimal { padding: 10px; border-radius: 10px; }
+      .timeline-step-badge { margin-bottom: 6px; }
+      .timeline-num { font-size: 8px; padding: 1px 5px; }
+      .timeline-icon { font-size: 14px; }
+      .timeline-card-minimal .step-title { font-size: 13px; margin-bottom: 2px; line-height: 1.2; }
+      .timeline-card-minimal .step-desc { font-size: 10px; line-height: 1.3; }
+      .destinations-intro-strip { padding: 56px 16px 44px; justify-content: center; }
+      .dest-preview-pill { font-size: 10px; padding: 4px 10px; }
+      .section-frota-slim { padding: 56px 14px 44px; justify-content: center; }
+      .frota-grid-slim { grid-template-columns: 1fr; gap: 8px; margin-top: 10px; width: 100%; }
+      .frota-card-minimal { display: flex; flex-direction: row; align-items: center; border-radius: 10px; }
+      .frota-media { width: 110px; height: 75px; flex-shrink: 0; }
+      .frota-info { padding: 8px 10px; }
+      .frota-title { font-size: 13.5px; margin-bottom: 2px; }
+      .frota-specs { font-size: 9.5px; line-height: 1.25; }
+      .section-faq { padding: 56px 16px 44px; justify-content: center; }
+      .faq-header { margin-bottom: 14px; }
+      .faq-question { font-size: 13px; padding: 10px 0; }
+      .faq-answer-text { font-size: 11.5px; }
+      .page-scroll-indicator { bottom: 8px; }
+      .page-scroll-text { font-size: 8.5px; }
+      .page-scroll-chevron { width: 14px; height: 14px; }
+      .btn-agendar-slim { width: 100%; justify-content: center; }
     }
+
+    /* Resumo mobile: escondido no desktop */
+    .mobile-booking-summary { display: none; }
 
     /* Micro-animações nos cards de destinos (parallax ao scroll) */
     .destination-page-spread .spread-media-col img {
@@ -2649,6 +2616,12 @@
               </span>
             </button>
             <input type="hidden" id="bookingPassengers" name="passengers" value="1 a 4 passageiros (SUV)">
+          </div>
+
+          <!-- Resumo compacto mobile (Linha 2): visível apenas no mobile via CSS -->
+          <div class="mobile-booking-summary" id="mobileSummary">
+            <span class="mobile-summary-text" id="mobileSummaryText">Saindo de Aeroporto (BPS) · 1–4 pass.</span>
+            <button type="button" class="mobile-summary-edit" id="mobileSummaryEdit" aria-expanded="false" aria-label="Editar origem e passageiros">Editar</button>
           </div>
 
           <!-- 5. BOTÃO "PEDIR COTAÇÃO" (Dourado sólido, sem ícone WhatsApp) -->
@@ -3792,6 +3765,68 @@
 
       window.open(`https://wa.me/5573998171117?text=${msg}`, '_blank');
     }
+
+    // 7. INTERSECTION OBSERVER: SCROLL ANIMATIONS (PARALLAX + REVEAL)
+
+    // MOBILE SUMMARY: "Editar" toggle para mostrar/esconder Origem + Passageiros
+    (function initMobileSummary() {
+      const editBtn = document.getElementById('mobileSummaryEdit');
+      const bookingBar = document.querySelector('.booking-bar');
+      const summaryText = document.getElementById('mobileSummaryText');
+      if (!editBtn || !bookingBar) return;
+
+      function updateSummaryText() {
+        const origin = document.getElementById('bookingOrigin')?.value || 'Aeroporto (BPS)';
+        const passengers = document.getElementById('bookingPassengers')?.value || '1 a 4 passageiros (SUV)';
+        // Short origin name for mobile
+        let shortOrigin = origin;
+        if (origin.includes('Aeroporto')) shortOrigin = 'Aeroporto (BPS)';
+        else if (origin.length > 20) shortOrigin = origin.substring(0, 18) + '…';
+        // Short passengers
+        let shortPass = passengers;
+        if (passengers.includes('1 a 4')) shortPass = '1–4 pass.';
+        else if (passengers.includes('5 a 6')) shortPass = '5–6 pass.';
+        else if (passengers.includes('7 ou')) shortPass = '7+ pass.';
+        if (summaryText) {
+          summaryText.textContent = `Saindo de ${shortOrigin} · ${shortPass}`;
+        }
+      }
+
+      editBtn.addEventListener('click', function() {
+        const isExpanded = bookingBar.classList.toggle('is-expanded');
+        editBtn.setAttribute('aria-expanded', String(isExpanded));
+        editBtn.textContent = isExpanded ? 'Fechar' : 'Editar';
+      });
+
+      // Sync summary whenever origin or passengers change
+      // Watch for dropdown selections via MutationObserver on hidden inputs
+      const originInput = document.getElementById('bookingOrigin');
+      const passInput = document.getElementById('bookingPassengers');
+
+      if (originInput) {
+        new MutationObserver(updateSummaryText).observe(originInput, { attributes: true, attributeFilter: ['value'] });
+        originInput.addEventListener('change', updateSummaryText);
+      }
+      if (passInput) {
+        new MutationObserver(updateSummaryText).observe(passInput, { attributes: true, attributeFilter: ['value'] });
+        passInput.addEventListener('change', updateSummaryText);
+      }
+
+      // Also hook into existing dropdown selection logic with a periodic check
+      let lastOrigin = originInput?.value, lastPass = passInput?.value;
+      setInterval(function() {
+        if (originInput && passInput) {
+          if (originInput.value !== lastOrigin || passInput.value !== lastPass) {
+            lastOrigin = originInput.value;
+            lastPass = passInput.value;
+            updateSummaryText();
+          }
+        }
+      }, 300);
+
+      // Initial sync
+      updateSummaryText();
+    })();
 
     // 7. INTERSECTION OBSERVER: SCROLL ANIMATIONS (PARALLAX + REVEAL)
     (function initScrollAnimations() {
