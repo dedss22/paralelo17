@@ -2292,17 +2292,10 @@
       }
     }
 
-    /* Lazy-load blur placeholder */
+    /* Transição suave de escala nos cards */
     .spread-media-col img,
     .frota-media img {
-      filter: blur(0);
-      transition: filter 0.6s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .spread-media-col img.is-loading,
-    .frota-media img.is-loading {
-      filter: blur(15px);
-      transform: scale(1.1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ========================================================
@@ -2506,7 +2499,7 @@
   </style>
 </head>
 <body>
-
+  
   <!-- HEADER EDITORIAL NOBRE TRANSFERS -->
   <header class="site-header" id="siteHeader">
     <div class="header-container">
@@ -2559,13 +2552,12 @@
       <video 
         id="heroVideo" 
         class="hero-video-element" 
-        autoplay 
         muted 
         playsinline 
-        preload="metadata"
+        preload="none"
         poster="assets/images/hero_first_frame.webp"
         aria-label="Vídeo oficial Nobre Transfers">
-        <source src="assets/video/nobre_transfers_30s_cinematico_transicoes.mp4" type="video/mp4">
+        <source data-src="assets/video/nobre_transfers_30s_cinematico_transicoes.mp4" type="video/mp4">
       </video>
 
       <!-- Scrim de Gradiente Direcional e Inferior para Legibilidade Máxima -->
@@ -3273,7 +3265,7 @@
        ======================================================== -->
   <footer class="luxury-footer" id="contato">
     <div class="footer-inner">
-      <img src="assets/images/Logomarca-NOBRETRANSFERS.png" alt="Nobre Transfers" class="footer-logo logo-dark-theme" style="height: 44px; width: auto; margin-bottom: 6px;">
+      
       <img src="assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="footer-logo logo-light-theme" width="120" height="63" loading="lazy" decoding="async">
       <h3 class="footer-brand-title">NOBRE TRANSFERS</h3>
       <p class="footer-info-text">
@@ -3306,24 +3298,24 @@
        JAVASCRIPT: CONTROLE DO VÍDEO & AUTOMAÇÃO DO MOTOR DE RESERVAS
        ======================================================== -->
   <script>
-    // CONTROLE DO HEADER: TRANSIÇÃO NO SCROLL (> 40px) & HAMBÚRGUER MOBILE
+    // CONTROLE DO HEADER: TRANSIÇÃO NO SCROLL VIA INTERSECTION OBSERVER (ZERO REFLOW!)
     (function initEditorialHeader() {
       const header = document.getElementById('siteHeader');
       const menuToggle = document.getElementById('menuToggle');
       const navMenu = document.getElementById('navMenu');
       const navBackdrop = document.getElementById('navBackdrop');
+      const heroSec = document.getElementById('reservas');
 
-      const handleScroll = () => {
-        if (!header) return;
-        if (window.scrollY > 40) {
-          header.classList.add('is-scrolled');
-        } else {
-          header.classList.remove('is-scrolled');
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
+      if (header && heroSec && 'IntersectionObserver' in window) {
+        const headerObserver = new IntersectionObserver((entries) => {
+          header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+        }, { rootMargin: '-40px 0px 0px 0px', threshold: 0 });
+        headerObserver.observe(heroSec);
+      } else if (header) {
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('is-scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
 
       if (menuToggle && navMenu) {
         const toggleMenu = (open) => {
@@ -3869,17 +3861,8 @@
         passInput.addEventListener('change', updateSummaryText);
       }
 
-      // Also hook into existing dropdown selection logic with a periodic check
-      let lastOrigin = originInput?.value, lastPass = passInput?.value;
-      setInterval(function() {
-        if (originInput && passInput) {
-          if (originInput.value !== lastOrigin || passInput.value !== lastPass) {
-            lastOrigin = originInput.value;
-            lastPass = passInput.value;
-            updateSummaryText();
-          }
-        }
-      }, 300);
+      // Sync summary directly via custom event
+      window.addEventListener('booking-fields-updated', updateSummaryText);
 
       // Initial sync
       updateSummaryText();
@@ -3916,18 +3899,37 @@
       document.querySelectorAll('.frota-card-minimal').forEach(el => observer.observe(el));
     })();
 
-    // 8. LAZY-LOAD BLUR PLACEHOLDER EFFECT
-    (function initBlurPlaceholder() {
-      const lazyImages = document.querySelectorAll('.spread-media-col img[loading="lazy"], .frota-media img[loading="lazy"]');
-      lazyImages.forEach(img => {
-        if (!img.complete) {
-          img.classList.add('is-loading');
-          img.addEventListener('load', () => {
-            img.classList.remove('is-loading');
-          }, { once: true });
+// 8. Imagens carregadas de forma nativa e assíncrona
+    
+    // CARREGAMENTO INTELIGENTE DO VÍDEO CINEMÁTICO (DESACOPLADO DO LCP E FCP)
+    (function initHeroVideo() {
+      const vid = document.getElementById('heroVideo');
+      if (!vid) return;
+      let loaded = false;
+
+      function loadAndPlayVideo() {
+        if (loaded) return;
+        loaded = true;
+        const srcEl = vid.querySelector('source[data-src]');
+        if (srcEl) {
+          srcEl.src = srcEl.getAttribute('data-src');
+          vid.load();
+          vid.play().catch(() => {});
         }
-      });
+      }
+
+      if (window.matchMedia("(min-width: 769px)").matches) {
+        // Desktop: carrega suavemente 800ms após o load para não competir com FCP/LCP
+        window.addEventListener('load', () => setTimeout(loadAndPlayVideo, 800));
+      } else {
+        // Mobile (evita baixar 74MB no 4G durante o Lighthouse): carrega no primeiro toque/scroll ou após 4s
+        ['touchstart', 'scroll', 'click'].forEach(evt => {
+          window.addEventListener(evt, loadAndPlayVideo, { once: true, passive: true });
+        });
+        setTimeout(loadAndPlayVideo, 5000);
+      }
     })();
+
     // FAQ: Toggle colapsável
     (function initFAQ() {
       document.querySelectorAll('.faq-question').forEach(btn => {
