@@ -2450,99 +2450,149 @@
         text-shadow: 0 1px 24px rgba(20,17,15,0.35) !important;
       }
 
-      /* ── 5. BARRA DE RESERVA COMPACTA 2x2 NO MOBILE ── */
+      /* ── 5. BARRA DE RESERVA EM COLUNA ÚNICA NO MOBILE ── */
+      .booking-bar-wrapper {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
       .booking-bar {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: auto auto auto !important;
+        display: flex !important;
+        flex-direction: column !important;
         border-radius: var(--radius-base) !important;
         background: rgba(244,239,230,0.88) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         border: 1px solid rgba(255,255,255,0.4) !important;
         box-shadow: 0 8px 24px rgba(20,17,15,0.18) !important;
-        overflow: visible !important;
+        overflow: hidden !important;
         width: 100% !important;
+        max-width: 100% !important;
         padding: 0 !important;
         gap: 0 !important;
+        box-sizing: border-box !important;
       }
 
-      /* Linha 1: Origem | Destino */
-      .booking-field:nth-child(1) {
+      /* Cada campo em coluna única ocupando 100% da largura */
+      .booking-field {
         display: flex !important;
-        grid-column: 1 / 2 !important;
-        grid-row: 1 !important;
-        height: 48px !important;
-        min-height: 48px !important;
-        padding: 6px 10px !important;
-        border-right: 1px solid rgba(20,17,15,0.12) !important;
-        border-bottom: 1px solid rgba(20,17,15,0.12) !important;
-      }
-
-      .booking-field:nth-child(2) {
-        display: flex !important;
-        grid-column: 2 / 3 !important;
-        grid-row: 1 !important;
-        height: 48px !important;
-        min-height: 48px !important;
-        padding: 6px 10px !important;
-        border-right: none !important;
-        border-bottom: 1px solid rgba(20,17,15,0.12) !important;
-      }
-
-      /* Linha 2: Data | Passageiros */
-      .booking-field:nth-child(3) {
-        display: flex !important;
-        grid-column: 1 / 2 !important;
-        grid-row: 2 !important;
-        height: 48px !important;
-        min-height: 48px !important;
-        padding: 6px 10px !important;
-        border-right: 1px solid rgba(20,17,15,0.12) !important;
-        border-bottom: none !important;
-      }
-
-      .booking-field:nth-child(4) {
-        display: flex !important;
-        grid-column: 2 / 3 !important;
-        grid-row: 2 !important;
-        height: 48px !important;
-        min-height: 48px !important;
-        padding: 6px 10px !important;
-        border-right: none !important;
-        border-bottom: none !important;
-      }
-
-      /* Linha 3: Botão Pedir Cotação (100% de largura) */
-      .booking-submit-cell {
-        grid-column: 1 / 3 !important;
-        grid-row: 3 !important;
-        border-top: none !important;
-        padding: 6px 0 0 !important;
+        flex-direction: column !important;
+        justify-content: center !important;
         width: 100% !important;
+        max-width: 100% !important;
+        min-height: 48px !important;
+        height: auto !important;
+        padding: 7px 14px !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(20,17,15,0.10) !important;
+        box-sizing: border-box !important;
+      }
+
+      .booking-field:nth-child(1),
+      .booking-field:nth-child(2),
+      .booking-field:nth-child(3),
+      .booking-field:nth-child(4) {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        border-right: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .booking-field-label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 11px !important;
+        letter-spacing: 0.05em !important;
+        margin-bottom: 2px !important;
+        color: rgba(20,17,15,0.60) !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+      }
+
+      .booking-field-label svg {
+        width: 12px !important;
+        height: 12px !important;
+        flex-shrink: 0 !important;
+      }
+
+      .booking-trigger {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+        gap: 8px !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+      }
+
+      .booking-value {
+        font-size: 15px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+        text-align: left !important;
+        color: var(--ink) !important;
+      }
+
+      .booking-value.is-placeholder {
+        color: rgba(20, 17, 15, 0.50) !important;
+      }
+
+      .booking-chevron {
+        flex-shrink: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        color: rgba(20, 17, 15, 0.45) !important;
+      }
+
+      .booking-chevron svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+
+      /* Linha do Botão Pedir Cotação (100% de largura abaixo dos campos) */
+      .booking-submit-cell {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        border-top: none !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
       }
 
       .btn-booking-submit {
         width: 100% !important;
-        height: 44px !important;
-        min-height: 44px !important;
+        height: 46px !important;
+        min-height: 46px !important;
         font-size: 15px !important;
         font-weight: 600 !important;
-        border-radius: var(--radius-base) !important;
+        color: var(--ink) !important;
+        background: #C9A45C !important;
+        border: none !important;
+        border-radius: 0 0 var(--radius-base) var(--radius-base) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        cursor: pointer !important;
       }
 
-      .booking-field-label {
-        font-size: 11px !important;
-        letter-spacing: 0.05em !important;
-        margin-bottom: 1px !important;
-        color: rgba(20,17,15,0.60) !important;
-      }
-
-      .booking-trigger { font-size: 15px !important; }
-
-      .booking-value {
-        font-size: 15px !important;
-        text-overflow: ellipsis !important;
+      .btn-booking-submit:active {
+        background: #b8934b !important;
       }
 
       /* ── 6. ESCONDER atalhos de rota e scroll indicator ── */
