@@ -1436,6 +1436,10 @@
       position: relative;
       width: 100%;
       margin: 0 auto;
+      overflow: hidden;
+      /* Máscara gradiente suave no canto direito: espiar sutil sem corte abrupto */
+      -webkit-mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 70px), transparent 100%);
+      mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 70px), transparent 100%);
     }
 
     .dest-carousel-track {
@@ -1446,9 +1450,11 @@
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 10px 4px 20px;
-      margin: 0 -4px;
+      padding: 10px 0 24px 0;
+      margin: 0;
       cursor: grab;
+      scroll-padding-left: 0;
+      scroll-padding-inline-start: 0;
     }
 
     .dest-carousel-track.is-dragging {
@@ -1488,7 +1494,15 @@
       box-shadow: 0 20px 40px rgba(11, 25, 44, 0.22), 0 0 0 1px #C9A45C;
     }
 
-    .dest-card-picture,
+    .dest-card-picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     .dest-card-img {
       position: absolute;
       top: 0;
@@ -1496,6 +1510,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -1737,6 +1752,10 @@
         line-height: 1.2;
         margin-left: auto;
         margin-right: auto;
+      }
+      .dest-carousel-wrapper {
+        -webkit-mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 40px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 40px), transparent 100%);
       }
       .dest-card-item {
         flex: 0 0 230px;
@@ -2139,23 +2158,33 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      z-index: 999;
+      z-index: 990;
       background: #25d366;
       color: #ffffff;
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     .whatsapp-float-btn:hover {
       transform: scale(1.08);
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-float-btn.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.75);
     }
 
     /* ========================================================
@@ -2421,13 +2450,13 @@
         text-shadow: 0 1px 24px rgba(20,17,15,0.35) !important;
       }
 
-      /* ── 5. BARRA DE RESERVA COMPACTA (≤ 140px) ── */
+      /* ── 5. BARRA DE RESERVA COMPACTA 2x2 NO MOBILE ── */
       .booking-bar {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: auto !important;
+        grid-template-rows: auto auto auto !important;
         border-radius: var(--radius-base) !important;
-        background: rgba(244,239,230,0.80) !important;
+        background: rgba(244,239,230,0.88) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         border: 1px solid rgba(255,255,255,0.4) !important;
@@ -2438,35 +2467,31 @@
         gap: 0 !important;
       }
 
-      /* Linha 1: Destino | Data */
+      /* Linha 1: Origem | Destino */
+      .booking-field:nth-child(1) {
+        display: flex !important;
+        grid-column: 1 / 2 !important;
+        grid-row: 1 !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 6px 10px !important;
+        border-right: 1px solid rgba(20,17,15,0.12) !important;
+        border-bottom: 1px solid rgba(20,17,15,0.12) !important;
+      }
+
       .booking-field:nth-child(2) {
-        grid-column: 1 / 2 !important;
+        display: flex !important;
+        grid-column: 2 / 3 !important;
         grid-row: 1 !important;
         height: 48px !important;
         min-height: 48px !important;
         padding: 6px 10px !important;
-        border-right: 1px solid rgba(20,17,15,0.12) !important;
-        border-bottom: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(20,17,15,0.12) !important;
       }
 
+      /* Linha 2: Data | Passageiros */
       .booking-field:nth-child(3) {
-        grid-column: 2 / 3 !important;
-        grid-row: 1 !important;
-        height: 48px !important;
-        min-height: 48px !important;
-        padding: 6px 10px !important;
-        border-right: none !important;
-        border-bottom: none !important;
-      }
-
-      /* Origem e Passageiros: ESCONDIDOS por padrão */
-      .booking-field:nth-child(1),
-      .booking-field:nth-child(4) {
-        display: none !important;
-      }
-
-      /* Quando .booking-bar tem .is-expanded, mostra Origem e Passageiros */
-      .booking-bar.is-expanded .booking-field:nth-child(1) {
         display: flex !important;
         grid-column: 1 / 2 !important;
         grid-row: 2 !important;
@@ -2475,10 +2500,9 @@
         padding: 6px 10px !important;
         border-right: 1px solid rgba(20,17,15,0.12) !important;
         border-bottom: none !important;
-        border-top: 1px solid rgba(20,17,15,0.12) !important;
       }
 
-      .booking-bar.is-expanded .booking-field:nth-child(4) {
+      .booking-field:nth-child(4) {
         display: flex !important;
         grid-column: 2 / 3 !important;
         grid-row: 2 !important;
@@ -2487,55 +2511,15 @@
         padding: 6px 10px !important;
         border-right: none !important;
         border-bottom: none !important;
-        border-top: 1px solid rgba(20,17,15,0.12) !important;
       }
 
-      /* Resumo e Botão */
-      .mobile-booking-summary {
-        display: flex !important;
-        grid-column: 1 / 3 !important;
-        grid-row: auto !important;
-        align-items: center;
-        gap: 4px;
-        padding: 4px 10px 0;
-        font-family: var(--font-sans);
-        font-size: 13px;
-        font-weight: 400;
-        color: rgba(20,17,15,0.70);
-        line-height: 28px;
-        min-height: 28px;
-      }
-
-      .mobile-summary-text {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        flex: 1;
-      }
-
-      .mobile-summary-edit {
-        background: transparent;
-        border: none;
-        color: var(--ink);
-        font-family: var(--font-sans);
-        font-size: 13px;
-        font-weight: 500;
-        padding: 0 4px;
-        cursor: pointer;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        text-decoration-color: rgba(20,17,15,0.30);
-        min-width: 44px;
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-
+      /* Linha 3: Botão Pedir Cotação (100% de largura) */
       .booking-submit-cell {
         grid-column: 1 / 3 !important;
+        grid-row: 3 !important;
         border-top: none !important;
         padding: 6px 0 0 !important;
+        width: 100% !important;
       }
 
       .btn-booking-submit {
@@ -2559,37 +2543,6 @@
       .booking-value {
         font-size: 15px !important;
         text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        color: var(--ink) !important;
-      }
-
-      .booking-value.is-placeholder {
-        color: rgba(20,17,15,0.45) !important;
-      }
-
-      .origin-short { display: inline !important; }
-      .origin-full  { display: none !important; }
-
-      /* Ação auxiliar (+ adicionar detalhes) — escondida; aparece quando expandido */
-      .booking-auxiliary-row {
-        display: none !important;
-      }
-
-      .booking-bar.is-expanded ~ .booking-auxiliary-row {
-        display: flex !important;
-        margin: 6px 0 0 0 !important;
-      }
-
-      .btn-toggle-details {
-        font-size: 12px !important;
-        color: var(--on-video) !important;
-      }
-
-      .booking-details-inner {
-        background: rgba(244,239,230,0.80) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
       }
 
       /* ── 6. ESCONDER atalhos de rota e scroll indicator ── */
@@ -2600,7 +2553,7 @@
       .whatsapp-float-btn {
         width: 48px !important;
         height: 48px !important;
-        bottom: 16px !important;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
         right: 16px !important;
       }
 
@@ -2731,378 +2684,132 @@
       /* ── 9. SEÇÕES MOBILE ── */
       .section-planejamento-slim { padding: 56px 14px 44px; justify-content: center; }
       .planejamento-header { margin: 0 auto 12px; }
-          /* ========================================================
-       SEÇÃO: INTRO DE DESTINOS & CARROSSEL FOTOGRÁFICO EXCLUSIVO
-       ======================================================== */
-    .destinations-intro-strip {
-      background: #ECE6DA;
-      border-top: 1px solid rgba(201, 164, 92, 0.25);
-      border-bottom: 1px solid rgba(201, 164, 92, 0.25);
-      padding: clamp(52px, 7vw, 80px) 24px clamp(36px, 4.5vw, 52px);
-      text-align: center;
-      position: relative;
-      box-sizing: border-box;
-      width: 100%;
-      min-height: auto !important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      .destinations-intro-strip { padding: 48px 16px 36px !important; justify-content: center; }
+      .dest-carousel-track { padding: 8px 0 18px 0 !important; }
+      .dest-card-item { flex: 0 0 230px !important; height: 340px !important; }
+      .carousel-controls { display: none !important; }
+      .section-frota-slim { padding: 56px 14px 44px; justify-content: center; }
+      .frota-grid-slim { grid-template-columns: 1fr; gap: 8px; margin-top: 10px; width: 100%; }
+      .frota-card-minimal { display: flex; flex-direction: row; align-items: center; border-radius: 10px; }
+      .frota-media { width: 110px; height: 75px; flex-shrink: 0; }
+      .frota-info { padding: 8px 10px; }
+      .frota-title { font-size: 13.5px; margin-bottom: 2px; }
+      .frota-specs { font-size: 9.5px; line-height: 1.25; }
+      .section-faq { padding: 56px 16px 44px; justify-content: center; }
+      .faq-header { margin-bottom: 14px; }
+      .faq-question { font-size: 13px; padding: 10px 0; }
+      .faq-answer-text { font-size: 11.5px; }
+      .page-scroll-indicator { bottom: 8px; }
+      .page-scroll-text { font-size: 8.5px; }
+      .page-scroll-chevron { width: 14px; height: 14px; }
+      .btn-agendar-slim { width: 100%; justify-content: center; }
     }
 
-    .dest-intro-inner {
-      width: 100%;
-      max-width: 1240px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* Resumo mobile: escondido no desktop */
+    .mobile-booking-summary { display: none; }
+
+    /* Micro-animações nos cards de destinos (parallax ao scroll) */
+    .destination-page-spread .spread-media-col img {
+      transform: scale(1.08);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .destinations-intro-strip .sec-kicker {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      color: #6E4D14;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 10px;
+    .destination-page-spread.is-visible .spread-media-col img {
+      transform: scale(1.0);
     }
 
-    .destinations-intro-strip .sec-title {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 3.8vw, 46px);
-      font-weight: 500;
-      color: #0B192C;
-      letter-spacing: -0.02em;
-      line-height: 1.18;
-      margin-bottom: 10px;
-      text-wrap: balance;
+    .destination-page-spread .spread-content-col {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .destinations-intro-strip .sec-sub {
-      font-family: var(--font-sans);
-      font-size: clamp(13.5px, 1.5vw, 15.5px);
-      line-height: 1.5;
-      color: rgba(20, 17, 15, 0.72);
-      max-width: 620px;
-      margin: 0 auto clamp(24px, 3.5vw, 36px);
+    .destination-page-spread.is-visible .spread-content-col {
+      opacity: 1;
+      transform: translateX(0);
     }
 
-    /* CARROSSEL FOTOGRÁFICO */
-    .dest-carousel-wrapper {
-      position: relative;
-      width: 100%;
-      margin: 0 auto;
+    /* Ensure the hover effect still works on visible items */
+    .destination-page-spread.is-visible:hover .spread-media-col img {
+      transform: scale(1.04);
     }
 
-    .dest-carousel-track {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding: 10px 4px 20px;
-      margin: 0 -4px;
-      cursor: grab;
+    /* Timeline and frota cards also animate in */
+    .timeline-card-minimal,
+    .frota-card-minimal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .dest-carousel-track.is-dragging {
-      cursor: grabbing;
-      scroll-snap-type: none;
-      scroll-behavior: auto;
-      user-select: none;
+    .timeline-card-minimal.is-visible,
+    .frota-card-minimal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .dest-carousel-track::-webkit-scrollbar {
-      display: none;
+    /* Stagger the animation delay for cards */
+    .timeline-card-minimal:nth-child(1) { transition-delay: 0s; }
+    .timeline-card-minimal:nth-child(2) { transition-delay: 0.1s; }
+    .timeline-card-minimal:nth-child(3) { transition-delay: 0.2s; }
+    .timeline-card-minimal:nth-child(4) { transition-delay: 0.3s; }
+
+    .frota-card-minimal:nth-child(1) { transition-delay: 0s; }
+    .frota-card-minimal:nth-child(2) { transition-delay: 0.15s; }
+    .frota-card-minimal:nth-child(3) { transition-delay: 0.3s; }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .destination-page-spread .spread-media-col img,
+      .destination-page-spread .spread-content-col,
+      .timeline-card-minimal,
+      .frota-card-minimal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
 
-    /* CARD DE DESTINO */
-    .dest-card-item {
-      flex: 0 0 270px;
-      height: 380px;
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      scroll-snap-align: start;
-      text-decoration: none;
-      border: 1px solid rgba(201, 164, 92, 0.40);
-      box-shadow: 0 8px 24px rgba(11, 25, 44, 0.08);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background: #0B192C;
-      outline: none;
-    }
-
-    .dest-card-item:hover,
-    .dest-card-item:focus-visible {
-      transform: translateY(-8px);
-      border-color: #C9A45C;
-      box-shadow: 0 20px 40px rgba(11, 25, 44, 0.22), 0 0 0 1px #C9A45C;
-    }
-
-    .dest-card-picture,
-    .dest-card-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Transição suave de escala nos cards */
+    .spread-media-col img,
+    .frota-media img {
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .dest-card-item:hover .dest-card-img,
-    .dest-card-item:focus-visible .dest-card-img {
-      transform: scale(1.07);
+    /* ========================================================
+       ESTILOS DAS SEÇÕES DE CONTEÚDO (TEMA CLARO EXCLUSIVO)
+       ======================================================== */
+
+    /* Seção Planejamento & Frota */
+    .section-planejamento-slim,
+    .section-frota-slim {
+      background: var(--color-surface);
     }
 
-    .dest-card-gradient {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(11, 25, 44, 0.15) 0%,
-        rgba(11, 25, 44, 0.00) 35%,
-        rgba(11, 25, 44, 0.55) 65%,
-        rgba(11, 25, 44, 0.95) 100%
-      );
-      z-index: 1;
-      transition: background 0.3s ease;
-    }
-
-    .dest-card-item:hover .dest-card-gradient {
-      background: linear-gradient(
-        180deg,
-        rgba(11, 25, 44, 0.20) 0%,
-        rgba(11, 25, 44, 0.00) 30%,
-        rgba(11, 25, 44, 0.60) 60%,
-        rgba(11, 25, 44, 0.98) 100%
-      );
-    }
-
-    /* BADGE SUPERIOR COM IDENTIDADE DOURADA */
-    .dest-card-tag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      z-index: 2;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #F4EFE6;
-      background: rgba(11, 25, 44, 0.70);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(201, 164, 92, 0.55);
-      border-radius: 20px;
-      padding: 4px 10px;
-    }
-
-    /* SETINHA SUPERIOR DIREITA DE CLIQUE */
-    .dest-card-arrow-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 2;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(11, 25, 44, 0.70);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(201, 164, 92, 0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .dest-card-arrow-badge svg {
-      width: 14px;
-      height: 14px;
-      stroke: #C9A45C;
-      transition: transform 0.3s ease, stroke 0.3s ease;
-    }
-
-    .dest-card-item:hover .dest-card-arrow-badge {
-      background: #0B192C;
-      border-color: #C9A45C;
-      transform: scale(1.1);
-    }
-
-    .dest-card-item:hover .dest-card-arrow-badge svg {
-      transform: translate(2px, -2px);
-      stroke: #FFFFFF;
-    }
-
-    /* CONTEÚDO INFERIOR */
-    .dest-card-info {
-      position: relative;
-      z-index: 2;
-      padding: 20px 18px 18px;
-      text-align: left;
-    }
-
-    .dest-card-title {
-      font-family: var(--font-serif);
-      font-size: 23px;
-      font-weight: 500;
-      color: #FFFFFF;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-      margin-bottom: 6px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    .dest-card-phrase {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      line-height: 1.4;
-      color: rgba(244, 239, 230, 0.88);
-      font-weight: 400;
-      margin-bottom: 12px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .dest-card-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: #C9A45C;
-      transition: gap 0.25s ease, color 0.25s ease;
-    }
-
-    .dest-card-cta svg {
-      width: 13px;
-      height: 13px;
-      stroke: #C9A45C;
-      transition: transform 0.25s ease;
-    }
-
-    .dest-card-item:hover .dest-card-cta {
-      color: #FFFFFF;
-      gap: 8px;
-    }
-
-    .dest-card-item:hover .dest-card-cta svg {
-      transform: translateX(4px);
-      stroke: #FFFFFF;
-    }
-
-    /* CONTROLES DE NAVEGAÇÃO */
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .btn-carousel {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #0B192C;
-      border: 1px solid rgba(201, 164, 92, 0.5);
-      color: #C9A45C;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(11, 25, 44, 0.12);
-      transition: all 0.25s ease;
-    }
-
-    .btn-carousel:hover {
-      background: #0E223D;
-      border-color: #C9A45C;
-      transform: scale(1.08);
-      color: #FFFFFF;
-      box-shadow: 0 6px 18px rgba(201, 164, 92, 0.25);
-    }
-
-    .btn-carousel svg {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    /* INDICADOR EXPLORAR COMPACTO E CENTRALIZADO */
-    .destinations-intro-strip .explore-wrapper {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .destinations-intro-strip .page-scroll-indicator {
-      position: relative;
-      bottom: auto;
-      left: auto;
-      right: auto;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 200ms ease, opacity 200ms ease;
-    }
-
-    .destinations-intro-strip .page-scroll-indicator:hover {
-      transform: translateY(3px);
-    }
-
-    .destinations-intro-strip .page-scroll-text {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.20em;
-      text-transform: uppercase;
+    .sec-kicker {
       color: #6E4D14;
+      font-weight: 700;
     }
 
-    .destinations-intro-strip .page-scroll-chevron {
-      width: 18px;
-      height: 18px;
-      stroke: #6E4D14;
+    .sec-title {
+      color: var(--ink);
     }
 
-    @media (max-width: 768px) {
-      .destinations-intro-strip {
-        padding: 48px 16px 36px !important;
-      }
-      .destinations-intro-strip .sec-title {
-        font-size: clamp(22px, 6vw, 30px);
-        max-width: 300px;
-        line-height: 1.2;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .dest-card-item {
-        flex: 0 0 230px;
-        height: 340px;
-      }
-      .carousel-controls {
-        display: none;
-      }
+    .sec-sub {
+      color: var(--color-text-muted);
+    }
+
+    /* Timeline cards */
+    .timeline-card-minimal:hover {
+      border-color: rgba(168, 135, 46, 0.4);
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(20, 17, 15, 0.08);
+    }
+
+    /* Destinos intro strip */
+    .destinations-intro-strip {
+      background: #ECE6DA;
+      border-color: rgba(20, 17, 15, 0.06);
     }
 
     .destination-page-spread {
@@ -3365,11 +3072,6 @@
             <input type="hidden" id="bookingPassengers" name="passengers" value="1 a 4 passageiros (SUV)">
           </div>
 
-          <!-- Resumo compacto mobile (Linha 2): visível apenas no mobile via CSS -->
-          <div class="mobile-booking-summary" id="mobileSummary">
-            <span class="mobile-summary-text" id="mobileSummaryText">Saindo de Aeroporto (BPS) · 1–4 pass.</span>
-            <button type="button" class="mobile-summary-edit" id="mobileSummaryEdit" aria-expanded="false" aria-label="Editar origem e passageiros">Editar</button>
-          </div>
 
           <!-- 5. BOTÃO "PEDIR COTAÇÃO" (Dourado sólido, sem ícone WhatsApp) -->
           <div class="booking-submit-cell">
@@ -3403,8 +3105,8 @@
             <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Caraíva')">Caraíva</button>
             <span class="route-dot" aria-hidden="true">·</span>
             <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Santo André')">Santo André</button>
-            <span class="route-pipe" aria-hidden="true">|</span>
-            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Terravista / Fly Club', 'Trancoso')">Terravista → Trancoso</button>
+            <span class="route-dot" aria-hidden="true">·</span>
+            <button type="button" class="frequent-route-btn" onclick="setQuickRoute('Aeroporto de Porto Seguro', 'Praia do Espelho')">Praia do Espelho</button>
           </span>
         </div>
 
@@ -3618,8 +3320,9 @@
             <!-- CARD 1: ARRAIAL D'AJUDA -->
             <a href="#arraial" class="dest-card-item" aria-label="Explorar Arraial d'Ajuda">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_arraial.webp" type="image/webp">
-                <img src="assets/images/destinos/card_arraial.jpg" alt="Arraial d'Ajuda" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_arraial_480w.webp 480w, assets/images/destinos/card_arraial_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_arraial_480w.jpg 480w, assets/images/destinos/card_arraial_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_arraial_800w.jpg" alt="Arraial d'Ajuda" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">FALÉSIAS & MUCUGÊ</span>
@@ -3645,8 +3348,9 @@
             <!-- CARD 2: TRANCOSO -->
             <a href="#trancoso" class="dest-card-item" aria-label="Explorar Trancoso">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_trancoso.webp" type="image/webp">
-                <img src="assets/images/destinos/card_trancoso.jpg" alt="Trancoso" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_trancoso_480w.webp 480w, assets/images/destinos/card_trancoso_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_trancoso_480w.jpg 480w, assets/images/destinos/card_trancoso_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_trancoso_800w.jpg" alt="Trancoso" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">QUADRADO HISTÓRICO</span>
@@ -3672,8 +3376,9 @@
             <!-- CARD 3: CARAÍVA -->
             <a href="#caraiva" class="dest-card-item" aria-label="Explorar Caraíva">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_caraiva.webp" type="image/webp">
-                <img src="assets/images/destinos/card_caraiva.jpg" alt="Caraíva" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_caraiva_480w.webp 480w, assets/images/destinos/card_caraiva_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_caraiva_480w.jpg 480w, assets/images/destinos/card_caraiva_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_caraiva_800w.jpg" alt="Caraíva" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">SEM CARROS & RÚSTICO</span>
@@ -3699,8 +3404,9 @@
             <!-- CARD 4: RIO DA BARRA -->
             <a href="#riodabarra" class="dest-card-item" aria-label="Explorar Rio da Barra">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_riodabarra.webp" type="image/webp">
-                <img src="assets/images/destinos/card_riodabarra.jpg" alt="Rio da Barra" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_riodabarra_480w.webp 480w, assets/images/destinos/card_riodabarra_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_riodabarra_480w.jpg 480w, assets/images/destinos/card_riodabarra_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_riodabarra_800w.jpg" alt="Rio da Barra" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">SANTUÁRIO NATURAL</span>
@@ -3726,8 +3432,9 @@
             <!-- CARD 5: PRAIA DO ESPELHO -->
             <a href="#espelho" class="dest-card-item" aria-label="Explorar Praia do Espelho">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_espelho.webp" type="image/webp">
-                <img src="assets/images/destinos/card_espelho.jpg" alt="Praia do Espelho" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_espelho_480w.webp 480w, assets/images/destinos/card_espelho_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_espelho_480w.jpg 480w, assets/images/destinos/card_espelho_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_espelho_800w.jpg" alt="Praia do Espelho" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">TOP 10 BRASIL</span>
@@ -3753,8 +3460,9 @@
             <!-- CARD 6: TAÍPE -->
             <a href="#taipe" class="dest-card-item" aria-label="Explorar Taípe">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_taipe.webp" type="image/webp">
-                <img src="assets/images/destinos/card_taipe.jpg" alt="Taípe" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_taipe_480w.webp 480w, assets/images/destinos/card_taipe_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_taipe_480w.jpg 480w, assets/images/destinos/card_taipe_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_taipe_800w.jpg" alt="Taípe" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">PAREDÕES DE 45M</span>
@@ -3780,8 +3488,9 @@
             <!-- CARD 7: SANTO ANDRÉ -->
             <a href="#santoandre" class="dest-card-item" aria-label="Explorar Santo André">
               <picture class="dest-card-picture">
-                <source srcset="assets/images/destinos/card_santoandre.webp" type="image/webp">
-                <img src="assets/images/destinos/card_santoandre.jpg" alt="Santo André" class="dest-card-img" width="600" height="800" loading="lazy" decoding="async">
+                <source type="image/webp" srcset="assets/images/destinos/card_santoandre_480w.webp 480w, assets/images/destinos/card_santoandre_800w.webp 800w" sizes="(max-width: 600px) 230px, 270px">
+                <source type="image/jpeg" srcset="assets/images/destinos/card_santoandre_480w.jpg 480w, assets/images/destinos/card_santoandre_800w.jpg 800w" sizes="(max-width: 600px) 230px, 270px">
+                <img src="assets/images/destinos/card_santoandre_800w.jpg" alt="Santo André" class="dest-card-img" width="270" height="380" loading="lazy" decoding="async">
               </picture>
               <div class="dest-card-gradient"></div>
               <span class="dest-card-tag">OÁSIS AO NORTE</span>
@@ -4784,57 +4493,6 @@
 
     // 7. INTERSECTION OBSERVER: SCROLL ANIMATIONS (PARALLAX + REVEAL)
 
-    // MOBILE SUMMARY: "Editar" toggle para mostrar/esconder Origem + Passageiros
-    (function initMobileSummary() {
-      const editBtn = document.getElementById('mobileSummaryEdit');
-      const bookingBar = document.querySelector('.booking-bar');
-      const summaryText = document.getElementById('mobileSummaryText');
-      if (!editBtn || !bookingBar) return;
-
-      function updateSummaryText() {
-        const origin = document.getElementById('bookingOrigin')?.value || 'Aeroporto (BPS)';
-        const passengers = document.getElementById('bookingPassengers')?.value || '1 a 4 passageiros (SUV)';
-        // Short origin name for mobile
-        let shortOrigin = origin;
-        if (origin.includes('Aeroporto')) shortOrigin = 'Aeroporto (BPS)';
-        else if (origin.length > 20) shortOrigin = origin.substring(0, 18) + '…';
-        // Short passengers
-        let shortPass = passengers;
-        if (passengers.includes('1 a 4')) shortPass = '1–4 pass.';
-        else if (passengers.includes('5 a 6')) shortPass = '5–6 pass.';
-        else if (passengers.includes('7 ou')) shortPass = '7+ pass.';
-        if (summaryText) {
-          summaryText.textContent = `Saindo de ${shortOrigin} · ${shortPass}`;
-        }
-      }
-
-      editBtn.addEventListener('click', function() {
-        const isExpanded = bookingBar.classList.toggle('is-expanded');
-        editBtn.setAttribute('aria-expanded', String(isExpanded));
-        editBtn.textContent = isExpanded ? 'Fechar' : 'Editar';
-      });
-
-      // Sync summary whenever origin or passengers change
-      // Watch for dropdown selections via MutationObserver on hidden inputs
-      const originInput = document.getElementById('bookingOrigin');
-      const passInput = document.getElementById('bookingPassengers');
-
-      if (originInput) {
-        new MutationObserver(updateSummaryText).observe(originInput, { attributes: true, attributeFilter: ['value'] });
-        originInput.addEventListener('change', updateSummaryText);
-      }
-      if (passInput) {
-        new MutationObserver(updateSummaryText).observe(passInput, { attributes: true, attributeFilter: ['value'] });
-        passInput.addEventListener('change', updateSummaryText);
-      }
-
-      // Sync summary directly via custom event
-      window.addEventListener('booking-fields-updated', updateSummaryText);
-
-      // Initial sync
-      updateSummaryText();
-    })();
-
     // 7. INTERSECTION OBSERVER: SCROLL ANIMATIONS (PARALLAX + REVEAL)
     (function initScrollAnimations() {
       if (!('IntersectionObserver' in window)) {
@@ -4919,12 +4577,62 @@
       });
     })();
   
-    // CARROSSEL DE DESTINOS EXCLUSIVOS (BOTÕES + DRAG SUAVE NO DESKTOP)
+    // CARROSSEL DE DESTINOS EXCLUSIVOS (ALINHAMENTO PRECISO, MÁSCARA DINÂMICA E DRAG)
     (function initDestinosCarousel() {
       const track = document.getElementById('destTrack');
       const prevBtn = document.getElementById('prevDest');
       const nextBtn = document.getElementById('nextDest');
       if (!track) return;
+
+      const wrapper = track.parentElement;
+
+      // Garantir primeiro card 100% visível e alinhado à borda esquerda no carregamento
+      const resetToStart = () => {
+        track.scrollLeft = 0;
+        if ('scrollTo' in track) {
+          track.scrollTo({ left: 0, behavior: 'instant' });
+        }
+      };
+
+      // Máscara gradiente suave (espiar sutil e elegante do próximo card)
+      const updateMaskAndButtons = () => {
+        const sl = track.scrollLeft;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const isAtStart = sl <= 6;
+        const isAtEnd = sl >= maxScroll - 6;
+
+        if (wrapper) {
+          if (maxScroll <= 0) {
+            wrapper.style.webkitMaskImage = 'none';
+            wrapper.style.maskImage = 'none';
+          } else if (isAtStart) {
+            // Início: máscara apenas na borda direita (primeiro card nítido na esquerda, próximo espiando com fade à direita)
+            wrapper.style.webkitMaskImage = 'linear-gradient(to right, #000 0%, #000 calc(100% - 70px), transparent 100%)';
+            wrapper.style.maskImage = 'linear-gradient(to right, #000 0%, #000 calc(100% - 70px), transparent 100%)';
+          } else if (isAtEnd) {
+            // Fim: máscara apenas na borda esquerda
+            wrapper.style.webkitMaskImage = 'linear-gradient(to right, transparent 0%, #000 70px, #000 100%)';
+            wrapper.style.maskImage = 'linear-gradient(to right, transparent 0%, #000 70px, #000 100%)';
+          } else {
+            // Meio: desvanecimento suave nas duas extremidades
+            wrapper.style.webkitMaskImage = 'linear-gradient(to right, transparent 0%, #000 50px, #000 calc(100% - 50px), transparent 100%)';
+            wrapper.style.maskImage = 'linear-gradient(to right, transparent 0%, #000 50px, #000 calc(100% - 50px), transparent 100%)';
+          }
+        }
+
+        if (prevBtn) prevBtn.style.opacity = isAtStart ? '0.35' : '1';
+        if (nextBtn) nextBtn.style.opacity = isAtEnd ? '0.35' : '1';
+      };
+
+      resetToStart();
+      updateMaskAndButtons();
+
+      window.addEventListener('load', () => {
+        resetToStart();
+        updateMaskAndButtons();
+      });
+      window.addEventListener('resize', updateMaskAndButtons);
+      track.addEventListener('scroll', updateMaskAndButtons, { passive: true });
 
       if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
@@ -4958,6 +4666,33 @@
         const walk = (x - startX) * 1.5;
         track.scrollLeft = scrollLeft - walk;
       });
+    })();
+
+    // SUPRESSÃO INTELIGENTE DO BOTÃO FLUTUANTE DO WHATSAPP (EVITAR COLISÃO COM CTAS INLINE)
+    (function initSmartWhatsAppFloat() {
+      const floatBtn = document.querySelector('.whatsapp-float-btn');
+      if (!floatBtn || !('IntersectionObserver' in window)) return;
+
+      const inlineCtas = document.querySelectorAll('.btn-wa-planejar, .whatsapp-cta-wrapper, .btn-agendar-slim');
+      if (!inlineCtas.length) return;
+
+      const ctaMap = new Map();
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          ctaMap.set(entry.target, entry.isIntersecting);
+        });
+        const anyVisible = Array.from(ctaMap.values()).some(Boolean);
+        if (anyVisible) {
+          floatBtn.classList.add('is-hidden');
+        } else {
+          floatBtn.classList.remove('is-hidden');
+        }
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px 0px 0px'
+      });
+
+      inlineCtas.forEach(el => observer.observe(el));
     })();
 
   </script>
