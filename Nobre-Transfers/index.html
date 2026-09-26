@@ -1080,77 +1080,293 @@
       font-weight: 300;
     }
 
-    .planejamento-timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+        /* ========================================================
+       SEÇÃO: JORNADA NOBRE / COMO FUNCIONA (TRILHA EDITORIAL)
+       ======================================================== */
+    .section-planejamento-slim {
+      background: var(--color-surface);
+      padding: clamp(60px, 8vw, 100px) 24px 60px;
+      position: relative;
     }
 
-    .timeline-card-minimal {
+    .planejamento-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto clamp(36px, 5vw, 56px);
+    }
+
+    .planejamento-header .sec-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: #6E4D14;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .planejamento-header .sec-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 500;
+      color: #0B192C;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .planejamento-header .sec-sub {
+      font-family: var(--font-sans);
+      font-size: clamp(14px, 1.6vw, 16px);
+      line-height: 1.55;
+      color: rgba(20, 17, 15, 0.72);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* TRILHA SEQUENCIAL (DESKTOP) */
+    .timeline-stepper {
       position: relative;
-      background: rgba(10, 20, 32, 0.55);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-satin);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Linha conectora horizontal de fundo (Desktop) */
+    .timeline-stepper::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, #C9A45C 0%, rgba(201, 164, 92, 0.4) 50%, #C9A45C 100%);
+      z-index: 1;
+    }
+
+    .stepper-card {
+      position: relative;
+      z-index: 2;
+      background: #FFFFFF;
+      border: 1px solid rgba(11, 25, 44, 0.08);
       border-radius: 14px;
-      padding: 22px 18px;
-      text-align: left;
-      transition: all 0.3s ease;
+      padding: 24px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: 0 4px 20px rgba(11, 25, 44, 0.04);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stepper-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(201, 164, 92, 0.55);
+      box-shadow: 0 12px 32px rgba(11, 25, 44, 0.10);
+    }
+
+    /* Nó da Etapa com Azul-Marinho Nobre + Dourado */
+    .stepper-node {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #0B192C;
+      border: 1px solid rgba(201, 164, 92, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(11, 25, 44, 0.18);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .stepper-card:hover .stepper-node {
+      transform: scale(1.05);
+      background: #071322;
+      border-color: #C9A45C;
+    }
+
+    .stepper-node-num {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #C9A45C;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .stepper-node svg {
+      width: 20px;
+      height: 20px;
+      stroke: #C9A45C;
+      transition: stroke 0.2s ease;
+    }
+
+    .stepper-content {
+      flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .timeline-card-minimal:hover {
-      border-color: rgba(197, 160, 89, 0.5);
-      background: rgba(14, 26, 42, 0.8);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .timeline-step-badge {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .timeline-num {
+    .stepper-phase {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: #6E4D14;
-      background: rgba(197, 160, 89, 0.12);
-      border: 1px solid rgba(197, 160, 89, 0.28);
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    .timeline-icon {
-      font-size: 18px;
-    }
-
-    .timeline-card-minimal .step-title {
-      font-family: var(--font-serif);
-      font-size: 19px;
-      font-weight: 500;
-      color: #ffffff;
       margin-bottom: 6px;
-      line-height: 1.25;
     }
 
-    .timeline-card-minimal .step-desc {
-      font-size: 12.5px;
-      font-weight: 300;
-      color: var(--text-muted);
+    .stepper-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: #0B192C;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .stepper-desc {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
       line-height: 1.5;
+      color: rgba(20, 17, 15, 0.72);
       margin: 0;
     }
 
-    /* ========================================================
-       SEÇÃO: OS 7 DESTINOS NO FORMATO "PÁGINA COMPLETA" (FULL-PAGE SPREAD)
-       FOTO FULL-BLEED À ESQUERDA (50%) & CONTEÚDO À DIREITA (50%)
-       SEM BORDAS DE CARD, SEM CONTAINER ESTREITO, DE PONTA A PONTA
-       ======================================================== */
+    /* BOTÃO REFORÇADO DE WHATSAPP (AZUL-MARINHO + DOURADO + SINAL VERDE OFICIAL) */
+    .whatsapp-cta-wrapper {
+      margin-top: clamp(32px, 5vw, 48px);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn-wa-planejar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 14px 32px;
+      background: #0B192C;
+      border: 1px solid #C9A45C;
+      border-radius: 8px;
+      color: #FFFFFF !important;
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(11, 25, 44, 0.16);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-wa-planejar:hover {
+      background: #0E223D;
+      border-color: #E2C889;
+      box-shadow: 0 8px 28px rgba(201, 164, 92, 0.25);
+      transform: translateY(-2px);
+      color: #FFFFFF !important;
+    }
+
+    .wa-badge-icon {
+      width: 22px;
+      height: 22px;
+      fill: #25D366;
+      flex-shrink: 0;
+    }
+
+    .wa-arrow {
+      stroke: #C9A45C;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-wa-planejar:hover .wa-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Tablet breakpoint */
+    @media (max-width: 900px) and (min-width: 601px) {
+      .timeline-stepper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .timeline-stepper::before {
+        display: none;
+      }
+    }
+
+    /* Mobile breakpoint (Trilha Vertical Contínua) */
+    @media (max-width: 600px) {
+      .section-planejamento-slim {
+        padding: 52px 16px 40px !important;
+        min-height: auto !important;
+      }
+      .planejamento-header {
+        margin-bottom: 24px !important;
+      }
+      .timeline-stepper {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: relative;
+        padding: 4px 0;
+      }
+      /* Linha conectora vertical */
+      .timeline-stepper::before {
+        top: 28px;
+        bottom: 28px;
+        left: 27px;
+        right: auto;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(180deg, #C9A45C 0%, rgba(201, 164, 92, 0.35) 100%);
+      }
+      .stepper-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .stepper-node {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+      }
+      .stepper-node-num {
+        font-size: 8px;
+      }
+      .stepper-node svg {
+        width: 18px;
+        height: 18px;
+      }
+      .stepper-title {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+      .stepper-desc {
+        font-size: 12.5px;
+        line-height: 1.45;
+      }
+      .whatsapp-cta-wrapper {
+        margin-top: 24px;
+      }
+      .btn-wa-planejar {
+        width: 100%;
+        padding: 13px 18px;
+        font-size: 12px;
+      }
+    }
+
     .destinations-fullwidth-wrapper {
       width: 100%;
       margin: 0;
@@ -1720,11 +1936,6 @@
         margin-bottom: var(--space-24);
       }
 
-      .planejamento-timeline-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
       .frota-grid-slim {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -2201,13 +2412,6 @@
       /* ── 9. SEÇÕES MOBILE ── */
       .section-planejamento-slim { padding: 56px 14px 44px; justify-content: center; }
       .planejamento-header { margin: 0 auto 12px; }
-      .planejamento-timeline-grid { grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
-      .timeline-card-minimal { padding: 10px; border-radius: 10px; }
-      .timeline-step-badge { margin-bottom: 6px; }
-      .timeline-num { font-size: 8px; padding: 1px 5px; }
-      .timeline-icon { font-size: 14px; }
-      .timeline-card-minimal .step-title { font-size: 13px; margin-bottom: 2px; line-height: 1.2; }
-      .timeline-card-minimal .step-desc { font-size: 10px; line-height: 1.3; }
       .destinations-intro-strip { padding: 56px 16px 44px; justify-content: center; }
       .dest-preview-pill { font-size: 10px; padding: 4px 10px; }
       .section-frota-slim { padding: 56px 14px 44px; justify-content: center; }
@@ -2322,30 +2526,11 @@
     }
 
     /* Timeline cards */
-    .timeline-card-minimal {
-      background: #ffffff;
-      border: 1px solid rgba(20, 17, 15, 0.08);
-      box-shadow: 0 2px 8px rgba(20, 17, 15, 0.04);
-    }
 
     .timeline-card-minimal:hover {
       border-color: rgba(168, 135, 46, 0.4);
       background: #ffffff;
       box-shadow: 0 8px 24px rgba(20, 17, 15, 0.08);
-    }
-
-    .timeline-card-minimal .step-title {
-      color: var(--ink);
-    }
-
-    .timeline-card-minimal .step-desc {
-      color: var(--color-text-muted);
-    }
-
-    .timeline-num {
-      color: var(--color-gold);
-      background: rgba(168, 135, 46, 0.08);
-      border-color: rgba(168, 135, 46, 0.2);
     }
 
     /* Destinos intro strip */
@@ -2496,7 +2681,7 @@
       color: var(--ink);
       font-weight: 600;
     }
-  </style>
+      </style>
 </head>
 <body>
   
@@ -2763,7 +2948,7 @@
   <!-- ========================================================
        1. "JÁ PLANEJOU A SUA VIAGEM?" (TIMELINE MINIMALISTA)
        ======================================================== -->
-  <section class="section-planejamento-slim" id="planejamento">
+      <section class="section-planejamento-slim" id="planejamento">
     <div class="planejamento-header">
       <span class="sec-kicker">✦ TRANQUILIDADE ABSOLUTA ✦</span>
       <h2 class="sec-title">Já planejou a sua viagem?</h2>
@@ -2772,54 +2957,88 @@
       </p>
     </div>
 
-    <div class="planejamento-timeline-grid">
+    <!-- TRILHA DA JORNADA EXECUTIVA (COMO FUNCIONA) -->
+    <div class="timeline-stepper">
       
-      <!-- ETAPA 01 -->
-      <div class="timeline-card-minimal">
-        <div class="timeline-step-badge">
-          <span class="timeline-num">ETAPA 01</span>
-          <span class="timeline-icon">✈️</span>
+      <!-- ETAPA 01: MONITORAMENTO DE VOO -->
+      <div class="stepper-card">
+        <div class="stepper-node">
+          <span class="stepper-node-num">01</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.9-.2-1.7.3-2 1.1-.3.8 0 1.7.7 2.2l4.8 3.5-2.3 2.3-2.5-.5c-.5-.1-1 .1-1.3.5-.3.4-.3.9-.1 1.3l1.8 1.8 1.8 1.8c.4.2.9.2 1.3-.1.4-.3.6-.8.5-1.3l-.5-2.5 2.3-2.3 3.5 4.8c.5.7 1.4 1 2.2.7.8-.3 1.3-1.1 1.1-2z"/>
+          </svg>
         </div>
-        <h3 class="step-title">Monitoramento de Voo</h3>
-        <p class="step-desc">Rastreamento 24h em tempo real. Se o seu voo atrasar, aguardamos sem nenhuma taxa extra.</p>
+        <div class="stepper-content">
+          <span class="stepper-phase">ETAPA 01</span>
+          <h3 class="stepper-title">Monitoramento de Voo</h3>
+          <p class="stepper-desc">Rastreamento 24h em tempo real. Se o seu voo atrasar, aguardamos sem nenhuma taxa extra.</p>
+        </div>
       </div>
 
-      <!-- ETAPA 02 -->
-      <div class="timeline-card-minimal">
-        <div class="timeline-step-badge">
-          <span class="timeline-num">ETAPA 02</span>
-          <span class="timeline-icon">👔</span>
+      <!-- ETAPA 02: RECEPÇÃO CHAUFFEUR -->
+      <div class="stepper-card">
+        <div class="stepper-node">
+          <span class="stepper-node-num">02</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="7" r="3.5"/>
+            <path d="M3 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+            <rect x="14" y="4" width="7" height="9" rx="1"/>
+            <path d="M16 8h3M16 10h2"/>
+            <line x1="17.5" y1="13" x2="17.5" y2="20"/>
+          </svg>
         </div>
-        <h3 class="step-title">Recepção Chauffeur</h3>
-        <p class="step-desc">Motorista em traje social com placa nominal e suporte completo com todas as bagagens.</p>
+        <div class="stepper-content">
+          <span class="stepper-phase">ETAPA 02</span>
+          <h3 class="stepper-title">Recepção Chauffeur</h3>
+          <p class="stepper-desc">Motorista em traje social com placa nominal e suporte completo com todas as bagagens.</p>
+        </div>
       </div>
 
-      <!-- ETAPA 03 -->
-      <div class="timeline-card-minimal">
-        <div class="timeline-step-badge">
-          <span class="timeline-num">ETAPA 03</span>
-          <span class="timeline-icon">👶</span>
+      <!-- ETAPA 03: SEGURANÇA FAMILIAR -->
+      <div class="stepper-card">
+        <div class="stepper-node">
+          <span class="stepper-node-num">03</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
         </div>
-        <h3 class="step-title">Segurança Familiar</h3>
-        <p class="step-desc">Bebê conforto e cadeirinha ISOFIX higienizados instalados sem custo adicional.</p>
+        <div class="stepper-content">
+          <span class="stepper-phase">ETAPA 03</span>
+          <h3 class="stepper-title">Segurança Familiar</h3>
+          <p class="stepper-desc">Bebê conforto e cadeirinha ISOFIX higienizados instalados sem custo adicional.</p>
+        </div>
       </div>
 
-      <!-- ETAPA 04 -->
-      <div class="timeline-card-minimal">
-        <div class="timeline-step-badge">
-          <span class="timeline-num">ETAPA 04</span>
-          <span class="timeline-icon">❄️</span>
+      <!-- ETAPA 04: CONFORTO A BORDO -->
+      <div class="stepper-card">
+        <div class="stepper-node">
+          <span class="stepper-node-num">04</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
         </div>
-        <h3 class="step-title">Conforto a Bordo</h3>
-        <p class="step-desc">Frota 4x4 climatizada, água fresca mineral, carregadores e balsa expressa sem filas.</p>
+        <div class="stepper-content">
+          <span class="stepper-phase">ETAPA 04</span>
+          <h3 class="stepper-title">Conforto a Bordo</h3>
+          <p class="stepper-desc">Frota 4x4 climatizada, água fresca mineral, carregadores e balsa expressa sem filas.</p>
+        </div>
       </div>
 
     </div>
 
-    <div style="margin-top: 32px; display: flex; justify-content: center; width: 100%;">
-      <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20planejar%20minha%20viagem%20e%20solicitar%20o%20transfer%20executivo." target="_blank" class="btn-agendar-slim btn-planejar-whatsapp" style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border: 1px solid #C9A45C; border-radius: 6px; background: rgba(197, 160, 89, 0.09); color: #C9A45C; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;">
-        <span>CLIQUE AQUI PARA PLANEJAR A SUA VIAGEM NO WHATSAPP</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <!-- BOTÃO REFORÇADO DE WHATSAPP -->
+    <div class="whatsapp-cta-wrapper">
+      <a href="https://wa.me/5573998171117?text=Ol%C3%A1%21%20Gostaria%20de%20planejar%20minha%20viagem%20e%20solicitar%20o%20transfer%20executivo." target="_blank" rel="noopener noreferrer" class="btn-wa-planejar" aria-label="Planejar viagem no WhatsApp com a Nobre Transfers">
+        <svg class="wa-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.183 8.183 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.06-1.07l-.29-.16-3.12.82.83-3.04-.19-.3a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+        </svg>
+        <span>Planejar viagem no WhatsApp</span>
+        <svg class="wa-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
       </a>
     </div>
 
