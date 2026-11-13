@@ -62,10 +62,11 @@ const CASA_CONFIG = {
   // FAIXA DE DESTAQUES (TRUST STRIP)
   trustStrip: {
     items: [
-      { number: "Até 16", label: "Hóspedes", sub: "Com camas extras confortáveis", icon: "users" },
-      { number: "6", label: "Suítes", sub: "Climatizadas e privativas", icon: "bed" },
-      { number: "Vista Mar", label: "Alto do Mucugê", sub: "Localização nobre em Arraial", icon: "eye" },
-      { number: "6 Carros", label: "Garagem Coberta", sub: "Capacidade para até 6 veículos", icon: "car" }
+      { strong: "6 Suítes", span: "Até 16 Hóspedes" },
+      { strong: "Vista Mar", span: "Alto do Mucugê" },
+      { strong: "Lazer Completo", span: "Piscina, Sauna & Academia" },
+      { strong: "Cookshow", span: "Cozinha & Espaço Gourmet" },
+      { strong: "Garagem", span: "Até 6 Veículos" }
     ]
   },
 

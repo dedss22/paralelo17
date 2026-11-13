@@ -246,30 +246,16 @@ ${baseCss}
     </div>
   </header>
 
-  <!-- TRUST STRIP SECTION -->
+  <!-- TRUST NUMBERS STRIP SECTION -->
   <section class="trust-section">
     <div class="wrap">
       <div class="trust-strip">
-        <div class="trust-item">
-          <strong>6 Suítes</strong>
-          <span>Até 16 Hóspedes</span>
-        </div>
-        <div class="trust-item">
-          <strong>Vista Mar</strong>
-          <span>Alto do Mucugê</span>
-        </div>
-        <div class="trust-item">
-          <strong>Lazer Completo</strong>
-          <span>Piscina, Sauna & Academia</span>
-        </div>
-        <div class="trust-item">
-          <strong>Cookshow</strong>
-          <span>Cozinha & Espaço Gourmet</span>
-        </div>
-        <div class="trust-item">
-          <strong>Garagem</strong>
-          <span>Até 6 Veículos</span>
-        </div>
+        ${c.trustStrip.items.map(t => `
+          <div class="trust-item">
+            <strong>${t.strong}</strong>
+            <span>${t.span}</span>
+          </div>
+        `).join('')}
       </div>
     </div>
   </section>
