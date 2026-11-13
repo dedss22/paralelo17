@@ -20,7 +20,8 @@
   <meta property="og:image" content="assets/hero_branded.png" />
 
   <!-- Preload Hero LCP Image -->
-  <link rel="preload" as="image" href="assets/hero_bg.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero_bg_800w.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero_bg.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
 
   <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans (Alta Costura Editorial & Interface) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +84,13 @@
       border-bottom: 1px solid rgba(229, 139, 36, 0.3);
     }
     .top-bar span { color: #FFC062; }
+    .top-bar-mobile { display: none; }
+    .hero-tag-mobile { display: none; }
+    .hero-title-mobile { display: none; }
+    .hero-desc-mobile { display: none; }
+    .hero-mobile-chips { display: none; }
+    .hero-mobile-price { display: none; }
+    .bottom-sheet-overlay { display: none; }
 
     /* HEADER & NAVIGATION */
     .nav {
@@ -356,6 +364,14 @@
       background: var(--primary-dark);
       overflow: hidden;
       padding: 130px 0 65px;
+    }
+    .hero-picture {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: block;
     }
     .hero-bg {
       position: absolute;
@@ -1365,13 +1381,141 @@
       left: 0;
       right: 0;
       background: rgba(13, 43, 34, 0.98);
-      backdrop-filter: blur(12px);
-      padding: 12px 18px;
-      z-index: 90;
-      border-top: 1px solid var(--gold);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+      z-index: 900;
+      border-top: 1px solid rgba(229, 139, 36, 0.4);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.35);
     }
-    .mobile-bar .btn {
+    .mobile-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .btn-mobile-wpp {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .btn-mobile-wpp:hover {
+      transform: scale(1.04);
+    }
+    .btn-mobile-wpp svg {
+      width: 26px;
+      height: 26px;
+      fill: #fff;
+    }
+    .btn-mobile-primary {
+      flex: 1;
+      height: 48px;
+      min-height: 48px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 0 20px;
+      box-shadow: 0 4px 16px rgba(229, 139, 36, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--gold);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-mobile-primary:hover {
+      background: var(--gold-hover);
+      box-shadow: 0 6px 20px rgba(229, 139, 36, 0.55);
+    }
+
+    /* BOTTOM SHEET (MOBILE DATES SELECTOR) */
+    .bottom-sheet-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.28s ease;
+    }
+    .bottom-sheet-overlay.open {
+      display: flex;
+      opacity: 1;
+      align-items: flex-end;
+    }
+    .bottom-sheet {
+      background: #ffffff;
+      color: var(--ink);
       width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      border-radius: 20px 20px 0 0;
+      padding: 16px 20px calc(24px + env(safe-area-inset-bottom, 12px));
+      box-shadow: 0 -12px 40px rgba(0,0,0,0.4);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      max-height: 90dvh;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .bottom-sheet-overlay.open .bottom-sheet {
+      transform: translateY(0);
+    }
+    .bottom-sheet-handle-bar {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 12px;
+      cursor: pointer;
+    }
+    .bottom-sheet-drag-pill {
+      width: 42px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(17, 26, 22, 0.22);
+    }
+    .bottom-sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .bottom-sheet-header h3 {
+      font-size: 1.45rem;
+      color: var(--primary);
+      margin: 0;
+      font-weight: 600;
+    }
+    .bottom-sheet-close {
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--muted);
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     /* RESPONSIVENESS */
@@ -1389,13 +1533,46 @@
     }
 
     @media (max-width: 768px) {
-      .brand-divider { height: 30px; }
-      .brand-title-horizontal .sub-name-inline {
-        font-size: 0.62rem;
-        letter-spacing: 0.1em;
+      /* TOP BAR SINGLE LINE */
+      .top-bar-desktop { display: none !important; }
+      .top-bar-mobile { display: inline !important; }
+      .top-bar {
+        font-size: 0.72rem;
+        padding: 6px 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.2;
       }
-      .paralelo-logo-img { height: 38px; }
-      .btn-nav { display: none; }
+
+      /* HEADER & NAV: MAX 56PX, JANAGÜ LOGO + HAMBURGER ONLY */
+      .nav {
+        max-height: 56px;
+        padding: 7px 0;
+      }
+      .nav-container {
+        height: 42px;
+      }
+      .brand-wrap {
+        gap: 0;
+      }
+      .brand-divider { display: none !important; }
+      .brand-wrap .paralelo-logo-img { display: none !important; }
+      .brand-title-horizontal .sub-name-inline { display: none !important; }
+      .brand-title-horizontal .main-name {
+        font-size: 1.85rem;
+        line-height: 1;
+      }
+      .btn-nav { display: none !important; }
+      .nav-toggle {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px;
+        justify-content: space-around;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1442,11 +1619,13 @@
       .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
       .gallery-item.span-2 { grid-column: span 1; grid-row: span 1; }
       .mobile-bar {
-        display: block;
-        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        display: block !important;
       }
       .floating-whatsapp {
-        bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+        display: none !important;
+      }
+      body {
+        padding-bottom: 74px;
       }
       footer {
         padding-top: 48px;
@@ -1463,28 +1642,121 @@
         width: 100%;
         line-height: 1.5;
       }
-      .hero { padding: 24px 0 28px; min-height: auto; justify-content: flex-start; }
-      .hero-grid { gap: 20px; }
-      .hero-tag { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 14px; }
+
+      /* MOBILE HERO ENHANCEMENT */
+      .hero {
+        min-height: calc(100svh - 80px);
+        min-height: calc(100dvh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 0 calc(76px + env(safe-area-inset-bottom, 8px)) 0;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .hero-bg {
+        object-position: center 36%;
+        filter: brightness(0.98);
+      }
+      .hero-overlay {
+        background: linear-gradient(to bottom, rgba(13, 43, 34, 0) 0%, rgba(13, 43, 34, 0) 28%, rgba(13, 43, 34, 0.55) 60%, rgba(13, 43, 34, 0.92) 82%, #0d2b22 100%) !important;
+      }
+      .hero-content {
+        width: min(1240px, calc(100% - 32px));
+        margin-inline: auto;
+        padding-bottom: 2px;
+      }
+      .hero-grid {
+        display: block;
+        gap: 0;
+      }
+      .hero-text-block {
+        width: 100%;
+      }
+      .hero-tag {
+        display: block !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 0 3px 0 !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+      }
+      .hero-tag-desktop { display: none !important; }
+      .hero-tag-mobile {
+        display: block !important;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        line-height: 1.2;
+      }
+      .hero-title-desktop { display: none !important; }
+      .hero-title-mobile {
+        display: block !important;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: normal;
+        font-size: clamp(28px, 8vw, 34px);
+        line-height: 1.06;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        margin: 0;
+      }
       .hero h1,
       .hero-title {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(1.95rem, 5.2vw, 2.45rem);
-        line-height: 1.14;
-        margin-bottom: 12px;
+        margin: 0 0 4px 0 !important;
+        max-width: 100% !important;
+      }
+      .hero-desc-desktop { display: none !important; }
+      .hero-desc-mobile {
+        display: block !important;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.94rem;
+        line-height: 1.38;
+        color: rgba(255, 255, 255, 0.94);
+        margin: 0 0 8px 0 !important;
+        max-width: 380px;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+      }
+      .hero-mobile-chips {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 6px;
+      }
+      .hero-chip {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #ffffff;
+        font-size: 0.74rem;
         font-weight: 500;
-        text-shadow: 0 3px 20px rgba(0,0,0,0.7);
-        max-width: 100%;
-        letter-spacing: -0.012em;
-        text-wrap: balance;
+        padding: 2px 8px;
+        border-radius: var(--radius-full);
+        white-space: nowrap;
       }
-      .hero-title .hero-line {
-        display: block;
+      .hero-mobile-price {
+        display: block !important;
+        font-size: 0.88rem;
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 500;
         margin-bottom: 2px;
+        line-height: 1.35;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.6);
       }
-      .hero-title .hero-line-accent {
-        display: block;
-        margin-top: 3px;
+      .hero-mobile-price strong,
+      .hero-mobile-price span {
+        font-weight: 700;
+        color: #FFC062;
       }
 
       /* SECTION HEADINGS RESPONSIVE CADENCE */
@@ -1535,31 +1807,9 @@
         margin-right: auto;
         text-align: center;
       }
-      .hero-badges-strip {
-        justify-content: flex-start;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding-bottom: 6px;
-        margin-top: 18px;
-        width: 100%;
-        mask-image: linear-gradient(to right, black 82%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, black 82%, transparent 100%);
-      }
-      .hero-badges-strip::-webkit-scrollbar { display: none; }
-      .hero-pill-expanded { flex-shrink: 0; padding: 8px 14px; font-size: 0.76rem; }
-      .hero p { font-size: 0.92rem; line-height: 1.5; margin-bottom: 6px; }
+      .hero-badges-strip { display: none !important; }
+      .quick-booking-card { display: none !important; }
       .wrap { width: min(1200px, calc(100% - 32px)); margin-inline: auto; }
-      .hero-content { width: min(1240px, calc(100% - 32px)); margin-inline: auto; }
-      .quick-booking-card {
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-inline: auto;
-        padding: 22px 18px;
-        box-sizing: border-box;
-      }
       .dates-row {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1652,31 +1902,38 @@
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 18px 0 24px; }
-      .hero-tag { margin-bottom: 10px; font-size: 0.68rem; padding: 4px 12px; letter-spacing: 0.08em; }
-      .hero h1,
-      .hero-title {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(1.62rem, 6.2vw, 1.95rem);
-        line-height: 1.16;
-        margin-bottom: 10px;
-        text-wrap: balance;
-        letter-spacing: -0.015em;
-        max-width: 100%;
+      .hero-title-mobile {
+        font-size: clamp(25px, 7.5vw, 29px);
+        line-height: 1.05;
       }
-      .hero-title .hero-line {
-        display: block;
+      .hero-desc-mobile {
+        font-size: 0.88rem;
+        line-height: 1.34;
+      }
+      .hero-chip {
+        font-size: 0.72rem;
+        padding: 2px 7px;
+      }
+      .hero-mobile-chips {
+        gap: 4px;
+        margin-bottom: 5px;
+      }
+      .hero-mobile-price {
+        font-size: 0.84rem;
         margin-bottom: 2px;
       }
-      .hero-title .hero-line-accent {
-        display: block;
-        margin-top: 2px;
+      .final-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
-      .hero-title .script-accent {
-        font-size: 1.18em;
-        margin-right: 0.12em;
+      .final-cta-buttons .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 14px 18px !important;
       }
-      .hero p { font-size: 0.88rem; line-height: 1.48; margin-bottom: 6px; }
 
       /* SECTION HEADINGS ULTRA-MOBILE CADENCE */
       .section-head {
@@ -1757,7 +2014,8 @@
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="wrap">
-      Temporada 2026 / 2027 • Datas exclusivas para <span>Feriados, Carnaval & Réveillon</span> sob consulta • <span>Paralelo 17 Casas na Praia</span>
+      <span class="top-bar-desktop">Temporada 2026 / 2027 • Datas exclusivas para <span>Feriados, Carnaval & Réveillon</span> sob consulta • <span>Paralelo 17 Casas na Praia</span></span>
+      <span class="top-bar-mobile">Réveillon e Carnaval 2027 · sob consulta</span>
     </div>
   </div>
 
@@ -1836,25 +2094,47 @@
 
   <!-- HERO SECTION -->
   <header id="hero" class="hero">
-    <img src="assets/hero_bg.webp" alt="Casa Janagü ao entardecer" class="hero-bg" width="1024" height="682" fetchpriority="high" decoding="async" />
+    <picture class="hero-picture">
+      <source media="(max-width: 768px)" srcset="assets/hero_bg_800w.webp" type="image/webp" />
+      <img src="assets/hero_bg.webp" alt="Casa Janagü ao entardecer" class="hero-bg" width="1024" height="682" fetchpriority="high" decoding="async" />
+    </picture>
     <div class="hero-overlay"></div>
     
     <div class="wrap hero-content">
       <div class="hero-grid">
-        <div>
+        <div class="hero-text-block">
           <div class="hero-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            Condomínio Pedro Grande • Trancoso - BA
+            <span class="hero-tag-desktop">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Condomínio Pedro Grande • Trancoso - BA
+            </span>
+            <span class="hero-tag-mobile">Trancoso · BA</span>
           </div>
 
           <h1 class="serif hero-title">
-            Sua villa privativa em Trancoso<br class="br-desktop" />
-            com <em class="serif-italic-accent">serviço completo de resort</em>
+            <span class="hero-title-desktop">
+              Sua villa privativa em Trancoso<br class="br-desktop" />
+              com <em class="serif-italic-accent">serviço completo de resort</em>
+            </span>
+            <span class="hero-title-mobile">Casa Janagü, Trancoso</span>
           </h1>
 
-          <p>
+          <p class="hero-desc-desktop">
             No Condomínio Pedro Grande, a 3 minutos a pé da praia. Projeto David Bastos com 9 amplas suítes para até 19 pessoas, piscina de 25m, quadra privativa de beach tennis e equipe de 5 profissionais inclusa na diária.
           </p>
+          <p class="hero-desc-mobile">
+            Villa privativa com 9 suítes, piscina de 25m e equipe de 5 inclusa
+          </p>
+
+          <div class="hero-mobile-chips">
+            <span class="hero-chip">9 suítes</span>
+            <span class="hero-chip">até 19 hóspedes</span>
+            <span class="hero-chip">3 min a pé da praia</span>
+          </div>
+
+          <a href="#tarifario" class="hero-mobile-price" id="heroMobilePrice">
+            A partir de <strong id="heroMobilePriceValue">R$ 15.950</strong> / diária · equipe inclusa
+          </a>
         </div>
 
         <!-- QUICK BOOKING BAR -->
@@ -2716,10 +2996,58 @@
 
   <!-- STICKY MOBILE BAR -->
   <div class="mobile-bar">
-    <a href="#reserva" class="btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
-      Consultar Período & Reserva
-    </a>
+    <div class="mobile-bar-inner">
+      <a href="https://wa.me/5573998331717?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20com%20o%20Concierge%20da%20Casa%20Janag%C3%BC%20sobre%20reserva%20e%20servi%C3%A7os%20exclusivos%20em%20Trancoso." target="_blank" class="btn-mobile-wpp" aria-label="Falar no WhatsApp" title="WhatsApp Concierge VIP">
+        <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
+      </a>
+      <button type="button" class="btn-mobile-primary" onclick="openBottomSheet()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        Ver datas
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM SHEET MODAL (MOBILE) -->
+  <div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet(event)">
+    <div class="bottom-sheet" id="bottomSheet" onclick="event.stopPropagation()">
+      <div class="bottom-sheet-handle-bar" onclick="closeBottomSheetDirect()">
+        <div class="bottom-sheet-drag-pill"></div>
+      </div>
+      <div class="bottom-sheet-header">
+        <h3 class="serif">Consultar Disponibilidade</h3>
+        <button type="button" class="bottom-sheet-close" aria-label="Fechar janela" onclick="closeBottomSheetDirect()">&times;</button>
+      </div>
+      <p style="font-size: 0.86rem; color: var(--muted); margin: 0 0 16px 0;">
+        Selecione as datas para consultar a disponibilidade e cotação com o Concierge da Casa Janagü:
+      </p>
+
+      <form id="mobileSheetForm" onsubmit="handleBottomSheetBooking(event)">
+        <div class="dates-row" style="margin-bottom: 12px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="sheetCheckIn" style="font-size: 0.78rem;">Check-in</label>
+            <input type="date" id="sheetCheckIn" aria-label="Data de Check-in" required style="font-size: 0.9rem; padding: 10px 8px;" />
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="sheetCheckOut" style="font-size: 0.78rem;">Check-out</label>
+            <input type="date" id="sheetCheckOut" aria-label="Data de Check-out" required style="font-size: 0.9rem; padding: 10px 8px;" />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="sheetGuests" style="font-size: 0.78rem;">Hóspedes (Máx. 19)</label>
+          <select id="sheetGuests" aria-label="Quantidade de hóspedes" required style="font-size: 0.9rem; padding: 11px 12px;">
+            <option value="Até 10 pessoas">Até 10 pessoas</option>
+            <option value="11 a 15 pessoas">11 a 15 pessoas</option>
+            <option value="16 a 19 pessoas" selected>16 a 19 pessoas (Capacidade Máxima)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; height: 50px; min-height: 48px; font-size: 1rem; font-weight: 700; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
+          Cotar Período via WhatsApp
+        </button>
+      </form>
+    </div>
   </div>
 
   <!-- JAVASCRIPT LOGIC -->
@@ -2736,6 +3064,93 @@
         drawer.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
+    }
+
+    // BOTTOM SHEET (MOBILE RESERVATION DATES)
+    function openBottomSheet() {
+      const overlay = document.getElementById('bottomSheetOverlay');
+      if (!overlay) return;
+      overlay.style.display = 'flex';
+      void overlay.offsetWidth;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBottomSheetDirect() {
+      const overlay = document.getElementById('bottomSheetOverlay');
+      if (!overlay) return;
+      overlay.classList.remove('open');
+      setTimeout(() => {
+        if (!overlay.classList.contains('open')) {
+          overlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }, 280);
+    }
+
+    function closeBottomSheet(e) {
+      if (e.target.id === 'bottomSheetOverlay') {
+        closeBottomSheetDirect();
+      }
+    }
+
+    function handleBottomSheetBooking(e) {
+      e.preventDefault();
+      const checkIn = document.getElementById('sheetCheckIn').value;
+      const checkOut = document.getElementById('sheetCheckOut').value;
+      const guests = document.getElementById('sheetGuests').value;
+
+      const formatDate = (d) => {
+        if (!d) return 'A definir';
+        const parts = d.split('-');
+        return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : d;
+      };
+
+      const message = `Olá! Gostaria de cotar os valores da Casa Janagü em Trancoso:%0A%0A` +
+        `• Check-in: ${formatDate(checkIn)}%0A` +
+        `• Check-out: ${formatDate(checkOut)}%0A` +
+        `• Hóspedes: ${guests}%0A%0A` +
+        `Poderiam me informar a disponibilidade e os valores detalhados para este período?`;
+
+      closeBottomSheetDirect();
+      window.open(`https://wa.me/5573998331717?text=${message}`, '_blank');
+    }
+
+    // DYNAMIC MOBILE HERO PRICE FROM TARIFÁRIO
+    function initMobileHeroPrice() {
+      try {
+        const priceElements = document.querySelectorAll('#tarifario .pricing-card .price-value');
+        let lowestRate = null;
+
+        priceElements.forEach(el => {
+          const text = el.innerText || el.textContent;
+          const match = text.match(/R\$\s*([\d\.]+)/i);
+          if (match && match[1]) {
+            const num = parseInt(match[1].replace(/\./g, ''), 10);
+            if (!isNaN(num) && num > 0) {
+              if (lowestRate === null || num < lowestRate) {
+                lowestRate = num;
+              }
+            }
+          }
+        });
+
+        if (lowestRate !== null) {
+          const formatted = 'R$ ' + lowestRate.toLocaleString('pt-BR');
+          const target = document.getElementById('heroMobilePriceValue');
+          if (target) {
+            target.textContent = formatted;
+          }
+        }
+      } catch (err) {
+        console.warn('Erro ao carregar preço dinâmico:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileHeroPrice);
+    } else {
+      initMobileHeroPrice();
     }
 
     // LIGHTBOX SCRIPT
@@ -2789,6 +3204,12 @@
     }
 
     document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const bottomSheetOverlay = document.getElementById('bottomSheetOverlay');
+        if (bottomSheetOverlay && bottomSheetOverlay.classList.contains('open')) {
+          closeBottomSheetDirect();
+        }
+      }
       const modal = document.getElementById('lightboxModal');
       if (!modal.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightboxDirect();
