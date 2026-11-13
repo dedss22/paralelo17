@@ -112,67 +112,72 @@ ${baseCss}
 
   <!-- HEADER & NAVIGATION -->
   <nav class="nav">
-    <div class="nav-container">
+    <div class="wrap nav-container">
       <a href="#hero" class="brand-wrap">
         <div class="brand-title-horizontal">
           <span class="main-name">${c.brand.name}</span>
-          <span class="sub-name-inline">${c.brand.subName}</span>
         </div>
         <div class="brand-divider"></div>
         <img src="${c.brand.logoImage}" alt="${c.brand.agencyName}" class="paralelo-logo-img" width="120" height="48" decoding="async" />
       </a>
 
-      <div class="nav-links">
-        ${c.about.visible ? '<a href="#a-casa">A Casa</a>' : ''}
-        ${c.staff.visible ? '<a href="#staff">Staff</a>' : ''}
-        ${c.suites.visible ? '<a href="#suites">Suítes</a>' : ''}
-        ${c.leisure.visible ? '<a href="#lazer">Lazer</a>' : ''}
-        ${c.gallery.visible ? '<a href="#galeria">Galeria</a>' : ''}
-        ${c.location.visible ? '<a href="#localizacao">Localização</a>' : ''}
-        ${c.pricing.visible ? '<a href="#tarifario">Tarifário</a>' : ''}
-        ${c.faq.visible ? '<a href="#faq">FAQ</a>' : ''}
+      <ul class="nav-links">
+        ${c.about.visible ? '<li><a href="#a-casa">A Casa</a></li>' : ''}
+        ${c.staff.visible ? '<li><a href="#staff">Staff</a></li>' : ''}
+        ${c.suites.visible ? '<li><a href="#suites">Suítes</a></li>' : ''}
+        ${c.leisure.visible ? '<li><a href="#lazer">Lazer</a></li>' : ''}
+        ${c.gallery.visible ? '<li><a href="#galeria">Galeria</a></li>' : ''}
+        ${c.location.visible ? '<li><a href="#localizacao">Localização</a></li>' : ''}
+        ${c.pricing.visible ? '<li><a href="#tarifario">Tarifário</a></li>' : ''}
+        ${c.faq.visible ? '<li><a href="#faq">FAQ</a></li>' : ''}
+      </ul>
+
+      <div class="nav-actions">
+        <a href="${whatsappUrlConcierge}" target="_blank" class="btn btn-nav">
+          ${getIcon('whatsapp', 18)}
+          <span>Concierge VIP</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu de navegação" onclick="toggleMobileNav()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
-
-      <a href="${whatsappUrlConcierge}" target="_blank" class="nav-cta btn">
-        ${getIcon('whatsapp', 16)}
-        <span>Concierge VIP</span>
-      </a>
-
-      <!-- Hamburger Button -->
-      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Abrir Menu de Navegação">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </nav>
 
   <!-- MOBILE NAV DRAWER -->
-  <div class="mobile-drawer" id="mobileNavDrawer">
-    <div class="mobile-drawer-header">
-      <div class="brand-wrap">
-        <span class="serif" style="font-size: 1.6rem; color: #fff; font-weight: 600;">${c.brand.name}</span>
-        <div class="brand-divider" style="height: 28px;"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-backdrop" onclick="toggleMobileNav()"></div>
+    <div class="mobile-drawer-panel">
+      <div class="mobile-drawer-header">
+        <div class="brand-title-horizontal">
+          <span class="main-name">${c.brand.name}</span>
+        </div>
+        <button class="mobile-drawer-close" aria-label="Fechar menu de navegação" onclick="toggleMobileNav()">&times;</button>
+      </div>
+      <div class="mobile-drawer-logo">
         <img src="${c.brand.logoImage}" alt="${c.brand.agencyName}" width="120" height="48" style="height: 40px; width: auto;" decoding="async" />
       </div>
-      <button class="drawer-close" onclick="toggleMobileNav()" aria-label="Fechar Menu">&times;</button>
-    </div>
-    <div class="mobile-drawer-links">
-      ${c.about.visible ? '<a href="#a-casa" onclick="toggleMobileNav()">A Casa</a>' : ''}
-      ${c.staff.visible ? '<a href="#staff" onclick="toggleMobileNav()">Staff Incluso</a>' : ''}
-      ${c.suites.visible ? '<a href="#suites" onclick="toggleMobileNav()">Suítes</a>' : ''}
-      ${c.leisure.visible ? '<a href="#lazer" onclick="toggleMobileNav()">Lazer & Estrutura</a>' : ''}
-      ${c.gallery.visible ? '<a href="#galeria" onclick="toggleMobileNav()">Galeria de Fotos</a>' : ''}
-      ${c.location.visible ? '<a href="#localizacao" onclick="toggleMobileNav()">Localização</a>' : ''}
-      ${c.pricing.visible ? '<a href="#tarifario" onclick="toggleMobileNav()">Tarifário</a>' : ''}
-      ${c.faq.visible ? '<a href="#faq" onclick="toggleMobileNav()">Dúvidas Frequentes</a>' : ''}
-      <a href="#reserva" onclick="toggleMobileNav()" style="color: var(--gold); font-weight: 700;">Solicitar Reserva</a>
-    </div>
-    <div class="mobile-drawer-footer">
-      <a href="${whatsappUrlConcierge}" target="_blank" class="btn" style="width: 100%; justify-content: center;">
-        ${getIcon('whatsapp', 18)}
-        WhatsApp Concierge VIP
-      </a>
+      <ul class="mobile-nav-list">
+        ${c.about.visible ? '<li><a href="#a-casa" onclick="toggleMobileNav()">A Casa & Arquitetura</a></li>' : ''}
+        ${c.staff.visible ? '<li><a href="#staff" onclick="toggleMobileNav()">Staff Incluso</a></li>' : ''}
+        ${c.suites.visible ? '<li><a href="#suites" onclick="toggleMobileNav()">6 Suítes (Até 16 Hóspedes)</a></li>' : ''}
+        ${c.leisure.visible ? '<li><a href="#lazer" onclick="toggleMobileNav()">Lazer & Bem-Estar</a></li>' : ''}
+        ${c.gallery.visible ? '<li><a href="#galeria" onclick="toggleMobileNav()">Galeria de Fotos</a></li>' : ''}
+        ${c.location.visible ? '<li><a href="#localizacao" onclick="toggleMobileNav()">Localização em Arraial</a></li>' : ''}
+        ${c.pricing.visible ? '<li><a href="#tarifario" onclick="toggleMobileNav()">Tarifário & Temporadas</a></li>' : ''}
+        ${c.faq.visible ? '<li><a href="#faq" onclick="toggleMobileNav()">Perguntas Frequentes</a></li>' : ''}
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#reserva" class="btn" style="width: 100%;" onclick="toggleMobileNav()">
+          Consultar Disponibilidade
+        </a>
+        <a href="${whatsappUrlConcierge}" target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: var(--gold); color: #fff;">
+          WhatsApp Concierge VIP
+        </a>
+      </div>
     </div>
   </div>
 

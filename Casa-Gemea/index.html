@@ -1787,67 +1787,72 @@
 
   <!-- HEADER & NAVIGATION -->
   <nav class="nav">
-    <div class="nav-container">
+    <div class="wrap nav-container">
       <a href="#hero" class="brand-wrap">
         <div class="brand-title-horizontal">
           <span class="main-name">Casa Gêmea</span>
-          <span class="sub-name-inline">Alto do Mucugê</span>
         </div>
         <div class="brand-divider"></div>
         <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" class="paralelo-logo-img" width="120" height="48" decoding="async" />
       </a>
 
-      <div class="nav-links">
-        <a href="#a-casa">A Casa</a>
-        <a href="#staff">Staff</a>
-        <a href="#suites">Suítes</a>
-        <a href="#lazer">Lazer</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#localizacao">Localização</a>
-        <a href="#tarifario">Tarifário</a>
-        <a href="#faq">FAQ</a>
+      <ul class="nav-links">
+        <li><a href="#a-casa">A Casa</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#suites">Suítes</a></li>
+        <li><a href="#lazer">Lazer</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+        <li><a href="#tarifario">Tarifário</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5573998331717?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20o%20Concierge%20da%20Paralelo%2017%20para%20tirar%20d%C3%BAvidas%20e%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Casa%20G%C3%AAmea%20no%20Alto%20do%20Mucug%C3%AA." target="_blank" class="btn btn-nav">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
+          <span>Concierge VIP</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu de navegação" onclick="toggleMobileNav()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
-
-      <a href="https://wa.me/5573998331717?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20o%20Concierge%20da%20Paralelo%2017%20para%20tirar%20d%C3%BAvidas%20e%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Casa%20G%C3%AAmea%20no%20Alto%20do%20Mucug%C3%AA." target="_blank" class="nav-cta btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
-        <span>Concierge VIP</span>
-      </a>
-
-      <!-- Hamburger Button -->
-      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Abrir Menu de Navegação">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </nav>
 
   <!-- MOBILE NAV DRAWER -->
-  <div class="mobile-drawer" id="mobileNavDrawer">
-    <div class="mobile-drawer-header">
-      <div class="brand-wrap">
-        <span class="serif" style="font-size: 1.6rem; color: #fff; font-weight: 600;">Casa Gêmea</span>
-        <div class="brand-divider" style="height: 28px;"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-backdrop" onclick="toggleMobileNav()"></div>
+    <div class="mobile-drawer-panel">
+      <div class="mobile-drawer-header">
+        <div class="brand-title-horizontal">
+          <span class="main-name">Casa Gêmea</span>
+        </div>
+        <button class="mobile-drawer-close" aria-label="Fechar menu de navegação" onclick="toggleMobileNav()">&times;</button>
+      </div>
+      <div class="mobile-drawer-logo">
         <img src="assets/paralelo17_original.svg" alt="Paralelo 17 Casas na Praia" width="120" height="48" style="height: 40px; width: auto;" decoding="async" />
       </div>
-      <button class="drawer-close" onclick="toggleMobileNav()" aria-label="Fechar Menu">&times;</button>
-    </div>
-    <div class="mobile-drawer-links">
-      <a href="#a-casa" onclick="toggleMobileNav()">A Casa</a>
-      <a href="#staff" onclick="toggleMobileNav()">Staff Incluso</a>
-      <a href="#suites" onclick="toggleMobileNav()">Suítes</a>
-      <a href="#lazer" onclick="toggleMobileNav()">Lazer & Estrutura</a>
-      <a href="#galeria" onclick="toggleMobileNav()">Galeria de Fotos</a>
-      <a href="#localizacao" onclick="toggleMobileNav()">Localização</a>
-      <a href="#tarifario" onclick="toggleMobileNav()">Tarifário</a>
-      <a href="#faq" onclick="toggleMobileNav()">Dúvidas Frequentes</a>
-      <a href="#reserva" onclick="toggleMobileNav()" style="color: var(--gold); font-weight: 700;">Solicitar Reserva</a>
-    </div>
-    <div class="mobile-drawer-footer">
-      <a href="https://wa.me/5573998331717?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20o%20Concierge%20da%20Paralelo%2017%20para%20tirar%20d%C3%BAvidas%20e%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Casa%20G%C3%AAmea%20no%20Alto%20do%20Mucug%C3%AA." target="_blank" class="btn" style="width: 100%; justify-content: center;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.284l-.54 2.393 2.477-.525c.98.577 1.777.848 2.806.848 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.77-5.767-5.77zm3.435 8.163c-.144.406-.833.774-1.144.821-.303.047-.698.077-2.227-.563-1.849-.773-3.036-2.658-3.128-2.78-.093-.124-.748-.997-.748-1.902 0-.905.47-1.35.637-1.536.168-.186.368-.232.492-.232.124 0 .248.001.356.006.115.005.269-.044.422.323.159.382.545 1.332.593 1.43.048.098.081.213.016.34-.065.128-.098.208-.194.322-.097.114-.204.254-.291.341-.098.097-.2.203-.086.399.114.195.508.837 1.09 1.356.75.668 1.381.875 1.577.973.196.098.31.082.424-.049.115-.131.492-.572.623-.768.131-.196.262-.164.441-.098.18.065 1.143.539 1.339.637.196.098.327.147.375.229.049.082.049.475-.095.881z"></path></svg>
-        WhatsApp Concierge VIP
-      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="#a-casa" onclick="toggleMobileNav()">A Casa & Arquitetura</a></li>
+        <li><a href="#staff" onclick="toggleMobileNav()">Staff Incluso</a></li>
+        <li><a href="#suites" onclick="toggleMobileNav()">6 Suítes (Até 16 Hóspedes)</a></li>
+        <li><a href="#lazer" onclick="toggleMobileNav()">Lazer & Bem-Estar</a></li>
+        <li><a href="#galeria" onclick="toggleMobileNav()">Galeria de Fotos</a></li>
+        <li><a href="#localizacao" onclick="toggleMobileNav()">Localização em Arraial</a></li>
+        <li><a href="#tarifario" onclick="toggleMobileNav()">Tarifário & Temporadas</a></li>
+        <li><a href="#faq" onclick="toggleMobileNav()">Perguntas Frequentes</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#reserva" class="btn" style="width: 100%;" onclick="toggleMobileNav()">
+          Consultar Disponibilidade
+        </a>
+        <a href="https://wa.me/5573998331717?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20o%20Concierge%20da%20Paralelo%2017%20para%20tirar%20d%C3%BAvidas%20e%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Casa%20G%C3%AAmea%20no%20Alto%20do%20Mucug%C3%AA." target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: var(--gold); color: #fff;">
+          WhatsApp Concierge VIP
+        </a>
+      </div>
     </div>
   </div>
 
