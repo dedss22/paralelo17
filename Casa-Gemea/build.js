@@ -183,47 +183,50 @@ ${baseCss}
 
   <!-- HERO SECTION -->
   <header id="hero" class="hero">
-    <img src="${c.hero.bgImage}" alt="${c.hero.bgImageAlt}" class="hero-bg" width="1920" height="1080" fetchpriority="high" />
+    <img src="${c.hero.bgImage}" alt="${c.hero.bgImageAlt}" class="hero-bg" width="1024" height="682" fetchpriority="high" decoding="async" />
     <div class="hero-overlay"></div>
 
-    <div class="wrap">
+    <div class="wrap hero-content">
       <div class="hero-grid">
-        <div class="hero-content">
+        <div>
           <div class="hero-tag">
-            <span></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             ${c.hero.badge}
           </div>
           <h1 class="serif hero-title">
-            ${c.hero.title}
+            ${c.brand.name}<br class="br-desktop" />
+            <span class="script-accent">Alto do Mucugê • Vista Mar</span>
           </h1>
-          <p class="hero-desc">
+          <p>
             ${c.hero.subtitle}
           </p>
         </div>
 
-        <!-- QUICK RESERVATION CARD -->
-        <div class="hero-card">
+        <!-- QUICK BOOKING BAR (MOTOR DE VENDAS) -->
+        <div class="quick-booking-card" id="quickFormCard">
           <h2>${c.hero.formTitle}</h2>
-          <p class="hero-card-sub">${c.hero.formSubtitle}</p>
+          <p>${c.hero.formSubtitle}</p>
           <form id="heroQuickForm" onsubmit="handleQuickBooking(event)">
-            <div class="hero-form-group">
-              <label for="heroCheckIn">Check-in</label>
-              <input type="date" id="heroCheckIn" aria-label="Data de Check-in" required />
+            <div class="dates-row">
+              <div class="form-group">
+                <label for="heroCheckIn">Check-in</label>
+                <input type="date" id="heroCheckIn" aria-label="Data de Check-in" required />
+              </div>
+              <div class="form-group">
+                <label for="heroCheckOut">Check-out</label>
+                <input type="date" id="heroCheckOut" aria-label="Data de Check-out" required />
+              </div>
             </div>
-            <div class="hero-form-group">
-              <label for="heroCheckOut">Check-out</label>
-              <input type="date" id="heroCheckOut" aria-label="Data de Check-out" required />
-            </div>
-            <div class="hero-form-group">
-              <label for="heroGuests">Hóspedes</label>
+            <div class="form-group">
+              <label for="heroGuests">Hóspedes (Até 16)</label>
               <select id="heroGuests" aria-label="Quantidade de hóspedes" required>
-                <option value="1 a 4 pessoas">1 a 4 pessoas</option>
-                <option value="5 a 8 pessoas">5 a 8 pessoas</option>
-                <option value="9 a 12 pessoas" selected>9 a 12 pessoas</option>
-                <option value="13 a 16 pessoas (com extras)">13 a 16 pessoas (com extras)</option>
+                <option value="1 a 6 pessoas">1 a 6 pessoas</option>
+                <option value="7 a 10 pessoas">7 a 10 pessoas</option>
+                <option value="11 a 12 pessoas">11 a 12 pessoas</option>
+                <option value="13 a 16 pessoas (com extras)" selected>13 a 16 pessoas (com extras)</option>
               </select>
             </div>
-            <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-top: 8px;">
+            <button type="submit" class="btn" style="width: 100%; margin-top: 8px; padding: 13px 20px;">
               ${getIcon('whatsapp', 18)}
               ${c.hero.buttonText}
             </button>
@@ -235,8 +238,8 @@ ${baseCss}
       <div class="hero-badges-strip">
         ${c.hero.badgesStrip.map(b => `
           <div class="hero-pill-expanded">
-            ${getIcon(b.icon, 15, 'var(--gold)')}
-            <span>${b.text}</span>
+            ${getIcon(b.icon, 15, 'currentColor')}
+            ${b.text}
           </div>
         `).join('')}
       </div>
@@ -246,14 +249,27 @@ ${baseCss}
   <!-- TRUST STRIP SECTION -->
   <section class="trust-section">
     <div class="wrap">
-      <div class="trust-grid">
-        ${c.trustStrip.items.map(t => `
-          <div class="trust-item">
-            <span class="trust-num serif">${t.number}</span>
-            <span class="trust-label">${t.label}</span>
-            <span class="trust-sub">${t.sub}</span>
-          </div>
-        `).join('')}
+      <div class="trust-strip">
+        <div class="trust-item">
+          <strong>6 Suítes</strong>
+          <span>Até 16 Hóspedes</span>
+        </div>
+        <div class="trust-item">
+          <strong>Vista Mar</strong>
+          <span>Alto do Mucugê</span>
+        </div>
+        <div class="trust-item">
+          <strong>Lazer Completo</strong>
+          <span>Piscina, Sauna & Academia</span>
+        </div>
+        <div class="trust-item">
+          <strong>Cookshow</strong>
+          <span>Cozinha & Espaço Gourmet</span>
+        </div>
+        <div class="trust-item">
+          <strong>Garagem</strong>
+          <span>Até 6 Veículos</span>
+        </div>
       </div>
     </div>
   </section>
