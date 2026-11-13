@@ -78,6 +78,116 @@ function buildHtml() {
 
   <style>
 ${baseCss}
+
+    /* MOSAICO EDITORIAL DE FOTOS - SEÇÃO A CASA */
+    .about-mosaic {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+    .about-mosaic-main {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      background: #1a2e26;
+    }
+    .about-mosaic-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .about-mosaic-main:hover img {
+      transform: scale(1.03);
+    }
+    .about-mosaic-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      width: 100%;
+    }
+    .about-mosaic-sub {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      background: #1a2e26;
+    }
+    .about-mosaic-sub img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .about-mosaic-sub:hover img {
+      transform: scale(1.04);
+    }
+    .mosaic-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(13, 43, 34, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.82rem;
+      border: 1px solid rgba(229, 139, 36, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .mosaic-caption strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .mosaic-caption span.zoom-icon {
+      color: var(--gold);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    /* Regras Mobile (até 768px) */
+    @media (max-width: 768px) {
+      .about-mosaic {
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .about-mosaic-main {
+        aspect-ratio: 16 / 10;
+        border-radius: var(--radius-sm);
+      }
+      .about-mosaic-duo {
+        gap: 10px;
+      }
+      .about-mosaic-sub {
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-sm);
+      }
+      .mosaic-caption {
+        padding: 6px 10px;
+        font-size: 0.74rem;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+      }
+      .mosaic-caption span.zoom-icon {
+        display: none;
+      }
+    }
   </style>
 
   <!-- Config Script -->
@@ -284,11 +394,31 @@ ${baseCss}
           </div>
         </div>
 
-        <div>
-          <div class="media-card">
-            <img src="${c.about.image}" alt="${c.about.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" />
-            <div class="media-caption">
-              <strong>${c.brand.name}</strong> • ${c.brand.subName}
+        <div class="about-mosaic">
+          <!-- Foto Principal: Living Integrado -->
+          <div class="about-mosaic-main" onclick="openLightbox('${c.about.mosaic.main.src}')" title="Clique para ampliar">
+            <img src="${c.about.mosaic.main.src}" alt="${c.about.mosaic.main.alt}" width="1024" height="682" loading="lazy" decoding="async" />
+            <div class="mosaic-caption">
+              <strong>${c.about.mosaic.main.label}</strong>
+              <span class="zoom-icon">Ver foto ⤢</span>
+            </div>
+          </div>
+
+          <!-- Dupla Inferior: Cookshow & Varanda Lounge -->
+          <div class="about-mosaic-duo">
+            <div class="about-mosaic-sub" onclick="openLightbox('${c.about.mosaic.sub1.src}')" title="Clique para ampliar">
+              <img src="${c.about.mosaic.sub1.src}" alt="${c.about.mosaic.sub1.alt}" width="1024" height="682" loading="lazy" decoding="async" />
+              <div class="mosaic-caption">
+                <strong>${c.about.mosaic.sub1.label}</strong>
+                <span class="zoom-icon">⤢</span>
+              </div>
+            </div>
+            <div class="about-mosaic-sub" onclick="openLightbox('${c.about.mosaic.sub2.src}')" title="Clique para ampliar">
+              <img src="${c.about.mosaic.sub2.src}" alt="${c.about.mosaic.sub2.alt}" width="1024" height="682" loading="lazy" decoding="async" />
+              <div class="mosaic-caption">
+                <strong>${c.about.mosaic.sub2.label}</strong>
+                <span class="zoom-icon">⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -759,7 +889,10 @@ ${baseCss}
       const modal = document.getElementById('lightboxModal');
       const img = document.getElementById('lightboxImg');
       currentImageIndex = galleryImages.indexOf(src);
-      if (currentImageIndex === -1) currentImageIndex = 0;
+      if (currentImageIndex === -1) {
+        galleryImages.push(src);
+        currentImageIndex = galleryImages.length - 1;
+      }
       img.src = src;
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';

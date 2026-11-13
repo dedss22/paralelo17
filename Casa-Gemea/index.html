@@ -1753,6 +1753,116 @@
     }
 
   
+
+    /* MOSAICO EDITORIAL DE FOTOS - SEÇÃO A CASA */
+    .about-mosaic {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+    .about-mosaic-main {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      background: #1a2e26;
+    }
+    .about-mosaic-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .about-mosaic-main:hover img {
+      transform: scale(1.03);
+    }
+    .about-mosaic-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      width: 100%;
+    }
+    .about-mosaic-sub {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      background: #1a2e26;
+    }
+    .about-mosaic-sub img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .about-mosaic-sub:hover img {
+      transform: scale(1.04);
+    }
+    .mosaic-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(13, 43, 34, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.82rem;
+      border: 1px solid rgba(229, 139, 36, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .mosaic-caption strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .mosaic-caption span.zoom-icon {
+      color: var(--gold);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    /* Regras Mobile (até 768px) */
+    @media (max-width: 768px) {
+      .about-mosaic {
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .about-mosaic-main {
+        aspect-ratio: 16 / 10;
+        border-radius: var(--radius-sm);
+      }
+      .about-mosaic-duo {
+        gap: 10px;
+      }
+      .about-mosaic-sub {
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-sm);
+      }
+      .mosaic-caption {
+        padding: 6px 10px;
+        font-size: 0.74rem;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+      }
+      .mosaic-caption span.zoom-icon {
+        display: none;
+      }
+    }
   </style>
 
   <!-- Config Script -->
@@ -1984,11 +2094,7 @@
             </p>
           
             <p style="font-size: 1.08rem; color: var(--muted); margin-bottom: 20px;">
-              A área social integra com harmonia a sala de TV, a acolhedora sala de estar e a sala de jantar com mesa ampla para refeições. A cozinha em estilo cookshow conecta os amantes da gastronomia com a convivência dos convidados em um ambiente fluido e arejado.
-            </p>
-          
-            <p style="font-size: 1.08rem; color: var(--muted); margin-bottom: 20px;">
-              A estrutura de lazer e bem-estar privativa é completa: piscina debruçada na paisagem do mar, sauna a vapor, academia equipada, churrasqueira para celebrações inesquecíveis e garagem com capacidade para até 6 carros.
+              A área social integra com fluidez o living, a acolhedora sala de estar e a sala de jantar à moderna cozinha em estilo cookshow, abrindo-se harmoniosamente para a varanda e para o deck panorâmico debruçado sobre a paisagem tropical.
             </p>
           
 
@@ -2001,7 +2107,7 @@
             
               <div class="feature-badge">
                 <b>Salas Integradas</b>
-                <span>Sala de TV, sala de estar e sala de jantar conectadas com mesa ampla para refeições.</span>
+                <span>Sala de TV, estar e jantar conectadas com mesa ampla para refeições em grupo.</span>
               </div>
             
               <div class="feature-badge">
@@ -2010,18 +2116,38 @@
               </div>
             
               <div class="feature-badge">
-                <b>Bem-Estar & Saúde</b>
-                <span>Sauna a vapor e academia completa privativa sem necessidade de sair da propriedade.</span>
+                <b>Sauna & Academia Privativas</b>
+                <span>Espaço fitness completo e sauna a vapor privativa para o seu bem-estar.</span>
               </div>
             
           </div>
         </div>
 
-        <div>
-          <div class="media-card">
-            <img src="assets/deck_vista_mar.jpg" alt="Vista do deck e piscina da Casa Gêmea com vista mar no Alto do Mucugê" width="1200" height="800" loading="lazy" decoding="async" />
-            <div class="media-caption">
-              <strong>Casa Gêmea</strong> • Alto do Mucugê
+        <div class="about-mosaic">
+          <!-- Foto Principal: Living Integrado -->
+          <div class="about-mosaic-main" onclick="openLightbox('assets/sala_estar.jpg')" title="Clique para ampliar">
+            <img src="assets/sala_estar.jpg" alt="Living e Sala de Estar ampla integrada da Casa Gêmea" width="1024" height="682" loading="lazy" decoding="async" />
+            <div class="mosaic-caption">
+              <strong>Living & Estar Integrado</strong>
+              <span class="zoom-icon">Ver foto ⤢</span>
+            </div>
+          </div>
+
+          <!-- Dupla Inferior: Cookshow & Varanda Lounge -->
+          <div class="about-mosaic-duo">
+            <div class="about-mosaic-sub" onclick="openLightbox('assets/cozinha_cookshow.jpg')" title="Clique para ampliar">
+              <img src="assets/cozinha_cookshow.jpg" alt="Cozinha estilo cookshow com ilha gourmet na Casa Gêmea" width="1024" height="682" loading="lazy" decoding="async" />
+              <div class="mosaic-caption">
+                <strong>Cozinha Cookshow</strong>
+                <span class="zoom-icon">⤢</span>
+              </div>
+            </div>
+            <div class="about-mosaic-sub" onclick="openLightbox('assets/poltronas_lounge.jpg')" title="Clique para ampliar">
+              <img src="assets/poltronas_lounge.jpg" alt="Varanda coberta e lounge com poltronas na Casa Gêmea" width="1024" height="682" loading="lazy" decoding="async" />
+              <div class="mosaic-caption">
+                <strong>Varanda & Lounge</strong>
+                <span class="zoom-icon">⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2947,7 +3073,10 @@
       const modal = document.getElementById('lightboxModal');
       const img = document.getElementById('lightboxImg');
       currentImageIndex = galleryImages.indexOf(src);
-      if (currentImageIndex === -1) currentImageIndex = 0;
+      if (currentImageIndex === -1) {
+        galleryImages.push(src);
+        currentImageIndex = galleryImages.length - 1;
+      }
       img.src = src;
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';

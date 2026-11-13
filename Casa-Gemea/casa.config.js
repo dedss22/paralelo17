@@ -70,6 +70,46 @@ const CASA_CONFIG = {
     ]
   },
 
+  // MAPA DE FOTOS POR SEÇÃO (DIRETRIZ DE NÃO-REPETIÇÃO)
+  // Cada seção principal recebe fotos exclusivas para manter o ritmo e a descoberta.
+  // Apenas a seção Galeria pode reunir e repetir imagens do imóvel.
+  photoMap: {
+    hero: [
+      { src: "assets/deck_piscina.jpg", label: "Piscina & Deck com Solarium", desc: "Vista panorâmica para o mar no Alto do Mucugê" }
+    ],
+    about: [
+      { role: "main", src: "assets/sala_estar.jpg", label: "Living & Estar Integrado", desc: "Área social ampla com portas envidraçadas abertas para a varanda" },
+      { role: "sub1", src: "assets/cozinha_cookshow.jpg", label: "Cozinha Cookshow", desc: "Ilha gourmet contemporânea para convivência gastronômica" },
+      { role: "sub2", src: "assets/poltronas_lounge.jpg", label: "Varanda & Lounge Coberto", desc: "Espaço de relaxamento com mobiliário em fibra natural" }
+    ],
+    suites: [
+      { suite: "Suíte Master 01", src: "assets/quarto_1.jpg", label: "Cama King" },
+      { suite: "Suíte Master 02", src: "assets/suite_02.jpg", label: "Cama King" },
+      { suite: "Suíte 03", src: "assets/suite_03.jpg", label: "Cama Queen" },
+      { suite: "Suíte 04", src: "assets/suite_04.jpg", label: "Cama Queen" },
+      { suite: "Suíte 05 (Reversível)", src: "assets/suite_05.jpg", label: "Solteiro / Casal" },
+      { suite: "Suíte 06 (Reversível)", src: "assets/suite_06.jpg", label: "Solteiro / Casal" }
+    ],
+    leisure: [
+      { src: "assets/sauna.jpg", label: "Sauna a Vapor Privativa", desc: "Ambiente envidraçado moderno para relaxamento após a praia" }
+    ],
+    gallery: [
+      { src: "assets/deck_piscina.jpg", label: "Deck & Piscina com Vista Mar" },
+      { src: "assets/deck_vista_mar.jpg", label: "Vista Panorâmica do Deck Aéreo" },
+      { src: "assets/casa_fachada.jpg", label: "Fachada & Arquitetura Contemporânea" },
+      { src: "assets/sala_estar.jpg", label: "Living & Sala de Estar Integrada" },
+      { src: "assets/cozinha_cookshow.jpg", label: "Cozinha Estilo Cookshow" },
+      { src: "assets/poltronas_lounge.jpg", label: "Varanda & Lounge Coberto" },
+      { src: "assets/sauna.jpg", label: "Sauna a Vapor Privativa" },
+      { src: "assets/academia.jpg", label: "Academia Completa Equipada" },
+      { src: "assets/banheiro.jpg", label: "Banheiro em Mármore de Alto Padrão" },
+      { src: "assets/quarto_1.jpg", label: "Suíte Master King 01" },
+      { src: "assets/suite_02.jpg", label: "Suíte Master King 02" },
+      { src: "assets/suite_03.jpg", label: "Suíte Superior Queen" },
+      { src: "assets/suite_extra.jpg", label: "Detalhe das Acomodações" }
+    ]
+  },
+
   // SEÇÃO A CASA / ARQUITETURA
   about: {
     visible: true,
@@ -77,17 +117,35 @@ const CASA_CONFIG = {
     title: "Conforto, amplitude e vista para o mar",
     paragraphs: [
       "Localizada no cobiçado Alto do Mucugê, com vista aberta para o mar azul da Bahia, a Casa Gêmea reúne conforto, amplitude e ambientes pensados para proporcionar momentos especiais em família ou entre amigos.",
-      "A área social integra com harmonia a sala de TV, a acolhedora sala de estar e a sala de jantar com mesa ampla para refeições. A cozinha em estilo cookshow conecta os amantes da gastronomia com a convivência dos convidados em um ambiente fluido e arejado.",
-      "A estrutura de lazer e bem-estar privativa é completa: piscina debruçada na paisagem do mar, sauna a vapor, academia equipada, churrasqueira para celebrações inesquecíveis e garagem com capacidade para até 6 carros."
+      "A área social integra com fluidez o living, a acolhedora sala de estar e a sala de jantar à moderna cozinha em estilo cookshow, abrindo-se harmoniosamente para a varanda e para o deck panorâmico debruçado sobre a paisagem tropical."
     ],
     features: [
       { title: "Cozinha Estilo Cookshow", desc: "Ambiente moderno e integrado para celebrar a gastronomia com convidados ou chefs particulares." },
-      { title: "Salas Integradas", desc: "Sala de TV, sala de estar e sala de jantar conectadas com mesa ampla para refeições." },
+      { title: "Salas Integradas", desc: "Sala de TV, estar e jantar conectadas com mesa ampla para refeições em grupo." },
       { title: "Deck Panorâmico & Piscina", desc: "Solarium com espreguiçadeiras e piscina privativa debruçada sobre a vista mar." },
-      { title: "Bem-Estar & Saúde", desc: "Sauna a vapor e academia completa privativa sem necessidade de sair da propriedade." }
+      { title: "Sauna & Academia Privativas", desc: "Espaço fitness completo e sauna a vapor privativa para o seu bem-estar." }
     ],
-    image: "assets/deck_vista_mar.jpg",
-    imageAlt: "Vista do deck e piscina da Casa Gêmea com vista mar no Alto do Mucugê"
+    // Mosaico Editorial de 3 Fotos (1 Principal Superior + Dupla de Apoio Inferior)
+    mosaic: {
+      main: {
+        src: "assets/sala_estar.jpg",
+        alt: "Living e Sala de Estar ampla integrada da Casa Gêmea",
+        label: "Living & Estar Integrado",
+        caption: "Living social integrado com vigas em madeira e portas abertas para a varanda"
+      },
+      sub1: {
+        src: "assets/cozinha_cookshow.jpg",
+        alt: "Cozinha estilo cookshow com ilha gourmet na Casa Gêmea",
+        label: "Cozinha Cookshow",
+        caption: "Ilha gourmet moderna equipada para experiências gastronômicas"
+      },
+      sub2: {
+        src: "assets/poltronas_lounge.jpg",
+        alt: "Varanda coberta e lounge com poltronas na Casa Gêmea",
+        label: "Varanda & Lounge",
+        caption: "Espaço de convivência ao ar livre com vista para o jardim"
+      }
+    }
   },
 
   // STAFF INCLUSO
