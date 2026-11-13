@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Política de Privacidade | Nobre Transfers</title>
+  <meta name="description" content="Política de Privacidade e Proteção de Dados Pessoais da Nobre Transfers, em conformidade com a LGPD (Lei Federal nº 13.709/2018).">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon-180.png">
+  <meta name="theme-color" content="#F4EFE6">
+
+  <!-- GOOGLE FONTS: ASSÍNCRONO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  </noscript>
+
+  <style>
+    /* ========================================================
+       DESIGN SYSTEM: NOBRE TRANSFERS (TEMA CLARO EXCLUSIVO)
+       ======================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ink: #14110F;
+      --on-video: #F4EFE6;
+      --color-surface: #F4EFE6;
+      --color-surface-subtle: #ECE6DA;
+      --color-border: rgba(20, 17, 15, 0.12);
+      --color-border-hover: rgba(20, 17, 15, 0.25);
+      --color-text: #14110F;
+      --color-text-muted: rgba(20, 17, 15, 0.60);
+      --color-gold: #C9A45C;
+      --color-gold-hover: #b8934b;
+      --color-gold-text: #14110F;
+      --color-gold-ink: #6E4D14;
+      --radius-base: 6px;
+      --touch-target: 44px;
+      --shadow-subtle: 0 4px 16px rgba(20, 17, 15, 0.06);
+      --container: 1200px;
+      --article-max: 760px;
+      --hdr-height: 80px;
+    }
+
+    :focus-visible {
+      outline: 2px solid #6E4D14;
+      outline-offset: 2px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--hdr-height) + 24px);
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Acessibilidade: Skip Link */
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -100px;
+      z-index: 3000;
+      background: var(--ink);
+      color: #F4EFE6;
+      padding: 12px 18px;
+      border-radius: var(--radius-base);
+      font: 600 15px var(--font-sans);
+      text-decoration: none;
+      transition: top 200ms ease;
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 2px solid var(--color-gold);
+      outline-offset: 2px;
+    }
+
+    /* ========================================================
+       HEADER EDITORIAL & SÓBRIO
+       ======================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--hdr-height);
+      min-height: var(--hdr-height);
+      z-index: 1000;
+      background: rgba(244, 239, 230, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20, 17, 15, 0.08);
+      display: flex;
+      align-items: center;
+      transition: background 250ms ease, box-shadow 250ms ease;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(244, 239, 230, 0.98);
+      box-shadow: 0 4px 20px rgba(20, 17, 15, 0.06);
+    }
+
+    .header-container {
+      max-width: var(--container);
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      min-height: var(--touch-target);
+      padding: 0;
+      line-height: 1;
+    }
+
+    .brand-logo {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: opacity 200ms ease;
+    }
+
+    .brand-logo:hover {
+      opacity: 0.9;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: 0 8px;
+      transition: color 200ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--color-gold-ink);
+    }
+
+    .btn-header-wa {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--color-border);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--touch-target);
+      padding: 0 18px;
+      border-radius: var(--radius-base);
+      cursor: pointer;
+      transition: background 200ms ease, border-color 200ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-header-wa:hover {
+      background: rgba(20, 17, 15, 0.06);
+      border-color: var(--color-border-hover);
+    }
+
+    /* Menu Toggle Hambúrguer Mobile */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-bar {
+      width: 22px;
+      height: 2px;
+      background-color: var(--ink);
+      border-radius: 1px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+
+    .menu-toggle.is-open .hamburger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.is-open .hamburger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.is-open .hamburger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-backdrop {
+      display: none;
+    }
+
+    /* ========================================================
+       CONTEÚDO PRINCIPAL: ARTIGO DE PRIVACIDADE
+       ======================================================== */
+    main#conteudo {
+      flex: 1 0 auto;
+      width: 100%;
+      padding-top: calc(var(--hdr-height) + 40px);
+      padding-bottom: 80px;
+    }
+
+    .policy-wrapper {
+      max-width: var(--article-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Breadcrumbs */
+    .policy-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .policy-breadcrumbs a {
+      color: var(--color-gold-ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .policy-breadcrumbs a:hover {
+      color: var(--ink);
+    }
+
+    .policy-breadcrumbs span[aria-hidden="true"] {
+      user-select: none;
+    }
+
+    /* Cabeçalho do Documento */
+    .policy-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .policy-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold-ink);
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .policy-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .policy-meta {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .policy-meta strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Callout de Aviso Legal Importante (Disclaimer) */
+    .disclaimer-alert-box {
+      background: #FFF8E7;
+      border: 1px solid #D4B26F;
+      border-left: 5px solid #C9A45C;
+      border-radius: var(--radius-base);
+      padding: 16px 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(110, 77, 20, 0.06);
+    }
+
+    .disclaimer-alert-text {
+      font-size: 14.5px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #4A3510;
+    }
+
+    .disclaimer-alert-text strong {
+      color: #2E1F05;
+      font-weight: 600;
+    }
+
+    /* Sumário de Navegação Rápida */
+    .toc-card {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-gold-ink);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 14.5px;
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: 2px 0;
+      transition: color 150ms ease;
+    }
+
+    .toc-link:hover {
+      color: var(--color-gold-ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .toc-num {
+      color: var(--color-gold-ink);
+      font-weight: 600;
+      margin-right: 8px;
+      min-width: 20px;
+    }
+
+    /* Seções do Documento */
+    .policy-section {
+      margin-bottom: 48px;
+      scroll-margin-top: calc(var(--hdr-height) + 24px);
+    }
+
+    .policy-section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3.2vw, 28px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(20, 17, 15, 0.08);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .section-num {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-gold-ink);
+      letter-spacing: normal;
+    }
+
+    .policy-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+
+    .policy-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Citações e Destaques Jurídicos */
+    .legal-quote-box {
+      background: var(--color-surface-subtle);
+      border-left: 3px solid var(--color-gold-ink);
+      border-radius: 0 var(--radius-base) var(--radius-base) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .legal-quote-box strong {
+      color: var(--color-gold-ink);
+    }
+
+    /* Lista estilizada de dados */
+    .data-group {
+      background: #FAF7F2;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+
+    .data-group-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .data-group-title svg {
+      color: var(--color-gold-ink);
+      flex-shrink: 0;
+    }
+
+    .data-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .data-bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--color-text);
+    }
+
+    .data-bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      color: var(--color-gold-ink);
+      font-size: 16px;
+    }
+
+    /* Nota de Não Coleta de Documentos / Dados Financeiros */
+    .security-badge-box {
+      background: #F0F4EC;
+      border: 1px solid #C4D7B5;
+      border-radius: var(--radius-base);
+      padding: 16px 20px;
+      margin: 24px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .security-badge-icon {
+      font-size: 20px;
+      line-height: 1;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .security-badge-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #1F3819;
+    }
+
+    .security-badge-text strong {
+      color: #11260C;
+    }
+
+    /* Cartão de DPO Callout */
+    .dpo-card {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-gold);
+      border-radius: var(--radius-base);
+      padding: 20px 22px;
+      margin: 20px 0;
+    }
+
+    .dpo-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .dpo-notice {
+      display: inline-block;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--color-gold-ink);
+      background: rgba(110, 77, 20, 0.08);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 8px 0 12px;
+    }
+
+    .contact-inline-link {
+      color: var(--color-gold-ink);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-inline-link:hover {
+      color: var(--ink);
+    }
+
+    /* Grid de Direitos do Titular (Art. 18) */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .right-item {
+      background: #FAF7F2;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .right-badge {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      color: var(--color-gold-ink);
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .right-body strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .right-body p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    /* Box de Contato do Titular */
+    .rights-action-box {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: 24px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .rights-action-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .rights-action-desc {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .rights-buttons-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--touch-target);
+      padding: 0 20px;
+      background: var(--color-gold);
+      color: var(--color-gold-text);
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-base);
+      transition: background 200ms ease, transform 150ms ease;
+    }
+
+    .btn-action-primary:hover {
+      background: var(--color-gold-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--touch-target);
+      padding: 0 20px;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--color-border);
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-base);
+      transition: background 200ms ease, border-color 200ms ease;
+    }
+
+    .btn-action-secondary:hover {
+      background: rgba(20, 17, 15, 0.05);
+      border-color: var(--color-border-hover);
+    }
+
+    /* ========================================================
+       FOOTER EXECUTIVO (IDENTIDADE NOBRE TRANSFERS)
+       ======================================================== */
+    footer.luxury-footer {
+      background: var(--color-surface-subtle);
+      border-top: 1px solid rgba(20, 17, 15, 0.08);
+      padding: 56px 24px calc(36px + env(safe-area-inset-bottom, 0px));
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-logo {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--ink);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .footer-info-text {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .footer-highlight {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .footer-contact {
+      font-style: normal;
+      margin-top: 6px;
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: var(--touch-target);
+      color: var(--color-gold-ink);
+      font: 500 14.5px/1.4 var(--font-sans);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 150ms ease;
+    }
+
+    .footer-contact-link:hover {
+      color: var(--ink);
+    }
+
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: var(--touch-target);
+      margin-top: 10px;
+      padding: 0 18px;
+      border: 1px solid rgba(20, 17, 15, 0.22);
+      border-radius: 22px;
+      color: var(--ink);
+      font: 600 13.5px var(--font-sans);
+      text-decoration: none;
+      transition: background 150ms ease;
+    }
+
+    .back-to-top:hover {
+      background: rgba(20, 17, 15, 0.05);
+    }
+
+    /* ========================================================
+       BOTÃO FLUTUANTE DE WHATSAPP
+       ======================================================== */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      right: calc(24px + env(safe-area-inset-right, 0px));
+      z-index: 990;
+      background: #25d366;
+      color: #ffffff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    }
+
+    .whatsapp-float-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    /* ========================================================
+       RESPONSIVIDADE (MOBILE FIRST STANDARDS)
+       ======================================================== */
+    @media (max-width: 860px) {
+      :root {
+        --hdr-height: 72px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 17, 15, 0.45);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 250ms ease, visibility 0s 250ms;
+        z-index: 998;
+      }
+
+      .nav-backdrop.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 250ms ease, visibility 0s 0s;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 320px;
+        height: 100vh;
+        height: 100dvh;
+        background: var(--color-surface);
+        border-left: 1px solid var(--color-border);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: calc(var(--hdr-height) + 16px) 24px 36px;
+        gap: 20px;
+        transform: translateX(100%);
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 250ms;
+        z-index: 999;
+        box-shadow: -10px 0 30px rgba(20, 17, 15, 0.15);
+      }
+
+      .nav-menu.is-active {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+        transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0s;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 6px;
+      }
+
+      .nav-link {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(20, 17, 15, 0.08);
+      }
+
+      .btn-header-wa {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .policy-wrapper {
+        padding: 0 16px;
+      }
+
+      .footer-contact-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .footer-contact-link {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .whatsapp-float-btn {
+        width: 48px;
+        height: 48px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        right: calc(16px + env(safe-area-inset-right, 0px));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body id="topo">
+
+  <!-- Acessibilidade: Atalho para o conteúdo principal -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================================================
+       HEADER OFICIAL
+       ======================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      
+      <!-- Logomarca com link para a página inicial -->
+      <a href="../" class="brand-link" aria-label="Nobre Transfers - Ir para página inicial">
+        <img src="../assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="brand-logo" width="107" height="52" decoding="async">
+      </a>
+
+      <!-- Menu Principal -->
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação do site">
+        <ul class="nav-list">
+          <li><a href="../" class="nav-link">Início</a></li>
+          <li><a href="../#frota" class="nav-link">Frota</a></li>
+          <li><a href="../#destinos" class="nav-link">Destinos</a></li>
+          <li><a href="../#planejamento" class="nav-link">Como funciona</a></li>
+          <li><a href="../#faq" class="nav-link">FAQ</a></li>
+          <li><a href="../#contato" class="nav-link">Contato</a></li>
+        </ul>
+
+        <!-- Botão WhatsApp CTA -->
+        <a href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20transfer." class="btn-header-wa wa-external-link" aria-label="Solicitar cotação no WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+          <span>Solicitar cotação</span>
+        </a>
+      </nav>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Fundo escurecido para drawer no mobile -->
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+       ARTIGO PRINCIPAL: POLÍTICA DE PRIVACIDADE
+       ======================================================== -->
+  <main id="conteudo" tabindex="-1">
+    <article class="policy-wrapper">
+
+      <!-- Breadcrumbs de Navegação -->
+      <nav class="policy-breadcrumbs" aria-label="Trilha de navegação">
+        <a href="../">Início</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Política de Privacidade</span>
+      </nav>
+
+      <!-- Cabeçalho do Documento -->
+      <header class="policy-header">
+        <span class="policy-badge">LGPD • Lei nº 13.709/2018</span>
+        <h1 class="policy-title">Política de Privacidade</h1>
+        <p class="policy-meta">
+          <strong>Controlador:</strong> Nobre Transfers &bull; 
+          <strong>Última atualização:</strong> Outubro de 2026
+        </p>
+      </header>
+
+      <!-- ALERTA LEGAL / DISCLAIMER OBRIGATÓRIO -->
+      <div class="disclaimer-alert-box" role="alert">
+        <div class="disclaimer-alert-text">
+          ⚠️ Este documento é um modelo técnico elaborado com base na legislação vigente e deve ser revisado por um advogado especializado antes da publicação oficial.
+        </div>
+      </div>
+
+      <!-- SUMÁRIO EXECUTIVO DE SEÇÕES -->
+      <nav class="toc-card" aria-label="Sumário da Política de Privacidade">
+        <div class="toc-title">Sumário do Documento</div>
+        <ul class="toc-list">
+          <li><a href="#secao-1" class="toc-link"><span class="toc-num">1.</span> Introdução e Controlador</a></li>
+          <li><a href="#secao-2" class="toc-link"><span class="toc-num">2.</span> Dados Pessoais Coletados</a></li>
+          <li><a href="#secao-3" class="toc-link"><span class="toc-num">3.</span> Finalidade do Tratamento</a></li>
+          <li><a href="#secao-4" class="toc-link"><span class="toc-num">4.</span> Base Legal (art. 7º da LGPD)</a></li>
+          <li><a href="#secao-5" class="toc-link"><span class="toc-num">5.</span> Compartilhamento de Dados</a></li>
+          <li><a href="#secao-6" class="toc-link"><span class="toc-num">6.</span> Transferência Internacional</a></li>
+          <li><a href="#secao-7" class="toc-link"><span class="toc-num">7.</span> Retenção e Descarte</a></li>
+          <li><a href="#secao-8" class="toc-link"><span class="toc-num">8.</span> Segurança da Informação</a></li>
+          <li><a href="#secao-9" class="toc-link"><span class="toc-num">9.</span> Direitos do Titular (art. 18)</a></li>
+          <li><a href="#secao-10" class="toc-link"><span class="toc-num">10.</span> Encarregado de Dados (DPO)</a></li>
+          <li><a href="#secao-11" class="toc-link"><span class="toc-num">11.</span> Cookies e Armazenamento</a></li>
+          <li><a href="#secao-12" class="toc-link"><span class="toc-num">12.</span> Alterações nesta Política</a></li>
+          <li><a href="#secao-13" class="toc-link"><span class="toc-num">13.</span> Data de Vigência</a></li>
+        </ul>
+      </nav>
+
+      <!-- SEÇÃO 1: INTRODUÇÃO -->
+      <section class="policy-section" id="secao-1">
+        <h2 class="policy-section-title">
+          <span class="section-num">1.</span> Introdução
+        </h2>
+        <p class="policy-text">
+          A <strong>Nobre Transfers</strong> se compromete integralmente com a proteção da sua privacidade e dos seus dados pessoais, em conformidade com as disposições da Lei Geral de Proteção de Dados Pessoais do Brasil (LGPD — Lei Federal nº 13.709/2018).
+        </p>
+        <p class="policy-text">
+          Esta Política de Privacidade descreve de forma transparente e acessível como tratamos os dados pessoais de clientes, viajantes e visitantes que acessam este website ou utilizam nossos canais para solicitar cotações de transfers privativos e passeios sob medida no Sul da Bahia — compreendendo Porto Seguro, Arraial d'Ajuda, Trancoso, Caraíva, Santo André, Praia do Espelho, Taípe, Rio da Barra e localidades vizinhas.
+        </p>
+        <div class="legal-quote-box">
+          <strong>Identificação do Controlador:</strong><br>
+          Nobre Transfers<br>
+          Endereço: Estrada da Balsa, 3.240, Loja 02 – Arraial d'Ajuda, Porto Seguro – BA<br>
+          E-mail de Contato: <a href="mailto:comercialparalelo17@gmail.com" class="contact-inline-link">comercialparalelo17@gmail.com</a><br>
+          WhatsApp Oficial: <a href="https://wa.me/5573998171117" class="contact-inline-link wa-external-link">+55 (73) 99817-1117</a>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2: DADOS COLETADOS -->
+      <section class="policy-section" id="secao-2">
+        <h2 class="policy-section-title">
+          <span class="section-num">2.</span> Dados Coletados
+        </h2>
+        <p class="policy-text">
+          Coletamos exclusivamente as informações estritamente necessárias para atender com excelência à sua solicitação de transfer ou passeio e viabilizar a prestação dos serviços contratados. Os dados dividem-se nas seguintes categorias:
+        </p>
+
+        <!-- Grupo A: Identificação -->
+        <div class="data-group">
+          <div class="data-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dados de Identificação e Contato
+          </div>
+          <ul class="data-bullet-list">
+            <li><strong>Nome do passageiro ou solicitante:</strong> para identificação do titular e personalização do atendimento;</li>
+            <li><strong>Número de telefone celular / WhatsApp (com DDD):</strong> canal essencial para envio do orçamento, confirmação de horários e coordenação do embarque/desembarque;</li>
+            <li><strong>Endereço de e-mail (opcional):</strong> fornecido voluntariamente pelo usuário caso prefira receber propostas ou comunicações por correio eletrônico.</li>
+          </ul>
+        </div>
+
+        <!-- Grupo B: Viagem -->
+        <div class="data-group">
+          <div class="data-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            Dados da Viagem e Detalhes Operacionais
+          </div>
+          <ul class="data-bullet-list">
+            <li><strong>Origem e destino:</strong> locais de partida e chegada desejados (aeroporto, hotel, pousada, condomínio ou praia);</li>
+            <li><strong>Datas e horários:</strong> programação prevista de chegada e retorno;</li>
+            <li><strong>Número de passageiros:</strong> quantidade de adultos e crianças, para alocação correta da categoria do veículo (SUV Executivo, Spin, Van executiva ou grupo sob consulta);</li>
+            <li><strong>Veículo sugerido ou de preferência:</strong> modelo ou capacidade pretendida;</li>
+            <li><strong>Volume de bagagens:</strong> quantidade de malas para assegurar capacidade e conforto compatíveis;</li>
+            <li><strong>Número do voo e companhia aérea (quando aplicável):</strong> para acompanhamento em tempo real de pousos e eventuais atrasos no Aeroporto de Porto Seguro;</li>
+            <li><strong>Observações especiais:</strong> necessidades específicas, solicitações de assentos infantis ou peculiaridades de rota.</li>
+          </ul>
+        </div>
+
+        <!-- Grupo C: Navegação -->
+        <div class="data-group">
+          <div class="data-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+            Dados de Navegação e Dados Técnicos Mínimos
+          </div>
+          <ul class="data-bullet-list">
+            <li><strong>Página de origem e Referrer:</strong> endereço do website ou canal pelo qual o visitante chegou ao nosso site;</li>
+            <li><strong>Parâmetros de campanha (UTM):</strong> tags técnicas presentes na URL (como <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>) para identificação da origem da visita;</li>
+            <li><strong>Idioma preferencial do navegador:</strong> para exibição de conteúdos no formato de idioma compatível.</li>
+          </ul>
+        </div>
+
+        <!-- NOTA DE NÃO COLETA -->
+        <div class="security-badge-box">
+          <span class="security-badge-icon" aria-hidden="true">🛡️</span>
+          <div class="security-badge-text">
+            <strong>Dados que NÃO coletamos:</strong> A Nobre Transfers <strong>não coleta</strong> número de CPF, RG, passaporte, certidões ou quaisquer outros documentos de identificação civil através do website. <strong>Tampouco coletamos dados financeiros</strong>, como números de cartão de crédito, códigos de segurança (CVV) ou senhas bancárias. Todo o detalhamento de pagamento e confirmação de serviços ocorre de forma direta, transparente e individualizada através do nosso WhatsApp oficial.
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3: FINALIDADE DO TRATAMENTO -->
+      <section class="policy-section" id="secao-3">
+        <h2 class="policy-section-title">
+          <span class="section-num">3.</span> Finalidade do Tratamento
+        </h2>
+        <p class="policy-text">
+          Cada dado pessoal sob nossa responsabilidade possui uma finalidade legítima, pré-determinada e compatível com as expectativas dos nossos clientes:
+        </p>
+        <ul class="data-bullet-list" style="margin-bottom: 16px;">
+          <li><strong>Responder a solicitações de cotação:</strong> calcular orçamentos personalizados, planejar rotas e indicar o veículo ideal para o trajeto solicitado;</li>
+          <li><strong>Viabilizar a execução do serviço contratado:</strong> coordenar a logística do transfer, assegurar a presença do motorista pontualmente no desembarque e conduzir os passageiros com máxima comodidade ao destino;</li>
+          <li><strong>Entrar em contato operacional via WhatsApp:</strong> manter comunicação ágil e direta com o passageiro para transmissão de atualizações de trajeto, monitoramento de voo e suporte durante a estada no Sul da Bahia;</li>
+          <li><strong>Enviar novidades e ofertas (somente mediante consentimento expresso):</strong> apresentar novos roteiros de passeios privativos e condições especiais, exclusivamente para clientes que autorizarem expressamente esse contato (opt-in), com faculdade de cancelamento a qualquer momento;</li>
+          <li><strong>Análise estatística interna:</strong> produzir métricas gerenciais agregadas sobre destinos mais procurados, rotas e sazonalidade de demanda, empregando dados anonimizados para o aprimoramento contínuo da frota e do serviço.</li>
+        </ul>
+      </section>
+
+      <!-- SEÇÃO 4: BASE LEGAL (ART. 7º DA LGPD) -->
+      <section class="policy-section" id="secao-4">
+        <h2 class="policy-section-title">
+          <span class="section-num">4.</span> Base Legal (art. 7º da LGPD)
+        </h2>
+        <p class="policy-text">
+          Todo o tratamento de dados pessoais realizado pela Nobre Transfers encontra amparo rigoroso nas bases legais estabelecidas pelo artigo 7º da Lei Geral de Proteção de Dados (LGPD):
+        </p>
+
+        <div class="legal-quote-box">
+          <strong>Art. 7º, inciso V, da LGPD — Execução de contrato ou procedimentos preliminares:</strong><br>
+          <em>"quando necessário para a execução de contrato ou de procedimentos preliminares relacionados a contrato do qual seja parte o titular, a pedido do titular dos dados."</em><br><br>
+          <strong>Aplicação prática:</strong> Base principal utilizada para o recebimento do formulário de cotação e troca de mensagens sobre a viagem. Ao preencher o formulário ou iniciar uma conversa solicitando orçamento de transfer, o titular requer a realização de procedimentos pré-contratuais indispensáveis à precificação e prestação do serviço.
+        </div>
+
+        <div class="legal-quote-box">
+          <strong>Art. 7º, inciso I, da LGPD — Consentimento do titular:</strong><br>
+          <em>"mediante o fornecimento de consentimento pelo titular."</em><br><br>
+          <strong>Aplicação prática:</strong> Utilizado de forma exclusiva e restrita para o envio eventual de novidades, conteúdos sobre destinos e ofertas promocionais. Esse consentimento é obtido de forma livre, clara e inequívoca, e pode ser revogado pelo titular a qualquer momento, sem nenhum impacto na contratação dos transfers regulares.
+        </div>
+      </section>
+
+      <!-- SEÇÃO 5: COMPARTILHAMENTO DE DADOS -->
+      <section class="policy-section" id="secao-5">
+        <h2 class="policy-section-title">
+          <span class="section-num">5.</span> Compartilhamento de Dados
+        </h2>
+        <p class="policy-text">
+          A Nobre Transfers adota uma política rigorosa de sigilo e não comercialização de dados pessoais. <strong>Não vendemos, não alugamos e não cedemos seus dados a terceiros</strong> para finalidades publicitárias ou mercadológicas.
+        </p>
+        <p class="policy-text">
+          O compartilhamento de dados restringe-se estritamente aos parceiros de infraestrutura e comunicação essenciais para a operacionalização técnica do serviço:
+        </p>
+        <ul class="data-bullet-list">
+          <li><strong>Supabase Inc. (Operador / Processador de Dados):</strong> Plataforma corporativa de banco de dados e computação em nuvem responsável pela hospedagem segura dos registros de cotação gerados pelo formulário. Adotamos como região recomendada prioritária a zona de <strong>São Paulo, Brasil (sa-east-1)</strong>, minimizando latências e preservando a proximidade territorial dos dados;</li>
+          <li><strong>WhatsApp / Meta Platforms:</strong> A conversa e a cotação são iniciadas pelo visitante através do website e prosseguem diretamente no aplicativo WhatsApp. O tráfego e o armazenamento dessas mensagens operam sob os Termos de Serviço e as Políticas de Privacidade da própria Meta Platforms, que conta com criptografia de ponta a ponta nas conversas;</li>
+          <li><strong>Autoridades competentes:</strong> Mediante requisição judicial formal ou estrito cumprimento de dever legal decorrente de lei brasileira.</li>
+        </ul>
+      </section>
+
+      <!-- SEÇÃO 6: TRANSFERÊNCIA INTERNACIONAL DE DADOS -->
+      <section class="policy-section" id="secao-6">
+        <h2 class="policy-section-title">
+          <span class="section-num">6.</span> Transferência Internacional de Dados
+        </h2>
+        <p class="policy-text">
+          Para garantir máxima disponibilidade, redundância contra falhas e proteção de dados, nossa infraestrutura de banco de dados contratada junto ao <strong>Supabase Inc.</strong> opera prioritariamente na região <strong>São Paulo (sa-east-1)</strong>, mas pode, por motivos técnicos inerentes a serviços de nuvem de alta resiliência, envolver servidores, réplicas e rotinas de segurança localizadas fora do território nacional (como nos Estados Unidos ou União Europeia).
+        </p>
+        <p class="policy-text">
+          Em qualquer hipótese de transferência internacional de dados, asseguramos que o operador contratado cumpra integralmente os requisitos do <strong>artigo 33 da LGPD</strong>, demonstrando adoção de cláusulas contratuais padrão, rígidos controles de segurança da informação, criptografia robusta e certificações internacionais de conformidade (como SOC 2 Type II e ISO/IEC 27001).
+        </p>
+      </section>
+
+      <!-- SEÇÃO 7: RETENÇÃO E DESCARTE DE DADOS -->
+      <section class="policy-section" id="secao-7">
+        <h2 class="policy-section-title">
+          <span class="section-num">7.</span> Retenção de Dados
+        </h2>
+        <p class="policy-text">
+          Os dados pessoais coletados permanecem armazenados apenas pelo período estritamente necessário para cumprir as finalidades para as quais foram coletados, em respeito aos princípios da necessidade e da limitação de armazenamento:
+        </p>
+        <ul class="data-bullet-list">
+          <li><strong>Leads e cotações que não resultaram em contratação:</strong> os dados da solicitação são mantidos pelo prazo de <strong>até 12 (doze) meses</strong> a contar do envio, período após o qual são automaticamente excluídos ou irreversivelmente anonimizados para geração de relatórios estatísticos internos;</li>
+          <li><strong>Dados de serviços efetivamente contratados e executados:</strong> são mantidos pelo período exigido pela legislação civil, contábil e fiscal brasileira (como o Código Civil e normas tributárias), visando o cumprimento de obrigações legais e o eventual exercício regular de direitos em processos administrativos ou judiciais.</li>
+        </ul>
+        <div class="legal-quote-box" style="margin-top: 18px;">
+          <em>Os prazos acima poderão ser ajustados conforme orientação jurídica.</em>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 8: SEGURANÇA DA INFORMAÇÃO -->
+      <section class="policy-section" id="secao-8">
+        <h2 class="policy-section-title">
+          <span class="section-num">8.</span> Segurança da Informação
+        </h2>
+        <p class="policy-text">
+          A Nobre Transfers adota medidas técnicas, administrativas e organizacionais proporcionais para proteger os seus dados pessoais contra acessos não autorizados, situações acidentais ou ilícitas de destruição, perda, alteração ou qualquer forma de tratamento inadequado:
+        </p>
+        <ul class="data-bullet-list">
+          <li><strong>Criptografia em trânsito (HTTPS / TLS):</strong> todas as comunicações entre o seu navegador e nossos servidores são protegidas por certificados SSL/TLS modernos, impedindo a interceptação de dados;</li>
+          <li><strong>Autenticação por tokens criptográficos:</strong> acesso a dados protegido por credenciais únicas e chaves de assinatura digital;</li>
+          <li><strong>Políticas de acesso restrito (Row Level Security - RLS):</strong> implementação de regras granulares de segurança a nível de linha no banco de dados, assegurando que nenhum dado seja acessível sem autorização específica;</li>
+          <li><strong>Ausência de chaves privilegiadas no código público:</strong> nossas páginas estáticas não expõem senhas mestras ou chaves de serviço administrativo (<code>service_role keys</code>), mantendo a integridade da arquitetura de segurança;</li>
+          <li><strong>Minimização de superfície de ataque:</strong> arquitetura estática leve, sem dependências vulneráveis e sem exposição de painéis de administração abertos na web.</li>
+        </ul>
+        <p class="policy-text" style="margin-top: 16px;">
+          Ressalvamos que, embora envidemos os maiores esforços e adotemos os melhores padrões técnicos da indústria, nenhum sistema informatizado é 100% imune a invasões, incidentes decorrentes de culpa exclusiva de terceiros ou ataques cibernéticos maliciosos. Em caso de ocorrência de incidente de segurança relevante que possa trazer dano aos titulares, cumpriremos rigorosamente o dever de notificação previsto no <strong>art. 48 da LGPD</strong>.
+        </p>
+      </section>
+
+      <!-- SEÇÃO 9: DIREITOS DO TITULAR (ART. 18 DA LGPD) -->
+      <section class="policy-section" id="secao-9">
+        <h2 class="policy-section-title">
+          <span class="section-num">9.</span> Direitos do Titular (art. 18 da LGPD)
+        </h2>
+        <p class="policy-text">
+          Em observância ao artigo 18 da Lei Geral de Proteção de Dados, você, na qualidade de titular dos dados pessoais, pode exercer os seguintes direitos a qualquer momento e de forma gratuita perante a Nobre Transfers:
+        </p>
+
+        <div class="rights-grid">
+          <div class="right-item">
+            <span class="right-badge">1</span>
+            <div class="right-body">
+              <strong>Confirmação da existência de tratamento</strong>
+              <p>Saber se realizamos qualquer tipo de tratamento com os seus dados pessoais.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">2</span>
+            <div class="right-body">
+              <strong>Acesso aos dados</strong>
+              <p>Solicitar uma cópia clara e legível dos dados pessoais mantidos sob nossa guarda.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">3</span>
+            <div class="right-body">
+              <strong>Correção de dados incompletos, inexatos ou desatualizados</strong>
+              <p>Requerer a atualização do seu telefone, WhatsApp, rota de viagem ou ortografia do seu nome.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">4</span>
+            <div class="right-body">
+              <strong>Anonimização, bloqueio ou eliminação</strong>
+              <p>Pedir providências contra dados desnecessários, excessivos ou tratados em desconformidade com a LGPD.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">5</span>
+            <div class="right-body">
+              <strong>Portabilidade dos dados</strong>
+              <p>Receber seus dados cadastrais em formato estruturado para compartilhamento com outro prestador de serviço.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">6</span>
+            <div class="right-body">
+              <strong>Eliminação dos dados tratados com consentimento</strong>
+              <p>Exigir o descarte de informações que você tenha autorizado previamente, ressalvadas as hipóteses de guarda legal.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">7</span>
+            <div class="right-body">
+              <strong>Informação sobre compartilhamento</strong>
+              <p>Obter esclarecimentos detalhados sobre com quais entidades públicas ou privadas compartilhamos dados (como Supabase e WhatsApp).</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">8</span>
+            <div class="right-body">
+              <strong>Informação sobre a possibilidade de não fornecer consentimento</strong>
+              <p>Compreender de antemão quais serviços não poderão ser realizados caso determinado dado não seja informado.</p>
+            </div>
+          </div>
+
+          <div class="right-item">
+            <span class="right-badge">9</span>
+            <div class="right-body">
+              <strong>Revogação do consentimento</strong>
+              <p>Retirar sua autorização prévia de contato promocional de modo simples, facilitado e imediato.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box de Ação para Exercício de Direitos -->
+        <div class="rights-action-box">
+          <h3 class="rights-action-title">Como exercer os seus direitos</h3>
+          <p class="rights-action-desc">
+            Para exercer qualquer um dos seus direitos, basta entrar em contato com nossa equipe indicando seu nome e o direito que deseja exercer. Responderemos com brevidade:
+          </p>
+          <div class="rights-buttons-wrap">
+            <a href="mailto:comercialparalelo17@gmail.com?subject=LGPD%20-%20Exercicio%20de%20Direitos%20do%20Titular" class="btn-action-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>Enviar e-mail para privacidade</span>
+            </a>
+            <a href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20fazer%20uma%20solicita%C3%A7%C3%A3o%20sobre%20meus%20dados%20pessoais%20(LGPD)." class="btn-action-secondary wa-external-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>Falar pelo WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 10: ENCARREGADO DE PROTEÇÃO DE DADOS (DPO) -->
+      <section class="policy-section" id="secao-10">
+        <h2 class="policy-section-title">
+          <span class="section-num">10.</span> Encarregado de Proteção de Dados (DPO)
+        </h2>
+        <p class="policy-text">
+          O Encarregado pelo Tratamento de Dados Pessoais atua como canal oficial de comunicação entre a Nobre Transfers, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD).
+        </p>
+
+        <!-- PREENCHER: Nome do Encarregado -->
+        <div class="dpo-card">
+          <div class="dpo-title">Canal do Encarregado (DPO)</div>
+          <p class="policy-text" style="margin-bottom: 4px;">
+            <strong>Contato Direto:</strong> <a href="mailto:comercialparalelo17@gmail.com" class="contact-inline-link">comercialparalelo17@gmail.com</a>
+          </p>
+          <div class="dpo-notice">
+            Responsável a ser designado formalmente. Entre em contato pelo e-mail ou WhatsApp acima.
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 11: COOKIES E ARMAZENAMENTO LOCAL -->
+      <section class="policy-section" id="secao-11">
+        <h2 class="policy-section-title">
+          <span class="section-num">11.</span> Cookies e Armazenamento Local
+        </h2>
+        <p class="policy-text">
+          A Nobre Transfers adota uma abordagem estritamente privativa e não invasiva na web:
+        </p>
+        <ul class="data-bullet-list">
+          <li><strong>Sem cookies de terceiros:</strong> Este website <strong>NÃO</strong> utiliza cookies de terceiros, trackers de publicidade comportamental, nem plataformas invasivas de analytics;</li>
+          <li><strong>Uso exclusivo de <code>sessionStorage</code>:</strong> Empregamos tão somente o armazenamento volátil de sessão nativo do seu navegador (<code>sessionStorage</code>). Esse recurso armazena temporariamente apenas:
+            <ul style="margin: 6px 0 6px 20px; list-style: circle;">
+              <li>Os parâmetros UTM da sua visita atual (ex.: origem do clique na campanha);</li>
+              <li>Os dados parciais digitados no formulário de cotação para que não se percam caso você alterne etapas antes de finalizar.</li>
+            </ul>
+            <strong>Esses dados são apagados de forma imediata e automática assim que você fecha a janela ou aba do seu navegador;</strong>
+          </li>
+          <li><strong>Futuras ferramentas de analytics:</strong> Caso venham a ser implementadas ferramentas de mensuração de audiência no futuro, um banner transparente de consentimento prévio (*cookie banner*) será disponibilizado antes de qualquer ativação.</li>
+        </ul>
+      </section>
+
+      <!-- SEÇÃO 12: ALTERAÇÕES NESTA POLÍTICA -->
+      <section class="policy-section" id="secao-12">
+        <h2 class="policy-section-title">
+          <span class="section-num">12.</span> Alterações nesta Política
+        </h2>
+        <p class="policy-text">
+          Reservamo-nos o direito de revisar, modificar e atualizar esta Política de Privacidade periodicamente, de modo a refletir adequações na legislação aplicável, novas recomendações da ANPD ou eventuais aprimoramentos operacionais dos nossos serviços de transfer.
+        </p>
+        <p class="policy-text">
+          Quaisquer modificações substanciais entrarão em vigor a partir da data de publicação nesta página. Recomendamos que os usuários consultem este documento regularmente para se manterem informados. A data da última atualização é sempre mantida visível no início desta política.
+        </p>
+      </section>
+
+      <!-- SEÇÃO 13: DATA DA ÚLTIMA ATUALIZAÇÃO -->
+      <section class="policy-section" id="secao-13">
+        <h2 class="policy-section-title">
+          <span class="section-num">13.</span> Data da Última Atualização
+        </h2>
+        <p class="policy-text">
+          Esta Política de Privacidade foi atualizada pela última vez em: <strong>Outubro de 2026</strong>.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ========================================================
+       FOOTER EXECUTIVO
+       ======================================================== -->
+  <footer class="luxury-footer" id="contato">
+    <div class="footer-inner">
+
+      <img src="../assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="footer-logo" width="120" height="58" loading="lazy" decoding="async">
+      <p class="footer-brand-title">NOBRE TRANSFERS</p>
+      <p class="footer-info-text">
+        Transfers privativos e passeios sob medida • <span class="footer-highlight">Seu destino, nossa prioridade</span>
+      </p>
+
+      <address class="footer-contact">
+        <ul class="footer-contact-list">
+          <li>
+            <a class="footer-contact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Estrada%20da%20Balsa%203240%20Loja%2002%20Arraial%20d'Ajuda%20Porto%20Seguro%20BA" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Estrada da Balsa, 3.240, Loja 02, Arraial d'Ajuda, Porto Seguro (BA)</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link wa-external-link" href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20transfer.">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>WhatsApp: +55 (73) 99817-1117</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="tel:+5573998171117">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>(73) 99817-1117</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="mailto:comercialparalelo17@gmail.com">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>comercialparalelo17@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="https://www.instagram.com/nobretransfers/" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              <span>@nobretransfers</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="./" aria-current="page">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Privacidade</span>
+            </a>
+          </li>
+        </ul>
+      </address>
+
+      <a href="#topo" class="back-to-top">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        <span>Voltar ao topo</span>
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       BOTÃO FLUTUANTE DE WHATSAPP
+       ======================================================== -->
+  <a href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20uma%20informa%C3%A7%C3%A3o%20sobre%20privacidade." class="whatsapp-float-btn wa-external-link" id="waFloatBtn" aria-label="Falar conosco no WhatsApp">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.183 8.183 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.06-1.07l-.29-.16-3.12.82.83-3.04-.19-.3a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+    </svg>
+  </a>
+
+  <!-- ========================================================
+       JAVASCRIPT: MENU MOBILE, SCROLL & WHATSAPP SEGURO
+       ======================================================== -->
+  <script>
+    (function initPrivacyPage() {
+      // 1. Controle do Header no Scroll
+      var header = document.getElementById('siteHeader');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          header.classList.toggle('is-scrolled', window.scrollY > 30);
+        }, { passive: true });
+      }
+
+      // 2. Menu Hambúrguer Mobile (WCAG 2.1 AA)
+      var menuToggle = document.getElementById('menuToggle');
+      var navMenu = document.getElementById('navMenu');
+      var navBackdrop = document.getElementById('navBackdrop');
+
+      if (menuToggle && navMenu) {
+        function toggleMenu(open) {
+          menuToggle.setAttribute('aria-expanded', String(open));
+          menuToggle.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+          menuToggle.classList.toggle('is-open', open);
+          navMenu.classList.toggle('is-active', open);
+          if (navBackdrop) navBackdrop.classList.toggle('is-active', open);
+          document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        menuToggle.addEventListener('click', function() {
+          var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+          toggleMenu(!isOpen);
+        });
+
+        if (navBackdrop) {
+          navBackdrop.addEventListener('click', function() {
+            toggleMenu(false);
+          });
+        }
+
+        var navLinks = navMenu.querySelectorAll('.nav-link, .btn-header-wa');
+        for (var i = 0; i < navLinks.length; i++) {
+          navLinks[i].addEventListener('click', function() {
+            toggleMenu(false);
+          });
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && navMenu.classList.contains('is-active')) {
+            toggleMenu(false);
+            menuToggle.focus();
+          }
+        });
+      }
+
+      // 3. Abertura Segura de Links WhatsApp (Prevenção rigorosa do Bug de Duplo-Clique)
+      function safeOpenWhatsApp(url) {
+        var win = window.open(url, '_blank');
+        if (win) {
+          try { win.opener = null; } catch(_) {}
+        } else {
+          window.location.href = url;
+        }
+      }
+
+      var waLinks = document.querySelectorAll('.wa-external-link');
+      for (var j = 0; j < waLinks.length; j++) {
+        waLinks[j].addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetUrl = this.getAttribute('href');
+          if (targetUrl) {
+            safeOpenWhatsApp(targetUrl);
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Cotação de Transfer | Nobre Transfers</title>
+  <meta name="description" content="Finalize sua solicitação de cotação de transfer executivo no Sul da Bahia. Atendimento personalizado diretamente pelo WhatsApp da Nobre Transfers.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4EFE6">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon-180.png">
+
+  <!-- Google Fonts: Newsreader + Hanken Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: NOBRE TRANSFERS (TEMA CLARO EXCLUSIVO)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      /* Tipografia Editorial */
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Cores e Tokens */
+      --ink: #14110F;
+      --on-video: #F4EFE6;
+      --color-surface: #F4EFE6;
+      --color-surface-subtle: #ECE6DA;
+      --color-surface-card: #FFFFFF;
+      --color-border: rgba(20, 17, 15, 0.12);
+      --color-border-hover: rgba(20, 17, 15, 0.28);
+      --color-text: #14110F;
+      --color-text-muted: rgba(20, 17, 15, 0.65);
+      --color-gold: #C9A45C;
+      --color-gold-hover: #b8934b;
+      --color-gold-text: #14110F;
+      --color-gold-ink: #6E4D14;
+      --color-error: #B3261E;
+      --color-error-bg: #FDF2F2;
+      --color-error-border: #F1B5B2;
+      --color-success: #1B5E20;
+      --color-success-bg: #E8F5E9;
+
+      /* Geometria e Acessibilidade */
+      --radius-base: 6px;
+      --radius-card: 10px;
+      --touch-target: 44px;
+      --container: 1200px;
+      --shadow-subtle: 0 4px 16px rgba(20, 17, 15, 0.06);
+      --shadow-card: 0 6px 24px rgba(20, 17, 15, 0.05);
+      --header-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Acessibilidade & foco visível WCAG 2.1 AA */
+    :focus-visible {
+      outline: 2px solid var(--color-gold-ink);
+      outline-offset: 2px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -100px;
+      z-index: 3000;
+      background: var(--ink);
+      color: var(--color-surface);
+      padding: 12px 18px;
+      border-radius: var(--radius-base);
+      font-weight: 500;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    /* ==========================================================================
+       HEADER EDITORIAL & SÓBRIO
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      min-height: var(--header-height);
+      z-index: 1000;
+      background: rgba(244, 239, 230, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container {
+      max-width: var(--container);
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      min-height: var(--touch-target);
+      padding: 4px 0;
+    }
+
+    .brand-logo {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: opacity 200ms ease;
+    }
+    .brand-logo:hover {
+      opacity: 0.88;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-nav-back {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-gold-ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: var(--touch-target);
+      padding: 0 12px;
+      border-radius: var(--radius-base);
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .btn-nav-back:hover {
+      background: rgba(20, 17, 15, 0.05);
+      color: var(--ink);
+    }
+
+    .btn-header-wa {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--color-border);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: var(--touch-target);
+      padding: 0 14px;
+      border-radius: var(--radius-base);
+      cursor: pointer;
+      transition: background 200ms ease, border-color 200ms ease;
+      white-space: nowrap;
+    }
+    .btn-header-wa:hover {
+      background: rgba(20, 17, 15, 0.05);
+      border-color: var(--color-border-hover);
+    }
+
+    /* ==========================================================================
+       CONTEÚDO PRINCIPAL: PÁGINA DE COTAÇÃO
+       ========================================================================== */
+    .page-main {
+      flex: 1 0 auto;
+      width: 100%;
+      padding-top: calc(var(--header-height) + 32px);
+      padding-bottom: 72px;
+    }
+
+    .cotacao-container {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Cabeçalho da Página & Stepper */
+    .page-intro {
+      margin-bottom: 28px;
+    }
+
+    .stepper-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .stepper-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(20, 17, 15, 0.06);
+    }
+    .stepper-pill.is-active {
+      background: var(--color-gold-ink);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 4.5vw, 40px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       1. TRIP SUMMARY CARD (RESUMO DA VIAGEM EDITÁVEL)
+       ========================================================================== */
+    .summary-card {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-subtle);
+      transition: border-color 0.2s ease;
+    }
+
+    .summary-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(20, 17, 15, 0.09);
+    }
+
+    .summary-card-title {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-step-done {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-gold-ink);
+      background: rgba(201, 164, 92, 0.18);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .summary-dl {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .summary-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(20, 17, 15, 0.06);
+    }
+    .summary-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    @media (min-width: 560px) {
+      .summary-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+    }
+
+    .summary-term {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      min-width: 110px;
+    }
+
+    .summary-def {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .summary-val {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .summary-val-highlight {
+      color: var(--color-gold-ink);
+    }
+
+    .btn-summary-edit {
+      background: transparent;
+      border: 1px solid rgba(110, 77, 20, 0.25);
+      color: var(--color-gold-ink);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      min-height: var(--touch-target);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-summary-edit:hover {
+      background: rgba(110, 77, 20, 0.08);
+      border-color: var(--color-gold-ink);
+    }
+
+    /* Painel Expansível de Edição da Viagem */
+    .trip-edit-panel {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(20, 17, 15, 0.18);
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .trip-edit-panel[hidden] {
+      display: none !important;
+    }
+
+    .trip-edit-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .trip-edit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 600px) {
+      .trip-edit-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .trip-edit-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn-save-edit {
+      background: var(--ink);
+      color: #FFFFFF;
+      border: 1px solid var(--ink);
+      padding: 0 18px;
+      min-height: var(--touch-target);
+      border-radius: var(--radius-base);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-save-edit:hover {
+      opacity: 0.92;
+    }
+
+    .btn-cancel-edit {
+      background: transparent;
+      color: var(--color-text-muted);
+      border: 1px solid transparent;
+      padding: 0 12px;
+      min-height: var(--touch-target);
+      border-radius: var(--radius-base);
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-cancel-edit:hover {
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       FORMULÁRIO PRINCIPAL & CAMPOS
+       ========================================================================== */
+    .form-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 480px) {
+      .form-card {
+        padding: 20px 16px;
+      }
+    }
+
+    .form-section {
+      margin-bottom: 28px;
+    }
+    .form-section:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    .form-section-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .form-section-desc {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    .form-group[hidden] {
+      display: none !important;
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .req {
+      color: var(--color-gold-ink);
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    .opt {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+
+    /* Inputs com font-size >= 16px (evita zoom no iOS) */
+    .form-control {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      font-size: 16px;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select.form-control {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2314110F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    textarea.form-control {
+      min-height: 96px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .form-control:hover {
+      border-color: var(--color-border-hover);
+    }
+
+    .form-control:focus {
+      border-color: var(--color-gold-ink);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22);
+    }
+
+    .form-control[aria-invalid="true"] {
+      border-color: var(--color-error);
+      background-color: var(--color-error-bg);
+    }
+
+    .field-hint {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .field-error {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-error);
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .field-error[hidden] {
+      display: none !important;
+    }
+
+    /* Campo de Telefone com Prefixo DDI */
+    .phone-input-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .country-code-select {
+      width: 135px;
+      flex-shrink: 0;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+
+    .phone-input {
+      flex: 1;
+    }
+
+    /* Grids de Campos Opcionais */
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 560px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .char-count {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       4. PRIVACIDADE E CONSENTIMENTO
+       ========================================================================== */
+    .privacy-consent-box {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .privacy-notice {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .privacy-notice a {
+      color: var(--color-gold-ink);
+      text-decoration: underline;
+      font-weight: 500;
+      text-underline-offset: 2px;
+    }
+    .privacy-notice a:hover {
+      color: var(--ink);
+    }
+
+    .consent-checkbox-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      margin-top: 2px;
+      accent-color: var(--color-gold-ink);
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.45;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       5. ANTI-SPAM (HONEYPOT) & SUMÁRIO DE ERROS
+       ========================================================================== */
+    .hp-field {
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .form-error-banner {
+      background-color: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      color: var(--color-error);
+      padding: 14px 16px;
+      border-radius: var(--radius-base);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+    .form-error-banner[hidden] {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+       6. BOTÃO DE ENVIO (SUBMIT BUTTON)
+       ========================================================================== */
+    .btn-submit-booking {
+      width: 100%;
+      min-height: 52px;
+      background-color: var(--color-gold);
+      color: var(--color-gold-text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid rgba(20, 17, 15, 0.08);
+      border-radius: var(--radius-base);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 3px 12px rgba(201, 164, 92, 0.35);
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-submit-booking:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(201, 164, 92, 0.45);
+    }
+
+    .btn-submit-booking:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(201, 164, 92, 0.25);
+    }
+
+    .btn-submit-booking svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       10. CONFIRMATION STATE (MENSAGEM PRONTA NO WHATSAPP)
+       ========================================================================== */
+    .confirmation-panel {
+      text-align: center;
+      padding: 36px 20px;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .confirmation-panel[hidden] {
+      display: none !important;
+    }
+
+    .conf-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 1px solid rgba(27, 94, 32, 0.2);
+    }
+    .conf-icon-wrap svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .conf-title {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .conf-desc {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    .conf-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .btn-conf-wa {
+      width: 100%;
+      min-height: 50px;
+      background-color: var(--color-gold);
+      color: var(--color-gold-text);
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: var(--radius-base);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn-conf-wa:hover {
+      background-color: var(--color-gold-hover);
+    }
+
+    .btn-conf-new {
+      width: 100%;
+      min-height: 44px;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--color-border);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-base);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-conf-new:hover {
+      background: rgba(20, 17, 15, 0.05);
+      border-color: var(--color-border-hover);
+    }
+
+    /* ==========================================================================
+       RODAPÉ EDITORIAL
+       ========================================================================== */
+    .site-footer {
+      background: #ECE6DA;
+      border-top: 1px solid rgba(20, 17, 15, 0.08);
+      padding: 48px 24px calc(36px + env(safe-area-inset-bottom, 0px));
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--ink);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .footer-info-text {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 24px;
+      list-style: none;
+      margin: 10px 0;
+      padding: 0;
+    }
+
+    .footer-contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color 0.2s ease;
+      min-height: var(--touch-target);
+    }
+    .footer-contact-link:hover {
+      color: var(--color-gold-ink);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      margin-top: 8px;
+    }
+    .footer-bottom-links a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer-bottom-links a:hover {
+      color: var(--ink);
+    }
+
+    /* Animação suave e acessibilidade de movimento */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 64px;
+      }
+      .brand-logo {
+        height: 42px;
+      }
+      .footer-contact-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-contact-link {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudoPrincipal">Pular para o conteúdo principal</a>
+
+  <!-- ==========================================================================
+       HEADER EDITORIAL
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="../" class="brand-link" aria-label="Nobre Transfers - Ir para a página inicial">
+        <img src="../assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="brand-logo" width="107" height="56" decoding="async">
+      </a>
+      <nav class="header-nav" aria-label="Navegação secundária">
+        <a href="../" class="btn-nav-back" aria-label="Voltar para a página inicial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Início</span>
+        </a>
+        <a href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20uma%20informa%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Falar conosco no WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+          <span>Ajuda</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       CONTEÚDO PRINCIPAL
+       ========================================================================== -->
+  <main class="page-main" id="conteudoPrincipal">
+    <div class="cotacao-container">
+
+      <!-- Cabeçalho da Página -->
+      <div class="page-intro">
+        <div class="stepper-nav" aria-label="Etapas da cotação">
+          <span class="stepper-pill">Etapa 1: Dados da Viagem ✓</span>
+          <span>→</span>
+          <span class="stepper-pill is-active">Etapa 2: Revisão & Contato</span>
+        </div>
+        <h1 class="page-title">Finalize sua Cotação</h1>
+        <p class="page-subtitle">Revise os detalhes da sua viagem e informe seu WhatsApp para receber o orçamento oficial exclusivo com nossos motoristas executivos.</p>
+      </div>
+
+      <!-- ====================================================================
+           1. TRIP SUMMARY (RESUMO DA VIAGEM EDITÁVEL)
+           ==================================================================== -->
+      <section class="summary-card" aria-labelledby="summaryTitle">
+        <div class="summary-card-header">
+          <h2 class="summary-card-title" id="summaryTitle">
+            <span>Resumo da Viagem</span>
+          </h2>
+          <span class="badge-step-done">Etapa 1 Pronta</span>
+        </div>
+
+        <dl class="summary-dl">
+          <div class="summary-row">
+            <dt class="summary-term">Serviço</dt>
+            <dd class="summary-def">
+              <span class="summary-val" id="sumService">Transfer Privativo</span>
+              <button type="button" class="btn-summary-edit" data-edit-focus="editService" aria-label="Editar serviço">Editar</button>
+            </dd>
+          </div>
+
+          <div class="summary-row">
+            <dt class="summary-term">Trajeto</dt>
+            <dd class="summary-def">
+              <span class="summary-val" id="sumRoute">Aeroporto de Porto Seguro → Trancoso</span>
+              <button type="button" class="btn-summary-edit" data-edit-focus="editOrigin" aria-label="Editar trajeto">Editar</button>
+            </dd>
+          </div>
+
+          <div class="summary-row">
+            <dt class="summary-term">Data</dt>
+            <dd class="summary-def">
+              <span class="summary-val" id="sumDate">—</span>
+              <button type="button" class="btn-summary-edit" data-edit-focus="editDate" aria-label="Editar data">Editar</button>
+            </dd>
+          </div>
+
+          <div class="summary-row">
+            <dt class="summary-term">Passageiros</dt>
+            <dd class="summary-def">
+              <span class="summary-val" id="sumPax">2 passageiros · SUV Executivo (Compass ou Renegade)</span>
+              <button type="button" class="btn-summary-edit" data-edit-focus="editPax" aria-label="Editar passageiros">Editar</button>
+            </dd>
+          </div>
+
+          <div class="summary-row">
+            <dt class="summary-term">Modalidade</dt>
+            <dd class="summary-def">
+              <span class="summary-val" id="sumTripType">Só ida</span>
+              <button type="button" class="btn-summary-edit" data-edit-focus="editRoundTrip" aria-label="Editar modalidade de viagem">Editar</button>
+            </dd>
+          </div>
+        </dl>
+
+        <!-- Painel Expansível para Edição Inline dos Dados da Viagem -->
+        <div class="trip-edit-panel" id="tripEditPanel" hidden>
+          <div class="trip-edit-title">
+            <span>Ajustar Detalhes da Viagem</span>
+            <button type="button" class="btn-cancel-edit" id="btnCancelEdit" aria-label="Fechar painel de edição">✕ Fechar</button>
+          </div>
+          <div class="trip-edit-grid">
+            <div class="form-group">
+              <label class="form-label" for="editService">Serviço</label>
+              <select id="editService" class="form-control">
+                <option value="transfer">Transfer Executivo</option>
+                <option value="passeio">Passeio Sob Medida</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editRoundTrip">Tipo de Trajeto</label>
+              <select id="editRoundTrip" class="form-control">
+                <option value="false">Só ida</option>
+                <option value="true">Ida e volta</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editOrigin">Origem</label>
+              <select id="editOrigin" class="form-control">
+                <option value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</option>
+                <option value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</option>
+                <option value="Arraial d'Ajuda">Arraial d'Ajuda</option>
+                <option value="Trancoso">Trancoso</option>
+                <option value="Caraíva">Caraíva</option>
+                <option value="Santo André">Santo André</option>
+                <option value="Praia do Espelho">Praia do Espelho</option>
+                <option value="Taípe">Taípe</option>
+                <option value="Rio da Barra">Rio da Barra</option>
+                <option value="Terravista / Fly Club">Terravista / Fly Club</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editDestination">Destino</label>
+              <select id="editDestination" class="form-control">
+                <option value="Trancoso">Trancoso</option>
+                <option value="Arraial d'Ajuda">Arraial d'Ajuda</option>
+                <option value="Caraíva">Caraíva</option>
+                <option value="Santo André">Santo André</option>
+                <option value="Praia do Espelho">Praia do Espelho</option>
+                <option value="Taípe">Taípe</option>
+                <option value="Rio da Barra">Rio da Barra</option>
+                <option value="Aeroporto de Porto Seguro">Aeroporto de Porto Seguro</option>
+                <option value="Porto Seguro (Centro / Hotéis)">Porto Seguro (Centro / Hotéis)</option>
+                <option value="Terravista / Fly Club">Terravista / Fly Club</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editDate">Data da Ida</label>
+              <input type="date" id="editDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPax">Passageiros</label>
+              <select id="editPax" class="form-control">
+                <option value="1">1 passageiro (SUV Executivo)</option>
+                <option value="2">2 passageiros (SUV Executivo)</option>
+                <option value="3">3 passageiros (SUV Executivo)</option>
+                <option value="4">4 passageiros (SUV Executivo)</option>
+                <option value="5">5 passageiros (Spin)</option>
+                <option value="6">6 passageiros (Spin)</option>
+                <option value="7">7 passageiros (Van)</option>
+                <option value="8">8 passageiros (Van)</option>
+                <option value="10">10 passageiros (Van)</option>
+                <option value="12">12 passageiros (Van)</option>
+                <option value="15">15 passageiros (Van)</option>
+                <option value="20">20 passageiros (Grupo)</option>
+                <option value="30">30 passageiros (Grupo)</option>
+                <option value="40">40 passageiros (Grupo)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="trip-edit-actions">
+            <button type="button" class="btn-save-edit" id="btnSaveEdit">Atualizar Resumo</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           FORMULÁRIO PRINCIPAL DE CONTATO E DETALHES
+           ==================================================================== -->
+      <div class="form-card" id="formCard">
+        <form id="cotacaoForm" novalidate>
+
+          <!-- 2. CAMPOS DE CONTATO -->
+          <fieldset class="form-section" style="border:none; padding:0; margin:0 0 28px;">
+            <legend class="form-section-title">Seus Dados de Contato</legend>
+            <p class="form-section-desc">Informe como podemos falar com você para enviar o orçamento.</p>
+
+            <!-- Nome -->
+            <div class="form-group">
+              <label class="form-label" for="nome">
+                <span>Nome completo <span class="req" aria-hidden="true">*</span></span>
+              </label>
+              <input type="text" id="nome" name="nome" class="form-control" required maxlength="200" placeholder="Seu nome completo" autocomplete="name" aria-describedby="err-nome">
+              <p class="field-error" id="err-nome" hidden></p>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="form-group">
+              <label class="form-label" for="whatsapp">
+                <span>WhatsApp <span class="req" aria-hidden="true">*</span></span>
+              </label>
+              <div class="phone-input-group">
+                <select id="countryCode" name="countryCode" class="form-control country-code-select" aria-label="Código internacional do país">
+                  <option value="+55" selected>🇧🇷 +55</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+351">🇵🇹 +351</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+39">🇮🇹 +39</option>
+                  <option value="+54">🇦🇷 +54</option>
+                  <option value="+598">🇺🇾 +598</option>
+                  <option value="+56">🇨🇱 +56</option>
+                  <option value="+41">🇨🇭 +41</option>
+                </select>
+                <input type="tel" id="whatsapp" name="whatsapp" class="form-control phone-input" required maxlength="30" placeholder="(73) 99999-9999" autocomplete="tel" aria-describedby="err-whatsapp">
+              </div>
+              <p class="field-hint">Enviaremos a confirmação e valores diretamente para este número.</p>
+              <p class="field-error" id="err-whatsapp" hidden></p>
+            </div>
+
+            <!-- E-mail (Opcional) -->
+            <div class="form-group">
+              <label class="form-label" for="email">
+                <span>E-mail <span class="opt">(opcional)</span></span>
+              </label>
+              <input type="email" id="email" name="email" class="form-control" maxlength="254" placeholder="seu@email.com" autocomplete="email" aria-describedby="err-email">
+              <p class="field-error" id="err-email" hidden></p>
+            </div>
+          </fieldset>
+
+          <!-- 3. DETALHES OPCIONAIS DA VIAGEM -->
+          <fieldset class="form-section" style="border:none; padding:0; margin:0 0 28px;">
+            <legend class="form-section-title">Detalhes da Viagem</legend>
+            <p class="form-section-desc">Informações complementares para organizarmos o melhor atendimento.</p>
+
+            <div class="form-grid-2">
+              <!-- Horário -->
+              <div class="form-group">
+                <label class="form-label" for="time">
+                  <span>Horário previsto da ida <span class="opt">(opcional)</span></span>
+                </label>
+                <input type="time" id="time" name="time" step="300" class="form-control">
+                <p class="field-hint">Horário estimado de partida ou pouso.</p>
+              </div>
+
+              <!-- Malas -->
+              <div class="form-group">
+                <label class="form-label" for="bags">
+                  <span>Bagagens estimadas <span class="opt">(opcional)</span></span>
+                </label>
+                <select id="bags" name="bags" class="form-control">
+                  <option value="">Selecione a quantidade</option>
+                  <option value="Sem malas">Sem malas</option>
+                  <option value="1-2 malas pequenas">1-2 malas pequenas</option>
+                  <option value="3-4 malas">3-4 malas</option>
+                  <option value="5+ malas">5+ malas</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Nº do Voo (Exibido apenas se origem ou destino tiver aeroporto) -->
+            <div class="form-group" id="flightGroup" hidden>
+              <label class="form-label" for="flight">
+                <span>Nº do Voo <span class="opt">(opcional)</span></span>
+              </label>
+              <input type="text" id="flight" name="flight" class="form-control" maxlength="20" placeholder="Ex: AD4123, G31502, LA3456">
+              <p class="field-hint">Acompanhamos seu voo em tempo real para aguardá-lo com pontualidade no desembarque.</p>
+            </div>
+
+            <!-- Data e Hora da Volta (Exibido apenas se ida e volta) -->
+            <div class="form-group" id="returnFieldsGroup" hidden>
+              <div class="form-grid-2">
+                <div>
+                  <label class="form-label" for="returnDate">
+                    <span>Data da Volta <span class="req" aria-hidden="true">*</span></span>
+                  </label>
+                  <input type="date" id="returnDate" name="returnDate" class="form-control" aria-describedby="err-returnDate">
+                  <p class="field-error" id="err-returnDate" hidden></p>
+                </div>
+                <div>
+                  <label class="form-label" for="returnTime">
+                    <span>Horário da Volta <span class="opt">(opcional)</span></span>
+                  </label>
+                  <input type="time" id="returnTime" name="returnTime" step="300" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <!-- Observações -->
+            <div class="form-group">
+              <label class="form-label" for="notes">
+                <span>Observações <span class="opt">(opcional)</span></span>
+              </label>
+              <textarea id="notes" name="notes" class="form-control" maxlength="2000" rows="3" placeholder="Cadeirinha infantil, nome da pousada, horário flexível..."></textarea>
+              <div class="char-count" id="charCount" aria-live="polite">0/2000</div>
+            </div>
+          </fieldset>
+
+          <!-- 4. PRIVACIDADE E CONSENTIMENTO -->
+          <div class="privacy-consent-box">
+            <p class="privacy-notice">Usamos seus dados apenas para responder sua cotação. Leia nossa <a href="/privacidade/" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</p>
+            <div class="consent-checkbox-wrap">
+              <input type="checkbox" id="marketing_opt_in" name="marketing_opt_in" class="custom-checkbox">
+              <label for="marketing_opt_in" class="checkbox-label">Quero receber novidades e ofertas da Nobre Transfers</label>
+            </div>
+          </div>
+
+          <!-- 5. HONEYPOT ANTI-SPAM (Campo oculto invisível) -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website_hp">Não preencha este campo se for humano</label>
+            <input type="text" id="website_hp" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Sumário de Erros Geral -->
+          <div class="form-error-banner" id="formErrorBanner" role="alert" hidden aria-live="assertive"></div>
+
+          <!-- 6. BOTÃO DE ENVIO -->
+          <button type="submit" id="btnSubmit" class="btn-submit-booking">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.183 8.183 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.06-1.07l-.29-.16-3.12.82.83-3.04-.19-.3a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+            </svg>
+            <span>Solicitar cotação no WhatsApp</span>
+          </button>
+        </form>
+
+        <!-- 10. ESTADO DE CONFIRMAÇÃO (MENSAGEM PRONTA NO WHATSAPP) -->
+        <div class="confirmation-panel" id="confirmationPanel" hidden>
+          <div class="conf-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h2 class="conf-title">Sua mensagem está pronta no WhatsApp!</h2>
+          <p class="conf-desc">Abrimos o WhatsApp com todos os detalhes da sua viagem prontos para envio. Caso a conversa não tenha sido iniciada automaticamente, clique no botão abaixo para continuar:</p>
+          <div class="conf-actions">
+            <a id="confReopenBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-conf-wa">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+              </svg>
+              <span>Abrir WhatsApp novamente</span>
+            </a>
+            <button type="button" id="confNewBtn" class="btn-conf-new">Fazer outra cotação</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       RODAPÉ EDITORIAL
+       ========================================================================== -->
+  <footer class="site-footer" id="contato">
+    <div class="footer-inner">
+      <img src="../assets/images/Logomarca-NOBRETRANSFERS-dark-opt.png" alt="Nobre Transfers" class="footer-logo" width="120" height="63" loading="lazy" decoding="async">
+      <p class="footer-brand-title">NOBRE TRANSFERS</p>
+      <p class="footer-info-text">Transfers privativos e passeios sob medida no Sul da Bahia</p>
+
+      <address class="footer-contact" style="font-style: normal;">
+        <ul class="footer-contact-list">
+          <li>
+            <a class="footer-contact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Estrada%20da%20Balsa%203240%20Loja%2002%20Arraial%20d'Ajuda%20Porto%20Seguro%20BA" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Estrada da Balsa, 3.240, Loja 02, Arraial d'Ajuda, Porto Seguro (BA)</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="https://wa.me/5573998171117?text=Ol%C3%A1%2C%20Nobre%20Transfers!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>(73) 99817-1117</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact-link" href="https://www.instagram.com/nobretransfers/" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              <span>@nobretransfers</span>
+            </a>
+          </li>
+        </ul>
+      </address>
+
+      <div class="footer-bottom-links">
+        <a href="/privacidade/">Política de Privacidade</a>
+        <span>•</span>
+        <span>Atendimento exclusivo por cotação</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       LÓGICA JAVASCRIPT: ES MODULES (INTEGRAÇÃO SUPABASE + UTM + WHATSAPP)
+       ========================================================================== -->
+  <script type="module">
+    import { getUtmData } from '../assets/js/utm-capture.js';
+    import { saveLead } from '../assets/js/supabase-config.js';
+
+    // Constantes de Configuração
+    const WA_NUMBER = '5573998171117';
+    const RATE_LIMIT_STORAGE_KEY = 'nobre_cotacao_submissions';
+    const MAX_SUBMISSIONS = 3;
+    const TIME_WINDOW_MS = 10 * 60 * 1000; // 10 minutos
+    const PRIVACY_VERSION = '2026-10-15';
+
+    // Estado da Viagem (Etapa 1)
+    const tripState = {
+      origin: 'Aeroporto de Porto Seguro',
+      destination: 'Trancoso',
+      type: 'transfer',
+      roundtrip: false,
+      date: '',
+      passengers: 2
+    };
+
+    // Auxiliar para obter data ISO local (YYYY-MM-DD)
+    function getTodayIso(offsetDays = 0) {
+      const d = new Date();
+      if (offsetDays) d.setDate(d.getDate() + offsetDays);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    // Regras de Mapeamento de Frota (Passageiros)
+    function getVehicleSuggestion(passengers) {
+      const p = parseInt(passengers, 10) || 1;
+      if (p <= 4) return 'SUV Executivo (Compass ou Renegade)';
+      if (p <= 6) return 'Spin';
+      if (p <= 15) return 'Van';
+      return 'Grupo sob consulta';
+    }
+
+    function getVehicleSuggestionShort(passengers) {
+      const p = parseInt(passengers, 10) || 1;
+      if (p <= 4) return 'SUV Executivo';
+      if (p <= 6) return 'Spin';
+      if (p <= 15) return 'Van';
+      return 'Grupo sob consulta';
+    }
+
+    // Formatação de data em português com Intl.DateTimeFormat
+    function formatFriendlyDate(isoDateStr) {
+      if (!isoDateStr) return 'A definir';
+      const parts = String(isoDateStr).split('-');
+      if (parts.length !== 3) return String(isoDateStr);
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      const dateObj = new Date(year, month, day);
+      if (isNaN(dateObj.getTime())) return String(isoDateStr);
+
+      const dayStr = String(day).padStart(2, '0');
+      const monthStr = String(month + 1).padStart(2, '0');
+      let weekday = '';
+      try {
+        weekday = new Intl.DateTimeFormat('pt-BR', { weekday: 'long' }).format(dateObj);
+      } catch (_) {
+        const days = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+        weekday = days[dateObj.getDay()];
+      }
+      return `${dayStr}/${monthStr}/${year} (${weekday})`;
+    }
+
+    function formatFriendlyDateShort(isoDateStr) {
+      if (!isoDateStr) return '';
+      const parts = String(isoDateStr).split('-');
+      if (parts.length !== 3) return String(isoDateStr);
+      const dayStr = String(parseInt(parts[2], 10)).padStart(2, '0');
+      const monthStr = String(parseInt(parts[1], 10)).padStart(2, '0');
+      const year = parts[0];
+      return `${dayStr}/${monthStr}/${year}`;
+    }
+
+    // Inicialização dos parâmetros da Etapa 1 (URL ou sessionStorage)
+    function initStep1Data() {
+      const params = new URLSearchParams(window.location.search);
+
+      // Fallback: sessionStorage 'nobre_booking_step1'
+      let sessionData = {};
+      try {
+        const raw = sessionStorage.getItem('nobre_booking_step1');
+        if (raw) sessionData = JSON.parse(raw);
+      } catch (_) {}
+
+      // Resolução de valores com prioridade para Querystring
+      tripState.origin = params.get('origin') || sessionData.origin || 'Aeroporto de Porto Seguro';
+      tripState.destination = params.get('destination') || sessionData.destination || 'Trancoso';
+      tripState.type = params.get('type') || sessionData.type || 'transfer';
+
+      const roundParam = params.get('roundtrip');
+      if (roundParam !== null) {
+        tripState.roundtrip = (roundParam === 'true' || roundParam === '1');
+      } else if (sessionData.roundtrip !== undefined) {
+        tripState.roundtrip = Boolean(sessionData.roundtrip);
+      } else if (sessionData.roundTrip !== undefined) {
+        tripState.roundtrip = Boolean(sessionData.roundTrip);
+      } else {
+        tripState.roundtrip = false;
+      }
+
+      tripState.date = params.get('date') || sessionData.date || getTodayIso(1);
+      const p = parseInt(params.get('passengers') || sessionData.passengers, 10);
+      tripState.passengers = !isNaN(p) && p > 0 ? p : 2;
+
+      updateSummaryView();
+      syncTripEditFields();
+    }
+
+    // Atualiza a visualização do Resumo (<dl>) e visibilidade de campos condicionais
+    function updateSummaryView() {
+      const isPasseio = tripState.type === 'passeio';
+      document.getElementById('sumService').textContent = isPasseio ? 'Passeio Sob Medida' : 'Transfer Privativo';
+      document.getElementById('sumRoute').textContent = `${tripState.origin} → ${tripState.destination}`;
+      document.getElementById('sumDate').textContent = formatFriendlyDate(tripState.date);
+
+      const pax = tripState.passengers;
+      const vehicleDesc = getVehicleSuggestion(pax);
+      const paxText = pax === 1 ? '1 passageiro' : `${pax} passageiros`;
+      document.getElementById('sumPax').textContent = `${paxText} · ${vehicleDesc}`;
+
+      document.getElementById('sumTripType').textContent = tripState.roundtrip ? 'Ida e volta' : 'Só ida';
+
+      // Condicional: Nº do Voo (somente se origem ou destino tiver aeroporto)
+      const isAirport = /aeroporto/i.test(tripState.origin) || /aeroporto/i.test(tripState.destination);
+      const flightGroup = document.getElementById('flightGroup');
+      if (flightGroup) {
+        flightGroup.hidden = !isAirport;
+      }
+
+      // Condicional: Data/Hora da Volta (somente se ida e volta)
+      const returnGroup = document.getElementById('returnFieldsGroup');
+      const returnDateInput = document.getElementById('returnDate');
+      if (returnGroup) {
+        returnGroup.hidden = !tripState.roundtrip;
+      }
+      if (returnDateInput) {
+        returnDateInput.required = tripState.roundtrip;
+        returnDateInput.min = tripState.date || getTodayIso(0);
+      }
+
+      // Persistir no sessionStorage para integridade
+      try {
+        sessionStorage.setItem('nobre_booking_step1', JSON.stringify(tripState));
+      } catch (_) {}
+    }
+
+    // Sincroniza os controles do painel de edição da viagem
+    function syncTripEditFields() {
+      const editService = document.getElementById('editService');
+      const editRoundTrip = document.getElementById('editRoundTrip');
+      const editOrigin = document.getElementById('editOrigin');
+      const editDestination = document.getElementById('editDestination');
+      const editDate = document.getElementById('editDate');
+      const editPax = document.getElementById('editPax');
+
+      if (editService) editService.value = tripState.type;
+      if (editRoundTrip) editRoundTrip.value = String(tripState.roundtrip);
+      if (editOrigin) editOrigin.value = tripState.origin;
+      if (editDestination) editDestination.value = tripState.destination;
+      if (editDate) {
+        editDate.value = tripState.date;
+        editDate.min = getTodayIso(0);
+      }
+      if (editPax) editPax.value = String(tripState.passengers);
+    }
+
+    // Painel de Edição Inline
+    const tripEditPanel = document.getElementById('tripEditPanel');
+    const btnCancelEdit = document.getElementById('btnCancelEdit');
+    const btnSaveEdit = document.getElementById('btnSaveEdit');
+
+    document.querySelectorAll('.btn-summary-edit').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tripEditPanel.hidden = false;
+        const focusId = btn.getAttribute('data-edit-focus');
+        const targetEl = document.getElementById(focusId);
+        if (targetEl) targetEl.focus();
+      });
+    });
+
+    if (btnCancelEdit) {
+      btnCancelEdit.addEventListener('click', () => {
+        tripEditPanel.hidden = true;
+      });
+    }
+
+    if (btnSaveEdit) {
+      btnSaveEdit.addEventListener('click', () => {
+        const editService = document.getElementById('editService');
+        const editRoundTrip = document.getElementById('editRoundTrip');
+        const editOrigin = document.getElementById('editOrigin');
+        const editDestination = document.getElementById('editDestination');
+        const editDate = document.getElementById('editDate');
+        const editPax = document.getElementById('editPax');
+
+        if (editOrigin.value === editDestination.value) {
+          alert('Por favor, escolha uma origem e um destino diferentes.');
+          editDestination.focus();
+          return;
+        }
+
+        tripState.type = editService.value;
+        tripState.roundtrip = (editRoundTrip.value === 'true');
+        tripState.origin = editOrigin.value;
+        tripState.destination = editDestination.value;
+        tripState.date = editDate.value || getTodayIso(0);
+        tripState.passengers = parseInt(editPax.value, 10) || 1;
+
+        updateSummaryView();
+        tripEditPanel.hidden = true;
+      });
+    }
+
+    // ========================================================================
+    // MÁSCARA INTELIGENTE DO WHATSAPP (BRASIL)
+    // ========================================================================
+    const countryCodeSelect = document.getElementById('countryCode');
+    const whatsappInput = document.getElementById('whatsapp');
+
+    function formatPhoneBR(val) {
+      const digits = val.replace(/\D/g, '').slice(0, 11);
+      if (!digits.length) return '';
+      if (digits.length <= 2) return `(${digits}`;
+      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+    }
+
+    if (whatsappInput) {
+      whatsappInput.addEventListener('input', () => {
+        if (countryCodeSelect && countryCodeSelect.value === '+55') {
+          whatsappInput.value = formatPhoneBR(whatsappInput.value);
+        }
+      });
+    }
+
+    if (countryCodeSelect) {
+      countryCodeSelect.addEventListener('change', () => {
+        if (countryCodeSelect.value === '+55') {
+          whatsappInput.placeholder = '(73) 99999-9999';
+          whatsappInput.value = formatPhoneBR(whatsappInput.value);
+        } else {
+          whatsappInput.placeholder = 'Ex: 912 345 678';
+        }
+      });
+    }
+
+    // Contador de caracteres para Observações
+    const notesInput = document.getElementById('notes');
+    const charCountEl = document.getElementById('charCount');
+    if (notesInput && charCountEl) {
+      notesInput.addEventListener('input', () => {
+        charCountEl.textContent = `${notesInput.value.length}/2000`;
+      });
+    }
+
+    // ========================================================================
+    // CONTROLE DE RATE LIMIT (ANTI-SPAM: MÁX 3 SUBMISSÕES / 10 MIN)
+    // ========================================================================
+    function checkRateLimit() {
+      try {
+        const raw = sessionStorage.getItem(RATE_LIMIT_STORAGE_KEY);
+        const times = raw ? JSON.parse(raw) : [];
+        const now = Date.now();
+        const recent = times.filter(t => (now - t) < TIME_WINDOW_MS);
+        return recent.length < MAX_SUBMISSIONS;
+      } catch (_) {
+        return true;
+      }
+    }
+
+    function recordSubmission() {
+      try {
+        const raw = sessionStorage.getItem(RATE_LIMIT_STORAGE_KEY);
+        const times = raw ? JSON.parse(raw) : [];
+        const now = Date.now();
+        const recent = times.filter(t => (now - t) < TIME_WINDOW_MS);
+        recent.push(now);
+        sessionStorage.setItem(RATE_LIMIT_STORAGE_KEY, JSON.stringify(recent));
+      } catch (_) {}
+    }
+
+    // ========================================================================
+    // VALIDAÇÃO INLINE DE CAMPOS
+    // ========================================================================
+    function setFieldError(input, errorId, message) {
+      input.setAttribute('aria-invalid', 'true');
+      const errEl = document.getElementById(errorId);
+      if (errEl) {
+        errEl.textContent = message;
+        errEl.hidden = false;
+      }
+    }
+
+    function clearFieldError(input, errorId) {
+      input.removeAttribute('aria-invalid');
+      const errEl = document.getElementById(errorId);
+      if (errEl) {
+        errEl.textContent = '';
+        errEl.hidden = true;
+      }
+    }
+
+    // Limpar erros no input
+    const nomeInput = document.getElementById('nome');
+    const emailInput = document.getElementById('email');
+    const returnDateInput = document.getElementById('returnDate');
+
+    if (nomeInput) nomeInput.addEventListener('input', () => clearFieldError(nomeInput, 'err-nome'));
+    if (whatsappInput) whatsappInput.addEventListener('input', () => clearFieldError(whatsappInput, 'err-whatsapp'));
+    if (emailInput) emailInput.addEventListener('input', () => clearFieldError(emailInput, 'err-email'));
+    if (returnDateInput) returnDateInput.addEventListener('input', () => clearFieldError(returnDateInput, 'err-returnDate'));
+
+    // ========================================================================
+    // CONSTRUÇÃO DA MENSAGEM DO WHATSAPP
+    // ========================================================================
+    function buildWhatsAppMessage(data) {
+      const isPasseio = data.tipo === 'passeio';
+      const lines = [
+        isPasseio ? '*Cotação de Passeio*' : '*Cotação de Transfer*',
+        '',
+        `*Nome:* ${data.nome}`,
+        `*WhatsApp:* ${data.fullPhone}`,
+        `*Origem:* ${data.origem}`,
+        `*Destino:* ${data.destino}`,
+        `*Data:* ${formatFriendlyDate(data.data_ida)}`
+      ];
+
+      if (data.hora_ida) {
+        lines.push(`*Horário:* ${data.hora_ida}`);
+      }
+
+      const vehicleShort = getVehicleSuggestionShort(data.passageiros);
+      lines.push(`*Passageiros:* ${data.passageiros} · ${vehicleShort}`);
+
+      if (data.ida_volta) {
+        lines.push(`*Tipo:* Ida e volta`);
+        let returnText = formatFriendlyDateShort(data.data_volta);
+        if (data.hora_volta) {
+          returnText += ` às ${data.hora_volta}`;
+        }
+        lines.push(`*Volta:* ${returnText}`);
+      } else {
+        lines.push(`*Tipo:* Só ida`);
+      }
+
+      if (data.malas) {
+        lines.push(`*Malas:* ${data.malas}`);
+      }
+
+      if (data.voo) {
+        lines.push(`*Voo:* ${data.voo}`);
+      }
+
+      if (data.observacoes) {
+        lines.push(`*Observações:* ${data.observacoes}`);
+      }
+
+      lines.push('');
+      lines.push('_Enviado pelo site_');
+
+      return lines.join('\n');
+    }
+
+    // ========================================================================
+    // SUBMISSÃO DO FORMULÁRIO (ETAPA 2)
+    // ========================================================================
+    const cotacaoForm = document.getElementById('cotacaoForm');
+    const formErrorBanner = document.getElementById('formErrorBanner');
+    const confirmationPanel = document.getElementById('confirmationPanel');
+    const confReopenBtn = document.getElementById('confReopenBtn');
+    const confNewBtn = document.getElementById('confNewBtn');
+
+    cotacaoForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // 1. Verificação Honeypot (Anti-spam silencioso)
+      const hp = document.getElementById('website_hp');
+      if (hp && hp.value.trim() !== '') {
+        // Silenciosamente simula sucesso para robôs de spam sem abrir WA nem salvar
+        cotacaoForm.hidden = true;
+        confirmationPanel.hidden = false;
+        return;
+      }
+
+      // 2. Verificação de Rate Limit
+      if (!checkRateLimit()) {
+        formErrorBanner.textContent = 'Você já enviou solicitações recentes. Por favor, aguarde alguns minutos ou entre em contato diretamente pelo WhatsApp (73) 99817-1117.';
+        formErrorBanner.hidden = false;
+        formErrorBanner.focus();
+        return;
+      }
+
+      // 3. Validação dos Campos Obrigatórios
+      let hasError = false;
+      let firstErrorEl = null;
+
+      // Nome
+      const nomeVal = nomeInput.value.trim();
+      if (!nomeVal) {
+        setFieldError(nomeInput, 'err-nome', 'Por favor, informe seu nome completo.');
+        hasError = true;
+        if (!firstErrorEl) firstErrorEl = nomeInput;
+      } else if (nomeVal.length > 200) {
+        setFieldError(nomeInput, 'err-nome', 'O nome deve ter no máximo 200 caracteres.');
+        hasError = true;
+        if (!firstErrorEl) firstErrorEl = nomeInput;
+      } else {
+        clearFieldError(nomeInput, 'err-nome');
+      }
+
+      // WhatsApp
+      const rawDigits = whatsappInput.value.replace(/\D/g, '');
+      const ddi = countryCodeSelect.value;
+      if (!whatsappInput.value.trim() || rawDigits.length < 8) {
+        setFieldError(whatsappInput, 'err-whatsapp', 'Informe um número de WhatsApp válido com DDD.');
+        hasError = true;
+        if (!firstErrorEl) firstErrorEl = whatsappInput;
+      } else {
+        clearFieldError(whatsappInput, 'err-whatsapp');
+      }
+
+      // E-mail (se preenchido, validar formato)
+      const emailVal = emailInput.value.trim();
+      if (emailVal) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailVal) || emailVal.length > 254) {
+          setFieldError(emailInput, 'err-email', 'Informe um endereço de e-mail válido.');
+          hasError = true;
+          if (!firstErrorEl) firstErrorEl = emailInput;
+        } else {
+          clearFieldError(emailInput, 'err-email');
+        }
+      } else {
+        clearFieldError(emailInput, 'err-email');
+      }
+
+      // Data e Hora da Volta (se Ida e Volta)
+      if (tripState.roundtrip) {
+        const returnDateVal = returnDateInput.value;
+        if (!returnDateVal) {
+          setFieldError(returnDateInput, 'err-returnDate', 'Informe a data prevista da viagem de volta.');
+          hasError = true;
+          if (!firstErrorEl) firstErrorEl = returnDateInput;
+        } else if (tripState.date && returnDateVal < tripState.date) {
+          setFieldError(returnDateInput, 'err-returnDate', 'A data de volta deve ser igual ou posterior à data de ida.');
+          hasError = true;
+          if (!firstErrorEl) firstErrorEl = returnDateInput;
+        } else {
+          clearFieldError(returnDateInput, 'err-returnDate');
+        }
+      }
+
+      if (hasError) {
+        formErrorBanner.textContent = 'Por favor, corrija os campos destacados acima para continuar.';
+        formErrorBanner.hidden = false;
+        if (firstErrorEl) firstErrorEl.focus();
+        return;
+      }
+
+      // Se tudo estiver válido, limpa o banner de erro
+      formErrorBanner.hidden = true;
+      formErrorBanner.textContent = '';
+
+      // Formatação do Telefone Completo
+      const fullPhone = `${ddi} ${whatsappInput.value.trim()}`.replace(/\s+/g, ' ');
+
+      // Coleta dos demais campos
+      const timeVal = document.getElementById('time').value || null;
+      const bagsVal = document.getElementById('bags').value || null;
+      const flightInput = document.getElementById('flight');
+      const flightVal = (flightInput && !flightInput.closest('.form-group').hidden && flightInput.value.trim())
+        ? flightInput.value.trim().toUpperCase()
+        : null;
+      const returnTimeVal = (tripState.roundtrip && document.getElementById('returnTime').value)
+        ? document.getElementById('returnTime').value
+        : null;
+      const returnDateVal = tripState.roundtrip ? (returnDateInput.value || null) : null;
+      const notesVal = notesInput.value.trim() || null;
+      const marketingOptIn = document.getElementById('marketing_opt_in').checked;
+
+      // 4. Captura de Dados de Rastreamento (UTM & Referrer)
+      const utmData = getUtmData();
+      const currentIsoTime = new Date().toISOString();
+
+      // 5. Construção do Objeto de Lead para o Supabase
+      const leadData = {
+        nome: nomeVal,
+        whatsapp: fullPhone,
+        email: emailVal || null,
+        origem: tripState.origin,
+        destino: tripState.destination,
+        tipo: tripState.type,
+        ida_volta: tripState.roundtrip,
+        data_ida: tripState.date || null,
+        hora_ida: timeVal,
+        data_volta: returnDateVal,
+        hora_volta: returnTimeVal,
+        passageiros: tripState.passengers,
+        veiculo: getVehicleSuggestion(tripState.passengers),
+        malas: bagsVal,
+        voo: flightVal,
+        observacoes: notesVal,
+        pagina_origem: '/cotacao/',
+        utm_source: utmData.utm_source,
+        utm_medium: utmData.utm_medium,
+        utm_campaign: utmData.utm_campaign,
+        referrer: utmData.referrer,
+        idioma: 'pt-BR',
+        status: 'novo',
+        marketing_opt_in: marketingOptIn,
+        consent_at: marketingOptIn ? currentIsoTime : null,
+        privacy_version: PRIVACY_VERSION
+      };
+
+      // 6. Chamada Assíncrona Não-Bloqueante para saveLead() do Supabase (Fire and Forget)
+      try {
+        saveLead(leadData)
+          .then(res => {
+            if (!res || !res.ok) {
+              console.info('Aviso Supabase (Lead salvo localmente no WhatsApp):', res?.error || 'Aguardando configuração');
+            }
+          })
+          .catch(err => {
+            console.warn('Gravação não-bloqueante no Supabase:', err);
+          });
+      } catch (err) {
+        console.warn('Erro ao disparar saveLead:', err);
+      }
+
+      // Registra a submissão para rate limit
+      recordSubmission();
+
+      // 7. Geração do Texto da Mensagem do WhatsApp
+      const messagePayload = {
+        ...leadData,
+        fullPhone: fullPhone
+      };
+      const waText = buildWhatsAppMessage(messagePayload);
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+      // 8. Abertura do WhatsApp com o Padrão Seguro (sem bug de janela dupla)
+      var win = window.open(waUrl, '_blank');
+      if (win) {
+        try { win.opener = null; } catch (_) {}
+      } else {
+        window.location.href = waUrl;
+      }
+
+      // 9. Exibição do Estado de Confirmação na Tela
+      cotacaoForm.hidden = true;
+      if (confReopenBtn) confReopenBtn.href = waUrl;
+      if (confirmationPanel) {
+        confirmationPanel.hidden = false;
+        confirmationPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    // Botão "Fazer outra cotação"
+    if (confNewBtn) {
+      confNewBtn.addEventListener('click', () => {
+        cotacaoForm.reset();
+        document.getElementById('charCount').textContent = '0/2000';
+        confirmationPanel.hidden = true;
+        cotacaoForm.hidden = false;
+        initStep1Data();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Inicialização da Página
+    initStep1Data();
+  </script>
+</body>
+</html>

@@ -11,11 +11,10 @@ class EdenRockHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
     def end_headers(self):
-        # Desativa cache em HTML para garantir F5 instantâneo
-        if self.path.endswith('.html') or self.path == '/' or '?' in self.path:
-            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
-            self.send_header('Pragma', 'no-cache')
-            self.send_header('Expires', '0')
+        # Desativa cache em todos os recursos para garantir atualização instantânea no navegador
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
         self.send_header('Accept-Ranges', 'bytes')
         super().end_headers()
 

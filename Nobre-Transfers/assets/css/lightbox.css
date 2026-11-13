@@ -1,0 +1,550 @@
+/**
+ * Nobre Transfers — Componente de Lightbox de Destinos
+ * Arquivo: assets/css/lightbox.css
+ * 
+ * Estilos para o visualizador fullscreen responsivo da galeria de destinos.
+ * Design System: Cores nobres, tema escuro exclusivo do modal (rgba(11,25,44,0.97)),
+ * detalhes em ouro (#C9A45C) e tipografia editorial Newsreader / Hanken Grotesk.
+ */
+
+/* ==========================================================================
+   1. Normalização e Efeitos dos Thumbnails (.spread-gallery-card)
+   ========================================================================== */
+
+/* Quando o card é convertido de <div> para <button> ou div original */
+button.spread-gallery-card,
+.spread-gallery-card,
+.nb-lb-card {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(20, 17, 15, 0.10);
+  background: #e8e2d5;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  display: block;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(20, 17, 15, 0.05);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button.spread-gallery-card:focus-visible,
+.spread-gallery-card:focus-visible,
+.nb-lb-card:focus-visible {
+  outline: 2px solid var(--color-gold, #C9A45C);
+  outline-offset: 2px;
+}
+
+/* Indicador visual de zoom para dispositivos móveis (canto superior direito) */
+.nb-lb-indicator {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(11, 25, 44, 0.60);
+  border: 1px solid rgba(201, 164, 92, 0.50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.nb-lb-indicator svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  color: #FFFFFF;
+}
+
+/* Comportamento Mobile: toque e feedback tátil */
+@media (max-width: 1023px), (pointer: coarse) {
+  button.spread-gallery-card,
+  .spread-gallery-card,
+  .nb-lb-card {
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+
+  button.spread-gallery-card:active,
+  .spread-gallery-card:active,
+  .nb-lb-card:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Comportamento Desktop: hover refinado com borda dourada e expansão */
+@media (min-width: 1024px) and (pointer: fine) {
+  /* Oculta indicador móvel no desktop */
+  .nb-lb-indicator {
+    display: none;
+  }
+
+  button.spread-gallery-card,
+  .spread-gallery-card,
+  .nb-lb-card {
+    cursor: zoom-in;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  button.spread-gallery-card:hover,
+  .spread-gallery-card:hover,
+  .nb-lb-card:hover {
+    transform: translateY(-3px);
+    border: 2px solid rgba(201, 164, 92, 0.85);
+    box-shadow: 0 8px 18px rgba(20, 17, 15, 0.16);
+  }
+
+  button.spread-gallery-card:hover img,
+  .spread-gallery-card:hover img,
+  .nb-lb-card:hover img {
+    transform: scale(1.10);
+  }
+}
+
+/* ==========================================================================
+   2. Elemento <dialog> do Lightbox (.nb-lb-dialog) & Backdrop
+   ========================================================================== */
+
+.nb-lb-dialog {
+  box-sizing: border-box;
+  color: var(--on-video, #F4EFE6);
+  font-family: var(--font-sans, 'Hanken Grotesk', -apple-system, sans-serif);
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.nb-lb-dialog:not([open]) {
+  display: none !important;
+}
+
+/* Backdrop nativo */
+.nb-lb-dialog::backdrop,
+.nb-lb-backdrop {
+  background: rgba(11, 25, 44, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Layout em Telas Móveis (< 1024px ou touch) */
+@media (max-width: 1023px), (pointer: coarse) {
+  .nb-lb-dialog[open] {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100vh;
+    max-height: 100dvh;
+    background: rgba(11, 25, 44, 0.97);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 99999;
+  }
+}
+
+/* Layout em Telas Desktop (>= 1024px e mouse preciso) */
+@media (min-width: 1024px) and (pointer: fine) {
+  .nb-lb-dialog[open] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vw;
+    height: 85vh;
+    max-width: 85vw;
+    max-height: 85vh;
+    background: rgba(11, 25, 44, 0.97);
+    border: 1px solid rgba(201, 164, 92, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 99999;
+  }
+}
+
+/* ==========================================================================
+   3. Barra Superior (.nb-lb-topbar)
+   ========================================================================== */
+
+.nb-lb-topbar {
+  flex: 0 0 auto;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: linear-gradient(to bottom, rgba(11, 25, 44, 0.95) 0%, rgba(11, 25, 44, 0.70) 80%, transparent 100%);
+  position: relative;
+  z-index: 10;
+}
+
+.nb-lb-dest-title {
+  font-family: var(--font-serif, 'Newsreader', Georgia, serif);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--on-video, #F4EFE6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 45%;
+}
+
+.nb-lb-counter {
+  font-family: var(--font-sans, 'Hanken Grotesk', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 230, 0.70);
+  text-transform: uppercase;
+}
+
+.nb-lb-close {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  width: var(--touch-target, 44px);
+  height: var(--touch-target, 44px);
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-video, #F4EFE6);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+  touch-action: manipulation;
+}
+
+.nb-lb-close:hover {
+  background-color: rgba(201, 164, 92, 0.18);
+  color: var(--color-gold, #C9A45C);
+}
+
+.nb-lb-close:active {
+  transform: scale(0.94);
+}
+
+.nb-lb-close:focus-visible {
+  outline: 2px solid var(--color-gold, #C9A45C);
+  outline-offset: 2px;
+}
+
+.nb-lb-close svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* ==========================================================================
+   4. Área Central & Container de Scroll-Snap (.nb-lb-track)
+   ========================================================================== */
+
+.nb-lb-main {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nb-lb-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.nb-lb-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slides individuais (.nb-lb-slide) */
+.nb-lb-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 12px 16px 72px 16px; /* Espaço para CTA bar no fundo */
+  position: relative;
+}
+
+.nb-lb-slide-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  pointer-events: none;
+}
+
+.nb-lb-img {
+  max-width: 100vw;
+  max-height: calc(100vh - 140px);
+  max-height: calc(100dvh - 140px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-base, 6px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (min-width: 1024px) and (pointer: fine) {
+  .nb-lb-slide {
+    padding: 16px 64px 80px 64px; /* Espaço para setas laterais e CTA */
+  }
+
+  .nb-lb-img {
+    max-width: calc(85vw - 160px);
+    max-height: calc(85vh - 160px);
+  }
+}
+
+/* Legenda discreta da foto */
+.nb-lb-caption {
+  margin-top: 10px;
+  font-family: var(--font-sans, 'Hanken Grotesk', sans-serif);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(244, 239, 230, 0.85);
+  text-align: center;
+  letter-spacing: 0.02em;
+  background: rgba(11, 25, 44, 0.65);
+  border: 1px solid rgba(201, 164, 92, 0.25);
+  padding: 4px 14px;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   5. Navegação Desktop (Setas Laterais)
+   ========================================================================== */
+
+.nb-lb-nav-prev,
+.nb-lb-nav-next {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(11, 25, 44, 0.70);
+  border: 1px solid rgba(201, 164, 92, 0.45);
+  color: var(--color-gold, #C9A45C);
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.40);
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease, opacity 200ms ease;
+}
+
+.nb-lb-nav-prev {
+  left: 16px;
+}
+
+.nb-lb-nav-next {
+  right: 16px;
+}
+
+.nb-lb-nav-prev:hover,
+.nb-lb-nav-next:hover {
+  background: rgba(201, 164, 92, 0.25);
+  border-color: var(--color-gold, #C9A45C);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.nb-lb-nav-prev:active,
+.nb-lb-nav-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.nb-lb-nav-prev:focus-visible,
+.nb-lb-nav-next:focus-visible {
+  outline: 2px solid var(--color-gold, #C9A45C);
+  outline-offset: 2px;
+}
+
+.nb-lb-nav-prev[disabled],
+.nb-lb-nav-next[disabled] {
+  opacity: 0.20;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nb-lb-nav-prev svg,
+.nb-lb-nav-next svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Ocultar botões de seta em telas menores ou sensíveis ao toque */
+@media (max-width: 1023px), (pointer: coarse) {
+  .nb-lb-nav-prev,
+  .nb-lb-nav-next {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   6. Barra Inferior de CTA (.nb-lb-cta-bar) & Transição de Scroll
+   ========================================================================== */
+
+.nb-lb-cta-bar {
+  flex: 0 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px)) 20px;
+  background: linear-gradient(to top, rgba(11, 25, 44, 0.98) 0%, rgba(11, 25, 44, 0.82) 70%, transparent 100%);
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 280ms cubic-bezier(0.2, 0, 0.2, 1),
+              transform 280ms cubic-bezier(0.2, 0, 0.2, 1),
+              visibility 280ms cubic-bezier(0.2, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+/* Estado esmaecido durante swipe/scroll horizontal */
+.nb-lb-cta-bar--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+/* Botão de Cotação WhatsApp */
+.nb-lb-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--touch-target, 44px);
+  padding: 0 24px;
+  border-radius: var(--radius-base, 6px);
+  background-color: var(--color-gold, #C9A45C);
+  color: var(--color-gold-text, #14110F);
+  font-family: var(--font-sans, 'Hanken Grotesk', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  touch-action: manipulation;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nb-lb-cta-btn:hover {
+  background-color: var(--color-gold-hover, #b8934b);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.nb-lb-cta-btn:active {
+  transform: scale(0.98);
+}
+
+.nb-lb-cta-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.nb-lb-cta-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke-width: 2.5;
+  transition: transform 200ms ease;
+}
+
+.nb-lb-cta-btn:hover .nb-lb-cta-icon {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   7. Acessibilidade e Preferência de Movimento Reduzido
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  button.spread-gallery-card,
+  .nb-lb-card,
+  button.spread-gallery-card img,
+  .nb-lb-card img,
+  .nb-lb-close,
+  .nb-lb-nav-prev,
+  .nb-lb-nav-next,
+  .nb-lb-cta-btn,
+  .nb-lb-cta-icon,
+  .nb-lb-cta-bar {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .nb-lb-track {
+    scroll-behavior: auto !important;
+  }
+}
