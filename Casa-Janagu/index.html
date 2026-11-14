@@ -60,7 +60,6 @@
       color: var(--ink);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
     .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
@@ -1535,14 +1534,31 @@
     @media (max-width: 768px) {
       /* TOP BAR SINGLE LINE */
       .top-bar-desktop { display: none !important; }
-      .top-bar-mobile { display: inline !important; }
-      .top-bar {
-        font-size: 0.72rem;
-        padding: 6px 12px;
+      .top-bar-mobile {
+        display: inline-block !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        line-height: 1.2;
+        max-width: 100%;
+        vertical-align: middle;
+      }
+      .top-bar {
+        font-size: 11.5px;
+        letter-spacing: 0.03em;
+        padding: 7px 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.25;
+      }
+      .top-bar .wrap {
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+        padding: 0 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       /* HEADER & NAV: MAX 56PX, JANAGÜ LOGO + HAMBURGER ONLY */
@@ -1655,11 +1671,19 @@
         position: relative;
       }
       .hero-bg {
-        object-position: center 36%;
+        object-position: 60% 36%;
         filter: brightness(0.98);
       }
       .hero-overlay {
-        background: linear-gradient(to bottom, rgba(13, 43, 34, 0) 0%, rgba(13, 43, 34, 0) 28%, rgba(13, 43, 34, 0.55) 60%, rgba(13, 43, 34, 0.92) 82%, #0d2b22 100%) !important;
+        background: linear-gradient(
+          to bottom,
+          rgba(13, 43, 34, 0) 0%,
+          rgba(13, 43, 34, 0) 30%,
+          rgba(13, 43, 34, 0.42) 52%,
+          rgba(13, 43, 34, 0.82) 68%,
+          rgba(13, 43, 34, 0.96) 84%,
+          #0d2b22 100%
+        ) !important;
       }
       .hero-content {
         width: min(1240px, calc(100% - 32px));
@@ -1688,11 +1712,12 @@
       .hero-tag-mobile {
         display: block !important;
         font-size: 0.76rem;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--gold);
+        color: #FFC062;
         line-height: 1.2;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
       }
       .hero-title-desktop { display: none !important; }
       .hero-title-mobile {
@@ -1704,7 +1729,7 @@
         font-weight: 600;
         color: #ffffff;
         letter-spacing: -0.01em;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
         margin: 0;
       }
       .hero h1,
@@ -1718,10 +1743,10 @@
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 0.94rem;
         line-height: 1.38;
-        color: rgba(255, 255, 255, 0.94);
+        color: rgba(255, 255, 255, 0.96);
         margin: 0 0 8px 0 !important;
         max-width: 380px;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
       }
       .hero-mobile-chips {
         display: flex !important;
@@ -1732,26 +1757,27 @@
       .hero-chip {
         display: inline-flex;
         align-items: center;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(13, 43, 34, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.32);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         color: #ffffff;
         font-size: 0.74rem;
-        font-weight: 500;
-        padding: 2px 8px;
+        font-weight: 600;
+        padding: 3px 9px;
         border-radius: var(--radius-full);
         white-space: nowrap;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
       }
       .hero-mobile-price {
         display: block !important;
         font-size: 0.88rem;
-        color: var(--gold);
+        color: rgba(255, 255, 255, 0.92);
         text-decoration: none;
         font-weight: 500;
         margin-bottom: 2px;
         line-height: 1.35;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
       }
       .hero-mobile-price strong,
       .hero-mobile-price span {
@@ -1912,7 +1938,8 @@
       }
       .hero-chip {
         font-size: 0.72rem;
-        padding: 2px 7px;
+        padding: 2px 8px;
+        background: rgba(13, 43, 34, 0.76);
       }
       .hero-mobile-chips {
         gap: 4px;
@@ -1921,6 +1948,10 @@
       .hero-mobile-price {
         font-size: 0.84rem;
         margin-bottom: 2px;
+      }
+      .badges-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
       .final-cta-buttons {
         flex-direction: column;
